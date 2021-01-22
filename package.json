@@ -1,10 +1,10 @@
 {
   "name": "com.ubnt.unifi",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "presence detection based on (wifi) clients connected to the UniFi Controller",
   "main": "app.js",
   "dependencies": {
-    "ubnt-unifi": "0.0.8"
+    "ubnt-unifi": "github:steffjenl/ubnt-unifi#master"
   },
   "devDependencies": {},
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+http://git@github.com/mnederlof/com.ubnt.unifi.git"
+    "url": "https://github.com/steffjenl/ubnt-unifi.git"
   },
   "author": "",
   "license": "ISC",

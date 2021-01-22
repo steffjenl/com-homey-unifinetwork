@@ -94,6 +94,7 @@ class UnifiDriver extends Homey.Driver {
         if (this.unifi !== null) {
             // Update to possibly new settings
             this._debug('Updating unifi connection params.')
+            this.unifi.opts.unifios = (this.driverSettings['useproxy'] === 'true');
             this.unifi.opts.host = this.driverSettings['host'];
             this.unifi.opts.port = this.driverSettings['port'];
             this.unifi.opts.username = this.driverSettings['user'];
@@ -114,15 +115,18 @@ class UnifiDriver extends Homey.Driver {
             username: this.driverSettings['user'],
             password: this.driverSettings['pass'],
             site: this.driverSettings['site'],
-            insecure: true
+            insecure: true,
+            unifios: (this.driverSettings['useproxy'] === 'true')
         });
 
-        // Monkeypatch the _url method.
-        this.unifi._url = function(path) {
-            if (path.indexOf('/') === 0) {
-                return this.controller.href + path.substring(1);
-            }
-            return `${this.controller.href}api/s/${this.opts.site}/${path}`;
+        if (this.driverSettings['useproxy'] !== 'true') {
+             // Monkeypatch the _url method.
+             this.unifi._url = function(path) {
+                 if (path.indexOf('/') === 0) {
+                     return this.controller.href + path.substring(1);
+                 }
+                 return `${this.controller.href}api/s/${this.opts.site}/${path}`;
+             }
         }
 
         this.unifi.on('ctrl.connect', () => {

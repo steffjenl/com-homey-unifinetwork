@@ -33,9 +33,10 @@ Supported devices:
 
 For supported accesspoints, see [UniFi download page](https://www.ubnt.com/download/unifi/) for more information.
 
-This version has been tested against version 5.7.x up to 5.12.x of the Ubiquiti UniFi Controller software. Lower versions might work too, but is untested.
+This version has been tested against version 5.7.x up to 6.0.x of the Ubiquiti UniFi Controller software. Lower versions might work too, but is untested.
 
-The UniFi Dream Machine is _not_ supported. Apparently the API has changed on that box and the API urls are currently unknown.
+Version 6.0.x is UnifiOS, please select 'Port' 443 and 'UnifiOS Device (please use port 443)' in the settings page.
+
 
 
 Supported Languages:

@@ -14,7 +14,8 @@
 			"port": "Poort",
 			"user": "Gebruikersnaam",
 			"pass": "Wachtwoord",
-			"site": "Site"
+			"site": "Site",
+			"useproxy": "UnifiOS Device (gebruik poort 443)"
 		},
 		"button": {
 			"apply": "Toepassen"

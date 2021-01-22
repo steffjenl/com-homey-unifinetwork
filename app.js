@@ -32,10 +32,11 @@ class UnifiApp extends Homey.App {
         this.log('Freshly initializing com.ubnt.unifi.settings with some defaults')
         this.updateSettings({
             'host': 'unifi',
-            'port': '8443',
+            'port': '443',
             'user': 'ubnt',
             'pass': 'ubnt',
-            'site': 'default'
+            'site': 'default',
+            'useproxy': 'true'
         });
     }
 

@@ -14,7 +14,8 @@
 			"port": "Port",
 			"user": "Username",
 			"pass": "Password",
-			"site": "Site"
+			"site": "Site",
+			"useproxy": "UnifiOS Device (please use port 443)"
 		},
 		"button": {
 			"apply": "Apply"
