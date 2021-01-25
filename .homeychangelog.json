@@ -13,5 +13,8 @@
   },
   "2.0.0": {
     "en": "Rewrite of app for SDKv2. Now using another library for unifi connectivity, hopefully fixing reconnects."
+  },
+  "2.0.5": {
+    "en": "Add support for UniFi OS and beta support for cable clients."
   }
 }
