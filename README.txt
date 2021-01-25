@@ -35,8 +35,7 @@ For supported accesspoints, see [UniFi download page](https://www.ubnt.com/downl
 
 This version has been tested against version 5.7.x up to 6.0.x of the Ubiquiti UniFi Controller software. Lower versions might work too, but is untested.
 
-Version 6.0.x is UnifiOS, please select 'Port' 443 and 'UnifiOS Device (please use port 443)' in the settings page.
-
+Version 6.0.x is UnifiOS, please select 'Port' 443 and 'UnifiOS Device (please use port 443)' in the settings page. Please don't use 2FA and use an local account.
 
 
 Supported Languages:

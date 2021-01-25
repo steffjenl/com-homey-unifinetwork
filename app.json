@@ -2,26 +2,38 @@
     "id": "com.ubnt.unifi",
     "sdk": 2,
     "name": {
-        "en": "Ubiquiti UniFi"
+        "en": "Ubiquiti UniFi Network"
     },
     "description": {
         "en": "Adds support for presence detection based on (wifi) clients connected to the UniFi Controller",
         "nl": "Ondersteuning voor aanwezigheids detectie op basis van (wifi) devices verbonden met de UniFi Controller",
         "es": "Añade soporte para la detección de presencia basada en clientes (wifi) conectados al UniFi Controller"
     },
-    "version": "2.0.4",
+    "version": "2.0.5",
     "compatibility": ">=1.5.0",
     "author": {
-        "name": "Michel Nederlof",
-        "email": "michel@nederlof.info"
+        "name": "Stèphan Eizinga",
+        "email": "stephan@monkeysoft.nl"
+    },
+    "contributors": {
+        "developers": [
+            {
+                "name": "Stèphan Eizinga",
+                "email": "stephan@monkeysoft.nl"
+            },
+            {
+                "name": "Michel Nederlof",
+                "email": "michel@nederlof.info"
+            }
+        ]
     },
     "category": [
         "security"
     ],
     "bugs": {
-        "url": "https://github.com/mnederlof/com.ubnt.unifi/issues"
+        "url": "https://github.com/steffjenl/com.ubnt.unifi/issues"
     },
-    "source": "https://github.com/mnederlof/com.ubnt.unifi",
+    "source": "https://github.com/steffjenl/com.ubnt.unifi",
     "images": {
         "large": "/assets/images/large.png",
         "small": "/assets/images/small.png"
@@ -717,6 +729,64 @@
             },
             "class": "sensor",
             "capabilities": [ "alarm_connected", "measure_rssi",  "measure_signal" ],
+            "pair": [
+                {
+                    "id": "list_clients",
+                    "template": "list_devices",
+                    "navigation": {
+                        "next": "add_clients"
+                    }
+                },
+                {
+                    "id": "add_clients",
+                    "template": "add_devices"
+                }
+            ]
+        },
+        {
+            "id": "cable-client",
+            "name": {
+                "en": "Cable Client",
+                "nl": "Kabel Client",
+                "es": "Cliente Wifi"
+            },
+            "mobile": {
+                "components": [
+                    {
+                        "id": "icon"
+                    },
+                    {
+                        "id": "sensor",
+                        "capabilities": [ "alarm_connected" ],
+                        "options": {
+                            "icons": {
+                                "alarm_connected": "assets/connected.svg"
+                            },
+
+                            "alarm_connected": {
+                                "noblink": false,
+                                "invert": true,
+                                "label": {
+                                    "true": {
+                                        "en": "Connected",
+                                        "es": "Conectado"
+                                    },
+                                    "false": {
+                                        "en": "Disconnected",
+                                        "es": "Desconectado"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "images": {
+                "large": "drivers/cable-client/assets/images/large.jpg",
+                "small": "drivers/cable-client/assets/images/small.jpg"
+            },
+            "class": "sensor",
+            "capabilities": [ "alarm_connected" ],
             "pair": [
                 {
                     "id": "list_clients",
