@@ -78,7 +78,7 @@
                 document.getElementById('unifi_user').value = data['user'];
                 document.getElementById('unifi_pass').value = data['pass'];
                 document.getElementById('unifi_site').value = data['site'];
-                document.getElementById('useproxy').checked = (data['useproxy'] === 'true');
+                document.getElementById('unifi_useproxy').checked = (data['useproxy'] === 'true');
             }
 
             Homey.get('com.ubnt.unifi.settings', initializeSettings);
@@ -147,7 +147,7 @@
             Homey.on('com.ubnt.unifi.debug', ( data ) => { appendDebugMessages(null, data); });
 
             const changePort = () => {
-                if (document.getElementById('useproxy').checked)
+                if (document.getElementById('unifi_useproxy').checked)
                 {
                     document.getElementById('unifi_port').value = 443;
                 }
@@ -156,7 +156,7 @@
                 }
             }
 
-            document.getElementById('useproxy').addEventListener('change', e => {
+            document.getElementById('unifi_useproxy').addEventListener('change', e => {
                 changePort();
             });
 

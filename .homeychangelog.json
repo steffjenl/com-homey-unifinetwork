@@ -16,5 +16,11 @@
   },
   "2.0.5": {
     "en": "Add support for UniFi OS and beta support for cable clients."
+  },
+  "2.0.6": {
+    "en": "Bug fix: Settings page will save now the settings."
+  },
+  "2.0.7": {
+    "en": "Some bug fixes"
   }
 }

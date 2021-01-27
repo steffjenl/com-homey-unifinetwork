@@ -89,19 +89,9 @@ class UnifiDriver extends Homey.Driver {
         if (this.unifi !== null) {
             // Update to possibly new settings
             this._debug('Updating unifi connection params.')
-            this.unifi.opts.unifios = (this.driverSettings['useproxy'] === 'true');
-            this.unifi.opts.host = this.driverSettings['host'];
-            this.unifi.opts.port = this.driverSettings['port'];
-            this.unifi.opts.username = this.driverSettings['user'];
-            this.unifi.opts.password = this.driverSettings['pass'];
-            this.unifi.opts.site = this.driverSettings['site'];
-            this.unifi.controller = url.parse('https://' + this.unifi.opts.host + ':' + this.unifi.opts.port);
-
-            this.unifi.connect();
-
-            this.unifi.jar._jar = new CookieJar(null, {looseMode: true})
-            this.log(this.unifi.jar);
-            return;
+            this.disconnect();
+            this.connected = false;
+            this.unifi = null;
         };
 
         this.unifi = new Unifi({
