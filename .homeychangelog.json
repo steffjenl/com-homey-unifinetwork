@@ -22,5 +22,8 @@
   },
   "2.0.7": {
     "en": "Some bug fixes"
+  },
+  "2.0.8": {
+    "en": "Upgraded WebSocket lib for more stability"
   }
 }

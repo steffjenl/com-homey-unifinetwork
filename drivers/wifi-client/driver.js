@@ -591,7 +591,7 @@ class UnifiDriver extends Homey.Driver {
         this.log('Getting settings for key', key);
 
         this.driverSettings = Settings.get(_settingsKey);
-        this._debug('Received new settings:', this.driverSettings);
+        // this._debug('Received new settings:', this.driverSettings);
 
         if (!this.initialized) return;
 
