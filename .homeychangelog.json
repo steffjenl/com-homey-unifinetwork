@@ -25,5 +25,8 @@
   },
   "2.0.8": {
     "en": "Upgraded WebSocket lib for more stability"
+  },
+  "2.0.9": {
+    "en": "New picturs and name"
   }
 }

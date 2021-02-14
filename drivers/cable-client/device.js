@@ -6,12 +6,12 @@ class UnifiWifiClientDevice extends Homey.Device {
 
     // this method is called when the Device is inited
     onInit() {
-        this.log('UnifiWifiClientDevice init');
+        Homey.app.debug('UnifiWifiClientDevice init');
         this.name = this.getName();
-        this.log('name:', this.getName());
-        this.log('store:', this.getStore());
+        Homey.app.debug('name:', this.getName());
+        Homey.app.debug('store:', this.getStore());
 
-        this.log('this.name:', this.name);
+        Homey.app.debug('this.name:', this.name);
 
         this._online = this.getCapabilityValue('alarm_connected');
         this.state = {
@@ -21,21 +21,18 @@ class UnifiWifiClientDevice extends Homey.Device {
 
     _updateProperty(key, value) {
         let oldValue = this.getCapabilityValue(key);
-        if (oldValue != value) {
-            this.log(`[${this.name}] Updating capability ${key} from ${oldValue} to ${value}`);
+        if (oldValue !== value) {
+            Homey.app.debug(`[${this.name}] Updating capability ${key} from ${oldValue} to ${value}`);
             this.setCapabilityValue(key, value);
 
             let tokens = {
-                rssi: this.state['rssi'],
-                signal: this.state['signal'],
-                radio_proto: this.state['radio_proto'],
-                essid: this.state['essid']
             };
-            if (key == 'alarm_connected') {
-                let deviceTrigger = 'wifi_client_connected';
+
+            if (key === 'alarm_connected') {
+                let deviceTrigger = 'cable_client_connected';
                 let conditionTrigger = 'a_client_connected';
                 if (value === false) {
-                    deviceTrigger = 'wifi_client_disconnected';
+                    deviceTrigger = 'cable_client_disconnected';
                     conditionTrigger = 'a_client_disconnected';
                     tokens = {}
                 }
@@ -47,13 +44,9 @@ class UnifiWifiClientDevice extends Homey.Device {
                 tokens = {
                     mac: this.getData().id,
                     name: this.getName(),
-                    essid: this.state['essid']
+                    essid: (typeof this.state['essid'] === 'undefined' ? 'n/a' : this.state['essid'])
                 }
                 this.getDriver().triggerFlow(conditionTrigger, tokens, this);
-            }
-            if (key == 'measure_signal') {
-                // Let flow trigger be handled, and add tokens.
-                this.getDriver().triggerFlow('wifi_client_signal_changed', tokens, this);
             }
         }
     }
@@ -70,7 +63,7 @@ class UnifiWifiClientDevice extends Homey.Device {
         this._online = false;
         if (this.getCapabilityValue('alarm_connected') == false) return;
 
-        this.log(`[${this.name}] Set device to offline`)
+        Homey.app.debug(`[${this.name}] Set device to offline`)
         this.state.ap_mac = null;
         this._updateProperty('alarm_connected', false);
     }

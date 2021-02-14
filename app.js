@@ -12,7 +12,7 @@ class UnifiApp extends Homey.App {
         this.setStatus('Offline');
         this.initSettings();
 
-        this.log('- Loaded settings', this.appSettings)
+        Homey.app.debug('- Loaded settings', this.appSettings)
     }
 
     initSettings() {
@@ -24,7 +24,7 @@ class UnifiApp extends Homey.App {
         });
 
         if (settingsInitialized) {
-            this.log('Found settings key', _settingsKey)
+            Homey.app.debug('Found settings key', _settingsKey)
             this.appSettings = Settings.get(_settingsKey);
             return;
         }
@@ -41,7 +41,7 @@ class UnifiApp extends Homey.App {
     }
 
     updateSettings(settings) {
-        this.log('Got new settings:', settings)
+        Homey.app.debug('Got new settings:', settings)
         this.appSettings = settings;
         this.saveSettings();
         Homey.ManagerDrivers.getDriver('wifi-client').getSettings(_settingsKey);
@@ -49,7 +49,7 @@ class UnifiApp extends Homey.App {
 
     saveSettings() {
         if (typeof this.appSettings === 'undefined') {
-            this.log('Not saving settings; settings empty!');
+            Homey.app.debug('Not saving settings; settings empty!');
             return;
         }
 
@@ -59,6 +59,17 @@ class UnifiApp extends Homey.App {
 
     setStatus(status) {
         Settings.set('com.ubnt.unifi.status', status);
+    }
+
+    debug() {
+        const args = Array.prototype.slice.call(arguments);
+        args.unshift('[debug]');
+
+        if (Homey.env.DEBUG === 'true') {
+            Homey.app.log(args.join(' '));
+        }
+
+        Homey.ManagerApi.realtime('com.ubnt.unifi.debug', args.join(' '));
     }
 }
 

@@ -6,12 +6,12 @@ class UnifiWifiClientDevice extends Homey.Device {
 
     // this method is called when the Device is inited
     onInit() {
-        this.log('UnifiWifiClientDevice init');
+        Homey.app.debug('UnifiWifiClientDevice init');
         this.name = this.getName();
-        this.log('name:', this.getName());
-        this.log('store:', this.getStore());
+        Homey.app.debug('name:', this.getName());
+        Homey.app.debug('store:', this.getStore());
 
-        this.log('this.name:', this.name);
+        Homey.app.debug('this.name:', this.name);
 
         this._online = this.getCapabilityValue('alarm_connected');
         this.state = {

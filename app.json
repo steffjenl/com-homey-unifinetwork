@@ -5,11 +5,11 @@
     "en": "Ubiquiti UniFi Network"
   },
   "description": {
-    "en": "Adds support for presence detection based on (wifi) clients connected to the UniFi Controller",
-    "nl": "Ondersteuning voor aanwezigheids detectie op basis van (wifi) devices verbonden met de UniFi Controller",
-    "es": "Añade soporte para la detección de presencia basada en clientes (wifi) conectados al UniFi Controller"
+    "en": "Protect your home with presence detection based on (wifi) clients connected to the UniFi Controller",
+    "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
+    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.0.8",
+  "version": "2.0.9",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Stèphan Eizinga",
@@ -327,6 +327,38 @@
               "es": "Roam count"
             },
             "example": 3
+          }
+        ]
+      },
+      {
+        "id": "cable_client_connected",
+        "title": {
+          "en": "Connected",
+          "nl": "Verbonden",
+          "es": "Conectado"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=cable-client"
+          }
+        ],
+        "tokens": [
+        ]
+      },
+      {
+        "id": "cable_client_disconnected",
+        "title": {
+          "en": "Disconnected",
+          "nl": "Verbinding verbroken",
+          "es": "Desconectado"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=cable-client"
           }
         ]
       },
@@ -760,9 +792,9 @@
     {
       "id": "cable-client",
       "name": {
-        "en": "Cable Client",
-        "nl": "Kabel Client",
-        "es": "Cliente Wifi"
+        "en": "Wired client",
+        "nl": "Bedrade cliënt",
+        "es": "Cliente cableado"
       },
       "mobile": {
         "components": [
