@@ -1,4 +1,4 @@
-.idea/
-node_modules/
 env.json
-test.js
+node_modules/
+.idea/
+0-old/

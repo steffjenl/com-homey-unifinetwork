@@ -1,218 +1,251 @@
 <!doctype html>
 <html>
-    <head>
-        <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
-    </head>
-    <body>
 
-        <h1 data-i18n="settings.title">Ubiquiti UniFi Settings</h1>
-        <p data-i18n="settings.intro">On this page you will be able to see current connection status and adjust the settings of this app.</p>
+<head>
+  <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
+  <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+</head>
 
-        <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span><br />
-           <span data-i18n="settings.last_poll.title">Last Poll</span>: <span id="unifi_lastPoll" data-i18n="settings.last_poll.waiting_for_event">... waiting for event...</span> <small data-i18n="settings.last_poll.poll_interval">(should update every 15 seconds)</small></p>
+<body>
+<!-- Title -->
+<h1 data-i18n="settings.title"></h1>
 
-        <p id="error" style="color: red;"></p>
-        <p id="success" style="color: #5fd225;"></p>
+<!-- Instruction -->
+<p data-i18n="settings.instruction"></p>
 
-        <fieldset>
-            <legend data-i18n="settings.fieldset.title"></legend>
+<p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span></p>
+<p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status" style="font-weight: bold;">Unknown</span></p>
+<p><span data-i18n="settings.websocket.status">Last message</span>: <span id="unifi_websocket_lastmessage" style="font-weight: bold;">Unknown</span></p>
+<!-- NVR -->
+<fieldset>
+  <legend data-i18n="settings.nvr"></legend>
 
-            <div class="field row">
-                <label for="unifi_host" data-i18n="settings.fieldset.host">Host</label>
-                <input id="unifi_host" type="text" value="" />
-            </div>
-            <div class="field row">
-                <label for="unifi_port" data-i18n="settings.fieldset.port">Port</label>
-                <input id="unifi_port" type="number" value="" min="1" max="65535" />
-            </div>
-            <div class="field row">
-                <label for="unifi_user" data-i18n="settings.fieldset.user">User</label>
-                <input id="unifi_user" type="text" value="" />
-            </div>
-            <div class="field row">
-                <label for="unifi_pass" data-i18n="settings.fieldset.pass">Pass</label>
-                <input id="unifi_pass" type="password" value="" />
-            </div>
-            <div class="field row">
-                <label for="unifi_site" data-i18n="settings.fieldset.site">SiteID</label>
-                <input id="unifi_site" type="text" value="" />
-            </div>
-            <div class="field row">
-                <label for="unifi_useproxy" data-i18n="settings.fieldset.useproxy">UnifiOS (please use port 443)</label>
-                <input id="unifi_useproxy" type="checkbox" value="true" />
-            </div>
+  <!-- IP address -->
+  <div class="field row">
+    <label for="txt_nvrip" data-i18n="settings.nvrip"></label>
+    <input id="txt_nvrip" type="text" value=""/>
+  </div>
 
-        </fieldset>
+  <!-- Port -->
+  <div class="field row">
+    <label for="txt_nvrport" data-i18n="settings.nvrport"></label>
+    <input id="txt_nvrport" type="text" value="443"/>
+  </div>
 
-        <button class="right" id="saver" data-i18n="settings.button.apply">Send</button>
-        <p><small data-i18n="settings.notice.restart">* If you just want to restart the connection, then click &quot;Apply&quot; again</small></p>
-        <p>
-            <small data-i18n="settings.siteid.pre_msg">This is a list of possible Site ID's:</small>
-            <small data-i18n="settings.siteid.post_msg">(if possible, this list is a discovered list)</small>
-            <br />
-            <small><span id="sites"></span></small>
-        </p>
+  <!-- UnifiOS -->
+  <div class="field row">
+    <label for="txt_useproxy" data-i18n="settings.useproxy">UnifiOS (please use port 443)</label>
+    <input id="txt_useproxy" type="checkbox" value="true" />
+  </div>
 
-        <fieldset>
-            <legend><span data-i18n="settings.debug.title">Debug messages</span> <small><a href="#" onclick='$(".debug").toggle(); return false;'>toggle</a></small></legend>
+</fieldset>
 
-            <div id="debug_container" class='debug' style='display: none;'>
-                <p data-i18n="settings.debug.intro">Up to 100 messages are shown below, in reverse order (newest on top):</p>
-                <div id="messages"></div>
-                <p><small data-i18n="settings.debug.wait_msg">Please wait for the events to come in</small></p>
-            </div>
-        </fieldset>
+<!-- Credentials -->
+<fieldset>
+  <legend data-i18n="settings.credentials"></legend>
 
-        <script type="text/javascript">
-        function onHomeyReady(Homey){
-            var initializeSettings = function(err,data) {
-                if (err || !data) {
-                    document.getElementById('error').innerHTML = 'Loading settings failed, please load page again, or check app\'s running status';
-                    return;
-                }
+  <!-- Username -->
+  <div class="field row">
+    <label for="txt_username" data-i18n="settings.username"></label>
+    <input id="txt_username" type="text" value=""/>
+  </div>
 
-                document.getElementById('error').innerHTML = '';
-                document.getElementById('unifi_host').value = data['host'];
-                document.getElementById('unifi_port').value = data['port'];
-                document.getElementById('unifi_user').value = data['user'];
-                document.getElementById('unifi_pass').value = data['pass'];
-                document.getElementById('unifi_site').value = data['site'];
-                document.getElementById('unifi_useproxy').checked = (data['useproxy'] === 'true');
-            }
+  <!-- Password -->
+  <div class="field row">
+    <label for="txt_password" data-i18n="settings.password"></label>
+    <input id="txt_password" type="password" value=""/>
+  </div>
+</fieldset>
 
-            Homey.get('com.ubnt.unifi.settings', initializeSettings);
-            Homey.on('settings.set', ( key, data ) => {
-                if (key == 'com.ubnt.unifi.settings') {
-                    Homey.get('com.ubnt.unifi.settings', initializeSettings);
-                }
-            });
+<!-- Site -->
+<fieldset>
+  <legend data-i18n="settings.siteinformation"></legend>
 
-            Homey.on( 'com.ubnt.unifi.lastPoll', function( data ){
-                document.getElementById('unifi_lastPoll').innerHTML = new Date(data.lastPoll).toLocaleString();
-            });
+  <!-- SiteID -->
+  <div class="field row">
+    <label for="txt_siteid" data-i18n="settings.siteid"></label>
+    <input id="txt_siteid" type="text" value=""/>
+  </div>
 
-            // Ready to show form now.
-            Homey.ready();
+  <p><small data-i18n="settings.notice.restart">* If you just want to restart the connection, then click &quot;Apply&quot; again</small></p>
+  <p>
+    <small data-i18n="settings.siteid.pre_msg">This is a list of possible Site ID's:</small>
+    <small data-i18n="settings.siteid.post_msg">(if possible, this list is a discovered list)</small>
+    <br />
+    <small><span id="sites"></span></small>
+  </p>
 
-            var appendDebugMessages = (err, data) => {
-                if (err) return appendDebugMessages(null, data);
+</fieldset>
 
-                $('#debug_container #messages').prepend('<pre>' + new Date().toLocaleString() + ' : ' + data.toString() + '</pre>');
-
-                $('#messages pre').each(function(index) {
-                    if (index >= 100) $(this).remove();
-                });
-            };
+<!-- Apply button -->
+<div class="field row">
+  <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
+</div>
 
 
 
-            var updateStatusField =  (err, data) => {
-                if (err) {
-                    console.log(err);
-                    appendDebugMessages(err);
-                    return err;
-                }
-                var color = 'darkred';
-                if (data === 'Connected') color = 'darkgreen';
-                if (data === 'Connecting...') color = 'orange';
+<fieldset>
+  <legend><span data-i18n="settings.debug.title">Debug messages</span> <small><a href="#" onclick='$(".debug").toggle(); return false;'>toggle</a></small></legend>
 
-                var statusField = document.getElementById('unifi_status');
-                statusField.style.color = color;
+  <div id="debug_container" class='debug' style='display: none;'>
+    <p data-i18n="settings.debug.intro">Up to 100 messages are shown below, in reverse order (newest on top):</p>
+    <div id="messages"></div>
+    <p><small data-i18n="settings.debug.wait_msg">Please wait for the events to come in</small></p>
+  </div>
+</fieldset>
 
-                var translationKey = 'status.connection.' + data;
-                var translation = Homey.__(translationKey);
+<script type="text/javascript">
+  var txtNvrIp = document.getElementById('txt_nvrip');
+  var txtNvrPort = document.getElementById('txt_nvrport');
+  var txtUsername = document.getElementById('txt_username');
+  var txtPassword = document.getElementById('txt_password');
+  var txtProxy = document.getElementById('txt_useproxy');
+  var txtSiteID = document.getElementById('txt_siteid');
+  var btnApply = document.getElementById('btn_apply');
 
-                if (translation === translationKey || translation === '' || typeof translation === 'undefined') {
-                    statusField.innerHTML = data;
-                } else {
-                    statusField.innerHTML = translation;
-                }
-            }
+  function onHomeyReady(Homey) {
+    const readSettings = () => {
+      Homey.get('com.ubnt.unifi.settings', (error, data) => {
+        if (error) return Homey.alert(error);
+        if (!data) return Homey.alert('Loading settings failed, please load page again, or check app\'s running status');
 
-            var updateSites = () => {
-                Homey.api('GET', '/sites', null, function( err, sites ) {
-                    if( err ) appendDebugMessages(err);
-                    _sites = [];
-                    for (idx in sites) {
-                        _sites.push("- " + sites[idx].name + " (" + sites[idx].desc + ")");
-                    }
-                    $('#sites').html(_sites.join('<br />'));
-                });
-            }
-            updateSites();
+        txtNvrIp.value = data['host'];
+        txtNvrPort.value = data['port'];
+        txtUsername.value = data['user'];
+        txtPassword.value = data['pass'];
+        txtSiteID.value = data['site'];
+        txtProxy.checked = (data['useproxy'] === 'true');
 
-            Homey.get('com.ubnt.unifi.status', updateStatusField);
-            Homey.on('com.ubnt.unifi.status', ( data ) => { updateStatusField(null, data); });
-            Homey.on('com.ubnt.unifi.debug', ( data ) => { appendDebugMessages(null, data); });
+      });
+    };
 
-            const changePort = () => {
-                if (document.getElementById('unifi_useproxy').checked)
-                {
-                    document.getElementById('unifi_port').value = 443;
-                }
-                else {
-                    document.getElementById('unifi_port').value = 8443;
-                }
-            }
-
-            document.getElementById('unifi_useproxy').addEventListener('change', e => {
-                changePort();
-            });
-
-            // Save function
-            document.getElementById('saver').addEventListener('click', function(e) {
-
-                var button = document.getElementById('saver'),
-                    unifi_host = document.getElementById('unifi_host'),
-                    unifi_port = document.getElementById('unifi_port'),
-                    unifi_user = document.getElementById('unifi_user'),
-                    unifi_pass = document.getElementById('unifi_pass'),
-                    unifi_site = document.getElementById('unifi_site'),
-                    unifi_useproxy = document.getElementById('unifi_useproxy'),
-                    error = document.getElementById('error'),
-                    success = document.getElementById('success');
-                // Define update status
-
-                // Show message in the save button
-                // Set both disabled onSave
-                button.disabled = true;
-                success.innerHTML = __("settings.alert.changes-saved");
-                error.innerHTML = "";
-
-                var settings = {
-                    'host': unifi_host.value,
-                    'port': unifi_port.value,
-                    'user': unifi_user.value,
-                    'pass': unifi_pass.value,
-                    'site': unifi_site.value,
-                    'useproxy': (unifi_useproxy.checked ? 'true' : 'false')
-                }
-
-                // Change the settings in Homey.
-                // Homey.set('com.ubnt.unifi.settings', {
-                //     'host': unifi_host.value,
-                //     'port': unifi_port.value,
-                //     'user': unifi_user.value,
-                //     'pass': unifi_pass.value,
-                //     'site': unifi_site.value
-                // }, function( err ){
-                //     if( err ) return Homey.alert( err );
-                // });
-                Homey.api('PUT', '/settings', settings, function( err, result ) {
-                    if( err ) return Homey.alert(err);
-                });
-
-                // Return to edit mode after 3.5 seconds
-                setTimeout(function() {
-                    button.disabled = false;
-                    success.innerHTML = "";
-                    updateSites();
-                },3500);
-            });
-
+    const saveSettings = () => {
+      Homey.api('POST', '/settings/validate', {
+        'hostname': txtNvrIp.value,
+        'port': txtNvrPort.value,
+        'username': txtUsername.value,
+        'password': txtPassword.value,
+        'useproxy': txtProxy.checked
+      }, function (err, result) {
+        if (err) return Homey.alert(err);
+        var settings = {
+          'host': txtNvrIp.value,
+          'port': txtNvrPort.value,
+          'user': txtUsername.value,
+          'pass': txtPassword.value,
+          'site': txtSiteID.value,
+          'useproxy': (txtProxy.checked ? 'true' : 'false')
         }
-        </script>
 
-    </body>
+        Homey.set('com.ubnt.unifi.settings', settings, (error, result) => {
+          if (error) return Homey.alert(error);
+          console.log('[SETTINGS] settings saved.');
+        });
+
+        //
+        updateSites();
+
+        Homey.alert(Homey.__('settings.saved'), 'info');
+      });
+    };
+
+    btnApply.addEventListener('click', e => {
+      saveSettings();
+    });
+
+    readSettings();
+    var updateSites = () => {
+      Homey.api('GET', '/sites', null, function( err, sites ) {
+        if( err ) appendDebugMessages(err);
+        _sites = [];
+        for (idx in sites) {
+          _sites.push("- " + sites[idx].name + " (" + sites[idx].desc + ")");
+        }
+        $('#sites').html(_sites.join('<br />'));
+      });
+    }
+    updateSites();
+
+    Homey.ready();
+
+    const appendDebugMessages = (err, data) => {
+      if (err) return appendDebugMessages(null, data);
+
+      $('#debug_container #messages').prepend('<pre>' + new Date().toLocaleString() + ' : ' + data.toString() + '</pre>');
+
+      $('#messages pre').each(function(index) {
+        if (index >= 100) $(this).remove();
+      });
+    };
+
+    const updateStatusField =  (err, data) => {
+      if (err) {
+        console.log(err);
+        appendDebugMessages(err);
+        return err;
+      }
+      var color = 'darkred';
+      if (data === 'Connected') color = 'darkgreen';
+      if (data === 'Connecting...') color = 'orange';
+
+      var statusField = document.getElementById('unifi_status');
+      statusField.style.color = color;
+
+      var translationKey = 'status.connection.' + data;
+      var translation = Homey.__(translationKey);
+
+      if (translation === translationKey || translation === '' || typeof translation === 'undefined') {
+        statusField.innerHTML = data;
+      } else {
+        statusField.innerHTML = translation;
+      }
+    }
+
+    const updateWebsocketStatusField =  (err, data) => {
+      if (err) {
+        console.log(err);
+        appendDebugMessages(err);
+        return err;
+      }
+      var color = 'darkred';
+      if (data === 'Connected') color = 'darkgreen';
+      if (data === 'Connecting...') color = 'orange';
+
+      var statusField = document.getElementById('unifi_websocket_status');
+      statusField.style.color = color;
+
+      var translationKey = 'status.connection.' + data;
+      var translation = Homey.__(translationKey);
+
+      if (translation === translationKey || translation === '' || typeof translation === 'undefined') {
+        statusField.innerHTML = data;
+      } else {
+        statusField.innerHTML = translation;
+      }
+    }
+
+    const updateWebsocketLastMessageField =  (err, data) => {
+      if (err) {
+        console.log(err);
+        appendDebugMessages(err);
+        return err;
+      }
+
+      var statusField = document.getElementById('unifi_websocket_lastmessage');
+      statusField.innerHTML = data;
+    }
+
+    Homey.get('com.ubnt.unifi.status', updateStatusField);
+    Homey.on('com.ubnt.unifi.status', ( data ) => { updateStatusField(null, data); });
+    Homey.on('com.ubnt.unifi.debug', ( data ) => { appendDebugMessages(null, data); });
+    Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
+    Homey.on('com.ubnt.unifi.websocket.status', ( data ) => { updateWebsocketStatusField(null, data); });
+    // com.ubnt.unifi.websocket.lastpong
+    Homey.get('com.ubnt.unifi.websocket.lastmessage', updateWebsocketLastMessageField);
+    Homey.on('com.ubnt.unifi.websocket.lastmessage', ( data ) => { updateWebsocketLastMessageField(null, data); });
+
+  }
+</script>
+</body>
+
 </html>

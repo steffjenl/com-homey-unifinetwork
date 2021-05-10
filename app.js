@@ -1,64 +1,121 @@
-"use strict";
+// eslint-disable-next-line node/no-unpublished-require,strict
+'use strict';
 
-const Homey = require('homey')
-const Settings = Homey.ManagerSettings;
+const Homey = require('homey');
+const NetworkAPI = require('./library/networkapi');
+const Constants = require('./library/constants');
 
-const _settingsKey = 'com.ubnt.unifi.settings'
+const ManagerApi = Homey.ManagerApi;
 
-class UnifiApp extends Homey.App {
+// 2700000 miliseconds is 45 minutes
+const RefreshCookieTime = 2700000;
 
-    onInit() {
-        this.log('com.ubnt.unifi started...');
-        this.setStatus('Offline');
-        this.initSettings();
+class UnifiNetwork extends Homey.App {
+    /**
+     * onInit is called when the app is initialized.
+     */
+    async onInit() {
+        this.loggedIn = false;
+        this.controllerIp = null;
+        this.controllerPort = null;
+        this.controllerUsername = null;
+        this.controllerPassword = null;
+        this.controllerUseProxy = null;
+        this.controllerSiteId = null;
 
-        Homey.app.debug('- Loaded settings', this.appSettings)
-    }
+        this.accessPoints = [];
+        this.usergroupList = [];
 
-    initSettings() {
-        let settingsInitialized = false;
-        Settings.getKeys().forEach(key => {
-            if (key == _settingsKey) {
-                settingsInitialized = true;
+        // Enable remote debugging, if applicable
+        if (Homey.env.DEBUG === 'true') {
+            // eslint-disable-next-line global-require
+            require('inspector')
+                .open(9229, '0.0.0.0');
+        }
+
+        // Single API instance for all devices
+        this.api = new NetworkAPI();
+
+        // Subscribe to credentials updates
+        Homey.ManagerSettings.on('set', key => {
+            if (key === 'ufp:credentials') {
+                this._appLogin();
             }
         });
+        this._appLogin();
 
-        if (settingsInitialized) {
-            Homey.app.debug('Found settings key', _settingsKey)
-            this.appSettings = Settings.get(_settingsKey);
+
+        Homey.app.debug('UniFiNetwork has been initialized');
+    }
+
+    _appLogin() {
+        Homey.app.debug('Logging in...');
+
+        // Validate NVR IP address
+        const data = Homey.ManagerSettings.get('com.ubnt.unifi.settings');
+        if (!data) {
+            Homey.app.debug('UniFi Network settings are not set.');
             return;
         }
 
-        this.log('Freshly initializing com.ubnt.unifi.settings with some defaults')
-        this.updateSettings({
-            'host': 'unifi',
-            'port': '443',
-            'user': 'ubnt',
-            'pass': 'ubnt',
-            'site': 'default',
-            'useproxy': 'true'
-        });
+
+        // Log in to Unifi Controller
+        this.api.login(data['host'], data['port'], data['user'], data['pass'], (data['useproxy'] === 'true'))
+            .then(() => {
+                this.loggedIn = true;
+                this.controllerIp = data['host'];
+                this.controllerPort = data['port'];
+                this.controllerUsername = data['user'];
+                this.controllerPassword = data['pass'];
+                this.controllerSiteId = data['site'];
+                this.controllerUseProxy = (data['useproxy'] === 'true');
+                this.api.setSiteId(this.controllerSiteId);
+
+                // _refreshCookie after 45 minutes
+                const timeOutFunction = function () {
+                    this._refreshCookie();
+                }.bind(this);
+                setTimeout(timeOutFunction, RefreshCookieTime);
+
+                // reconnect websocket listener
+                this.api.ws.reconnectUpdatesListener();
+
+                // get meta information about usergrouplists and accesspoints
+                this._refreshMetaInformation();
+
+                Homey.app.debug('Logged in.');
+            })
+            .catch(error => this.error(error));
     }
 
-    updateSettings(settings) {
-        Homey.app.debug('Got new settings:', settings)
-        this.appSettings = settings;
-        this.saveSettings();
-        Homey.ManagerDrivers.getDriver('wifi-client').getSettings(_settingsKey);
-    }
-
-    saveSettings() {
-        if (typeof this.appSettings === 'undefined') {
-            Homey.app.debug('Not saving settings; settings empty!');
-            return;
+    _refreshCookie() {
+        if (this.loggedIn) {
+            this.api.login(this.controllerIp, this.controllerPort, this.controllerUsername, this.controllerPassword, this.controllerUseProxy)
+                .then(() => {
+                    Homey.app.debug('Logged in again to refresh cookie.');
+                    this.loggedIn = true;
+                    this._refreshMetaInformation();
+                })
+                .catch(error => this.error(error));
         }
 
-        this.log('Save settings.');
-        Settings.set(_settingsKey, this.appSettings)
+        // _refreshCookie after 45 minutes
+        const timeOutFunction = function () {
+            this._refreshCookie();
+        }.bind(this);
+        setTimeout(timeOutFunction, RefreshCookieTime);
     }
 
-    setStatus(status) {
-        Settings.set('com.ubnt.unifi.status', status);
+    _refreshMetaInformation() {
+
+        this.api.getAccesspoints().then(accessPoints => {
+            this.accessPoints = accessPoints;
+        }).catch(error => this.error(error));
+
+        this.api.getUserGroupList().then(userGroupList => {
+            this.usergroupList = userGroupList;
+        }).catch(error => this.error(error));
+
     }
 
     debug() {
@@ -69,8 +126,8 @@ class UnifiApp extends Homey.App {
             Homey.app.log(args.join(' '));
         }
 
-        Homey.ManagerApi.realtime('com.ubnt.unifi.debug', args.join(' '));
+        ManagerApi.realtime(Constants.EVENT_SETTINGS_DEBUG, args.join(' '));
     }
 }
 
-module.exports = UnifiApp;
+module.exports = UnifiNetwork;

@@ -1,0 +1,62 @@
+{
+  "id": "a_guest_connected",
+  "title": {
+    "en": "Guest just connected",
+    "nl": "Gast verbonden met wifi",
+    "es": "Visita conectado"
+  },
+  "tokens": [
+    {
+      "name": "mac",
+      "type": "string",
+      "title": {
+        "en": "mac",
+        "nl": "mac",
+        "es": "MAC"
+      },
+      "example": {
+        "en": "00:00:00:00:00:00",
+        "nl": "00:00:00:00:00:00",
+        "es": "00:00:00:00:00:00"
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "title": {
+        "en": "Who",
+        "nl": "Wie",
+        "es": "Quien"
+      },
+      "example": {
+        "en": "wifi01",
+        "nl": "wifi01",
+        "es": "wifi01"
+      }
+    },
+    {
+      "name": "essid",
+      "type": "string",
+      "title": {
+        "en": "SSID",
+        "nl": "SSID",
+        "es": "SSID"
+      },
+      "example": {
+        "en": "MyWifiSSID"
+      }
+    },
+    {
+      "name": "group",
+      "type": "string",
+      "title": {
+        "en": "Group",
+        "nl": "Groep",
+        "es": "Grupo"
+      },
+      "example": {
+        "en": "MyUserGroup"
+      }
+    }
+  ]
+}

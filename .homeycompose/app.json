@@ -1,0 +1,49 @@
+{
+  "id": "com.ubnt.unifi",
+  "sdk": 2,
+  "name": {
+    "en": "Ubiquiti UniFi Network"
+  },
+  "description": {
+    "en": "Protect your home with presence detection based on (wifi) clients connected to the UniFi Controller",
+    "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
+    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
+  },
+  "version": "2.1.1",
+  "compatibility": ">=1.5.0",
+  "author": {
+    "name": "Stèphan Eizinga",
+    "email": "stephan@monkeysoft.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Stèphan Eizinga",
+        "email": "stephan@monkeysoft.nl"
+      },
+      {
+        "name": "Michel Nederlof",
+        "email": "michel@nederlof.info"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "steffjenl"
+      }
+    }
+  },
+  "category": [
+    "security"
+  ],
+  "bugs": {
+    "url": "https://github.com/steffjenl/com.ubnt.unifi/issues"
+  },
+  "homeyCommunityTopicId": 42967,
+  "source": "https://github.com/steffjenl/com.ubnt.unifi",
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  }
+}

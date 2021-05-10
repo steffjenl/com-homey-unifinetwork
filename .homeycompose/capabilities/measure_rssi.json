@@ -1,0 +1,19 @@
+{
+  "type": "number",
+  "title": {
+    "en": "RSSI",
+    "nl": "RSSI",
+    "es": "RSSI"
+  },
+  "units": {
+    "en": "dBm",
+    "nl": "dBm",
+    "es": "dBm"
+  },
+  "getable": true,
+  "setable": false,
+  "min": -100,
+  "max": 0,
+  "step": 1,
+  "icon": "./assets/rssi.svg"
+}

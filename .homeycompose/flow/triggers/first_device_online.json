@@ -1,0 +1,24 @@
+{
+  "id": "first_device_online",
+  "title": {
+    "en": "First device connected",
+    "nl": "Eerste apparaat verbonden",
+    "es": "Primer dispositivo conectado"
+  },
+  "tokens": [
+    {
+      "name": "name",
+      "type": "string",
+      "title": {
+        "en": "Who",
+        "nl": "Wie",
+        "es": "Quien"
+      },
+      "example": {
+        "en": "wifi01",
+        "nl": "wifi01",
+        "es": "wifi01"
+      }
+    }
+  ]
+}

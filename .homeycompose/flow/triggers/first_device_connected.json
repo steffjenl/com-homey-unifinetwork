@@ -1,0 +1,19 @@
+{
+  "id": "first_device_connected",
+  "title": {
+    "en": "First device connected",
+    "nl": "Eerste apparaat verbonden",
+    "es": "Primer dispositivo conectado"
+  },
+  "args": [
+    {
+      "name": "accessPoint",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "Accesspoint name",
+        "nl": "Accesspoint naam",
+        "es": "Nombre punto de acceso"
+      }
+    }
+  ]
+}

@@ -1,20 +1,13 @@
 {
-  "name": "com.ubnt.unifi",
-  "version": "2.0.7",
-  "description": "presence detection based on (wifi) clients connected to the UniFi Controller",
+  "name": "com.ubnt.cloudkey",
+  "version": "1.0.0",
   "main": "app.js",
+  "devDependencies": {
+    "homey": "^2.9.7"
+  },
   "dependencies": {
-    "ubnt-unifi": "github:steffjenl/ubnt-unifi#master"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/steffjenl/ubnt-unifi.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://github.com/steffjenl/com.ubnt.unifi#readme"
+    "node-fetch": "^2.6.1",
+    "ws": "^7.4.3",
+    "zlib": "^1.0.5"
+  }
 }

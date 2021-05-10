@@ -5,20 +5,20 @@ const fetch = require('node-fetch');
 const https = require('https');
 const Constants = require('../../library/constants');
 
-class WifiClient extends Homey.Device {
+class WiredClient extends Homey.Device {
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
-    await this.initWifiClient();
-    Homey.app.debug('WifiClient Device has been initialized');
+    await this.initWiredClient();
+    Homey.app.debug('WiredClient Device has been initialized');
   }
 
   /**
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    Homey.app.debug('WifiClient Device has been added');
+    Homey.app.debug('UnifiCamera Device has been added');
   }
 
   /**
@@ -49,7 +49,7 @@ class WifiClient extends Homey.Device {
     Homey.app.debug('UnifiCamera Device has been deleted');
   }
 
-  async initWifiClient() {
+  async initWiredClient() {
     this.camera = this.getData();
     this.device = this;
 
@@ -426,4 +426,4 @@ class WifiClient extends Homey.Device {
 
 }
 
-module.exports = WifiClient;
+module.exports = Camera;

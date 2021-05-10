@@ -1,0 +1,19 @@
+{
+  "id": "last_device_disconnected",
+  "title": {
+    "en": "Last device disconnected",
+    "nl": "Laatste verbinding verbroken",
+    "es": "Último dispositivo desconectado"
+  },
+  "args": [
+    {
+      "name": "accessPoint",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "Accesspoint name",
+        "nl": "Accesspoint naam",
+        "es": "Nombre de punto de acceso"
+      }
+    }
+  ]
+}

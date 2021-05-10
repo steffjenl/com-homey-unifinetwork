@@ -1,0 +1,23 @@
+{
+  "id": "wifi_client_connected_with_ap",
+  "title": {
+    "en": "!{{C|Disc}}onnected with accesspoint",
+    "nl": "!{{V|Niet v}}erbonden met accesspoint"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=wifi-client"
+    },
+    {
+      "name": "accessPoint",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "Accesspoint name",
+        "nl": "Accesspoint naam",
+        "es": "Nombre de punto de acceso"
+      }
+    }
+  ]
+}

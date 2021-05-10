@@ -1,0 +1,60 @@
+{
+  "id": "wifi_client_roamed_to_ap",
+  "title": {
+    "en": "Roams to AP",
+    "nl": "Zwerft naar AP",
+    "es": "Ruta a AP"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=wifi-client"
+    },
+    {
+      "name": "accessPoint",
+      "type": "autocomplete",
+      "placeholder": {
+        "en": "Accesspoint name",
+        "nl": "Accesspoint naam",
+        "es": "Nombre del punto de acceso"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "accessPoint",
+      "type": "string",
+      "title": {
+        "en": "AP",
+        "nl": "AP",
+        "es": "AP"
+      },
+      "example": {
+        "en": "ap123",
+        "nl": "ap123",
+        "es": "ap123"
+      }
+    },
+    {
+      "name": "radio_proto",
+      "type": "string",
+      "title": {
+        "en": "Proto",
+        "nl": "Proto",
+        "es": "Proto"
+      },
+      "example": "ac"
+    },
+    {
+      "name": "roam_count",
+      "type": "number",
+      "title": {
+        "en": "Roam count",
+        "nl": "Roam count",
+        "es": "Roam count"
+      },
+      "example": 3
+    }
+  ]
+}

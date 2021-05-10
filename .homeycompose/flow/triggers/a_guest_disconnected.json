@@ -1,0 +1,60 @@
+{
+  "id": "a_guest_disconnected",
+  "title": {
+    "en": "Guest connection lost",
+    "nl": "Gast connectie verloren",
+    "es": "Conexión de visita perdida"
+  },
+  "tokens": [
+    {
+      "name": "mac",
+      "type": "string",
+      "title": {
+        "en": "mac"
+      },
+      "example": {
+        "en": "00:00:00:00:00:00",
+        "nl": "00:00:00:00:00:00",
+        "es": "00:00:00:00:00:00"
+      }
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "title": {
+        "en": "Who",
+        "nl": "Wie",
+        "es": "Quien"
+      },
+      "example": {
+        "en": "wifi01",
+        "nl": "wifi01",
+        "es": "wifi01"
+      }
+    },
+    {
+      "name": "essid",
+      "type": "string",
+      "title": {
+        "en": "SSID",
+        "nl": "SSID",
+        "es": "SSID"
+      },
+      "example": {
+        "en": "MyWifiSSID"
+      }
+    },
+    {
+      "name": "group",
+      "type": "string",
+      "title": {
+        "en": "Group",
+        "nl": "UserGroup",
+        "es": "Grupo"
+      },
+      "example": {
+        "en": "MyUserGroup"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Signal strength",
+    "nl": "Signaalsterkte",
+    "es": "Intensidad de Señal"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%",
+    "es": "%"
+  },
+  "getable": true,
+  "setable": false,
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "icon": "./assets/signal.svg"
+}

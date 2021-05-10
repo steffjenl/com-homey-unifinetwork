@@ -1,47 +1,52 @@
 {
-	"settings": {
-		"title": "Ubiquiti UniFi Instellingen",
-		"intro": "Op deze pagina kun je de verbindingsstatus bekijken en de instellingen aanpassen.",
-		"status": "Verbindingsstatus",
-		"last_poll": {
-			"title": "Laatste update",
-			"waiting_for_event": "... wachtend op volgende update ...",
-			"poll_interval": "(indien verbonden, update iedere 15 seconden)"
-		},
-		"fieldset": {
-			"title": "UniFi Controller instellingen",
-			"host": "Host",
-			"port": "Poort",
-			"user": "Gebruikersnaam",
-			"pass": "Wachtwoord",
-			"site": "Site",
-			"useproxy": "UnifiOS Device (gebruik poort 443)"
-		},
-		"button": {
-			"apply": "Toepassen"
-		},
-		"notice": {
-			"restart": "* Als je alleen de connectie wilt herstarten, klik dan de knop &quot;Toepassen&quot; nogmaals."
-		},
-		"siteid": {
-			"pre_msg": "Als je het SiteID niet weet, probeer dan onderstaande lijst:",
-			"post_msg": "(als credentials het toestaan, is deze lijst actueel)"
-		},
-		"debug": {
-			"title": "Debug meldingen",
-			"intro": "De laatste 100 meldingen worden hieronder weergegeven; nieuwste meldingen bovenaan:",
-			"wait_msg": "Meldingen komen vanzelf binnen..."
-		},
-		"alert": {
-			"changes-saved": "Instellingen toegepast, verbinding wordt opgezet."
-		}
-	},
-	"status": {
-		"connection": {
-			"Connected": "Verbonden",
-			"Connecting": "Bezig met verbinden...",
-			"Disconnected": "Verbinding verbroken",
-			"Initialized": "Bezig met starten"
-		}
-	}
+  "title": "UniFi Network",
+  "pair": {
+    "validate": {
+      "title": "UniFi Cloud Key valideren",
+      "instruction": "Voeg eerst de UniFi Cloud Key aan Homey toe en probeer het daarna opnieuw."
+    },
+    "login": {
+      "title": "Inloggen"
+    }
+  },
+  "settings": {
+    "title": "UniFi Network instellingen",
+    "instruction": "Log in met de gegevens van de UniFi Protect-gebruiker.",
+    "nvr": "Gegevens van UniFi Cloud Key",
+    "nvrip": "IP-adres",
+    "nvrport": "Port",
+    "credentials": "UniFi Protect gebruikersgegevens",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "apply": "Toepassen",
+    "saved": "Instellingen opgeslagen."
+  },
+  "events": {
+    "camera": {
+      "motion_started": "Start beweging",
+      "motion_ended": "Einde beweging",
+      "motion_inprogress": "Beweging",
+      "ftr_inprogress": "Continu",
+      "disabled": "Uitgeschakeld",
+      "failed": "Mislukt",
+      "done": "Klaar",
+      "always": "Altijd",
+      "motion": "Bij beweging",
+      "never": "Nooit"
+    },
+    "health": {
+      "unknown": "Onbekend",
+      "green": "Gezond",
+      "orange": "Waarschuwing",
+      "red": "Kritiek"
+    }
+  },
+  "status": {
+    "connection": {
+      "Connected": "Verbonden",
+      "Connecting": "Bezig met verbinden...",
+      "Disconnected": "Verbinding verbroken",
+      "Initialized": "Bezig met starten"
+    }
+  }
 }
