@@ -49,7 +49,7 @@ class UnifiNetwork extends Homey.App {
     }
 
     _appLogin() {
-        Homey.app.debug('Logging in...');
+        Homey.app.debug('App Logging in...');
 
         // Validate NVR IP address
         const data = Homey.ManagerSettings.get('com.ubnt.unifi.settings');
@@ -62,6 +62,8 @@ class UnifiNetwork extends Homey.App {
         // Log in to Unifi Controller
         this.api.login(data['host'], data['port'], data['user'], data['pass'], (data['useproxy'] === 'true'))
             .then(() => {
+                Homey.app.debug('Logged in.');
+
                 this.loggedIn = true;
                 this.controllerIp = data['host'];
                 this.controllerPort = data['port'];
@@ -77,13 +79,8 @@ class UnifiNetwork extends Homey.App {
                 }.bind(this);
                 setTimeout(timeOutFunction, RefreshCookieTime);
 
-                // reconnect websocket listener
-                this.api.ws.reconnectUpdatesListener();
-
                 // get meta information about usergrouplists and accesspoints
                 this._refreshMetaInformation();
-
-                Homey.app.debug('Logged in.');
             })
             .catch(error => this.error(error));
     }

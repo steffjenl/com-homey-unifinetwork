@@ -73,7 +73,9 @@ class NetworkWebClient {
             if (!this._cookieToken) reject(new Error('Not logged in.'));
 
             // eslint-disable-next-line no-param-reassign
-            params.accessKey = this._apiKey;
+            //params.accessKey = this._apiKey;
+
+            console.log(this._cookieToken);
 
             const options = {
                 method: 'GET',
@@ -129,9 +131,9 @@ class NetworkWebClient {
 
             const body = JSON.stringify(payload);
 
-            const params = {
-                apiKey: this._apiKey,
-            };
+            //const params = {
+            //    apiKey: this._apiKey,
+            //};
 
             const options = {
                 host: this._serverHost,

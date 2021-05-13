@@ -147,6 +147,7 @@ class NetworkAPI {
                         res.rawHeaders.forEach((item, index) => {
                             if (item.toLowerCase() === 'set-cookie') {
                                 this.webclient.setCookieToken(res.rawHeaders[index + 1]);
+                                console.log(res.rawHeaders[index + 1]);
                             }
 
                             // X-CSRF-Token
@@ -163,7 +164,7 @@ class NetworkAPI {
                         // Connected
                         Homey.ManagerApi.realtime(Constants.EVENT_SETTINGS_STATUS, 'Connected');
                         // reconnect websocket listener
-                        this.ws.reconnectUpdatesListener();
+                        //this.ws.reconnectUpdatesListener();
                         //
                         return resolve('Logged in...');
                     });

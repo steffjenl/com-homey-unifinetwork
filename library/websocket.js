@@ -40,6 +40,8 @@ class NetworkWebSocket {
         try {
             ManagerApi.realtime(Constants.EVENT_SETTINGS_WEBSOCKET_STATUS, 'Connecting');
 
+            console.log(Homey.app.api.getProxyCookieToken());
+
             const _ws = new WebSocket(this.updatesUrl(), {
                 headers: {
                     'User-Agent': this._userAgent,
