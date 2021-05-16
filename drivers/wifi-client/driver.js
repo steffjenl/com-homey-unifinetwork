@@ -482,7 +482,7 @@ class UnifiDriver extends Homey.Driver {
         .catch(err => {
             Homey.app.debug('Error while fetching client list:');
             Homey.app.debug(err);
-            this.disconnect();
+            //this.disconnect();
         });
     }
 
@@ -505,7 +505,7 @@ class UnifiDriver extends Homey.Driver {
         .catch(err => {
             Homey.app.debug('Error while fetching ap list');
             Homey.app.debug(err);
-            this.disconnect();
+            //this.disconnect();
         });
     }
 
