@@ -54,14 +54,14 @@ class CableDevice extends Device {
       this.setClass('sensor');
     }
 
-    if (!this.hasCapability('wifi_name')) {
-      this.addCapability('wifi_name');
-      this.homey.app.debug(`created capability wifi_name for ${this.getName()}`);
+    if (this.hasCapability('wifi_name')) {
+      this.removeCapability('wifi_name');
+      this.homey.app.debug(`removed capability wifi_name for ${this.getName()}`);
     }
 
-    if (!this.hasCapability('ap_mac')) {
-      this.addCapability('ap_mac');
-      this.homey.app.debug(`created capability ap_mac for ${this.getName()}`);
+    if (this.hasCapability('ap_mac')) {
+      this.removeCapability('ap_mac');
+      this.homey.app.debug(`removed capability ap_mac for ${this.getName()}`);
     }
 
     if (!this.hasCapability('ipAddress')) {

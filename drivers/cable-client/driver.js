@@ -19,7 +19,6 @@ class CalbleClient extends Driver {
      */
     async onPairListDevices() {
         return Object.values(await this.homey.app.api.getCableDevices()).map(device => {
-            //console.log(JSON.stringify(device));
             let deviceName = device.name
             if (typeof deviceName === 'undefined' && typeof device.hostname !== 'undefined') deviceName = device.hostname;
             if (typeof deviceName === 'undefined') deviceName = device.mac;
