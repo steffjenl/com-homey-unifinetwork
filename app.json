@@ -108,7 +108,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "a_client_disconnected",
@@ -157,7 +157,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "a_guest_connected",
@@ -220,7 +220,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "a_guest_disconnected",
@@ -281,7 +281,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "cable_client_connected",
@@ -332,7 +332,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "first_device_online",
@@ -357,7 +357,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "last_device_disconnected",
@@ -377,7 +377,7 @@
             }
           }
         ],
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "last_device_offline",
@@ -386,7 +386,7 @@
           "nl": "Laatste verbinding verbroken",
           "es": "Último dispositivo desconectado"
         },
-        "depreceted": true
+        "deprecated": true
       },
       {
         "id": "wifi_client_connected",
