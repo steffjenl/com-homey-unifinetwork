@@ -40,5 +40,8 @@
   },
   "2.2.1": {
     "en": "Removed some capability for cable-client"
+  },
+  "2.2.2": {
+    "en": "Test version 2"
   }
 }
