@@ -457,16 +457,6 @@
               "es": "Proto"
             },
             "example": "ac"
-          },
-          {
-            "name": "roam_count",
-            "type": "number",
-            "title": {
-              "en": "Roam count",
-              "nl": "Roam count",
-              "es": "Roam count"
-            },
-            "example": 3
           }
         ]
       },
@@ -501,16 +491,6 @@
               "es": "Proto"
             },
             "example": "ac"
-          },
-          {
-            "name": "roam_count",
-            "type": "number",
-            "title": {
-              "en": "Roam count",
-              "nl": "Roam count",
-              "es": "Roam count"
-            },
-            "example": 3
           }
         ]
       },

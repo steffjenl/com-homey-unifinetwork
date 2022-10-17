@@ -86,11 +86,23 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('alarm_connected', isConnected);
     }
     if (isConnected) {
-      // this.homey.app._cableClientConnected.trigger();
+      const tokens = {
+        rssi: this.getCapabilityValue('measure_rssi'),
+        signal: this.getCapabilityValue('measure_signal'),
+        radio_proto: this.getCapabilityValue('radio_proto'),
+        essid: this.getCapabilityValue('wifi_name')
+      };
+      this.homey.app._wifiClientConnected.trigger(tokens);
 
     } else {
       this.homey.app._wifiClientDisconnected.trigger();
-      // this.homey.app._clientDisconnected.trigger();
+
+      const tokens = {
+        mac: this.getData().id,
+        name: this.getName(),
+        essid: this.getCapabilityValue('wifi_name')
+      };
+      this.homey.app._clientDisconnected.trigger(tokens);
     }
   }
 
@@ -129,7 +141,9 @@ class WiFiDevice extends Device {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
-          essid: data.essid
+          essid: data.essid,
+          accessPoint: data.ap_mac,
+          roam_count: 0
         };
 
         // trigger floaded ap
@@ -155,7 +169,7 @@ class WiFiDevice extends Device {
     this.homey.app.debug('onUpdateMessage');
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
 
-      this.homey.app.debug(JSON.stringify(device));
+      this.homey.app.debug('wifi-client: ' + JSON.stringify(device));
 
       if (typeof device[0].essid !== 'undefined') {
         this.onWifiChanged(device[0]);
