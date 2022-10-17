@@ -5,6 +5,13 @@
     "nl": "Zwerft naar ander AP",
     "es": "Roaming entre AP"
   },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    }
+  ],
   "tokens": [
     {
       "name": "accessPoint",

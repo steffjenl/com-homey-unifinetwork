@@ -56,19 +56,19 @@ class UnifiNetwork extends Homey.App {
     async _initFlowTriggers() {
         this._clientConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CLIENT_CONNECTED);
         this._clientDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CLIENT_DISCONNECTED);
-        this._cableClientConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_CONNECTED);
-        this._cableClientDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_DISCONNECTED);
+        this._cableClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_CONNECTED);
+        this._cableClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_DISCONNECTED);
         this._firstDeviceConnected= this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
         this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
         this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
-        this._wifiClientRoamed = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED);
-        this._wifiClientDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
-        this._wifiClientConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
-        this._wifiClientRoamedToAp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
-        this._wifiClientSignalChanged = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+        this._wifiClientRoamed = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED);
+        this._wifiClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
+        this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
+        this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
     }
 
     _appLogin() {

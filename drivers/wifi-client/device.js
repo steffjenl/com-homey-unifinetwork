@@ -86,18 +86,21 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('alarm_connected', isConnected);
     }
     if (isConnected) {
-      const tokens = {
+      let tokens = {
         rssi: this.getCapabilityValue('measure_rssi'),
         signal: this.getCapabilityValue('measure_signal'),
         radio_proto: this.getCapabilityValue('radio_proto'),
         essid: this.getCapabilityValue('wifi_name')
       };
-      this.homey.app._wifiClientConnected.trigger(tokens);
+      let state = {};
+      this.homey.app._wifiClientConnected.trigger(this, tokens, state);
 
     } else {
-      this.homey.app._wifiClientDisconnected.trigger();
+      let tokens = {};
+      let state = {};
+      this.homey.app._wifiClientDisconnected.trigger(this, tokens, state);
 
-      const tokens = {
+      tokens = {
         mac: this.getData().id,
         name: this.getName(),
         essid: this.getCapabilityValue('wifi_name')
@@ -112,15 +115,17 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('measure_signal', data.signal);
       if (data.signal !== oldSignal) {
 
-        const tokens = {
+        let tokens = {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
           essid: data.essid
         };
 
+        let state = {};
+
         // trigger flow
-        this.homey.app._wifiClientSignalChanged.trigger(tokens);
+        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, state);
       }
     }
   }
@@ -137,7 +142,7 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('ap_mac', data.ap_mac);
       if (data.ap_mac !== oldApMac) {
 
-        const tokens = {
+        let tokens = {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
@@ -146,9 +151,11 @@ class WiFiDevice extends Device {
           roam_count: 0
         };
 
+        let state = {};
+
         // trigger floaded ap
-        this.homey.app._wifiClientRoamed.trigger(tokens);
-        this.homey.app._wifiClientRoamedToAp.trigger(tokens);
+        this.homey.app._wifiClientRoamed.trigger(this, tokens, state);
+        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, state);
       }
     }
   }

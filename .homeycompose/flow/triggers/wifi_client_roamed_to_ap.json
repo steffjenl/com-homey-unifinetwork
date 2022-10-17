@@ -5,6 +5,13 @@
     "nl": "Zwerft naar AP",
     "es": "Ruta a AP"
   },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    }
+  ],
   "tokens": [
     {
       "name": "accessPoint",

@@ -5,6 +5,13 @@
     "nl": "Signaal veranderd",
     "es": "Señal cambiada"
   },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    }
+  ],
   "tokens": [
     {
       "name": "rssi",

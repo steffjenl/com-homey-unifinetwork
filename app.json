@@ -290,6 +290,13 @@
           "nl": "Verbonden",
           "es": "Conectado"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=cable-client"
+          }
+        ],
         "tokens": []
       },
       {
@@ -298,7 +305,14 @@
           "en": "Disconnected",
           "nl": "Verbinding verbroken",
           "es": "Desconectado"
-        }
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=cable-client"
+          }
+        ]
       },
       {
         "id": "first_device_connected",
@@ -381,6 +395,13 @@
           "nl": "Verbonden",
           "es": "Conectado"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ],
         "tokens": [
           {
             "name": "rssi",
@@ -432,7 +453,14 @@
           "en": "Disconnected",
           "nl": "Verbinding verbroken",
           "es": "Desconectado"
-        }
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ]
       },
       {
         "id": "wifi_client_roamed",
@@ -441,6 +469,13 @@
           "nl": "Zwerft naar ander AP",
           "es": "Roaming entre AP"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ],
         "tokens": [
           {
             "name": "accessPoint",
@@ -475,6 +510,13 @@
           "nl": "Zwerft naar AP",
           "es": "Ruta a AP"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ],
         "tokens": [
           {
             "name": "accessPoint",
@@ -509,6 +551,13 @@
           "nl": "Signaal veranderd",
           "es": "Señal cambiada"
         },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ],
         "tokens": [
           {
             "name": "rssi",
