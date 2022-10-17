@@ -37,5 +37,8 @@
   },
   "2.2.0": {
     "en": "First test round for rebuild app"
+  },
+  "2.2.1": {
+    "en": "Removed some capability for cable-client"
   }
 }
