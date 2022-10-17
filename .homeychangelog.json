@@ -34,5 +34,8 @@
   },
   "2.1.1": {
     "en": "Homey Community Topic now in app.json"
+  },
+  "2.2.0": {
+    "en": "First test round for rebuild app"
   }
 }
