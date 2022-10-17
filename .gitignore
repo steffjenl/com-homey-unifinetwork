@@ -2,3 +2,7 @@ env.json
 node_modules/
 .idea/
 0-old/
+
+
+# Added by Homey CLI
+/.homeybuild/

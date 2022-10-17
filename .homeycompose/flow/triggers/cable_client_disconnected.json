@@ -4,12 +4,5 @@
     "en": "Disconnected",
     "nl": "Verbinding verbroken",
     "es": "Desconectado"
-  },
-  "args": [
-    {
-      "name": "device",
-      "type": "device",
-      "filter": "driver_id=cable-client"
-    }
-  ]
+  }
 }

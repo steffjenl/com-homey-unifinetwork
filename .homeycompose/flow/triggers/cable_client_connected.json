@@ -5,12 +5,5 @@
     "nl": "Verbonden",
     "es": "Conectado"
   },
-  "args": [
-    {
-      "name": "device",
-      "type": "device",
-      "filter": "driver_id=cable-client"
-    }
-  ],
   "tokens": []
 }
