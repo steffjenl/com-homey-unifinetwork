@@ -107,7 +107,8 @@
               "en": "MyWifiSSID"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "a_client_disconnected",
@@ -155,7 +156,8 @@
               "en": "MyWifiSSID"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "a_guest_connected",
@@ -217,7 +219,8 @@
               "en": "MyUserGroup"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "a_guest_disconnected",
@@ -277,7 +280,8 @@
               "en": "MyUserGroup"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "cable_client_connected",
@@ -313,7 +317,8 @@
               "es": "Nombre punto de acceso"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "first_device_online",
@@ -337,7 +342,8 @@
               "es": "wifi01"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "last_device_disconnected",
@@ -356,7 +362,8 @@
               "es": "Nombre de punto de acceso"
             }
           }
-        ]
+        ],
+        "depreceted": true
       },
       {
         "id": "last_device_offline",
@@ -364,7 +371,8 @@
           "en": "Last device disconnected",
           "nl": "Laatste verbinding verbroken",
           "es": "Último dispositivo desconectado"
-        }
+        },
+        "depreceted": true
       },
       {
         "id": "wifi_client_connected",

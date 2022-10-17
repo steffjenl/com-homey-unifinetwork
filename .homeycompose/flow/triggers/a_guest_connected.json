@@ -58,5 +58,6 @@
         "en": "MyUserGroup"
       }
     }
-  ]
+  ],
+  "depreceted": true
 }

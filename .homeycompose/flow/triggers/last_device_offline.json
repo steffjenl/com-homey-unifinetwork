@@ -4,5 +4,6 @@
     "en": "Last device disconnected",
     "nl": "Laatste verbinding verbroken",
     "es": "Último dispositivo desconectado"
-  }
+  },
+  "depreceted": true
 }

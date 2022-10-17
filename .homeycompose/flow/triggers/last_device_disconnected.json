@@ -15,5 +15,6 @@
         "es": "Nombre de punto de acceso"
       }
     }
-  ]
+  ],
+  "depreceted": true
 }

@@ -20,5 +20,6 @@
         "es": "wifi01"
       }
     }
-  ]
+  ],
+  "depreceted": true
 }
