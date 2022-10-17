@@ -3,7 +3,7 @@
 const {Driver} = require('homey');
 const Unifi = require("node-unifi");
 
-class WifiClient extends Driver {
+class CalbleClient extends Driver {
 
     /**
      * onInit is called when the driver is initialized.
@@ -18,7 +18,7 @@ class WifiClient extends Driver {
      * This should return an array with the data of devices that are available for pairing.
      */
     async onPairListDevices() {
-        return Object.values(await this.homey.app.api.getWiFiDevices()).map(device => {
+        return Object.values(await this.homey.app.api.getCableDevices()).map(device => {
             //console.log(JSON.stringify(device));
             let deviceName = device.name
             if (typeof deviceName === 'undefined' && typeof device.hostname !== 'undefined') deviceName = device.hostname;
@@ -63,4 +63,4 @@ class WifiClient extends Driver {
     }
 }
 
-module.exports = WifiClient;
+module.exports = CalbleClient;

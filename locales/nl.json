@@ -3,7 +3,7 @@
   "pair": {
     "validate": {
       "title": "UniFi Cloud Key valideren",
-      "instruction": "Voeg eerst de UniFi Cloud Key aan Homey toe en probeer het daarna opnieuw."
+      "instruction": "Graag eerst bij Instellingen de Cloud Key instellen."
     },
     "login": {
       "title": "Inloggen"
@@ -11,11 +11,11 @@
   },
   "settings": {
     "title": "UniFi Network instellingen",
-    "instruction": "Log in met de gegevens van de UniFi Protect-gebruiker.",
+    "instruction": "Log in met de gegevens van de UniFi Network-gebruiker.",
     "nvr": "Gegevens van UniFi Cloud Key",
     "nvrip": "IP-adres",
     "nvrport": "Port",
-    "credentials": "UniFi Protect gebruikersgegevens",
+    "credentials": "UniFi Network gebruikersgegevens",
     "username": "Gebruikersnaam",
     "password": "Wachtwoord",
     "apply": "Toepassen",
@@ -32,7 +32,8 @@
       "done": "Klaar",
       "always": "Altijd",
       "motion": "Bij beweging",
-      "never": "Nooit"
+      "never": "Nooit",
+      "detections": "Bij beweging"
     },
     "health": {
       "unknown": "Onbekend",

@@ -15,7 +15,6 @@
 
 <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span></p>
 <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status" style="font-weight: bold;">Unknown</span></p>
-<p><span data-i18n="settings.websocket.status">Last message</span>: <span id="unifi_websocket_lastmessage" style="font-weight: bold;">Unknown</span></p>
 <!-- NVR -->
 <fieldset>
   <legend data-i18n="settings.nvr"></legend>
@@ -28,14 +27,8 @@
 
   <!-- Port -->
   <div class="field row">
-    <label for="txt_nvrport" data-i18n="settings.nvrport"></label>
+    <label for="txt_nvrport" data-i18n="settings.txt_nvrport"></label>
     <input id="txt_nvrport" type="text" value="443"/>
-  </div>
-
-  <!-- UnifiOS -->
-  <div class="field row">
-    <label for="txt_useproxy" data-i18n="settings.useproxy">UnifiOS (please use port 443)</label>
-    <input id="txt_useproxy" type="checkbox" value="true" />
   </div>
 
 </fieldset>
@@ -57,24 +50,14 @@
   </div>
 </fieldset>
 
-<!-- Site -->
+<!-- site -->
 <fieldset>
-  <legend data-i18n="settings.siteinformation"></legend>
-
-  <!-- SiteID -->
+  <legend data-i18n="settings.site"></legend>
+  <!-- Site -->
   <div class="field row">
-    <label for="txt_siteid" data-i18n="settings.siteid"></label>
-    <input id="txt_siteid" type="text" value=""/>
+    <label for="txt_site" data-i18n="settings.site"></label>
+    <input id="txt_site" type="text" value=""/>
   </div>
-
-  <p><small data-i18n="settings.notice.restart">* If you just want to restart the connection, then click &quot;Apply&quot; again</small></p>
-  <p>
-    <small data-i18n="settings.siteid.pre_msg">This is a list of possible Site ID's:</small>
-    <small data-i18n="settings.siteid.post_msg">(if possible, this list is a discovered list)</small>
-    <br />
-    <small><span id="sites"></span></small>
-  </p>
-
 </fieldset>
 
 <!-- Apply button -->
@@ -82,71 +65,56 @@
   <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
 </div>
 
+<p><small data-i18n="settings.notice.restart">* If you just want to restart the connection, then click &quot;Apply&quot; again</small></p>
+<p>
+  <small data-i18n="settings.siteid.pre_msg">This is a list of possible Site ID's:</small>
+  <small data-i18n="settings.siteid.post_msg">(if possible, this list is a discovered list)</small>
+  <br />
+  <small><span id="unifi_sites"></span></small>
+</p>
 
-
-<fieldset>
-  <legend><span data-i18n="settings.debug.title">Debug messages</span> <small><a href="#" onclick='$(".debug").toggle(); return false;'>toggle</a></small></legend>
-
-  <div id="debug_container" class='debug' style='display: none;'>
-    <p data-i18n="settings.debug.intro">Up to 100 messages are shown below, in reverse order (newest on top):</p>
-    <div id="messages"></div>
-    <p><small data-i18n="settings.debug.wait_msg">Please wait for the events to come in</small></p>
-  </div>
-</fieldset>
 
 <script type="text/javascript">
-  var txtNvrIp = document.getElementById('txt_nvrip');
-  var txtNvrPort = document.getElementById('txt_nvrport');
-  var txtUsername = document.getElementById('txt_username');
-  var txtPassword = document.getElementById('txt_password');
-  var txtProxy = document.getElementById('txt_useproxy');
-  var txtSiteID = document.getElementById('txt_siteid');
-  var btnApply = document.getElementById('btn_apply');
+  const txtNvrIp = document.getElementById('txt_nvrip');
+  const txtNvrPort = document.getElementById('txt_nvrport');
+  const txtUsername = document.getElementById('txt_username');
+  const txtPassword = document.getElementById('txt_password');
+  const txtSite = document.getElementById('txt_site');
+  const btnApply = document.getElementById('btn_apply');
 
   function onHomeyReady(Homey) {
     const readSettings = () => {
-      Homey.get('com.ubnt.unifi.settings', (error, data) => {
+      Homey.get('com.ubnt.unifi.settings', (error, settings) => {
         if (error) return Homey.alert(error);
-        if (!data) return Homey.alert('Loading settings failed, please load page again, or check app\'s running status');
 
-        txtNvrIp.value = data['host'];
-        txtNvrPort.value = data['port'];
-        txtUsername.value = data['user'];
-        txtPassword.value = data['pass'];
-        txtSiteID.value = data['site'];
-        txtProxy.checked = (data['useproxy'] === 'true');
-
+        if (settings) {
+          txtNvrIp.value = settings.host;
+          txtNvrPort.value = settings.port;
+          txtUsername.value = settings.user;
+          txtPassword.value = settings.pass;
+          txtSite.value = settings.site;
+          getSites();
+        } else {
+          console.warn('[SETTINGS] Could not read UniFi settings object.');
+        }
       });
     };
 
     const saveSettings = () => {
-      Homey.api('POST', '/settings/validate', {
-        'hostname': txtNvrIp.value,
-        'port': txtNvrPort.value,
-        'username': txtUsername.value,
-        'password': txtPassword.value,
-        'useproxy': txtProxy.checked
-      }, function (err, result) {
-        if (err) return Homey.alert(err);
-        var settings = {
-          'host': txtNvrIp.value,
-          'port': txtNvrPort.value,
-          'user': txtUsername.value,
-          'pass': txtPassword.value,
-          'site': txtSiteID.value,
-          'useproxy': (txtProxy.checked ? 'true' : 'false')
-        }
+       const settings = {
+         'host': txtNvrIp.value,
+         'port': txtNvrPort.value,
+         'user': txtUsername.value,
+         'pass': txtPassword.value,
+         'site': 'default',
+        };
 
         Homey.set('com.ubnt.unifi.settings', settings, (error, result) => {
           if (error) return Homey.alert(error);
-          console.log('[SETTINGS] settings saved.');
+          console.log('[SETTINGS] Settings object saved.');
         });
-
-        //
-        updateSites();
-
         Homey.alert(Homey.__('settings.saved'), 'info');
-      });
+        getSites();
     };
 
     btnApply.addEventListener('click', e => {
@@ -154,34 +122,11 @@
     });
 
     readSettings();
-    var updateSites = () => {
-      Homey.api('GET', '/sites', null, function( err, sites ) {
-        if( err ) appendDebugMessages(err);
-        _sites = [];
-        for (idx in sites) {
-          _sites.push("- " + sites[idx].name + " (" + sites[idx].desc + ")");
-        }
-        $('#sites').html(_sites.join('<br />'));
-      });
-    }
-    updateSites();
 
     Homey.ready();
 
-    const appendDebugMessages = (err, data) => {
-      if (err) return appendDebugMessages(null, data);
-
-      $('#debug_container #messages').prepend('<pre>' + new Date().toLocaleString() + ' : ' + data.toString() + '</pre>');
-
-      $('#messages pre').each(function(index) {
-        if (index >= 100) $(this).remove();
-      });
-    };
-
     const updateStatusField =  (err, data) => {
       if (err) {
-        console.log(err);
-        appendDebugMessages(err);
         return err;
       }
       var color = 'darkred';
@@ -201,15 +146,19 @@
       }
     }
 
-    const updateWebsocketStatusField =  (err, data) => {
+    const updateSitesField =  (err, data) => {
       if (err) {
-        console.log(err);
-        appendDebugMessages(err);
         return err;
       }
-      var color = 'darkred';
-      if (data === 'Connected') color = 'darkgreen';
-      if (data === 'Connecting...') color = 'orange';
+
+      var sitesField = document.getElementById('unifi_sites');
+      sitesField.innerHTML = data;
+    }
+
+    const updateWebsocketStatusField =  (err, data) => {
+      if (err) {
+        return err;
+      }
 
       var statusField = document.getElementById('unifi_websocket_status');
       statusField.style.color = color;
@@ -224,26 +173,22 @@
       }
     }
 
-    const updateWebsocketLastMessageField =  (err, data) => {
-      if (err) {
-        console.log(err);
-        appendDebugMessages(err);
-        return err;
-      }
+    const getSites = () => {
+      Homey.api("GET", "/sites", null, function (err, sites) {
+        if (err) return Homey.alert(err);
+        _sites = [];
+        for (idx in sites) {
+          _sites.push("- " + sites[idx].name + " (" + sites[idx].desc + ")");
+        }
+        $('#unifi_sites').html(_sites.join('<br />'));
 
-      var statusField = document.getElementById('unifi_websocket_lastmessage');
-      statusField.innerHTML = data;
+      });
     }
 
     Homey.get('com.ubnt.unifi.status', updateStatusField);
     Homey.on('com.ubnt.unifi.status', ( data ) => { updateStatusField(null, data); });
-    Homey.on('com.ubnt.unifi.debug', ( data ) => { appendDebugMessages(null, data); });
     Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
     Homey.on('com.ubnt.unifi.websocket.status', ( data ) => { updateWebsocketStatusField(null, data); });
-    // com.ubnt.unifi.websocket.lastpong
-    Homey.get('com.ubnt.unifi.websocket.lastmessage', updateWebsocketLastMessageField);
-    Homey.on('com.ubnt.unifi.websocket.lastmessage', ( data ) => { updateWebsocketLastMessageField(null, data); });
-
   }
 </script>
 </body>

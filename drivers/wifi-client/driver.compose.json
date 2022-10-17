@@ -15,7 +15,8 @@
         "capabilities": [
           "alarm_connected",
           "measure_signal",
-          "measure_rssi"
+          "measure_rssi",
+          "wifi_name"
         ],
         "options": {
           "icons": {
@@ -53,17 +54,14 @@
   ],
   "pair": [
     {
-      "id": "validate"
-    },
-    {
-      "id": "list_devices",
+      "id": "list_clients",
       "template": "list_devices",
       "navigation": {
-        "next": "add_devices"
+        "next": "add_clients"
       }
     },
     {
-      "id": "add_devices",
+      "id": "add_clients",
       "template": "add_devices"
     }
   ]

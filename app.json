@@ -1,7 +1,8 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.ubnt.unifi",
-  "sdk": 2,
+  "sdk": 3,
+  "brandColor": "#159EDA",
   "name": {
     "en": "Ubiquiti UniFi Network"
   },
@@ -11,7 +12,7 @@
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
   "version": "2.1.1",
-  "compatibility": ">=1.5.0",
+  "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",
     "email": "stephan@monkeysoft.nl"
@@ -39,13 +40,22 @@
     "security"
   ],
   "bugs": {
-    "url": "https://github.com/steffjenl/com.ubnt.unifi/issues"
+    "url": "https://gitlab.com/monkeysoft/com-ubnt-unifi/-/issues"
   },
   "homeyCommunityTopicId": 42967,
-  "source": "https://github.com/steffjenl/com.ubnt.unifi",
+  "source": "https://gitlab.com/monkeysoft/com-ubnt-unifi",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
+  },
+  "platforms": [
+    "local"
+  ],
+  "api": {
+    "getSites": {
+      "method": "GET",
+      "path": "/sites"
+    }
   },
   "flow": {
     "triggers": [
@@ -276,13 +286,6 @@
           "nl": "Verbonden",
           "es": "Conectado"
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=cable-client"
-          }
-        ],
         "tokens": []
       },
       {
@@ -291,14 +294,7 @@
           "en": "Disconnected",
           "nl": "Verbinding verbroken",
           "es": "Desconectado"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=cable-client"
-          }
-        ]
+        }
       },
       {
         "id": "first_device_connected",
@@ -377,13 +373,6 @@
           "nl": "Verbonden",
           "es": "Conectado"
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=wifi-client"
-          }
-        ],
         "tokens": [
           {
             "name": "rssi",
@@ -435,14 +424,7 @@
           "en": "Disconnected",
           "nl": "Verbinding verbroken",
           "es": "Desconectado"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=wifi-client"
-          }
-        ]
+        }
       },
       {
         "id": "wifi_client_roamed",
@@ -451,13 +433,6 @@
           "nl": "Zwerft naar ander AP",
           "es": "Roaming entre AP"
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=wifi-client"
-          }
-        ],
         "tokens": [
           {
             "name": "accessPoint",
@@ -502,22 +477,6 @@
           "nl": "Zwerft naar AP",
           "es": "Ruta a AP"
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=wifi-client"
-          },
-          {
-            "name": "accessPoint",
-            "type": "autocomplete",
-            "placeholder": {
-              "en": "Accesspoint name",
-              "nl": "Accesspoint naam",
-              "es": "Nombre del punto de acceso"
-            }
-          }
-        ],
         "tokens": [
           {
             "name": "accessPoint",
@@ -562,13 +521,6 @@
           "nl": "Signaal veranderd",
           "es": "Señal cambiada"
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=wifi-client"
-          }
-        ],
         "tokens": [
           {
             "name": "rssi",
@@ -673,77 +625,7 @@
   },
   "drivers": [
     {
-      "id": "wifi-client",
-      "name": {
-        "en": "Wifi Client",
-        "nl": "Wifi Client",
-        "es": "Cliente Wifi"
-      },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon"
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "alarm_connected",
-              "measure_signal",
-              "measure_rssi"
-            ],
-            "options": {
-              "icons": {
-                "alarm_connected": "assets/connected.svg",
-                "measure_signal": "assets/signal.svg",
-                "measure_rssi": "assets/rssi.svg"
-              },
-              "alarm_connected": {
-                "noblink": false,
-                "invert": true,
-                "label": {
-                  "true": {
-                    "en": "Connected",
-                    "es": "Conectado"
-                  },
-                  "false": {
-                    "en": "Disconnected",
-                    "es": "Desconectado"
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "images": {
-        "large": "drivers/wifi-client/assets/images/large.jpg",
-        "small": "drivers/wifi-client/assets/images/small.jpg"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "alarm_connected",
-        "measure_rssi",
-        "measure_signal"
-      ],
-      "pair": [
-        {
-          "id": "validate"
-        },
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ]
-    },
-    {
-      "id": "wired-client",
+      "id": "cable-client",
       "name": {
         "en": "Wired client",
         "nl": "Bedrade cliënt",
@@ -782,8 +664,8 @@
         ]
       },
       "images": {
-        "large": "drivers/wired-client/assets/images/large.jpg",
-        "small": "drivers/wired-client/assets/images/small.jpg"
+        "large": "drivers/cable-client/assets/images/large.jpg",
+        "small": "drivers/cable-client/assets/images/small.jpg"
       },
       "class": "sensor",
       "capabilities": [
@@ -791,17 +673,82 @@
       ],
       "pair": [
         {
-          "id": "validate"
-        },
-        {
-          "id": "list_devices",
+          "id": "list_clients",
           "template": "list_devices",
           "navigation": {
-            "next": "add_devices"
+            "next": "add_clients"
           }
         },
         {
-          "id": "add_devices",
+          "id": "add_clients",
+          "template": "add_devices"
+        }
+      ]
+    },
+    {
+      "id": "wifi-client",
+      "name": {
+        "en": "Wifi Client",
+        "nl": "Wifi Client",
+        "es": "Cliente Wifi"
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon"
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "alarm_connected",
+              "measure_signal",
+              "measure_rssi",
+              "wifi_name"
+            ],
+            "options": {
+              "icons": {
+                "alarm_connected": "assets/connected.svg",
+                "measure_signal": "assets/signal.svg",
+                "measure_rssi": "assets/rssi.svg"
+              },
+              "alarm_connected": {
+                "noblink": false,
+                "invert": true,
+                "label": {
+                  "true": {
+                    "en": "Connected",
+                    "es": "Conectado"
+                  },
+                  "false": {
+                    "en": "Disconnected",
+                    "es": "Desconectado"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "images": {
+        "large": "drivers/wifi-client/assets/images/large.jpg",
+        "small": "drivers/wifi-client/assets/images/small.jpg"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_connected",
+        "measure_rssi",
+        "measure_signal"
+      ],
+      "pair": [
+        {
+          "id": "list_clients",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_clients"
+          }
+        },
+        {
+          "id": "add_clients",
           "template": "add_devices"
         }
       ]
@@ -819,31 +766,34 @@
       "setable": false,
       "icon": "./assets/connected.svg"
     },
+    "ap_mac": {
+      "type": "string",
+      "title": {
+        "en": "Accesspoint",
+        "nl": "Accesspoint",
+        "es": "Accesspoint"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/accesspoint.svg"
+    },
+    "ipAddress": {
+      "type": "string",
+      "title": {
+        "en": "IP Address",
+        "nl": "IP Adres",
+        "es": "IP Address"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/ipaddress.svg"
+    },
     "measure_rssi": {
       "type": "number",
       "title": {
         "en": "RSSI",
         "nl": "RSSI",
         "es": "RSSI"
-      },
-      "units": {
-        "en": "dBm",
-        "nl": "dBm",
-        "es": "dBm"
-      },
-      "getable": true,
-      "setable": false,
-      "min": -100,
-      "max": 0,
-      "step": 1,
-      "icon": "./assets/rssi.svg"
-    },
-    "measure_signal": {
-      "type": "number",
-      "title": {
-        "en": "Signal strength",
-        "nl": "Signaalsterkte",
-        "es": "Intensidad de Señal"
       },
       "units": {
         "en": "%",
@@ -855,6 +805,47 @@
       "min": 0,
       "max": 100,
       "step": 1,
+      "icon": "./assets/rssi.svg"
+    },
+    "measure_signal": {
+      "type": "number",
+      "title": {
+        "en": "Signal strength",
+        "nl": "Signaalsterkte",
+        "es": "Intensidad de Señal"
+      },
+      "units": {
+        "en": "dBm",
+        "nl": "dBm",
+        "es": "dBm"
+      },
+      "getable": true,
+      "setable": false,
+      "min": -100,
+      "max": 0,
+      "step": 1,
+      "icon": "./assets/signal.svg"
+    },
+    "radio_proto": {
+      "type": "string",
+      "title": {
+        "en": "Radio Protocol",
+        "nl": "Radio Protocol",
+        "es": "Radio Protocol"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/signal.svg"
+    },
+    "wifi_name": {
+      "type": "string",
+      "title": {
+        "en": "WiFi Name",
+        "nl": "WiFi Naam",
+        "es": "Nombre WiFi"
+      },
+      "getable": true,
+      "setable": false,
       "icon": "./assets/signal.svg"
     }
   }

@@ -1,5 +1,5 @@
 {
-  "id": "wired-client",
+  "id": "cable-client",
   "name": {
     "en": "Wired client",
     "nl": "Bedrade cliënt",
@@ -38,8 +38,8 @@
     ]
   },
   "images": {
-    "large": "drivers/wired-client/assets/images/large.jpg",
-    "small": "drivers/wired-client/assets/images/small.jpg"
+    "large": "drivers/cable-client/assets/images/large.jpg",
+    "small": "drivers/cable-client/assets/images/small.jpg"
   },
   "class": "sensor",
   "capabilities": [
@@ -47,17 +47,14 @@
   ],
   "pair": [
     {
-      "id": "validate"
-    },
-    {
-      "id": "list_devices",
+      "id": "list_clients",
       "template": "list_devices",
       "navigation": {
-        "next": "add_devices"
+        "next": "add_clients"
       }
     },
     {
-      "id": "add_devices",
+      "id": "add_clients",
       "template": "add_devices"
     }
   ]

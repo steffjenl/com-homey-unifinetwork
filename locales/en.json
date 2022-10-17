@@ -2,26 +2,48 @@
     "title": "UniFi Network",
     "pair": {
         "validate": {
-            "title": "Validating UniFi Network Controller",
-            "instruction": "Please add the UniFi Network Controller to Homey first and try again."
+            "title": "Validating UniFi Cloud Key",
+            "instruction": "Please set the Cloud Key in Settings first."
         },
         "login": {
             "title": "Log in"
         }
     },
+    "status": {
+        "connection": {
+            "Connected": "Connected",
+            "Connecting": "Connecting...",
+            "Disconnected": "Disconnected",
+            "Initialized": "Initialized"
+        }
+    },
     "settings": {
-        "title": "UniFi Network Controller Settings",
-        "instruction": "Log in with the credentials of the UniFi Protect user.",
-        "nvr": "UniFi Network Controller details",
+        "title": "UniFi Network Settings",
+        "instruction": "Log in with the credentials of the UniFi Network user.",
+        "nvr": "UniFi Network Server details",
         "nvrip": "IP address",
         "nvrport": "Port",
-        "credentials": "User credentials",
+        "credentials": "UniFi Network user credentials",
         "username": "Username",
         "password": "Password",
         "apply": "Apply",
-        "saved": "Settings saved."
+        "saved": "Settings saved.",
+        "site": "Site"
     },
     "events": {
+        "camera": {
+            "motion_started": "Motion started",
+            "motion_ended": "Motion ended",
+            "motion_inprogress": "Motion",
+            "ftr_inprogress": "Full time",
+            "disabled": "Disabled",
+            "failed": "Failed",
+            "done": "Done",
+            "always": "Always",
+            "motion": "Motion",
+            "never": "Never",
+            "detections": "Detections"
+        },
         "health": {
             "unknown": "Unknown",
             "green": "Healthy",
