@@ -107,8 +107,7 @@
               "en": "MyWifiSSID"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
         "id": "a_client_disconnected",
@@ -156,8 +155,7 @@
               "en": "MyWifiSSID"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
         "id": "a_guest_connected",
@@ -501,7 +499,8 @@
             },
             "example": "ac"
           }
-        ]
+        ],
+        "deprecated": true
       },
       {
         "id": "wifi_client_roamed_to_ap",

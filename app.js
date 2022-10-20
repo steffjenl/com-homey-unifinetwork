@@ -17,23 +17,10 @@ class UnifiNetwork extends Homey.App {
         this.loggedIn = false;
 
         await this._initFlowTriggers();
+        await this._initActionCards();
 
-        /*
-
-        const _actionTakeSnapshot = this.homey.flow.getActionCard(UfvConstants.ACTION_TAKE_SNAPSHOT);
-        _actionTakeSnapshot.registerRunListener(async (args, state) => {
-            if (typeof args.device.getData === 'function' && typeof args.device.getData().id !== 'undefined') {
-                // Get device from camera id
-                const device = args.device.driver.getUnifiDeviceById(args.device.getData().id);
-                if (device) {
-                    device._createSnapshotImage(true);
-                }
-            }
-            return Promise.resolve(true);
-        });
-
-
-         */
+        this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Initialized');
+        this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, 'Initialized');
 
         // Enable remote debugging, if applicable
         if (Homey.env.DEBUG === 'true') {
@@ -50,7 +37,27 @@ class UnifiNetwork extends Homey.App {
         });
         this._appLogin();
 
-        this.debug('UniFiProtect has been initialized');
+        this.debug('UnifiNetwork has been initialized');
+    }
+
+    async _initActionCards() {
+        /*
+
+const _actionTakeSnapshot = this.homey.flow.getActionCard(UfvConstants.ACTION_TAKE_SNAPSHOT);
+_actionTakeSnapshot.registerRunListener(async (args, state) => {
+    if (typeof args.device.getData === 'function' && typeof args.device.getData().id !== 'undefined') {
+        // Get device from camera id
+        const device = args.device.driver.getUnifiDeviceById(args.device.getData().id);
+        if (device) {
+            device._createSnapshotImage(true);
+        }
+    }
+    return Promise.resolve(true);
+});
+
+
+ */
+        this.debug('UnifiNetwork init Action Cards');
     }
 
     async _initFlowTriggers() {
@@ -69,6 +76,79 @@ class UnifiNetwork extends Homey.App {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+        this.debug('UnifiNetwork init Flow Triggers');
+    }
+
+    async _initTimers() {
+        const checkDevicesOffline = function () {
+            this.checkDevicesOffline();
+        }.bind(this);
+        this.homey.setTimeout(checkDevicesOffline, 15000);
+
+        this.debug('UnifiNetwork init Timers');
+    }
+
+    isSameDevice(device, deviceList) {
+        let i;
+        for (i = 0; i < deviceList.length; i++) {
+            if (deviceList[i].mac === device.mac) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    checkDevicesOffline () {
+        this.api.unifi.getAllUsers().then(allUsers => {
+            this.api.unifi.getClientDevices().then(clientDevices => {
+                allUsers.forEach(device => {
+                    if (this.isSameDevice(device, clientDevices)) {
+                        this.onConnectDevice(device);
+                    } else {
+                        this.onDisconnectDevice(device);
+                    }
+                });
+            }).catch(this.log);
+
+        }).catch(this.log);
+
+        const checkDevicesOffline = function () {
+            this.checkDevicesOffline();
+        }.bind(this);
+        this.homey.setTimeout(checkDevicesOffline, 15000);
+    }
+
+    onDisconnectDevice(deviceArg) {
+        if (deviceArg.is_wired) {
+            const driver = this.homey.drivers.getDriver('cable-client');
+            const device = driver.getUnifiDeviceById(deviceArg.mac);
+            if (device) {
+                device.onIsConnected(false);
+            }
+        } else {
+            const driver = this.homey.drivers.getDriver('wifi-client');
+            const device = driver.getUnifiDeviceById(deviceArg.mac);
+            if (device) {
+                device.onIsConnected(false);
+            }
+        }
+    }
+
+    onConnectDevice(deviceArg) {
+        if (deviceArg.is_wired) {
+            const driver = this.homey.drivers.getDriver('cable-client');
+            const device = driver.getUnifiDeviceById(deviceArg.mac);
+            if (device) {
+                device.onIsConnected(true);
+            }
+        } else {
+            const driver = this.homey.drivers.getDriver('wifi-client');
+            const device = driver.getUnifiDeviceById(deviceArg.mac);
+            if (device) {
+                device.onIsConnected(true);
+            }
+        }
     }
 
     _appLogin() {
@@ -81,6 +161,9 @@ class UnifiNetwork extends Homey.App {
             return;
         }
 
+        this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
+        this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, 'Connecting');
+
         this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
 
         (async () => {
@@ -92,6 +175,8 @@ class UnifiNetwork extends Homey.App {
                     this.setLoggedIn(true);
                     this.debug('We are logged in!');
 
+                    await this._initTimers();
+
                     // LISTEN for WebSocket events
                     const isListening = await this.api.unifi.listen();
 
@@ -99,13 +184,13 @@ class UnifiNetwork extends Homey.App {
                         this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, 'Connected');
                         this.debug('We are listening!');
 
-                        const homey = this.homey;
+                        let that = this;
 
                         this.api.unifi.on('sta:sync.generic', function (payload) {
                             if (Array.isArray(payload)) {
                                 if (payload[0].subsystem === 'wlan') {
                                     // get wifi-client driver
-                                    const driver = homey.drivers.getDriver('wifi-client');
+                                    const driver = that.homey.drivers.getDriver('wifi-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         // Parse Websocket payload message
@@ -113,7 +198,7 @@ class UnifiNetwork extends Homey.App {
                                     }
                                 } else if (payload[0].subsystem === 'lan') {
                                     // get cable-client driver
-                                    const driver = homey.drivers.getDriver('cable-client');
+                                    const driver = that.homey.drivers.getDriver('cable-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         // Parse Websocket payload message
@@ -126,9 +211,18 @@ class UnifiNetwork extends Homey.App {
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.*', function (payload) {
                             if (Array.isArray(payload)) {
+                                // that.homey.app.debug(`${this.event}`);
+                                // that.homey.app.debug(`${JSON.stringify(payload)}`);
+                                if (this.event === 'events.evt_wu_disconnected') {
+                                    that.onIsConnected(false, payload[0]);
+                                } else if (this.event === 'events.evt_wu_connected') {
+                                    that.onIsConnected(true, payload[0]);
+                                }
+
+
                                 if (payload[0].subsystem === 'wlan') {
                                     // get wifi-client driver
-                                    const driver = homey.drivers.getDriver('wifi-client');
+                                    const driver = that.homey.drivers.getDriver('wifi-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         if (this.event === 'events.evt_wu_disconnected') {
@@ -139,7 +233,7 @@ class UnifiNetwork extends Homey.App {
                                     }
                                 } else if (payload[0].subsystem === 'lan') {
                                     // get cable-client driver
-                                    const driver = homey.drivers.getDriver('cable-client');
+                                    const driver = that.homey.drivers.getDriver('cable-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         if (this.event === 'events.evt_wu_disconnected') {
@@ -156,10 +250,35 @@ class UnifiNetwork extends Homey.App {
 
             } catch (error) {
                 this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, error);
+                this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, error);
                 this.log('error = ' + error);
                 this.setLoggedIn(false);
             }
         })();
+    }
+
+    onIsConnected(isConnected, payload) {
+        this.homey.app.debug('onIsConnected: ' + JSON.stringify(payload));
+        if (isConnected) {
+            let deviceName = this.homey.app.api.getDeviceName(payload);
+
+            let tokens = {
+                mac: (payload.user === null) ? "" : payload.user ,
+                name: (deviceName === null) ? "" : deviceName ,
+                essid: (payload.ssid === null) ? "" : payload.ssid
+            };
+            this.homey.app._clientConnected.trigger(tokens);
+
+        } else {
+            let deviceName = this.homey.app.api.getDeviceName(payload);
+
+            let tokens = {
+                mac: (payload.user === null) ? "" : payload.user ,
+                name: (deviceName === null) ? "" : deviceName ,
+                essid: (payload.ssid === null) ? "" : payload.ssid
+            };
+            this.homey.app._clientDisconnected.trigger(tokens);
+        }
     }
 
     async setLoggedIn(loggedIn) {
@@ -167,9 +286,12 @@ class UnifiNetwork extends Homey.App {
     }
 
     debug() {
-        if (Homey.env.DEBUG === 'true') {
+        const debug = this.homey.settings.get(UnifiConstants.SETTINGS_DEBUG_KEY);
+
+        if (Homey.env.DEBUG === 'true' || debug) {
             const args = Array.prototype.slice.call(arguments);
             args.unshift('[debug]');
+            this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
             this.homey.log(args.join(' '));
         }
     }

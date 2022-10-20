@@ -50,6 +50,15 @@ class ApiClient extends BaseClass {
                 .catch(error => reject(error));
         });
     }
+
+    getDeviceName(payload) {
+        let deviceName = payload.name
+        if (typeof deviceName === 'undefined' && typeof payload.hostname !== 'undefined') deviceName = payload.hostname;
+        if (typeof deviceName === 'undefined' && typeof payload.mac !== 'undefined') deviceName = payload.mac;
+        if (typeof deviceName === 'undefined' && typeof payload.user !== 'undefined') deviceName = payload.user;
+        if (typeof deviceName === 'undefined') deviceName = "unknown";
+        return deviceName;
+    }
 }
 
 module.exports = ApiClient;

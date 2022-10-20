@@ -82,30 +82,28 @@ class WiFiDevice extends Device {
   }
 
   onIsConnected(isConnected) {
+    let deviceState = this.getState();
+
     if (this.hasCapability('alarm_connected')) {
       this.setCapabilityValue('alarm_connected', isConnected);
     }
-    if (isConnected) {
-      let tokens = {
-        rssi: this.getCapabilityValue('measure_rssi'),
-        signal: this.getCapabilityValue('measure_signal'),
-        radio_proto: this.getCapabilityValue('radio_proto'),
-        essid: this.getCapabilityValue('wifi_name')
-      };
-      let state = {};
-      this.homey.app._wifiClientConnected.trigger(this, tokens, state);
 
-    } else {
-      let tokens = {};
-      let state = {};
-      this.homey.app._wifiClientDisconnected.trigger(this, tokens, state);
+    if (deviceState.alarm_connected !== isConnected) {
+      if (isConnected) {
+        let tokens = {
+          rssi: deviceState.measure_rssi,
+          signal: deviceState.measure_signal,
+          radio_proto: deviceState.radio_proto,
+          essid: deviceState.wifi_name
+        };
+        let state = {};
+        this.homey.app._wifiClientConnected.trigger(this, tokens, state).catch(this.homey.app.debug);
 
-      tokens = {
-        mac: this.getData().id,
-        name: this.getName(),
-        essid: this.getCapabilityValue('wifi_name')
-      };
-      this.homey.app._clientDisconnected.trigger(tokens);
+      } else {
+        let tokens = {};
+        let state = {};
+        this.homey.app._wifiClientDisconnected.trigger(this, tokens, state).catch(this.homey.app.debug);
+      }
     }
   }
 
@@ -125,7 +123,7 @@ class WiFiDevice extends Device {
         let state = {};
 
         // trigger flow
-        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, state);
+        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, state).catch(this.homey.app.debug);
       }
     }
   }
@@ -154,8 +152,8 @@ class WiFiDevice extends Device {
         let state = {};
 
         // trigger floaded ap
-        this.homey.app._wifiClientRoamed.trigger(this, tokens, state);
-        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, state);
+        this.homey.app._wifiClientRoamed.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, state).catch(this.homey.app.debug);
       }
     }
   }
@@ -176,14 +174,10 @@ class WiFiDevice extends Device {
     this.homey.app.debug('onUpdateMessage');
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
 
-      this.homey.app.debug('wifi-client: ' + JSON.stringify(device));
+      // this.homey.app.debug('wifi-client: ' + JSON.stringify(device));
 
       if (typeof device[0].essid !== 'undefined') {
         this.onWifiChanged(device[0]);
-        this.onIsConnected(true);
-      }
-      else {
-        this.onIsConnected(false);
       }
 
       if (typeof device[0].signal !== 'undefined') {

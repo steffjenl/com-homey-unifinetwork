@@ -19,7 +19,11 @@
     "username": "Gebruikersnaam",
     "password": "Wachtwoord",
     "apply": "Toepassen",
-    "saved": "Instellingen opgeslagen."
+    "saved": "Instellingen opgeslagen.",
+    "tab": {
+      "settings": "Instellingen",
+      "event_log": "Logboek"
+    }
   },
   "events": {
     "camera": {

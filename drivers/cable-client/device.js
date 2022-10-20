@@ -71,14 +71,17 @@ class CableDevice extends Device {
   }
 
   onIsConnected(isConnected) {
+    let deviceState = this.getState();
     if (this.hasCapability('alarm_connected')) {
       this.setCapabilityValue('alarm_connected', isConnected);
     }
 
-    if (isConnected) {
-      this.homey.app._cableClientConnected.trigger();
-    } else {
-      this.homey.app._cableClientDisconnected.trigger();
+    if (deviceState.alarm_connected !== isConnected) {
+      if (isConnected) {
+        this.homey.app._cableClientConnected.trigger().catch(this.homey.app.debug);
+      } else {
+        this.homey.app._cableClientDisconnected.trigger().catch(this.homey.app.debug);
+      }
     }
   }
 
@@ -92,7 +95,7 @@ class CableDevice extends Device {
     this.homey.app.debug('onUpdateMessage');
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
 
-      this.homey.app.debug('cable-client: ' + JSON.stringify(device));
+      // this.homey.app.debug('cable-client: ' + JSON.stringify(device));
 
       if (typeof device[0].ip !== 'undefined') {
         this.onIPChange(device[0].ip);

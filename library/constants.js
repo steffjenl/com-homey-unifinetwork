@@ -1,10 +1,12 @@
 'use strict';
 // SETTINGS
 module.exports.SETTINGS_KEY = 'com.ubnt.unifi.settings';
+module.exports.SETTINGS_DEBUG_KEY = 'com.ubnt.unifi.settings.debug';
 // REALTIME EVENTS
 module.exports.REALTIME_STATUS = 'com.ubnt.unifi.status';
 module.exports.REALTIME_WEBSOCKET = 'com.ubnt.unifi.websocket.status';
 module.exports.REALTIME_SITES = 'com.ubnt.unifi.sites';
+module.exports.REALTIME_DEBUG = 'com.ubnt.unifi.debug';
 // TRIGGER FLOWS
 module.exports.EVENT_CLIENT_CONNECTED = 'a_client_connected';
 module.exports.EVENT_CLIENT_DISCONNECTED = 'a_client_disconnected';

@@ -28,7 +28,14 @@
         "password": "Password",
         "apply": "Apply",
         "saved": "Settings saved.",
-        "site": "Site"
+        "site": "Site",
+        "tab": {
+            "settings": "Settings",
+            "sites": "Sites",
+            "event_log": "Event log"
+        },
+        "intro2": "",
+        "log_enabled": "Event log enabled"
     },
     "events": {
         "camera": {
