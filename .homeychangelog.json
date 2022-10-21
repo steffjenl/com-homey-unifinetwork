@@ -49,5 +49,8 @@
   },
   "2.2.4": {
     "en": "New settings page, flow cards are working"
+  },
+  "2.2.5": {
+    "en": "Fixed some application errors when properties are not defined."
   }
 }
