@@ -263,9 +263,9 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             let deviceName = this.homey.app.api.getDeviceName(payload);
 
             let tokens = {
-                mac: (payload.user === null) ? "" : payload.user ,
-                name: (deviceName === null) ? "" : deviceName ,
-                essid: (payload.ssid === null) ? "" : payload.ssid
+                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user ,
+                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName ,
+                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
             };
             this.homey.app._clientConnected.trigger(tokens);
 
@@ -273,9 +273,9 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             let deviceName = this.homey.app.api.getDeviceName(payload);
 
             let tokens = {
-                mac: (payload.user === null) ? "" : payload.user ,
-                name: (deviceName === null) ? "" : deviceName ,
-                essid: (payload.ssid === null) ? "" : payload.ssid
+                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user ,
+                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName ,
+                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
             };
             this.homey.app._clientDisconnected.trigger(tokens);
         }
@@ -286,13 +286,18 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
     }
 
     debug() {
-        const debug = this.homey.settings.get(UnifiConstants.SETTINGS_DEBUG_KEY);
+        try {
+            const debug = this.homey.settings.get(UnifiConstants.SETTINGS_DEBUG_KEY);
 
-        if (Homey.env.DEBUG === 'true' || debug) {
-            const args = Array.prototype.slice.call(arguments);
-            args.unshift('[debug]');
-            this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
-            this.homey.log(args.join(' '));
+            if (Homey.env.DEBUG === 'true' || debug) {
+                const args = Array.prototype.slice.call(arguments);
+                args.unshift('[debug]');
+                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
+                this.homey.log(args.join(' '));
+            }
+        } catch (exeption) {
+            // when debug fails, we want an console.log
+            console.log(exeption);
         }
     }
 }
