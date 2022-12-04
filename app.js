@@ -181,7 +181,7 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
                     const isListening = await this.api.unifi.listen();
 
                     if (isListening) {
-                        this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, 'Connected');
+                        //this.homey.api.realtime(UnifiConstants.REALTIME_WEBSOCKET, 'Connected');
                         this.debug('We are listening!');
 
                         let that = this;
@@ -292,7 +292,7 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             if (Homey.env.DEBUG === 'true' || debug) {
                 const args = Array.prototype.slice.call(arguments);
                 args.unshift('[debug]');
-                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
+                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' ') );
                 this.homey.log(args.join(' '));
             }
         } catch (exeption) {

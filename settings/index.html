@@ -24,8 +24,8 @@
 
     <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status"
                                                               style="font-weight: bold;">Unknown</span></p>
-    <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status"
-                                                                                         style="font-weight: bold;">Unknown</span>
+<!--    <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status"
+                                                                                         style="font-weight: bold;">Unknown</span>-->
     </p>
     <!-- NVR -->
     <fieldset>
@@ -154,7 +154,6 @@
                 console.log('[SETTINGS] Settings object saved.');
             });
             Homey.alert(Homey.__('settings.saved'), 'info');
-            getSites();
         };
 
         btnApply.addEventListener('click', e => {
@@ -201,10 +200,11 @@
                 return err;
             }
 
-            if (typeof data === 'undefined' || data === null) {
-                data = 'Unknown';
-                return;
-            }
+            //if (typeof data === 'undefined' || data === null) {
+            //    data = 'Unknown';
+            //}
+
+            console.log(data);
 
             var color = 'darkred';
             if (data === 'Connected') color = 'darkgreen';
@@ -229,10 +229,11 @@
         Homey.on('com.ubnt.unifi.status', (data) => {
             updateStatusField(null, data);
         });
-        Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
-        Homey.on('com.ubnt.unifi.websocket.status', (data) => {
-            updateWebsocketStatusField(null, data);
-        });
+
+        // Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
+        // Homey.on('com.ubnt.unifi.websocket.status', (data) => {
+        //     updateWebsocketStatusField(null, data);
+        // });
     }
 
     function setPage(evt, tabPage)
@@ -274,16 +275,17 @@
             getSites();
         } else if (tabPage == 'eventLog')
         {
-            Homey.on('com.ubnt.unifi.debug', function(err, eventLogData)
-            {
-                if (err) return Homey.alert(err);
-                eventLogElement.value = eventLogData + "\r\n" + eventLogElement.value;
-            });
             Homey.get('com.ubnt.unifi.settings.debug', function(err, enable)
             {
                 if (err) return Homey.alert(err);
                 eventLogEnabledElement.checked = enable;
             });
+
+            Homey.on('com.ubnt.unifi.debug', function(eventLogData)
+            {
+                eventLogElement.value = eventLogData + "\r\n" + eventLogElement.value;
+            });
+
             // Make the simulator text box fill the page
             eventLogElement.setAttribute('cols', eventLogElement.parentElement.clientWidth / 8);
             eventLogElement.style.height = (window.innerHeight - eventLogElement.offsetTop - 40) + 'px';
