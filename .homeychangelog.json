@@ -52,5 +52,8 @@
   },
   "2.2.5": {
     "en": "Fixed some application errors when properties are not defined."
+  },
+  "2.3.0": {
+    "en": "Refactor to SDKv3 and other Unifi lib."
   }
 }
