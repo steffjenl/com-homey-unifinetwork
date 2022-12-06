@@ -55,5 +55,8 @@
   },
   "2.3.0": {
     "en": "Refactor to SDKv3 and other Unifi lib."
+  },
+  "2.3.1": {
+    "en": "New condition card"
   }
 }
