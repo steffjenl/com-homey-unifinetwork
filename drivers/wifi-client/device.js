@@ -98,11 +98,13 @@ class WiFiDevice extends Device {
         };
         let state = {};
         this.homey.app._wifiClientConnected.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientConnectedApp.trigger(this, tokens, state).catch(this.homey.app.debug);
 
       } else {
         let tokens = {};
         let state = {};
         this.homey.app._wifiClientDisconnected.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientDisconnectedApp.trigger(this, tokens, state).catch(this.homey.app.debug);
       }
     }
   }

@@ -21,6 +21,22 @@ class ApiClient extends BaseClass {
         return this.unifi;
     }
 
+    async getAccessPoints() {
+        return new Promise((resolve, reject) => {
+            this.unifi.getClientDevices()
+                .then(response => {
+                    response = response.filter( obj => obj.adopted === true);
+                    response = response.filter( obj => obj.type === 'uap');
+                    if (response) {
+                        return resolve(response);
+                    } else {
+                        return reject(new Error('Error obtaining AccessPoint devices.'));
+                    }
+                })
+                .catch(error => reject(error));
+        });
+    }
+
     async getWiFiDevices() {
         return new Promise((resolve, reject) => {
             this.unifi.getClientDevices()

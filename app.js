@@ -15,6 +15,7 @@ class UnifiNetwork extends Homey.App {
         this.api = new ApiClient();
         this.api.setHomeyObject(this.homey);
         this.loggedIn = false;
+        this.accessPointList = {};
 
         await this._initFlowTriggers();
         await this._initActionCards();
@@ -41,22 +42,37 @@ class UnifiNetwork extends Homey.App {
     }
 
     async _initActionCards() {
-        /*
+        // this.updateAccessPointList();
+        //
+        // const _actionWifiClientConnected = this.homey.flow.getActionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        // _actionWifiClientConnected.registerRunListener(async (args, state) => {
+        //     return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
+        // });
+        //
+        // const _actionWifiClientConnectedWithAp = this.homey.flow.getActionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP);
+        // _actionWifiClientConnectedWithAp.registerRunListener(async (args, state) => {
+        //     return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
+        // });
+        //
+        // _actionWifiClientConnectedWithAp.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
+        //     let devices = [];
+        //     for (var id in this.accessPointList) {
+        //         let name = this.getAccessPointName(id);
+        //         if (query && name.indexOf(query) === -1) continue;
+        //
+        //         devices.push({
+        //             'name': name,
+        //             'icon': '/app/com.ubnt.unifi/assets/accesspoint.svg',
+        //             'id': id
+        //         });
+        //     }
+        //     devices.sort((a, b) => {
+        //         return a.name > b.name;
+        //     })
+        //     return Promise.resolve(devices);
+        // });
 
-const _actionTakeSnapshot = this.homey.flow.getActionCard(UfvConstants.ACTION_TAKE_SNAPSHOT);
-_actionTakeSnapshot.registerRunListener(async (args, state) => {
-    if (typeof args.device.getData === 'function' && typeof args.device.getData().id !== 'undefined') {
-        // Get device from camera id
-        const device = args.device.driver.getUnifiDeviceById(args.device.getData().id);
-        if (device) {
-            device._createSnapshotImage(true);
-        }
-    }
-    return Promise.resolve(true);
-});
 
-
- */
         this.debug('UnifiNetwork init Action Cards');
     }
 
@@ -65,7 +81,7 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
         this._clientDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CLIENT_DISCONNECTED);
         this._cableClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_CONNECTED);
         this._cableClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_DISCONNECTED);
-        this._firstDeviceConnected= this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
+        this._firstDeviceConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
@@ -76,16 +92,54 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+        //this._wifiClientConnectedApp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        //this._wifiClientDisconnectedApp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
+        this._wifiClientConnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        this._wifiClientDisconnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+
+        this._wifiClientConnectedAppCondition.registerRunListener(async (args, state) => {
+            return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
+        });
+
+        this._wifiClientDisconnectedAppCondition.registerRunListener(async (args, state) => {
+            return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
+        });
+
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
     async _initTimers() {
         const checkDevicesOffline = function () {
             this.checkDevicesOffline();
+            this.updateAccessPointList();
         }.bind(this);
         this.homey.setTimeout(checkDevicesOffline, 15000);
 
         this.debug('UnifiNetwork init Timers');
+    }
+
+    updateAccessPointList() {
+        this.api.getAccessPoints()
+            .then(response => {
+                response.forEach(accessPoint => {
+                    if (!accessPoint.adopted || accessPoint.type !== 'uap') return;
+                    if (this.accessPointList.hasOwnProperty(accessPoint.mac)) return;
+                    this.accessPointList[accessPoint.mac] = {
+                        name: accessPoint.name,
+                        mac: accessPoint.mac,
+                        num_clients: null,
+                    };
+                })
+            })
+            .catch(err => {
+                this.debug('Error while fetching ap list');
+                this.debug(err);
+            });
+    }
+
+    getAccessPointName(accessPointId) {
+        if (typeof this.accessPointList[accessPointId] === 'undefined') return null;
+        return this.accessPointList[accessPointId].name;
     }
 
     isSameDevice(device, deviceList) {
@@ -99,7 +153,7 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
         return false;
     }
 
-    checkDevicesOffline () {
+    checkDevicesOffline() {
         this.api.unifi.getAllUsers().then(allUsers => {
             this.api.unifi.getClientDevices().then(clientDevices => {
                 allUsers.forEach(device => {
@@ -263,8 +317,8 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             let deviceName = this.homey.app.api.getDeviceName(payload);
 
             let tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user ,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName ,
+                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
+                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
                 essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
             };
             this.homey.app._clientConnected.trigger(tokens);
@@ -273,8 +327,8 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             let deviceName = this.homey.app.api.getDeviceName(payload);
 
             let tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user ,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName ,
+                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
+                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
                 essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
             };
             this.homey.app._clientDisconnected.trigger(tokens);
@@ -292,7 +346,7 @@ _actionTakeSnapshot.registerRunListener(async (args, state) => {
             if (Homey.env.DEBUG === 'true' || debug) {
                 const args = Array.prototype.slice.call(arguments);
                 args.unshift('[debug]');
-                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' ') );
+                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
                 this.homey.log(args.join(' '));
             }
         } catch (exeption) {
