@@ -9,20 +9,20 @@ class WifiClient extends Driver {
      * onInit is called when the driver is initialized.
      */
     async onInit() {
-        this._wifiClientConnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
-        this._wifiClientDisconnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
+        this._wifiClientConnected = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        this._wifiClientRoamedToAp = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP);
 
-        this._wifiClientConnectedAppCondition.registerRunListener(async ({ device }) => {
+        this._wifiClientConnected.registerRunListener(async ({ device }) => {
             if (device.hasCapability('alarm_connected')) {
                 const alarmConnected = device.getCapabilityValue('alarm_connected');
                 return Promise.resolve(alarmConnected);
             }
         });
 
-        this._wifiClientDisconnectedAppCondition.registerRunListener(async ({ device }) => {
-            if (device.hasCapability('alarm_connected')) {
-                const alarmConnected = device.getCapabilityValue('alarm_connected');
-                return Promise.resolve(alarmConnected);
+        this._wifiClientRoamedToAp.registerRunListener(async (args, state) => {
+            if (args.device.hasCapability('ap_mac')) {
+                const apMac = args.device.getCapabilityValue('ap_mac');
+                return Promise.resolve(args.accessPoint === apMac);
             }
         });
         this.log('WiFi-Client has been initialized');

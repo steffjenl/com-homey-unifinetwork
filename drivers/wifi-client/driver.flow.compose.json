@@ -3,9 +3,9 @@
     {
       "id": "wifi_client_connected",
       "title": {
-        "en": "Connected",
-        "nl": "Verbonden",
-        "es": "Conectado"
+        "en": "!{{Connected|Disconnected}}",
+        "nl": "!{{Verbonden|Verbinding verbroken}}",
+        "es": "!{{Connected|Disconnected}}"
       },
       "tokens": [
         {
@@ -53,12 +53,23 @@
       ]
     },
     {
-      "id": "wifi_client_disconnected",
+      "id": "wifi_client_connected_with_ap",
       "title": {
-        "en": "Disconnected",
-        "nl": "Verbinding verbroken",
-        "es": "Desconectado"
-      }
+        "en": "!{{C|Disc}}onnected with accesspoint",
+        "nl": "!{{V|Niet v}}erbonden met accesspoint"
+      },
+      "args": [
+        {
+          "name": "accessPoint",
+          "type": "text",
+          "placeholder": {
+            "en": "Accesspoint mac",
+            "nl": "Accesspoint mac",
+            "es": "Punto de acceso Mac"
+          }
+        }
+      ]
     }
+
   ]
 }
