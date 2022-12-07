@@ -88,7 +88,7 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('alarm_connected', isConnected);
     }
 
-    if (deviceState.alarm_connected !== isConnected) {
+    //if (deviceState.alarm_connected !== isConnected) {
       if (isConnected) {
         let tokens = {
           rssi: deviceState.measure_rssi,
@@ -106,7 +106,7 @@ class WiFiDevice extends Device {
         this.homey.app._wifiClientDisconnected.trigger(this, tokens, state).catch(this.homey.app.debug);
         this.homey.app._wifiClientDisconnectedApp.trigger(this, tokens, state).catch(this.homey.app.debug);
       }
-    }
+    //}
   }
 
   onSignalChange(data) {
