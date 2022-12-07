@@ -10,7 +10,7 @@
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",
