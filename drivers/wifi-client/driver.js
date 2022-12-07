@@ -1,7 +1,7 @@
 'use strict';
 
 const {Driver} = require('homey');
-const Unifi = require("node-unifi");
+const UnifiConstants = require("../../library/constants");
 
 class WifiClient extends Driver {
 
@@ -9,6 +9,22 @@ class WifiClient extends Driver {
      * onInit is called when the driver is initialized.
      */
     async onInit() {
+        this._wifiClientConnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
+        this._wifiClientDisconnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
+
+        this._wifiClientConnectedAppCondition.registerRunListener(async ({ device }) => {
+            if (device.hasCapability('alarm_connected')) {
+                const alarmConnected = device.getCapabilityValue('alarm_connected');
+                return Promise.resolve(alarmConnected);
+            }
+        });
+
+        this._wifiClientDisconnectedAppCondition.registerRunListener(async ({ device }) => {
+            if (device.hasCapability('alarm_connected')) {
+                const alarmConnected = device.getCapabilityValue('alarm_connected');
+                return Promise.resolve(alarmConnected);
+            }
+        });
         this.log('WiFi-Client has been initialized');
     }
 

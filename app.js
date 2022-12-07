@@ -92,19 +92,6 @@ class UnifiNetwork extends Homey.App {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
-        //this._wifiClientConnectedApp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
-        //this._wifiClientDisconnectedApp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
-        this._wifiClientConnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
-        this._wifiClientDisconnectedAppCondition = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
-
-        this._wifiClientConnectedAppCondition.registerRunListener(async (args, state) => {
-            return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
-        });
-
-        this._wifiClientDisconnectedAppCondition.registerRunListener(async (args, state) => {
-            return Promise.resolve(args.device.getCapabilityValue('alarm_connected'));
-        });
-
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
