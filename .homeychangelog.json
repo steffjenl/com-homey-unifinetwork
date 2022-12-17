@@ -37,5 +37,14 @@
   },
   "2.1.2": {
     "en": "UDM Hotfix"
+  },
+  "2.2.0": {
+    "en": "Revert to older version"
+  },
+  "2.3.0": {
+    "en": "xxxx"
+  },
+  "2.3.5": {
+    "en": "Revert to 2.1.2"
   }
 }

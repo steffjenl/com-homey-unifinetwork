@@ -1,6 +1,7 @@
 {
   "id": "com.ubnt.unifi",
   "sdk": 2,
+  "brandColor": "#159EDA",
   "name": {
     "en": "Ubiquiti UniFi Network"
   },
@@ -9,7 +10,7 @@
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.1.2",
+  "version": "2.3.5",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Stèphan Eizinga",
