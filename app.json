@@ -73,7 +73,7 @@
       },
       "getable": true,
       "setable": false,
-      "min": 0,
+      "min": -100,
       "max": 100,
       "step": 1,
       "icon": "./assets/signal.svg"
@@ -93,7 +93,7 @@
       "getable": true,
       "setable": false,
       "min": -100,
-      "max": 0,
+      "max": 100,
       "step": 1,
       "icon": "./assets/rssi.svg"
     }

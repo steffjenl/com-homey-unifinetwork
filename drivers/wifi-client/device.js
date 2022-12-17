@@ -28,41 +28,45 @@ class UnifiWifiClientDevice extends Homey.Device {
     }
 
     _updateProperty(key, value) {
-        let oldValue = this.getCapabilityValue(key);
-        if (oldValue != value) {
-            this.log(`[${this.name}] Updating capability ${key} from ${oldValue} to ${value}`);
-            this.setCapabilityValue(key, value);
+        try {
+            let oldValue = this.getCapabilityValue(key);
+            if (oldValue != value) {
+                this.log(`[${this.name}] Updating capability ${key} from ${oldValue} to ${value}`);
+                this.setCapabilityValue(key, value);
 
-            let tokens = {
-                rssi: this.state['rssi'],
-                signal: this.state['signal'],
-                radio_proto: this.state['radio_proto'],
-                essid: this.state['essid']
-            };
-            if (key == 'alarm_connected') {
-                let deviceTrigger = 'wifi_client_connected';
-                let conditionTrigger = 'a_client_connected';
-                if (value === false) {
-                    deviceTrigger = 'wifi_client_disconnected';
-                    conditionTrigger = 'a_client_disconnected';
-                    tokens = {}
-                }
-
-                // Trigger wifi_client_(dis-)connected
-                this.getDriver().triggerFlow(deviceTrigger, tokens, this);
-
-                // Trigger a_client_(dis-)connected
-                tokens = {
-                    mac: this.getData().id,
-                    name: this.getName(),
+                let tokens = {
+                    rssi: this.state['rssi'],
+                    signal: this.state['signal'],
+                    radio_proto: this.state['radio_proto'],
                     essid: this.state['essid']
+                };
+                if (key == 'alarm_connected') {
+                    let deviceTrigger = 'wifi_client_connected';
+                    let conditionTrigger = 'a_client_connected';
+                    if (value === false) {
+                        deviceTrigger = 'wifi_client_disconnected';
+                        conditionTrigger = 'a_client_disconnected';
+                        tokens = {}
+                    }
+
+                    // Trigger wifi_client_(dis-)connected
+                    this.getDriver().triggerFlow(deviceTrigger, tokens, this);
+
+                    // Trigger a_client_(dis-)connected
+                    tokens = {
+                        mac: this.getData().id,
+                        name: this.getName(),
+                        essid: this.state['essid']
+                    }
+                    this.getDriver().triggerFlow(conditionTrigger, tokens, this);
                 }
-                this.getDriver().triggerFlow(conditionTrigger, tokens, this);
+                if (key == 'measure_signal') {
+                    // Let flow trigger be handled, and add tokens.
+                    this.getDriver().triggerFlow('wifi_client_signal_changed', tokens, this);
+                }
             }
-            if (key == 'measure_signal') {
-                // Let flow trigger be handled, and add tokens.
-                this.getDriver().triggerFlow('wifi_client_signal_changed', tokens, this);
-            }
+        } catch(e) {
+            this.log(`[${this.name}] Error updating capability ${key} from ${oldValue} to ${value}`);
         }
     }
 

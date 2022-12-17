@@ -2,6 +2,7 @@
 
 const Homey = require('homey')
 const Settings = Homey.ManagerSettings;
+const Log = require('homey-log').Log;
 
 const _settingsKey = 'com.ubnt.unifi.settings'
 

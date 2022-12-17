@@ -4,9 +4,9 @@
   "description": "presence detection based on (wifi) clients connected to the UniFi Controller",
   "main": "app.js",
   "dependencies": {
+    "homey-log": "^1.0.6",
     "ubnt-unifi": "github:steffjenl/ubnt-unifi#master"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
