@@ -24,8 +24,6 @@
 
     <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status"
                                                               style="font-weight: bold;">Unknown</span></p>
-<!--    <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status"
-                                                                                         style="font-weight: bold;">Unknown</span>-->
     </p>
     <!-- NVR -->
     <fieldset>
@@ -72,6 +70,23 @@
         </div>
     </fieldset>
 
+    <!-- pull methode -->
+    <fieldset>
+        <legend data-i18n="settings.pullmethodeheader"></legend>
+        <!-- Site -->
+        <div class="field row">
+            <label for="txt_pullmethode" data-i18n="settings.pullmethode"></label>
+            <select id="txt_pullmethode">
+                <option value="1" selected>Interval & Websocket</option>
+                <option value="2">Interval</option>
+            </select>
+        </div>
+        <div class="field row">
+            <label for="txt_interval" data-i18n="settings.interval"></label>
+            <input id="txt_interval" type="text" value="15"/>
+        </div>
+    </fieldset>
+
     <!-- Apply button -->
     <div class="field row">
         <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
@@ -115,6 +130,8 @@
     const txtUsername = document.getElementById('txt_username');
     const txtPassword = document.getElementById('txt_password');
     const txtSite = document.getElementById('txt_site');
+    const txtPullMethode = document.getElementById('txt_pullmethode');
+    const txtInterval = document.getElementById('txt_interval');
     const btnApply = document.getElementById('btn_apply');
 
     // Event log tab
@@ -134,6 +151,9 @@
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
                     txtSite.value = settings.site;
+                    txtInterval.value = (settings.interval ? settings.interval : '15');
+                    const $select = document.querySelector('#txt_pullmethode');
+                    $select.value = (settings.pullmethode ? settings.pullmethode : '1');
                 } else {
                     console.warn('[SETTINGS] Could not read UniFi settings object.');
                 }
@@ -146,7 +166,9 @@
                 'port': txtNvrPort.value,
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
-                'site': 'default',
+                'site': txtSite.value,
+                'interval': txtInterval.value,
+                'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].text,
             };
 
             Homey.set('com.ubnt.unifi.settings', settings, (error, result) => {

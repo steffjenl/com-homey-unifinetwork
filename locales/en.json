@@ -35,7 +35,10 @@
             "event_log": "Event log"
         },
         "intro2": "",
-        "log_enabled": "Event log enabled"
+        "log_enabled": "Event log enabled",
+        "pullmethodeheader": "Pull Methode & Interval",
+        "pullmethode": "Pull Methode",
+        "interval": "Interval"
     },
     "events": {
         "camera": {
