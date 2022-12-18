@@ -82,7 +82,7 @@ class WiFiDevice extends Device {
   }
 
   onIsConnected(isConnected) {
-    let deviceState = this.getState();
+    const deviceState = this.getState();
 
     if (this.hasCapability('alarm_connected')) {
       this.setCapabilityValue('alarm_connected', isConnected);
@@ -90,40 +90,33 @@ class WiFiDevice extends Device {
 
     if (deviceState.alarm_connected !== isConnected) {
       if (isConnected) {
-        let tokens = {
+        const tokens = {
           rssi: deviceState.measure_rssi,
           signal: deviceState.measure_signal,
           radio_proto: deviceState.radio_proto,
           essid: deviceState.wifi_name
         };
-        let state = {};
-        this.homey.app._wifiClientConnected.trigger(this, tokens, state).catch(this.homey.app.debug)
-
+        this.homey.app._wifiClientConnected.trigger(this, tokens, {}).catch(this.homey.app.debug);
       } else {
-        let tokens = {};
-        let state = {};
-        this.homey.app._wifiClientDisconnected.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientDisconnected.trigger(this, {}, {}).catch(this.homey.app.debug);
       }
     }
   }
 
   onSignalChange(data) {
     if (this.hasCapability('measure_signal')) {
-      const oldSignal = this.getCapabilityValue('measure_signal');
       this.setCapabilityValue('measure_signal', data.signal);
-      if (data.signal !== oldSignal) {
+      if (data.signal !== this.getCapabilityValue('measure_signal')) {
 
-        let tokens = {
+        const tokens = {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
           essid: data.essid
         };
 
-        let state = {};
-
         // trigger flow
-        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, {}).catch(this.homey.app.debug);
       }
     }
   }
@@ -136,11 +129,10 @@ class WiFiDevice extends Device {
 
   onAPChange(data) {
     if (this.hasCapability('ap_mac')) {
-      const oldApMac = this.getCapabilityValue('ap_mac');
       this.setCapabilityValue('ap_mac', data.ap_mac);
-      if (data.ap_mac !== oldApMac) {
+      if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {
 
-        let tokens = {
+        const tokens = {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
@@ -149,11 +141,9 @@ class WiFiDevice extends Device {
           roam_count: 0
         };
 
-        let state = {};
-
         // trigger floaded ap
-        this.homey.app._wifiClientRoamed.trigger(this, tokens, state).catch(this.homey.app.debug);
-        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, state).catch(this.homey.app.debug);
+        this.homey.app._wifiClientRoamed.trigger(this, tokens, {}).catch(this.homey.app.debug);
+        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, {}).catch(this.homey.app.debug);
       }
     }
   }
@@ -201,6 +191,32 @@ class WiFiDevice extends Device {
       }
 
     }).catch(error => this.homey.app.debug(error));
+  }
+
+  onUpdateMessagePayload(playloadMessage) {
+      if (typeof playloadMessage.essid !== 'undefined') {
+        this.onWifiChanged(playloadMessage);
+      }
+
+      if (typeof playloadMessage.signal !== 'undefined') {
+        this.onSignalChange(playloadMessage);
+      }
+
+      if (typeof playloadMessage.rssi !== 'undefined') {
+        this.onRSSIChange(playloadMessage);
+      }
+
+      if (typeof playloadMessage.ap_mac !== 'undefined') {
+        this.onAPChange(playloadMessage);
+      }
+
+      if (typeof playloadMessage.ip !== 'undefined') {
+        this.onIPChange(playloadMessage);
+      }
+
+      if (typeof playloadMessage.radio_proto !== 'undefined') {
+        this.onRadioProtoChange(playloadMessage);
+      }
   }
 }
 

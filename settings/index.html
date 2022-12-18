@@ -13,7 +13,8 @@
     <button class="tablinks" onclick="setPage(event, 'settings')" id="defaultOpen"><span
             data-i18n="settings.tab.settings"></span></button>
     <button class="tablinks" onclick="setPage(event, 'sites')"><span data-i18n="settings.tab.sites"></span></button>
-    <button class="tablinks" onclick="setPage(event, 'eventLog')"><span data-i18n="settings.tab.event_log"></span></button>
+    <button class="tablinks" onclick="setPage(event, 'eventLog')"><span data-i18n="settings.tab.event_log"></span>
+    </button>
 </div>
 
 <!-- SETTINGS PAGE -->
@@ -88,9 +89,11 @@
     </fieldset>
 
     <!-- Apply button -->
-    <div class="field row">
-        <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
-    </div>
+    <fieldset>
+        <div class="field row">
+            <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
+        </div>
+    </fieldset>
 </div>
 
 <!-- SITES PAGE -->
@@ -146,11 +149,14 @@
                 if (error) return Homey.alert(error);
 
                 if (settings) {
+
+                    console.log(settings.pullmethode);
+
                     txtNvrIp.value = settings.host;
-                    txtNvrPort.value = settings.port;
+                    txtNvrPort.value = (settings.port ? settings.port : 443);
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
-                    txtSite.value = settings.site;
+                    txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
                     const $select = document.querySelector('#txt_pullmethode');
                     $select.value = (settings.pullmethode ? settings.pullmethode : '1');
@@ -168,7 +174,7 @@
                 'pass': txtPassword.value,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
-                'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].text,
+                'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].value,
             };
 
             Homey.set('com.ubnt.unifi.settings', settings, (error, result) => {
@@ -184,10 +190,8 @@
 
         readSettings();
 
-        eventLogEnabledElement.addEventListener('click', function(e)
-        {
-            Homey.set('com.ubnt.unifi.settings.debug', eventLogEnabledElement.checked, function(err)
-            {
+        eventLogEnabledElement.addEventListener('click', function (e) {
+            Homey.set('com.ubnt.unifi.settings.debug', eventLogEnabledElement.checked, function (err) {
                 if (err) return Homey.alert(err);
             });
         });
@@ -246,33 +250,24 @@
         }
 
 
-
         Homey.get('com.ubnt.unifi.status', updateStatusField);
         Homey.on('com.ubnt.unifi.status', (data) => {
             updateStatusField(null, data);
         });
-
-        // Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
-        // Homey.on('com.ubnt.unifi.websocket.status', (data) => {
-        //     updateWebsocketStatusField(null, data);
-        // });
     }
 
-    function setPage(evt, tabPage)
-    {
+    function setPage(evt, tabPage) {
         var i, tabcontent, tablinks;
 
         // Get all elements with class="tabcontent" and hide them
         tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++)
-        {
+        for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
         // Get all elements with class="tablinks" and remove the class "active"
         tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++)
-        {
+        for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
@@ -280,8 +275,7 @@
         document.getElementById(tabPage).style.display = "block";
         evt.currentTarget.className += " active";
 
-        if (tabPage == 'sites')
-        {
+        if (tabPage == 'sites') {
             const getSites = () => {
                 Homey.api("GET", "/sites", null, function (err, sites) {
                     if (err) return Homey.alert(err);
@@ -295,16 +289,13 @@
             }
 
             getSites();
-        } else if (tabPage == 'eventLog')
-        {
-            Homey.get('com.ubnt.unifi.settings.debug', function(err, enable)
-            {
+        } else if (tabPage == 'eventLog') {
+            Homey.get('com.ubnt.unifi.settings.debug', function (err, enable) {
                 if (err) return Homey.alert(err);
                 eventLogEnabledElement.checked = enable;
             });
 
-            Homey.on('com.ubnt.unifi.debug', function(eventLogData)
-            {
+            Homey.on('com.ubnt.unifi.debug', function (eventLogData) {
                 eventLogElement.value = eventLogData + "\r\n" + eventLogElement.value;
             });
 

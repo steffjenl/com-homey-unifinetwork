@@ -35,7 +35,7 @@ class WifiClient extends Driver {
      */
     async onPairListDevices() {
         return Object.values(await this.homey.app.api.getWiFiDevices()).map(device => {
-            let deviceName = this.homey.app.api.getDeviceName(device);
+            const deviceName = this.homey.app.api.getDeviceName(device);
 
             return {
                 data: {id: String(device.mac)},
