@@ -16,7 +16,11 @@
           "alarm_connected",
           "measure_signal",
           "measure_rssi",
-          "wifi_name"
+          "wifi_name",
+          "ap",
+          "ap_mac",
+          "radio_proto",
+          "ipAddress"
         ],
         "options": {
           "icons": {
@@ -50,7 +54,12 @@
   "capabilities": [
     "alarm_connected",
     "measure_rssi",
-    "measure_signal"
+    "measure_signal",
+    "wifi_name",
+    "ap",
+    "ap_mac",
+    "radio_proto",
+    "ipAddress"
   ],
   "pair": [
     {

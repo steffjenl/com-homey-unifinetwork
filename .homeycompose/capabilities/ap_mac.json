@@ -1,9 +1,9 @@
 {
   "type": "string",
   "title": {
-    "en": "Accesspoint",
-    "nl": "Accesspoint",
-    "es": "Accesspoint"
+    "en": "Accesspoint MAC",
+    "nl": "Accesspoint MAC",
+    "es": "Accesspoint MAC"
   },
   "getable": true,
   "setable": false,

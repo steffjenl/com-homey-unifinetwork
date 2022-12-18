@@ -28,6 +28,20 @@
       }
     },
     {
+      "name": "accessPointMac",
+      "type": "string",
+      "title": {
+        "en": "AP MAC",
+        "nl": "AP MAC",
+        "es": "AP MAC"
+      },
+      "example": {
+        "en": "00:00:5e:00:53:af",
+        "nl": "00:00:5e:00:53:af",
+        "es": "00:00:5e:00:53:af"
+      }
+    },
+    {
       "name": "radio_proto",
       "type": "string",
       "title": {

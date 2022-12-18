@@ -9,7 +9,7 @@ class CalbleClient extends Driver {
      * onInit is called when the driver is initialized.
      */
     async onInit() {
-        this.log('WiFi-Client has been initialized');
+        this.log('Cable-Client has been initialized');
     }
 
     /**

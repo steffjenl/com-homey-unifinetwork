@@ -490,6 +490,20 @@
             }
           },
           {
+            "name": "accessPointMac",
+            "type": "string",
+            "title": {
+              "en": "AP MAC",
+              "nl": "AP MAC",
+              "es": "AP MAC"
+            },
+            "example": {
+              "en": "00:00:5e:00:53:af",
+              "nl": "00:00:5e:00:53:af",
+              "es": "00:00:5e:00:53:af"
+            }
+          },
+          {
             "name": "radio_proto",
             "type": "string",
             "title": {
@@ -529,6 +543,20 @@
               "en": "ap123",
               "nl": "ap123",
               "es": "ap123"
+            }
+          },
+          {
+            "name": "accessPointMac",
+            "type": "string",
+            "title": {
+              "en": "AP MAC",
+              "nl": "AP MAC",
+              "es": "AP MAC"
+            },
+            "example": {
+              "en": "00:00:5e:00:53:af",
+              "nl": "00:00:5e:00:53:af",
+              "es": "00:00:5e:00:53:af"
             }
           },
           {
@@ -783,7 +811,11 @@
               "alarm_connected",
               "measure_signal",
               "measure_rssi",
-              "wifi_name"
+              "wifi_name",
+              "ap",
+              "ap_mac",
+              "radio_proto",
+              "ipAddress"
             ],
             "options": {
               "icons": {
@@ -817,7 +849,12 @@
       "capabilities": [
         "alarm_connected",
         "measure_rssi",
-        "measure_signal"
+        "measure_signal",
+        "wifi_name",
+        "ap",
+        "ap_mac",
+        "radio_proto",
+        "ipAddress"
       ],
       "pair": [
         {
@@ -846,12 +883,23 @@
       "setable": false,
       "icon": "./assets/connected.svg"
     },
-    "ap_mac": {
+    "ap": {
       "type": "string",
       "title": {
         "en": "Accesspoint",
         "nl": "Accesspoint",
         "es": "Accesspoint"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/accesspoint.svg"
+    },
+    "ap_mac": {
+      "type": "string",
+      "title": {
+        "en": "Accesspoint MAC",
+        "nl": "Accesspoint MAC",
+        "es": "Accesspoint MAC"
       },
       "getable": true,
       "setable": false,

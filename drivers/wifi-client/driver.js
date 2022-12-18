@@ -53,14 +53,14 @@ class WifiClient extends Driver {
     onDisconnectedMessage(device) {
         this.homey.app.debug('onDisconnectedMessage');
         if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(false);
+            device.onIsConnected(false, null);
         }
     }
 
-    onConnectedMessage(device) {
-        this.homey.app.debug('onConnectedMessage');
+    onConnectedMessage(device, wifiName) {
+        this.homey.app.debug('onConnectedMessage: ' + wifiName);
         if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(true);
+            device.onIsConnected(true, wifiName);
         }
     }
 

@@ -64,6 +64,11 @@ class WiFiDevice extends Device {
       this.homey.app.debug(`created capability ap_mac for ${this.getName()}`);
     }
 
+    if (!this.hasCapability('ap')) {
+      this.addCapability('ap');
+      this.homey.app.debug(`created capability ap for ${this.getName()}`);
+    }
+
     if (!this.hasCapability('ipAddress')) {
       this.addCapability('ipAddress');
       this.homey.app.debug(`created capability ipAddress for ${this.getName()}`);
@@ -81,7 +86,7 @@ class WiFiDevice extends Device {
     }
   }
 
-  onIsConnected(isConnected) {
+  onIsConnected(isConnected, wifiName) {
     const deviceState = this.getState();
 
     if (this.hasCapability('alarm_connected')) {
@@ -94,11 +99,11 @@ class WiFiDevice extends Device {
           rssi: deviceState.measure_rssi,
           signal: deviceState.measure_signal,
           radio_proto: deviceState.radio_proto,
-          essid: deviceState.wifi_name
+          essid: wifiName
         };
-        this.homey.app._wifiClientConnected.trigger(this, tokens, {}).catch(this.homey.app.debug);
+        this.homey.app._wifiClientConnected.trigger(this, tokens, {}).catch(this.homey.log);
       } else {
-        this.homey.app._wifiClientDisconnected.trigger(this, {}, {}).catch(this.homey.app.debug);
+        this.homey.app._wifiClientDisconnected.trigger(this, {}, {}).catch(this.homey.log);
       }
     }
   }
@@ -116,7 +121,7 @@ class WiFiDevice extends Device {
         };
 
         // trigger flow
-        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, {}).catch(this.homey.app.debug);
+        this.homey.app._wifiClientSignalChanged.trigger(this, tokens, {}).catch(this.homey.log);
       }
     }
   }
@@ -130,20 +135,25 @@ class WiFiDevice extends Device {
   onAPChange(data) {
     if (this.hasCapability('ap_mac')) {
       this.setCapabilityValue('ap_mac', data.ap_mac);
-      if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {
+      const accessPointName = this.homey.app.getAccessPointName(data.ap_mac);
+      if (this.hasCapability('ap')) {
+        this.setCapabilityValue('ap', accessPointName);
+      }
 
+      if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {
         const tokens = {
           rssi: data.rssi,
           signal: data.signal,
           radio_proto: data.radio_proto,
           essid: data.essid,
-          accessPoint: data.ap_mac,
+          accessPoint: (accessPointName ? this.updateAccessPointList : '-'),
+          accessPointMac: data.ap_mac,
           roam_count: 0
         };
 
         // trigger floaded ap
-        this.homey.app._wifiClientRoamed.trigger(this, tokens, {}).catch(this.homey.app.debug);
-        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, {}).catch(this.homey.app.debug);
+        this.homey.app._wifiClientRoamed.trigger(this, tokens, {}).catch(this.homey.log);
+        this.homey.app._wifiClientRoamedToAp.trigger(this, tokens, {}).catch(this.homey.log);
       }
     }
   }

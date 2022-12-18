@@ -23,7 +23,7 @@ class ApiClient extends BaseClass {
 
     async getAccessPoints() {
         return new Promise((resolve, reject) => {
-            this.unifi.getClientDevices()
+            this.unifi.getAccessDevices()
                 .then(response => {
                     response = response.filter( obj => obj.adopted === true);
                     response = response.filter( obj => obj.type === 'uap');
