@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Accesspoint",
+    "nl": "Accesspoint",
+    "es": "Accesspoint"
+  },
+  "getable": true,
+  "setable": false,
+  "icon": "./assets/accesspoint.svg"
+}
