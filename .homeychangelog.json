@@ -67,5 +67,14 @@
   },
   "2.3.4": {
     "en": "New condition on wifi-client"
+  },
+  "2.3.5": {
+    "en": "SDKv3 upgrade"
+  },
+  "2.3.6": {
+    "en": "SDKv3"
+  },
+  "2.3.7": {
+    "en": "SDKv3 upgrade, full rebuild of app"
   }
 }
