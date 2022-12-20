@@ -54,7 +54,11 @@ class UnifiNetwork extends Homey.App {
      * onUninit is called when the app is shutdown.
      */
     async onUninit() {
-
+        this.loggedIn = false;
+        await this.homey.api.unifi.logout();
+        this.homey.api.unifi._close();
+        delete this.homey.api;
+        delete this.homey.accessPointList;
     }
 
     async _initActionCards() {
@@ -210,7 +214,7 @@ class UnifiNetwork extends Homey.App {
                     if (isListening) {
                         this.debug('We are listening!');
                         // Listen for disconnected and connected events
-                        this.api.unifi.on('events.*', function (payload) {
+                        this.api.unifi.on('events.evt_wu_disconnected,events.evt_wu_connected', function (payload) {
                             if (Array.isArray(payload)) {
                                 if (this.event === 'events.evt_wu_disconnected') {
                                     this.onIsConnected(false, payload[0]);
@@ -220,7 +224,6 @@ class UnifiNetwork extends Homey.App {
 
 
                                 if (payload[0].subsystem === 'wlan') {
-                                    this.debug('events.* - wlan : ' + JSON.stringify(payload));
                                     // get wifi-client driver
                                     const driver = this.homey.drivers.getDriver('wifi-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
@@ -232,7 +235,6 @@ class UnifiNetwork extends Homey.App {
                                         }
                                     }
                                 } else if (payload[0].subsystem === 'lan') {
-                                    this.debug('events.* - lan');
                                     // get cable-client driver
                                     const driver = this.homey.drivers.getDriver('cable-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
@@ -293,7 +295,7 @@ class UnifiNetwork extends Homey.App {
                 this.homey.log(args.join(' '));
             }
         } catch (exeption) {
-            // when debug fails, we want an console.log
+            // when debug fails, we want a console.log
             console.log(exeption);
         }
     }
