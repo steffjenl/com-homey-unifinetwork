@@ -85,23 +85,25 @@ class CableDevice extends Device {
     }
   }
 
-  onIPChange(ipAddress) {
+  onIPChange(data) {
     if (this.hasCapability('ipAddress')) {
-      this.setCapabilityValue('ipAddress', ipAddress);
+      this.setCapabilityValue('ipAddress', data.ip);
     }
   }
 
   onUpdateMessage() {
     this.homey.app.debug('onUpdateMessage');
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
-
-      // this.homey.app.debug('cable-client: ' + JSON.stringify(device));
-
       if (typeof device[0].ip !== 'undefined') {
-        this.onIPChange(device[0].ip);
+        this.onIPChange(device[0]);
       }
-
     }).catch(error => this.homey.app.debug(error));
+  }
+
+  onUpdateMessagePayload(playloadMessage) {
+    if (typeof playloadMessage.ip !== 'undefined') {
+      this.onIPChange(playloadMessage);
+    }
   }
 }
 

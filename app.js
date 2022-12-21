@@ -209,9 +209,7 @@ class UnifiNetwork extends Homey.App {
 
                 if (settings.pullmethode === '1') {
                     // LISTEN for WebSocket events
-                    const isListening = await this.api.unifi.listen();
-
-                    if (isListening) {
+                    this.api.unifi.listen().then(() => {
                         this.debug('We are listening!');
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.evt_wu_disconnected,events.evt_wu_connected', function (payload) {
@@ -248,7 +246,7 @@ class UnifiNetwork extends Homey.App {
                                 }
                             }
                         }.bind(this));
-                    }
+                    }).catch(this.log);
                 }
             }
 
