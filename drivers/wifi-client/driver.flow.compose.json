@@ -58,6 +58,10 @@
         "en": "!{{C|Disc}}onnected with accesspoint",
         "nl": "!{{V|Niet v}}erbonden met accesspoint"
       },
+      "titleFormatted": {
+        "en": "!{{C|Disc}}onnected with [[accessPoint]]",
+        "nl": "!{{V|Niet v}}erbonden met [[accessPoint]]"
+      },
       "args": [
         {
           "name": "accessPoint",
@@ -70,6 +74,5 @@
         }
       ]
     }
-
   ]
 }

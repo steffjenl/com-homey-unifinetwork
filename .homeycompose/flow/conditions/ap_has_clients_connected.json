@@ -5,6 +5,11 @@
     "nl": "AP heeft !{{|geen}} apparaten",
     "es": "AP has !{{|no}} clients"
   },
+  "titleFormatted": {
+    "en": "[[accessPoint]] has !{{|no}} clients",
+    "nl": "[[accessPoint]] heeft !{{|geen}} apparaten",
+    "es": "[[accessPoint]] has !{{|no}} clients"
+  },
   "args": [
     {
       "name": "accessPoint",
