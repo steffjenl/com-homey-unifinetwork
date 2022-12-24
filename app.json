@@ -756,13 +756,25 @@
           {
             "id": "sensor",
             "capabilities": [
-              "alarm_connected"
+              "onoff",
+              "connected"
             ],
+            "capabilitiesOptions": {
+              "onoff": {
+                "title": {
+                  "en": "Connection state",
+                  "nl": "Verbindingsstatus",
+                  "es": "Estado de Verbindings"
+                }
+              },
+              "getable": true,
+              "setable": false
+            },
             "options": {
               "icons": {
-                "alarm_connected": "assets/connected.svg"
+                "connected": "assets/connected.svg"
               },
-              "alarm_connected": {
+              "connected": {
                 "noblink": false,
                 "invert": true,
                 "label": {
@@ -786,8 +798,20 @@
       },
       "class": "sensor",
       "capabilities": [
-        "alarm_connected"
+        "onoff",
+        "connected"
       ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Connection state",
+            "nl": "Verbindingsstatus",
+            "es": "Estado de Verbindings"
+          },
+          "getable": true,
+          "setable": false
+        }
+      },
       "pair": [
         {
           "id": "list_clients",
@@ -817,7 +841,8 @@
           {
             "id": "sensor",
             "capabilities": [
-              "alarm_connected",
+              "connected",
+              "onoff",
               "measure_signal",
               "measure_rssi",
               "wifi_name",
@@ -826,13 +851,24 @@
               "radio_proto",
               "ipAddress"
             ],
+            "capabilitiesOptions": {
+              "onoff": {
+                "title": {
+                  "en": "Connection state",
+                  "nl": "Verbindingsstatus",
+                  "es": "Estado de Verbindings"
+                },
+                "getable": true,
+                "setable": false
+              }
+            },
             "options": {
               "icons": {
-                "alarm_connected": "assets/connected.svg",
+                "connected": "assets/connected.svg",
                 "measure_signal": "assets/signal.svg",
                 "measure_rssi": "assets/rssi.svg"
               },
-              "alarm_connected": {
+              "connected": {
                 "noblink": false,
                 "invert": true,
                 "label": {
@@ -856,7 +892,8 @@
       },
       "class": "sensor",
       "capabilities": [
-        "alarm_connected",
+        "connected",
+        "onoff",
         "measure_rssi",
         "measure_signal",
         "wifi_name",
@@ -865,6 +902,17 @@
         "radio_proto",
         "ipAddress"
       ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Connection state",
+            "nl": "Verbindingsstatus",
+            "es": "Estado de Verbindings"
+          },
+          "getable": true,
+          "setable": false
+        }
+      },
       "pair": [
         {
           "id": "list_clients",
@@ -881,17 +929,6 @@
     }
   ],
   "capabilities": {
-    "alarm_connected": {
-      "type": "boolean",
-      "title": {
-        "en": "Connection state",
-        "nl": "Verbindingsstatus",
-        "es": "Estado de Verbindings"
-      },
-      "getable": true,
-      "setable": false,
-      "icon": "./assets/connected.svg"
-    },
     "ap": {
       "type": "string",
       "title": {
@@ -913,6 +950,17 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/accesspoint.svg"
+    },
+    "connected": {
+      "type": "boolean",
+      "title": {
+        "en": "Connection state",
+        "nl": "Verbindingsstatus",
+        "es": "Estado de Verbindings"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/connected.svg"
     },
     "ipAddress": {
       "type": "string",

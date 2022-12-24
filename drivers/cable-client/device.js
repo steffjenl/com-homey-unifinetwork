@@ -10,6 +10,9 @@ class CableDevice extends Device {
   async onInit() {
     await this._createMissingCapabilities();
     await this.onUpdateMessage();
+    this.registerCapabilityListener("onoff", async (value, options) => {
+      this.setCapabilityValue('onoff', (value === false))
+    });
     this.log('CableDevice has been initialized');
   }
 
@@ -68,19 +71,39 @@ class CableDevice extends Device {
       this.addCapability('ipAddress');
       this.homey.app.debug(`created capability ipAddress for ${this.getName()}`);
     }
+
+    if (!this.hasCapability('onoff')) {
+      this.addCapability('onoff');
+      this.homey.app.debug(`created capability onoff for ${this.getName()}`);
+    }
+
+    if (!this.hasCapability('connected')) {
+      this.addCapability('connected');
+      this.homey.app.debug(`created capability connected for ${this.getName()}`);
+    }
+
+    if (this.hasCapability('alarm_connected')) {
+      this.removeCapability('alarm_connected');
+      this.homey.app.debug(`deleted capability alarm_connected for ${this.getName()}`);
+    }
   }
 
   onIsConnected(isConnected) {
     let deviceState = this.getState();
-    if (this.hasCapability('alarm_connected')) {
-      this.setCapabilityValue('alarm_connected', isConnected);
+
+    if (this.hasCapability('connected')) {
+      this.setCapabilityValue('connected', isConnected);
     }
 
-    if (deviceState.alarm_connected !== isConnected) {
+    if (this.hasCapability('onoff')) {
+      this.setCapabilityValue('onoff', isConnected);
+    }
+
+    if (deviceState.connected !== isConnected) {
       if (isConnected) {
-        this.homey.app._cableClientConnected.trigger().catch(this.homey.app.debug);
+        this.homey.app._cableClientConnected.trigger(this, {}, {}).catch(this.homey.app.debug);
       } else {
-        this.homey.app._cableClientDisconnected.trigger().catch(this.homey.app.debug);
+        this.homey.app._cableClientDisconnected.trigger(this, {}, {}).catch(this.homey.app.debug);
       }
     }
   }

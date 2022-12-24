@@ -10,6 +10,9 @@ class WiFiDevice extends Device {
   async onInit() {
     await this._createMissingCapabilities();
     await this.onUpdateMessage();
+    this.registerCapabilityListener("onoff", async (value, options) => {
+      this.setCapabilityValue('onoff', (value === false))
+    });
     this.log('WiFiDevice has been initialized');
   }
 
@@ -78,6 +81,21 @@ class WiFiDevice extends Device {
       this.addCapability('radio_proto');
       this.homey.app.debug(`created capability radio_proto for ${this.getName()}`);
     }
+
+    if (!this.hasCapability('onoff')) {
+      this.addCapability('onoff');
+      this.homey.app.debug(`created capability onoff for ${this.getName()}`);
+    }
+
+    if (!this.hasCapability('connected')) {
+      this.addCapability('connected');
+      this.homey.app.debug(`created capability connected for ${this.getName()}`);
+    }
+
+    if (this.hasCapability('alarm_connected')) {
+      this.removeCapability('alarm_connected');
+      this.homey.app.debug(`deleted capability alarm_connected for ${this.getName()}`);
+    }
   }
 
   onWifiChanged(data) {
@@ -89,11 +107,15 @@ class WiFiDevice extends Device {
   onIsConnected(isConnected, wifiName) {
     const deviceState = this.getState();
 
-    if (this.hasCapability('alarm_connected')) {
-      this.setCapabilityValue('alarm_connected', isConnected);
+    if (this.hasCapability('connected')) {
+      this.setCapabilityValue('connected', isConnected);
     }
 
-    if (deviceState.alarm_connected !== isConnected) {
+    if (this.hasCapability('onoff')) {
+      this.setCapabilityValue('onoff', isConnected);
+    }
+
+    if (deviceState.connected !== isConnected) {
       if (isConnected) {
         const tokens = {
           rssi: deviceState.measure_rssi,
@@ -146,7 +168,7 @@ class WiFiDevice extends Device {
           signal: data.signal,
           radio_proto: data.radio_proto,
           essid: data.essid,
-          accessPoint: (accessPointName ? this.updateAccessPointList : '-'),
+          accessPoint: (accessPointName ? accessPointName : '-'),
           accessPointMac: data.ap_mac,
           roam_count: 0
         };
