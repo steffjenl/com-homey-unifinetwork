@@ -3,7 +3,7 @@
 const {Driver} = require('homey');
 const Unifi = require("node-unifi");
 
-class CalbleClient extends Driver {
+class CableClient extends Driver {
 
     /**
      * onInit is called when the driver is initialized.
@@ -60,4 +60,4 @@ class CalbleClient extends Driver {
     }
 }
 
-module.exports = CalbleClient;
+module.exports = CableClient;
