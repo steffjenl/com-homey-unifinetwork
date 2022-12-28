@@ -15,49 +15,5 @@
       "name": "Device",
       "filter": "driver_id=wifi-client"
     }
-  ],
-  "tokens": [
-    {
-      "name": "rssi",
-      "type": "number",
-      "title": {
-        "en": "dBm",
-        "nl": "dBm",
-        "es": "dBm"
-      },
-      "example": -75
-    },
-    {
-      "name": "signal",
-      "type": "number",
-      "title": {
-        "en": "%",
-        "nl": "%",
-        "es": "%"
-      },
-      "example": 75
-    },
-    {
-      "name": "radio_proto",
-      "type": "string",
-      "title": {
-        "en": "Proto",
-        "nl": "Proto",
-        "es": "Proto"
-      },
-      "example": "ac"
-    },
-    {
-      "name": "essid",
-      "type": "string",
-      "title": {
-        "en": "SSID",
-        "nl": "SSID",
-        "es": "SSID"
-      },
-      "example": {
-        "en": "MyWifiSSID"
-      }
-    }
   ]
 }
