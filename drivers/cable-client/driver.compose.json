@@ -55,7 +55,6 @@
   },
   "class": "sensor",
   "capabilities": [
-    "onoff",
     "connected"
   ],
   "capabilitiesOptions": {

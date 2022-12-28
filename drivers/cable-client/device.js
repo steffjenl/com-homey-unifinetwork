@@ -9,10 +9,7 @@ class CableDevice extends Device {
    */
   async onInit() {
     await this._createMissingCapabilities();
-    await this.onUpdateMessage();
-    this.registerCapabilityListener("onoff", async (value, options) => {
-      this.setCapabilityValue('onoff', (value === false))
-    });
+    await this.getDeviceStatus();
     this.log('CableDevice has been initialized');
   }
 
@@ -95,10 +92,6 @@ class CableDevice extends Device {
       this.setCapabilityValue('connected', isConnected);
     }
 
-    if (this.hasCapability('onoff')) {
-      this.setCapabilityValue('onoff', isConnected);
-    }
-
     if (deviceState.connected !== isConnected) {
       if (isConnected) {
         this.homey.app._cableClientConnected.trigger(this, {}, {}).catch(this.homey.app.debug);
@@ -114,8 +107,7 @@ class CableDevice extends Device {
     }
   }
 
-  onUpdateMessage() {
-    this.homey.app.debug('onUpdateMessage');
+  getDeviceStatus() {
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
       if (typeof device[0].ip !== 'undefined') {
         this.onIPChange(device[0]);

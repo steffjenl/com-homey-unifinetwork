@@ -9,10 +9,7 @@ class WiFiDevice extends Device {
    */
   async onInit() {
     await this._createMissingCapabilities();
-    await this.onUpdateMessage();
-    this.registerCapabilityListener("onoff", async (value, options) => {
-      this.setCapabilityValue('onoff', (value === false))
-    });
+    await this.getDeviceStatus();
     this.log('WiFiDevice has been initialized');
   }
 
@@ -96,6 +93,11 @@ class WiFiDevice extends Device {
       this.removeCapability('alarm_connected');
       this.homey.app.debug(`deleted capability alarm_connected for ${this.getName()}`);
     }
+
+    if (this.hasCapability('onoff')) {
+      this.removeCapability('onoff');
+      this.homey.app.debug(`deleted capability onoff for ${this.getName()}`);
+    }
   }
 
   onWifiChanged(data) {
@@ -109,10 +111,6 @@ class WiFiDevice extends Device {
 
     if (this.hasCapability('connected')) {
       this.setCapabilityValue('connected', isConnected);
-    }
-
-    if (this.hasCapability('onoff')) {
-      this.setCapabilityValue('onoff', isConnected);
     }
 
     if (deviceState.connected !== isConnected) {
@@ -192,11 +190,8 @@ class WiFiDevice extends Device {
     }
   }
 
-  onUpdateMessage() {
-    this.homey.app.debug('onUpdateMessage');
+  getDeviceStatus() {
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
-
-      // this.homey.app.debug('wifi-client: ' + JSON.stringify(device));
 
       if (typeof device[0].essid !== 'undefined') {
         this.onWifiChanged(device[0]);

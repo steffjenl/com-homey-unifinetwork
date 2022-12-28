@@ -798,7 +798,6 @@
       },
       "class": "sensor",
       "capabilities": [
-        "onoff",
         "connected"
       ],
       "capabilitiesOptions": {
@@ -842,7 +841,6 @@
             "id": "sensor",
             "capabilities": [
               "connected",
-              "onoff",
               "measure_signal",
               "measure_rssi",
               "wifi_name",
@@ -893,7 +891,6 @@
       "class": "sensor",
       "capabilities": [
         "connected",
-        "onoff",
         "measure_rssi",
         "measure_signal",
         "wifi_name",
@@ -960,7 +957,9 @@
       },
       "getable": true,
       "setable": false,
-      "icon": "./assets/connected.svg"
+      "icon": "./assets/connected.svg",
+      "uiComponent": "toggle",
+      "uiQuickAction": true
     },
     "ipAddress": {
       "type": "string",

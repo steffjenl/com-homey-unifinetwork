@@ -43,37 +43,6 @@ class WifiClient extends Driver {
             };
         });
     }
-
-    onParseWebsocketMessage(device, payload) {
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onUpdateMessage();
-        }
-    }
-
-    onDisconnectedMessage(device) {
-        this.homey.app.debug('onDisconnectedMessage');
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(false, null);
-        }
-    }
-
-    onConnectedMessage(device, wifiName) {
-        this.homey.app.debug('onConnectedMessage: ' + wifiName);
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(true, wifiName);
-        }
-    }
-
-    getUnifiDeviceById(deviceId) {
-        try {
-            const device = this.getDevice({
-                id: deviceId,
-            });
-            return device;
-        } catch (error) {
-            return false;
-        }
-    }
 }
 
 module.exports = WifiClient;

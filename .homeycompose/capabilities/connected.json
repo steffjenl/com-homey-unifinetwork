@@ -7,5 +7,7 @@
   },
   "getable": true,
   "setable": false,
-  "icon": "./assets/connected.svg"
+  "icon": "./assets/connected.svg",
+  "uiComponent": "toggle",
+  "uiQuickAction": true
 }

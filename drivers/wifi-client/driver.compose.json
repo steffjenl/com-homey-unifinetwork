@@ -14,7 +14,6 @@
         "id": "sensor",
         "capabilities": [
           "connected",
-          "onoff",
           "measure_signal",
           "measure_rssi",
           "wifi_name",
@@ -65,7 +64,6 @@
   "class": "sensor",
   "capabilities": [
     "connected",
-    "onoff",
     "measure_rssi",
     "measure_signal",
     "wifi_name",

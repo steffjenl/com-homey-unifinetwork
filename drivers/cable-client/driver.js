@@ -1,7 +1,6 @@
 'use strict';
 
 const {Driver} = require('homey');
-const Unifi = require("node-unifi");
 
 class CableClient extends Driver {
 
@@ -26,37 +25,6 @@ class CableClient extends Driver {
                 name: deviceName,
             };
         });
-    }
-
-    onParseWebsocketMessage(device, payload) {
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onUpdateMessage();
-        }
-    }
-
-    onDisconnectedMessage(device) {
-        this.homey.app.debug('onDisconnectedMessage');
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(false);
-        }
-    }
-
-    onConnectedMessage(device) {
-        this.homey.app.debug('onConnectedMessage');
-        if (Object.prototype.hasOwnProperty.call(device, '_events')) {
-            device.onIsConnected(true);
-        }
-    }
-
-    getUnifiDeviceById(deviceId) {
-        try {
-            const device = this.getDevice({
-                id: deviceId,
-            });
-            return device;
-        } catch (error) {
-            return false;
-        }
     }
 }
 
