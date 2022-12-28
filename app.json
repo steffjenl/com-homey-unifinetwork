@@ -659,6 +659,17 @@
           "nl": "!{{Verbonden|Verbinding verbroken}}",
           "es": "!{{Connected|Disconnected}}"
         },
+        "titleFormatted": {
+          "en": "!{{Connected|Disconnected}}",
+          "nl": "!{{Verbonden|Verbinding verbroken}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ],
         "tokens": [
           {
             "name": "rssi",
@@ -702,13 +713,6 @@
               "en": "MyWifiSSID"
             }
           }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=wifi-client"
-          }
         ]
       },
       {
@@ -724,7 +728,7 @@
         "args": [
           {
             "type": "device",
-            "name": "device",
+            "name": "Device",
             "filter": "driver_id=wifi-client"
           },
           {

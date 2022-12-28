@@ -69,11 +69,6 @@ class CableDevice extends Device {
       this.homey.app.debug(`created capability ipAddress for ${this.getName()}`);
     }
 
-    if (!this.hasCapability('onoff')) {
-      this.addCapability('onoff');
-      this.homey.app.debug(`created capability onoff for ${this.getName()}`);
-    }
-
     if (!this.hasCapability('connected')) {
       this.addCapability('connected');
       this.homey.app.debug(`created capability connected for ${this.getName()}`);
@@ -82,6 +77,11 @@ class CableDevice extends Device {
     if (this.hasCapability('alarm_connected')) {
       this.removeCapability('alarm_connected');
       this.homey.app.debug(`deleted capability alarm_connected for ${this.getName()}`);
+    }
+
+    if (this.hasCapability('onoff')) {
+      this.removeCapability('onoff');
+      this.homey.app.debug(`deleted capability onoff for ${this.getName()}`);
     }
   }
 

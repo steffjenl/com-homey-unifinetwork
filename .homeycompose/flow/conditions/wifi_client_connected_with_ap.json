@@ -1,0 +1,27 @@
+{
+  "id": "wifi_client_connected_with_ap",
+  "title": {
+    "en": "!{{C|Disc}}onnected with accesspoint",
+    "nl": "!{{V|Niet v}}erbonden met accesspoint"
+  },
+  "titleFormatted": {
+    "en": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "nl": "!{{V|Niet v}}erbonden met [[accessPoint]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    },
+    {
+      "name": "accessPoint",
+      "type": "text",
+      "placeholder": {
+        "en": "Accesspoint mac",
+        "nl": "Accesspoint mac",
+        "es": "Punto de acceso Mac"
+      }
+    }
+  ]
+}

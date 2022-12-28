@@ -79,11 +79,6 @@ class WiFiDevice extends Device {
       this.homey.app.debug(`created capability radio_proto for ${this.getName()}`);
     }
 
-    if (!this.hasCapability('onoff')) {
-      this.addCapability('onoff');
-      this.homey.app.debug(`created capability onoff for ${this.getName()}`);
-    }
-
     if (!this.hasCapability('connected')) {
       this.addCapability('connected');
       this.homey.app.debug(`created capability connected for ${this.getName()}`);
