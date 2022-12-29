@@ -28,13 +28,6 @@ class UnifiNetwork extends Homey.App {
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Initialized');
 
-        // Enable remote debugging, if applicable
-        if (Homey.env.DEBUG === 'true') {
-            // eslint-disable-next-line global-require
-            require('inspector')
-                .open(9210, '0.0.0.0');
-        }
-
         // Subscribe to credentials updates
         this.homey.settings.on('set', key => {
             if (key === UnifiConstants.SETTINGS_KEY) {
@@ -86,7 +79,7 @@ class UnifiNetwork extends Homey.App {
 
     async _initTimers() {
         // update device status every x
-        this.homey.setInterval(this.checkDevicesState.bind(this), ("interval" in this.settings ? (this.settings.interval * 1000) : 15000));
+        this.homey.setInterval(this.checkDevicesState.bind(this), (this.settings && "interval" in this.settings ? (this.settings.interval * 1000) : 15000));
         // update every 12 hours all accessPoints
         this.homey.setInterval(this.updateAccessPointList.bind(this), 43200000);
         //
