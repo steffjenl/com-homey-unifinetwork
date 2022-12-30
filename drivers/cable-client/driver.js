@@ -26,6 +26,17 @@ class CableClient extends Driver {
             };
         });
     }
+
+    getUnifiDeviceById(deviceId) {
+        try {
+            const device = this.getDevice({
+                id: deviceId,
+            });
+            return device;
+        } catch (error) {
+            return false;
+        }
+    }
 }
 
 module.exports = CableClient;

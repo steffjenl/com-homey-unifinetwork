@@ -201,20 +201,23 @@ class UnifiNetwork extends Homey.App {
                 // get all accesspoints from controller
                 this.updateAccessPointList();
 
-                if (settings.pullmethode === '1') {
+                if ("pullmethode" in settings && settings.pullmethode === '1') {
                     // LISTEN for WebSocket events
                     this.api.unifi.listen().then(() => {
                         this.debug('We are listening!');
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.*', function (payload) {
                             this.homey.log('event.* = ' + payload[0].key);
+                            if (payload[0].key === 'EVT_WU_Roam') {
+                                this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
+                            }
                             if (Array.isArray(payload)) {
                                 // start application flow cards
-                                if (payload[0].key === 'EVT_WU_Disconnected') {
-                                    this.onIsConnected(false, payload[0]);
-                                } else if (payload[0].key === 'EVT_WU_Connected') {
-                                    this.onIsConnected(true, payload[0]);
-                                }
+                                // if (payload[0].key === 'EVT_WU_Disconnected') {
+                                //     this.onIsConnected(false, payload[0]);
+                                // } else if (payload[0].key === 'EVT_WU_Connected') {
+                                //     this.onIsConnected(true, payload[0]);
+                                // }
 
                                 // start device flow cards
                                 if (payload[0].subsystem === 'wlan') {
@@ -242,7 +245,7 @@ class UnifiNetwork extends Homey.App {
                                 }
                             }
                         }.bind(this));
-                    }).catch(this.log);
+                    }).catch(this.homey.log);
                 }
             }
 
