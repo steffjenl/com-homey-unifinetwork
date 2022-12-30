@@ -206,12 +206,13 @@ class UnifiNetwork extends Homey.App {
                     this.api.unifi.listen().then(() => {
                         this.debug('We are listening!');
                         // Listen for disconnected and connected events
-                        this.api.unifi.on('events.evt_wu_disconnected,events.evt_wu_connected', function (payload) {
+                        this.api.unifi.on('events.*', function (payload) {
+                            this.homey.log('event.* = ' + payload[0].key);
                             if (Array.isArray(payload)) {
                                 // start application flow cards
-                                if (this.event === 'events.evt_wu_disconnected') {
+                                if (payload[0].key === 'EVT_WU_Disconnected') {
                                     this.onIsConnected(false, payload[0]);
-                                } else if (this.event === 'events.evt_wu_connected') {
+                                } else if (payload[0].key === 'EVT_WU_Connected') {
                                     this.onIsConnected(true, payload[0]);
                                 }
 
@@ -221,23 +222,23 @@ class UnifiNetwork extends Homey.App {
                                     const driver = this.homey.drivers.getDriver('wifi-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
-                                        if (this.event === 'events.evt_wu_disconnected') {
-                                            device.onIsConnected(device, null);
-                                        } else if (this.event === 'events.evt_wu_connected') {
-                                            device.onIsConnected(device, payload[0].ssid);
+                                        if (payload[0].key === 'EVT_WU_Disconnected') {
+                                            device.onIsConnected(false, null);
+                                        } else if (payload[0].key === 'EVT_WU_Connected') {
+                                            device.onIsConnected(true, payload[0].ssid);
                                         }
                                     }
-                                // } else if (payload[0].subsystem === 'lan') {
-                                //     // get cable-client driver
-                                //     const driver = this.homey.drivers.getDriver('cable-client');
-                                //     const device = driver.getUnifiDeviceById(payload[0].user);
-                                //     if (device) {
-                                //         if (this.event === 'events.evt_wu_disconnected') {
-                                //             driver.onDisconnectedMessage(device);
-                                //         } else if (this.event === 'events.evt_wu_connected') {
-                                //             driver.onConnectedMessage(device);
-                                //         }
-                                //     }
+                                } else if (payload[0].subsystem === 'lan') {
+                                    // get cable-client driver
+                                    const driver = this.homey.drivers.getDriver('cable-client');
+                                    const device = driver.getUnifiDeviceById(payload[0].user);
+                                    if (device) {
+                                        if (this.event === 'events.evt_wu_disconnected') {
+                                            device.onIsConnected(false);
+                                        } else if (this.event === 'events.evt_wu_connected') {
+                                            device.onIsConnected(true);
+                                        }
+                                    }
                                 }
                             }
                         }.bind(this));
@@ -253,7 +254,6 @@ class UnifiNetwork extends Homey.App {
     }
 
     onIsConnected(isConnected, payload) {
-        this.homey.app.debug('onIsConnected: ' + JSON.stringify(payload));
         const deviceName = this.homey.app.api.getDeviceName(payload);
         if (isConnected) {
             const tokens = {
