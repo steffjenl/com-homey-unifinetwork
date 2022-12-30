@@ -233,9 +233,9 @@ class UnifiNetwork extends Homey.App {
                                     const driver = this.homey.drivers.getDriver('cable-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
-                                        if (this.event === 'events.evt_wu_disconnected') {
+                                        if (payload[0].key === 'EVT_WU_Disconnected') {
                                             device.onIsConnected(false);
-                                        } else if (this.event === 'events.evt_wu_connected') {
+                                        } else if (payload[0].key === 'EVT_WU_Connected') {
                                             device.onIsConnected(true);
                                         }
                                     }
