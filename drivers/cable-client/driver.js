@@ -27,6 +27,12 @@ class CableClient extends Driver {
         });
     }
 
+    /**
+     * getUnifiDeviceById is called to get the Device class from an mac address.
+     *
+     * @param deviceId
+     * @returns {Device|boolean}
+     */
     getUnifiDeviceById(deviceId) {
         try {
             const device = this.getDevice({

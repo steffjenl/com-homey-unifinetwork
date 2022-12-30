@@ -150,7 +150,7 @@ class UnifiNetwork extends Homey.App {
                             device.onIsConnected(false, null);
                         }
                     });
-                }).catch(this.log);
+                }).catch(this.homey.log);
             }
 
             // get all Cable devices and there information
@@ -166,7 +166,7 @@ class UnifiNetwork extends Homey.App {
                         }
                     });
                     clientDevices = null;
-                }).catch(this.log);
+                }).catch(this.homey.log);
             }
         }
     }
@@ -250,8 +250,8 @@ class UnifiNetwork extends Homey.App {
             }
 
         } catch (error) {
-            this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, error);
-            this.log('error = ' + error);
+            this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
+            this.homey.log('error = ' + JSON.stringify(error));
             this.setLoggedIn(false);
         }
     }
@@ -292,7 +292,7 @@ class UnifiNetwork extends Homey.App {
             }
         } catch (exeption) {
             // when debug fails, we want a console.log
-            console.log(exeption);
+            this.homey.log(exeption);
         }
     }
 }
