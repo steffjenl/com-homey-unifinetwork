@@ -108,6 +108,10 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('connected', isConnected);
     }
 
+    if (!wifiName) {
+      wifiName = deviceState.wifi_name;
+    }
+
     if (deviceState.connected !== isConnected) {
       if (isConnected) {
         const tokens = {

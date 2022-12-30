@@ -200,6 +200,49 @@ class UnifiNetwork extends Homey.App {
 
                 // get all accesspoints from controller
                 this.updateAccessPointList();
+
+                if (settings.pullmethode === '1') {
+                    // LISTEN for WebSocket events
+                    this.api.unifi.listen().then(() => {
+                        this.debug('We are listening!');
+                        // Listen for disconnected and connected events
+                        this.api.unifi.on('events.evt_wu_disconnected,events.evt_wu_connected', function (payload) {
+                            if (Array.isArray(payload)) {
+                                // start application flow cards
+                                if (this.event === 'events.evt_wu_disconnected') {
+                                    this.onIsConnected(false, payload[0]);
+                                } else if (this.event === 'events.evt_wu_connected') {
+                                    this.onIsConnected(true, payload[0]);
+                                }
+
+                                // start device flow cards
+                                if (payload[0].subsystem === 'wlan') {
+                                    // get wifi-client driver
+                                    const driver = this.homey.drivers.getDriver('wifi-client');
+                                    const device = driver.getUnifiDeviceById(payload[0].user);
+                                    if (device) {
+                                        if (this.event === 'events.evt_wu_disconnected') {
+                                            device.onIsConnected(device, null);
+                                        } else if (this.event === 'events.evt_wu_connected') {
+                                            device.onIsConnected(device, payload[0].ssid);
+                                        }
+                                    }
+                                // } else if (payload[0].subsystem === 'lan') {
+                                //     // get cable-client driver
+                                //     const driver = this.homey.drivers.getDriver('cable-client');
+                                //     const device = driver.getUnifiDeviceById(payload[0].user);
+                                //     if (device) {
+                                //         if (this.event === 'events.evt_wu_disconnected') {
+                                //             driver.onDisconnectedMessage(device);
+                                //         } else if (this.event === 'events.evt_wu_connected') {
+                                //             driver.onConnectedMessage(device);
+                                //         }
+                                //     }
+                                }
+                            }
+                        }.bind(this));
+                    }).catch(this.log);
+                }
             }
 
         } catch (error) {
