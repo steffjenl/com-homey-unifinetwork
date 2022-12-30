@@ -11,14 +11,6 @@ This app adds support for presence detection based on (wifi) clients connected t
 - Wifi client is (dis-)connected
 - Wifi client is (dis-)connected from accesspoint
 
-## Generic triggers:
-- A client (dis-)connected
-- First device is connected
-- First device is connected to specific accesspoint
-- Last device has disconnected
-- Last device has disconnected from specific accesspoint
-- A non-paired device (guest) has (dis-)connected
-
 Please note: only paired devices are being considered as device in all flow contexts. Non-paired devices are only usable for the guest (dis-)connected trigger.
 
 
