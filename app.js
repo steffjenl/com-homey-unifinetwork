@@ -208,9 +208,14 @@ class UnifiNetwork extends Homey.App {
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.*', function (payload) {
                             this.homey.log('event.* = ' + payload[0].key);
-                            if (payload[0].key === 'EVT_WU_Roam') {
-                                this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
-                            }
+                            /**
+                                if (payload[0].key === 'EVT_WU_Roam') {
+                                    this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
+                                }
+
+                                [{"user":"5c:52:30:55:7d:67","ap_from":"d0:21:f9:89:df:f9","ap_to":"d0:21:f9:87:4e:9d","radio_from":"ng","radio_to":"ng","radio":"ng","channel_from":"6","channel_to":"1","channel":"1","ssid":"Paris","key":"EVT_WU_Roam","subsystem":"wlan","is_negative":false,"site_id":"59aaaefee4b0b7776f45c977","time":1672437522587,"datetime":"2022-12-30T21:58:42Z","msg":"User[5c:52:30:55:7d:67] roams from AP[d0:21:f9:89:df:f9] to AP[d0:21:f9:87:4e:9d] from \"channel 6(ng)\" to \"channel 1(ng)\" on \"Paris\"","_id":"63af5f320274390085432736"},{"rc":"ok","message":"events"}]
+
+                             */
                             if (Array.isArray(payload)) {
                                 // start application flow cards
                                 // if (payload[0].key === 'EVT_WU_Disconnected') {
