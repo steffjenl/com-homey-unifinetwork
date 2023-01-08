@@ -156,7 +156,7 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('ap_mac', data.ap_mac);
       const accessPointName = this.homey.app.getAccessPointName(data.ap_mac);
       if (this.hasCapability('ap')) {
-        this.setCapabilityValue('ap', accessPointName);
+        this.setCapabilityValue('ap', (accessPointName ? accessPointName : '-'));
       }
 
       if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {

@@ -21,9 +21,9 @@ class WifiClient extends Driver {
 
         this._wifiClientRoamedToAp.registerRunListener(async (args, state) => {
             //if (args.Device.hasCapability('ap_mac')) {
-                const apMac = args.Device.getCapabilityValue('ap_mac');
-                const apName = args.Device.getCapabilityValue('ap');
-                return Promise.resolve(args.accessPoint === apMac || args.accessPoint === apName);
+                const apMac = args.Device.getCapabilityValue('ap_mac').toLowerCase();
+                const apName = args.Device.getCapabilityValue('ap').toLowerCase();
+                return Promise.resolve(args.accessPoint.toLowerCase() === apMac || args.accessPoint.toLowerCase() === apName);
             //}
         });
         this.log('WiFi-Client has been initialized');

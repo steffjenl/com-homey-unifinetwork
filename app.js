@@ -88,6 +88,7 @@ class UnifiNetwork extends Homey.App {
 
     updateAccessPointList() {
         if (this.loggedIn) {
+            this.debug('Execute updateAccessPointList() for updating accessPoint namens.');
             this.accessPointList = [];
             this.api.getAccessPoints()
                 .then(response => {
@@ -204,10 +205,14 @@ class UnifiNetwork extends Homey.App {
                 if ("pullmethode" in settings && settings.pullmethode === '1') {
                     // LISTEN for WebSocket events
                     this.api.unifi.listen().then(() => {
-                        this.debug('We are listening!');
+                        let that = this;
+                        this.debug('WebSocket is connected');
+                        this.api.unifi.on('ctrl.*', function () {
+                            that.debug(`${this.event}`);
+                        });
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.*', function (payload) {
-                            this.homey.log('event.* = ' + payload[0].key);
+                            that.debug(`${this.event} = ${JSON.stringify(payload)}`);
                             /**
                                 if (payload[0].key === 'EVT_WU_Roam') {
                                     this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
@@ -218,6 +223,7 @@ class UnifiNetwork extends Homey.App {
                              */
                             if (Array.isArray(payload)) {
                                 // start application flow cards
+                                // disabled this functions because memory overload on Homey
                                 // if (payload[0].key === 'EVT_WU_Disconnected') {
                                 //     this.onIsConnected(false, payload[0]);
                                 // } else if (payload[0].key === 'EVT_WU_Connected') {
@@ -227,7 +233,7 @@ class UnifiNetwork extends Homey.App {
                                 // start device flow cards
                                 if (payload[0].subsystem === 'wlan') {
                                     // get wifi-client driver
-                                    const driver = this.homey.drivers.getDriver('wifi-client');
+                                    const driver = that.homey.drivers.getDriver('wifi-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         if (payload[0].key === 'EVT_WU_Disconnected') {
@@ -238,7 +244,7 @@ class UnifiNetwork extends Homey.App {
                                     }
                                 } else if (payload[0].subsystem === 'lan') {
                                     // get cable-client driver
-                                    const driver = this.homey.drivers.getDriver('cable-client');
+                                    const driver = that.homey.drivers.getDriver('cable-client');
                                     const device = driver.getUnifiDeviceById(payload[0].user);
                                     if (device) {
                                         if (payload[0].key === 'EVT_WU_Disconnected') {
@@ -249,14 +255,14 @@ class UnifiNetwork extends Homey.App {
                                     }
                                 }
                             }
-                        }.bind(this));
+                        });
                     }).catch(this.homey.log);
                 }
             }
 
         } catch (error) {
-            this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
-            this.homey.log('error = ' + JSON.stringify(error));
+            //this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
+            this.debug('catch error = ' + JSON.stringify(error));
             this.setLoggedIn(false);
         }
     }
@@ -295,9 +301,9 @@ class UnifiNetwork extends Homey.App {
                 this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
                 this.homey.log(args.join(' '));
             }
-        } catch (exeption) {
+        } catch (exception) {
             // when debug fails, we want a console.log
-            this.homey.log(exeption);
+            this.homey.error(exception);
         }
     }
 }
