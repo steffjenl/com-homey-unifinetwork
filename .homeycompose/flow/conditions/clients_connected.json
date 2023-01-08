@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "clients_connected",
   "title": {
     "en": "!{{C|Disc}}onnected Clients",

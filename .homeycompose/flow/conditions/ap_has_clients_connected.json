@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "ap_has_clients_connected",
   "title": {
     "en": "AP has !{{|no}} clients",

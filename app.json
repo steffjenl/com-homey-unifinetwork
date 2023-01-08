@@ -60,6 +60,7 @@
   "flow": {
     "triggers": [
       {
+        "deprecated": true,
         "id": "a_client_connected",
         "title": {
           "en": "Device just connected",
@@ -110,6 +111,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "a_client_disconnected",
         "title": {
           "en": "Wifi connection lost",
@@ -158,6 +160,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "a_guest_connected",
         "title": {
           "en": "Guest just connected",
@@ -217,10 +220,10 @@
               "en": "MyUserGroup"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "a_guest_disconnected",
         "title": {
           "en": "Guest connection lost",
@@ -278,8 +281,7 @@
               "en": "MyUserGroup"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
         "id": "cable_client_connected",
@@ -313,6 +315,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "first_device_connected",
         "title": {
           "en": "First device connected",
@@ -329,10 +332,10 @@
               "es": "Nombre punto de acceso"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "first_device_online",
         "title": {
           "en": "First device connected",
@@ -354,10 +357,10 @@
               "es": "wifi01"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "last_device_disconnected",
         "title": {
           "en": "Last device disconnected",
@@ -374,17 +377,16 @@
               "es": "Nombre de punto de acceso"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "last_device_offline",
         "title": {
           "en": "Last device disconnected",
           "nl": "Laatste verbinding verbroken",
           "es": "Último dispositivo desconectado"
-        },
-        "deprecated": true
+        }
       },
       {
         "id": "wifi_client_connected",
@@ -621,6 +623,7 @@
     ],
     "conditions": [
       {
+        "deprecated": true,
         "id": "ap_has_clients_connected",
         "title": {
           "en": "AP has !{{|no}} clients",
@@ -645,6 +648,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "clients_connected",
         "title": {
           "en": "!{{C|Disc}}onnected Clients",
@@ -691,8 +695,8 @@
             "name": "accessPoint",
             "type": "text",
             "placeholder": {
-              "en": "Accesspoint mac",
-              "nl": "Accesspoint mac",
+              "en": "Accesspoint mac or name",
+              "nl": "Accesspoint mac of naam",
               "es": "Punto de acceso Mac"
             }
           }

@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "a_guest_connected",
   "title": {
     "en": "Guest just connected",

@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "last_device_disconnected",
   "title": {
     "en": "Last device disconnected",
@@ -15,6 +16,5 @@
         "es": "Nombre de punto de acceso"
       }
     }
-  ],
-  "deprecated": true
+  ]
 }

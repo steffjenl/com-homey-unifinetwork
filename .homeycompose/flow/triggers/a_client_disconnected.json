@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "a_client_disconnected",
   "title": {
     "en": "Wifi connection lost",
