@@ -60,7 +60,6 @@
   "flow": {
     "triggers": [
       {
-        "deprecated": true,
         "id": "a_client_connected",
         "title": {
           "en": "Device just connected",
@@ -111,7 +110,6 @@
         ]
       },
       {
-        "deprecated": true,
         "id": "a_client_disconnected",
         "title": {
           "en": "Wifi connection lost",
@@ -160,7 +158,6 @@
         ]
       },
       {
-        "deprecated": true,
         "id": "a_guest_connected",
         "title": {
           "en": "Guest just connected",
@@ -220,10 +217,10 @@
               "en": "MyUserGroup"
             }
           }
-        ]
+        ],
+        "deprecated": true
       },
       {
-        "deprecated": true,
         "id": "a_guest_disconnected",
         "title": {
           "en": "Guest connection lost",
@@ -281,7 +278,8 @@
               "en": "MyUserGroup"
             }
           }
-        ]
+        ],
+        "deprecated": true
       },
       {
         "id": "cable_client_connected",
@@ -702,6 +700,38 @@
           }
         ]
       }
+    ],
+    "actions": [
+      {
+        "id": "wifi_block",
+        "title": {
+          "en": "Block client",
+          "nl": "Blokeer cliënt",
+          "es": "Bloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ]
+      },
+      {
+        "id": "wifi_unblock",
+        "title": {
+          "en": "Unblock client",
+          "nl": "Deblokeer cliënt",
+          "es": "Desbloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ]
+      }
     ]
   },
   "drivers": [
@@ -911,6 +941,18 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/accesspoint.svg"
+    },
+    "blocked": {
+      "type": "boolean",
+      "title": {
+        "en": "Blocked",
+        "nl": "Geblokkeerd",
+        "es": "Obstruido"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "uiQuickAction": true
     },
     "connected": {
       "type": "boolean",

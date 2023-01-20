@@ -40,7 +40,68 @@ class UnifiNetwork extends Homey.App {
         // install timers
         await this._initTimers();
 
+        this._ListingWebsocket();
+
         this.debug('UnifiNetwork has been initialized');
+    }
+
+    _ListingWebsocket() {
+        try {
+            // this.api.unifi.on('ctrl.*', function () {
+            //     that.debug(`${this.event}`);
+            // });
+            // Listen for disconnected and connected events
+            const that = this;
+            this.api.unifi.on('events.*', function (payload) {
+                that.debug(`${this.event} = ${JSON.stringify(payload)}`);
+                /**
+                 if (payload[0].key === 'EVT_WU_Roam') {
+                                    this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
+                                }
+
+                 [{"user":"5c:52:30:55:7d:67","ap_from":"d0:21:f9:89:df:f9","ap_to":"d0:21:f9:87:4e:9d","radio_from":"ng","radio_to":"ng","radio":"ng","channel_from":"6","channel_to":"1","channel":"1","ssid":"Paris","key":"EVT_WU_Roam","subsystem":"wlan","is_negative":false,"site_id":"59aaaefee4b0b7776f45c977","time":1672437522587,"datetime":"2022-12-30T21:58:42Z","msg":"User[5c:52:30:55:7d:67] roams from AP[d0:21:f9:89:df:f9] to AP[d0:21:f9:87:4e:9d] from \"channel 6(ng)\" to \"channel 1(ng)\" on \"Paris\"","_id":"63af5f320274390085432736"},{"rc":"ok","message":"events"}]
+
+                 */
+                if (Array.isArray(payload)) {
+                    // start application flow cards
+                    // created a setting because this function has memory overload on Homey
+                    if (this.settings && "applicationFlows" in this.settings && this.settings.applicationFlows === "1") {
+                        if (payload[0].key === 'EVT_WU_Disconnected') {
+                            that.onIsConnected(false, payload[0]);
+                        } else if (payload[0].key === 'EVT_WU_Connected') {
+                            that.onIsConnected(true, payload[0]);
+                        }
+                    }
+
+                    // start device flow cards
+                    if (payload[0].subsystem === 'wlan') {
+                        // get wifi-client driver
+                        const driver = that.homey.drivers.getDriver('wifi-client');
+                        const device = driver.getUnifiDeviceById(payload[0].user);
+                        if (device) {
+                            if (payload[0].key === 'EVT_WU_Disconnected') {
+                                device.onIsConnected(false, null);
+                            } else if (payload[0].key === 'EVT_WU_Connected') {
+                                device.onIsConnected(true, payload[0].ssid);
+                            }
+                        }
+                    } else if (payload[0].subsystem === 'lan') {
+                        // get cable-client driver
+                        const driver = that.homey.drivers.getDriver('cable-client');
+                        const device = driver.getUnifiDeviceById(payload[0].user);
+                        if (device) {
+                            if (payload[0].key === 'EVT_WU_Disconnected') {
+                                device.onIsConnected(false);
+                            } else if (payload[0].key === 'EVT_WU_Connected') {
+                                device.onIsConnected(true);
+                            }
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            this.debug('catch error = ' + JSON.stringify(error));
+        }
     }
 
     /**
@@ -74,6 +135,16 @@ class UnifiNetwork extends Homey.App {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+
+        const wifiBlock = this.homey.flow.getActionCard('wifi_block');
+        wifiBlock.registerRunListener(async (args, state) => {
+            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+        });
+
+        const wifiUnBlock = this.homey.flow.getActionCard('wifi_unblock');
+        wifiUnBlock.registerRunListener(async (args, state) => {
+            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+        });
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
@@ -144,7 +215,7 @@ class UnifiNetwork extends Homey.App {
                 this.api.unifi.getClientDevices().then(clientDevices => {
                     devicesWifi.forEach(device => {
                         const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
-                        this.homey.app.debug(`checkDevicesState = ${JSON.stringify(devicePayload)}`);
+                        // this.homey.app.debug(`checkDevicesState = ${JSON.stringify(devicePayload)}`);
                         if (this.isDeviceInArray(device.getData().id, clientDevices)) {
                             device.onIsConnected(true, devicePayload.essid);
                             device.onUpdateMessagePayload(devicePayload);
@@ -186,8 +257,8 @@ class UnifiNetwork extends Homey.App {
 
         if (this.loggedIn) {
             this.loggedIn = false;
-            await this.homey.api.unifi.logout();
-            this.homey.api.unifi._close();
+            await this.homey.app.api.unifi.logout();
+            this.homey.app.api.unifi._close();
         }
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
@@ -209,58 +280,8 @@ class UnifiNetwork extends Homey.App {
                     this.api.unifi.listen().then(() => {
                         let that = this;
                         this.debug('WebSocket is connected');
-                        // this.api.unifi.on('ctrl.*', function () {
-                        //     that.debug(`${this.event}`);
-                        // });
-                        // Listen for disconnected and connected events
-                        this.api.unifi.on('events.*', function (payload) {
-                            that.debug(`${this.event} = ${JSON.stringify(payload)}`);
-                            /**
-                                if (payload[0].key === 'EVT_WU_Roam') {
-                                    this.homey.log('event.EVT_WU_Roam = ' + JSON.stringify(payload));
-                                }
-
-                                [{"user":"5c:52:30:55:7d:67","ap_from":"d0:21:f9:89:df:f9","ap_to":"d0:21:f9:87:4e:9d","radio_from":"ng","radio_to":"ng","radio":"ng","channel_from":"6","channel_to":"1","channel":"1","ssid":"Paris","key":"EVT_WU_Roam","subsystem":"wlan","is_negative":false,"site_id":"59aaaefee4b0b7776f45c977","time":1672437522587,"datetime":"2022-12-30T21:58:42Z","msg":"User[5c:52:30:55:7d:67] roams from AP[d0:21:f9:89:df:f9] to AP[d0:21:f9:87:4e:9d] from \"channel 6(ng)\" to \"channel 1(ng)\" on \"Paris\"","_id":"63af5f320274390085432736"},{"rc":"ok","message":"events"}]
-
-                             */
-                            if (Array.isArray(payload)) {
-                                // start application flow cards
-                                // created a setting because this function has memory overload on Homey
-                                if (this.settings && "applicationFlows" in this.settings && this.settings.applicationFlows === "1") {
-                                    if (payload[0].key === 'EVT_WU_Disconnected') {
-                                        that.onIsConnected(false, payload[0]);
-                                    } else if (payload[0].key === 'EVT_WU_Connected') {
-                                        that.onIsConnected(true, payload[0]);
-                                    }
-                                }
-
-                                // start device flow cards
-                                if (payload[0].subsystem === 'wlan') {
-                                    // get wifi-client driver
-                                    const driver = that.homey.drivers.getDriver('wifi-client');
-                                    const device = driver.getUnifiDeviceById(payload[0].user);
-                                    if (device) {
-                                        if (payload[0].key === 'EVT_WU_Disconnected') {
-                                            device.onIsConnected(false, null);
-                                        } else if (payload[0].key === 'EVT_WU_Connected') {
-                                            device.onIsConnected(true, payload[0].ssid);
-                                        }
-                                    }
-                                } else if (payload[0].subsystem === 'lan') {
-                                    // get cable-client driver
-                                    const driver = that.homey.drivers.getDriver('cable-client');
-                                    const device = driver.getUnifiDeviceById(payload[0].user);
-                                    if (device) {
-                                        if (payload[0].key === 'EVT_WU_Disconnected') {
-                                            device.onIsConnected(false);
-                                        } else if (payload[0].key === 'EVT_WU_Connected') {
-                                            device.onIsConnected(true);
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    }).catch(this.homey.log);
+                        //this._ListingWebsocket();
+                    });
                 }
             }
 
