@@ -67,8 +67,8 @@ class UnifiNetwork extends Homey.App {
         //this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         //this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         //this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
-        //this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
-        //this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
+        this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
+        this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
         this._wifiClientRoamed = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED);
         this._wifiClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
@@ -143,12 +143,14 @@ class UnifiNetwork extends Homey.App {
             if (devicesWifi.length > 0) {
                 this.api.unifi.getClientDevices().then(clientDevices => {
                     devicesWifi.forEach(device => {
+                        const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
+                        this.homey.app.debug(`checkDevicesState = ${JSON.stringify(devicePayload)}`);
                         if (this.isDeviceInArray(device.getData().id, clientDevices)) {
-                            const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
                             device.onIsConnected(true, devicePayload.essid);
                             device.onUpdateMessagePayload(devicePayload);
                         } else {
                             device.onIsConnected(false, null);
+                            device.onUpdateMessagePayload(devicePayload);
                         }
                     });
                 }).catch(this.homey.log);
@@ -207,9 +209,9 @@ class UnifiNetwork extends Homey.App {
                     this.api.unifi.listen().then(() => {
                         let that = this;
                         this.debug('WebSocket is connected');
-                        this.api.unifi.on('ctrl.*', function () {
-                            that.debug(`${this.event}`);
-                        });
+                        // this.api.unifi.on('ctrl.*', function () {
+                        //     that.debug(`${this.event}`);
+                        // });
                         // Listen for disconnected and connected events
                         this.api.unifi.on('events.*', function (payload) {
                             that.debug(`${this.event} = ${JSON.stringify(payload)}`);
@@ -223,12 +225,14 @@ class UnifiNetwork extends Homey.App {
                              */
                             if (Array.isArray(payload)) {
                                 // start application flow cards
-                                // disabled this functions because memory overload on Homey
-                                // if (payload[0].key === 'EVT_WU_Disconnected') {
-                                //     this.onIsConnected(false, payload[0]);
-                                // } else if (payload[0].key === 'EVT_WU_Connected') {
-                                //     this.onIsConnected(true, payload[0]);
-                                // }
+                                // created a setting because this function has memory overload on Homey
+                                if (this.settings && "applicationFlows" in this.settings && this.settings.applicationFlows === "1") {
+                                    if (payload[0].key === 'EVT_WU_Disconnected') {
+                                        that.onIsConnected(false, payload[0]);
+                                    } else if (payload[0].key === 'EVT_WU_Connected') {
+                                        that.onIsConnected(true, payload[0]);
+                                    }
+                                }
 
                                 // start device flow cards
                                 if (payload[0].subsystem === 'wlan') {

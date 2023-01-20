@@ -1,5 +1,4 @@
 {
-  "deprecated": true,
   "id": "a_client_connected",
   "title": {
     "en": "Device just connected",

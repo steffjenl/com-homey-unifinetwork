@@ -1,5 +1,4 @@
 {
-  "deprecated": true,
   "id": "a_guest_disconnected",
   "title": {
     "en": "Guest connection lost",
