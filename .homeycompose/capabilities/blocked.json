@@ -7,6 +7,7 @@
   },
   "getable": true,
   "setable": true,
+  "icon": "./assets/blocked.svg",
   "uiComponent": "toggle",
   "uiQuickAction": true
 }
