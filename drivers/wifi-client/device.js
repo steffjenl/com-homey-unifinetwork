@@ -222,11 +222,11 @@ class WiFiDevice extends Device {
 
     onBytesChange(data) {
         if (this.hasCapability('measure_tx_bytes')) {
-            this.setCapabilityValue('measure_tx_bytes', (data.tx_bytes * 0.000001));
+            this.setCapabilityValue('measure_tx_bytes', (Math.round((data.tx_bytes * 0.000001) * 100) / 100));
         }
 
         if (this.hasCapability('measure_rx_bytes')) {
-            this.setCapabilityValue('measure_rx_bytes', (data.rx_bytes * 0.000001));
+            this.setCapabilityValue('measure_rx_bytes', (Math.round((data.rx_bytes * 0.000001) * 100) / 100));
         }
     }
 

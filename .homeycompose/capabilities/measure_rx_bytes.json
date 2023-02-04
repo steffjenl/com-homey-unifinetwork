@@ -1,9 +1,9 @@
 {
   "type": "number",
   "title": {
-    "en": "TX Bytes",
-    "nl": "TX Bytes",
-    "es": "TX Bytes"
+    "en": "RX Bytes",
+    "nl": "RX Bytes",
+    "es": "RX Bytes"
   },
   "units": {
     "en": "MB",
