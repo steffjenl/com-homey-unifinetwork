@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": {
+    "en": "TX Bytes",
+    "nl": "TX Bytes",
+    "es": "TX Bytes"
+  },
+  "units": {
+    "en": "MB",
+    "nl": "MB",
+    "es": "MB"
+  },
+  "getable": true,
+  "setable": false,
+  "icon": "./assets/signal.svg"
+}

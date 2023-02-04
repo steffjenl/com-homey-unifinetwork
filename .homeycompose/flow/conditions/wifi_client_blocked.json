@@ -1,0 +1,19 @@
+{
+  "id": "wifi_client_blocked",
+  "title": {
+    "en": "!{{Blocked|Unblocked}}",
+    "nl": "!{{Geblokkeerd|Gedeblokkeerd}}",
+    "es": "!{{Blocked|Unblocked}}"
+  },
+  "titleFormatted": {
+    "en": "!{{Blocked|Unblocked}}",
+    "nl": "!{{Geblokkeerd|Gedeblokkeerd}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    }
+  ]
+}

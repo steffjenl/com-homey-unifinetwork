@@ -215,7 +215,7 @@ class UnifiNetwork extends Homey.App {
                 this.api.unifi.getClientDevices().then(clientDevices => {
                     devicesWifi.forEach(device => {
                         const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
-                        // this.homey.app.debug(`checkDevicesState = ${JSON.stringify(devicePayload)}`);
+                        this.homey.app.debug(`checkDevicesState = ${JSON.stringify(devicePayload)}`);
                         if (this.isDeviceInArray(device.getData().id, clientDevices)) {
                             device.onIsConnected(true, devicePayload.essid);
                             device.onUpdateMessagePayload(devicePayload);
@@ -280,7 +280,7 @@ class UnifiNetwork extends Homey.App {
                     this.api.unifi.listen().then(() => {
                         let that = this;
                         this.debug('WebSocket is connected');
-                        //this._ListingWebsocket();
+                        this._ListingWebsocket();
                     });
                 }
             }

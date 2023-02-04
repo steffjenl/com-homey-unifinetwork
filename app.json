@@ -1017,6 +1017,22 @@
       "step": 1,
       "icon": "./assets/rssi.svg"
     },
+    "measure_rx_bytes": {
+      "type": "number",
+      "title": {
+        "en": "TX Bytes",
+        "nl": "TX Bytes",
+        "es": "TX Bytes"
+      },
+      "units": {
+        "en": "MB",
+        "nl": "MB",
+        "es": "MB"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/signal.svg"
+    },
     "measure_signal": {
       "type": "number",
       "title": {
@@ -1034,6 +1050,22 @@
       "min": -1000,
       "max": 1000,
       "step": 1,
+      "icon": "./assets/signal.svg"
+    },
+    "measure_tx_bytes": {
+      "type": "number",
+      "title": {
+        "en": "TX Bytes",
+        "nl": "TX Bytes",
+        "es": "TX Bytes"
+      },
+      "units": {
+        "en": "MB",
+        "nl": "MB",
+        "es": "MB"
+      },
+      "getable": true,
+      "setable": false,
       "icon": "./assets/signal.svg"
     },
     "radio_proto": {
