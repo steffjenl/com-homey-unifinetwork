@@ -18,8 +18,8 @@
       "name": "accessPoint",
       "type": "text",
       "placeholder": {
-        "en": "Accesspoint mac",
-        "nl": "Accesspoint mac",
+        "en": "Accesspoint mac or name",
+        "nl": "Accesspoint mac of naam",
         "es": "Punto de acceso Mac"
       }
     }

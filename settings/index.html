@@ -74,16 +74,21 @@
     <!-- pull methode -->
     <fieldset>
         <legend data-i18n="settings.pullmethodeheader"></legend>
-        <!-- Site -->
+        <!-- Pullmethode -->
         <div class="field row">
             <label for="txt_pullmethode" data-i18n="settings.pullmethode"></label>
             <select id="txt_pullmethode">
+                <option value="1">Interval & Websocket</option>
                 <option value="2">Interval</option>
             </select>
         </div>
         <div class="field row">
             <label for="txt_interval" data-i18n="settings.interval"></label>
             <input id="txt_interval" type="text" value="15"/>
+        </div>
+        <div class="field row">
+            <label for="txt_applicationFlows" data-i18n="settings.applicationFlows"></label>
+            <input id="txt_applicationFlows" type="checkbox" value="1"/>
         </div>
     </fieldset>
 
@@ -134,6 +139,7 @@
     const txtSite = document.getElementById('txt_site');
     const txtPullMethode = document.getElementById('txt_pullmethode');
     const txtInterval = document.getElementById('txt_interval');
+    const txtApplicationFlows = document.getElementById('txt_applicationFlows');
     const btnApply = document.getElementById('btn_apply');
 
     // Event log tab
@@ -148,15 +154,13 @@
                 if (error) return Homey.alert(error);
 
                 if (settings) {
-
-                    console.log(settings.pullmethode);
-
                     txtNvrIp.value = settings.host;
                     txtNvrPort.value = (settings.port ? settings.port : 443);
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
                     txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
+                    txtApplicationFlows.checked = (settings.applicationFlows === "1");
                     const $select = document.querySelector('#txt_pullmethode');
                     $select.value = (settings.pullmethode ? settings.pullmethode : '1');
                 } else {
@@ -173,6 +177,7 @@
                 'pass': txtPassword.value,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
+                'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),
                 'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].value,
             };
 

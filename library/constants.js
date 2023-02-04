@@ -20,6 +20,7 @@ module.exports.EVENT_LAST_DEVICE_DISCONNECTED = 'last_device_disconnected';
 module.exports.EVENT_LAST_DEVICE_OFFLINE = 'last_device_offline';
 module.exports.EVENT_WIFI_CLIENT_CONNECTED = 'wifi_client_connected';
 module.exports.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP = 'wifi_client_connected_with_ap';
+module.exports.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP_NAME = 'wifi_client_connected_with_ap_name';
 module.exports.EVENT_WIFI_CLIENT_DISCONNECTED = 'wifi_client_disconnected';
 module.exports.EVENT_WIFI_CLIENT_ROAMED = 'wifi_client_roamed';
 module.exports.EVENT_WIFI_CLIENT_ROAMED_TO_AP = 'wifi_client_roamed_to_ap';

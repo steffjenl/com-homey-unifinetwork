@@ -1,0 +1,15 @@
+{
+  "id": "wifi_block",
+  "title": {
+    "en": "Block client",
+    "nl": "Blokeer cliënt",
+    "es": "Bloquear cliente"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client"
+    }
+  ]
+}

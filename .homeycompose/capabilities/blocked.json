@@ -1,0 +1,13 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Blocked",
+    "nl": "Geblokkeerd",
+    "es": "Obstruido"
+  },
+  "getable": true,
+  "setable": true,
+  "icon": "./assets/blocked.svg",
+  "uiComponent": "toggle",
+  "uiQuickAction": true
+}

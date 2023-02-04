@@ -38,7 +38,8 @@
         "log_enabled": "Event log enabled",
         "pullmethodeheader": "Pull Methode & Interval",
         "pullmethode": "Pull Methode",
-        "interval": "Interval"
+        "interval": "Interval",
+        "applicationFlows": "Enable application flows"
     },
     "events": {
         "camera": {

@@ -11,7 +11,7 @@
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.3.7",
+  "version": "2.3.9",
   "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",
@@ -313,6 +313,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "first_device_connected",
         "title": {
           "en": "First device connected",
@@ -329,10 +330,10 @@
               "es": "Nombre punto de acceso"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "first_device_online",
         "title": {
           "en": "First device connected",
@@ -354,10 +355,10 @@
               "es": "wifi01"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "last_device_disconnected",
         "title": {
           "en": "Last device disconnected",
@@ -374,17 +375,16 @@
               "es": "Nombre de punto de acceso"
             }
           }
-        ],
-        "deprecated": true
+        ]
       },
       {
+        "deprecated": true,
         "id": "last_device_offline",
         "title": {
           "en": "Last device disconnected",
           "nl": "Laatste verbinding verbroken",
           "es": "Último dispositivo desconectado"
-        },
-        "deprecated": true
+        }
       },
       {
         "id": "wifi_client_connected",
@@ -621,6 +621,7 @@
     ],
     "conditions": [
       {
+        "deprecated": true,
         "id": "ap_has_clients_connected",
         "title": {
           "en": "AP has !{{|no}} clients",
@@ -645,6 +646,7 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "clients_connected",
         "title": {
           "en": "!{{C|Disc}}onnected Clients",
@@ -691,10 +693,42 @@
             "name": "accessPoint",
             "type": "text",
             "placeholder": {
-              "en": "Accesspoint mac",
-              "nl": "Accesspoint mac",
+              "en": "Accesspoint mac or name",
+              "nl": "Accesspoint mac of naam",
               "es": "Punto de acceso Mac"
             }
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "wifi_block",
+        "title": {
+          "en": "Block client",
+          "nl": "Blokeer cliënt",
+          "es": "Bloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ]
+      },
+      {
+        "id": "wifi_unblock",
+        "title": {
+          "en": "Unblock client",
+          "nl": "Deblokeer cliënt",
+          "es": "Desbloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
           }
         ]
       }
@@ -908,6 +942,18 @@
       "setable": false,
       "icon": "./assets/accesspoint.svg"
     },
+    "blocked": {
+      "type": "boolean",
+      "title": {
+        "en": "Blocked",
+        "nl": "Geblokkeerd",
+        "es": "Obstruido"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "uiQuickAction": true
+    },
     "connected": {
       "type": "boolean",
       "title": {
@@ -946,8 +992,8 @@
       },
       "getable": true,
       "setable": false,
-      "min": 0,
-      "max": 100,
+      "min": -1000,
+      "max": 1000,
       "step": 1,
       "icon": "./assets/rssi.svg"
     },
@@ -965,8 +1011,8 @@
       },
       "getable": true,
       "setable": false,
-      "min": -100,
-      "max": 0,
+      "min": -1000,
+      "max": 1000,
       "step": 1,
       "icon": "./assets/signal.svg"
     },

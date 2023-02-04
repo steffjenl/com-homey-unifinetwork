@@ -76,5 +76,11 @@
   },
   "2.3.7": {
     "en": "SDKv3 upgrade, full rebuild of app"
+  },
+  "2.3.8": {
+    "en": "Removed some flow cards"
+  },
+  "2.3.9": {
+    "en": "Add support for unblocking and blocking wifi clients"
   }
 }

@@ -10,6 +10,16 @@ class WiFiDevice extends Device {
   async onInit() {
     await this._createMissingCapabilities();
     await this.getDeviceStatus();
+
+    this.registerCapabilityListener("blocked", async (value) => {
+      this.homey.app.debug(`${JSON.stringify(value)}`);
+      if (value) {
+        this.homey.app.api.unifi.blockClient(this.getData().id);
+        return;
+      }
+      this.homey.app.api.unifi.unblockClient(this.getData().id);
+    });
+
     this.log('WiFiDevice has been initialized');
   }
 
@@ -93,6 +103,11 @@ class WiFiDevice extends Device {
       this.removeCapability('onoff');
       this.homey.app.debug(`deleted capability onoff for ${this.getName()}`);
     }
+
+    if (!this.hasCapability('blocked')) {
+      this.addCapability('blocked');
+      this.homey.app.debug(`created blocked connected for ${this.getName()}`);
+    }
   }
 
   onWifiChanged(data) {
@@ -106,6 +121,10 @@ class WiFiDevice extends Device {
 
     if (this.hasCapability('connected')) {
       this.setCapabilityValue('connected', isConnected);
+    }
+
+    if (!wifiName) {
+      wifiName = deviceState.wifi_name;
     }
 
     if (deviceState.connected !== isConnected) {
@@ -152,7 +171,7 @@ class WiFiDevice extends Device {
       this.setCapabilityValue('ap_mac', data.ap_mac);
       const accessPointName = this.homey.app.getAccessPointName(data.ap_mac);
       if (this.hasCapability('ap')) {
-        this.setCapabilityValue('ap', accessPointName);
+        this.setCapabilityValue('ap', (accessPointName ? accessPointName : '-'));
       }
 
       if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {
@@ -185,6 +204,12 @@ class WiFiDevice extends Device {
     }
   }
 
+  onBlockedChange(data) {
+    if (this.hasCapability('blocked')) {
+      this.setCapabilityValue('blocked', data.blocked);
+    }
+  }
+
   getDeviceStatus() {
     this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
 
@@ -210,6 +235,10 @@ class WiFiDevice extends Device {
 
       if (typeof device[0].radio_proto !== 'undefined') {
         this.onRadioProtoChange(device[0]);
+      }
+
+      if (typeof device[0].blocked !== 'undefined') {
+        this.onBlockedChange(device[0]);
       }
 
     }).catch(error => this.homey.app.debug(error));
@@ -239,6 +268,10 @@ class WiFiDevice extends Device {
       if (typeof playloadMessage.radio_proto !== 'undefined') {
         this.onRadioProtoChange(playloadMessage);
       }
+
+    if (typeof playloadMessage.blocked !== 'undefined') {
+      this.onBlockedChange(playloadMessage);
+    }
   }
 }
 

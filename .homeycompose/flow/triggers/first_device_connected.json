@@ -1,4 +1,5 @@
 {
+  "deprecated": true,
   "id": "first_device_connected",
   "title": {
     "en": "First device connected",
