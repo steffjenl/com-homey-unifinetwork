@@ -82,5 +82,8 @@
   },
   "2.3.9": {
     "en": "Add support for unblocking and blocking wifi clients"
+  },
+  "2.3.10": {
+    "en": "Add conditional card for blocked devices and RX and TX values."
   }
 }
