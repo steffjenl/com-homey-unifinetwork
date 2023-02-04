@@ -11,21 +11,24 @@ class WifiClient extends Driver {
     async onInit() {
         this._wifiClientConnected = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP);
+        this._wifiClientBlocked = this.homey.flow.getConditionCard(UnifiConstants.EVENT_WIFI_CLIENT_BLOCKED);
 
         this._wifiClientConnected.registerRunListener(async (args, state) => {
-            //if (args.Device.hasCapability('connected')) {
-                 const alarmConnected = args.Device.getCapabilityValue('connected');
-                return Promise.resolve(alarmConnected);
-            //}
+            const alarmConnected = args.Device.getCapabilityValue('connected');
+            return Promise.resolve(alarmConnected);
         });
 
         this._wifiClientRoamedToAp.registerRunListener(async (args, state) => {
-            //if (args.Device.hasCapability('ap_mac')) {
-                const apMac = args.Device.getCapabilityValue('ap_mac').toLowerCase();
-                const apName = args.Device.getCapabilityValue('ap').toLowerCase();
-                return Promise.resolve(args.accessPoint.toLowerCase() === apMac || args.accessPoint.toLowerCase() === apName);
-            //}
+            const apMac = args.Device.getCapabilityValue('ap_mac').toLowerCase();
+            const apName = args.Device.getCapabilityValue('ap').toLowerCase();
+            return Promise.resolve(args.accessPoint.toLowerCase() === apMac || args.accessPoint.toLowerCase() === apName);
         });
+
+        this._wifiClientBlocked.registerRunListener(async (args, state) => {
+            const clientBlocked = args.Device.getCapabilityValue('blocked');
+            return Promise.resolve(clientBlocked);
+        });
+
         this.log('WiFi-Client has been initialized');
     }
 

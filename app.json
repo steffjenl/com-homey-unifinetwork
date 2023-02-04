@@ -655,6 +655,25 @@
         }
       },
       {
+        "id": "wifi_client_blocked",
+        "title": {
+          "en": "!{{Blocked|Unblocked}}",
+          "nl": "!{{Geblokkeerd|Gedeblokkeerd}}",
+          "es": "!{{Blocked|Unblocked}}"
+        },
+        "titleFormatted": {
+          "en": "!{{Blocked|Unblocked}}",
+          "nl": "!{{Geblokkeerd|Gedeblokkeerd}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=wifi-client"
+          }
+        ]
+      },
+      {
         "id": "wifi_client_connected",
         "title": {
           "en": "!{{Connected|Disconnected}}",
@@ -951,6 +970,7 @@
       },
       "getable": true,
       "setable": true,
+      "icon": "./assets/blocked.svg",
       "uiComponent": "toggle",
       "uiQuickAction": true
     },

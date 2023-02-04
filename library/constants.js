@@ -26,5 +26,4 @@ module.exports.EVENT_WIFI_CLIENT_ROAMED = 'wifi_client_roamed';
 module.exports.EVENT_WIFI_CLIENT_ROAMED_TO_AP = 'wifi_client_roamed_to_ap';
 module.exports.EVENT_WIFI_CLIENT_SIGNAL_CHANGED = 'wifi_client_signal_changed';
 //
-module.exports.EVENT_WIFI_CLIENT_CONNECTED_CONDITION = 'wifi_client_connected_condition';
-module.exports.EVENT_WIFI_CLIENT_CONNECTED_WITH_AP_CONDITION = 'wifi_client_connected_with_ap_condition';
+module.exports.EVENT_WIFI_CLIENT_BLOCKED = 'wifi_client_blocked';
