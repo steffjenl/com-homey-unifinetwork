@@ -364,7 +364,7 @@ class UnifiNetwork extends Homey.App {
             let num_clients = 0;
 
             wifiDriver.getDevices().forEach(device => {
-                if (device.state['ap_mac'] === ap_mac) num_clients += 1;
+                if (device.getCapabilityValue('ap_mac') === ap_mac) num_clients += 1;
             });
             let ap_name = this.getAccessPointName(ap_mac);
             this.homey.log(`Accesspoint ${ap_name} (${ap_mac}) has ${num_clients} clients`);
@@ -376,11 +376,11 @@ class UnifiNetwork extends Homey.App {
                     curr_num: num_clients,
                 };
 
-                if (state.last_num === 0 && state.curr_num >= 0) {
+                if (tokens.last_num === 0 && tokens.curr_num >= 0) {
                     this.homey.log("Triggering first_device_connected with state", tokens);
                     this._firstDeviceConnected.trigger(tokens);
                 }
-                if (state.last_num > 0 && state.curr_num === 0) {
+                if (tokens.last_num > 0 && tokens.curr_num === 0) {
                     this.homey.log("Triggering last_device_disconnected with state", tokens);
                     this._lastDeviceDisconnected.trigger(tokens);
                 }
