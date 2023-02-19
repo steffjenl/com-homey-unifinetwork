@@ -3,6 +3,7 @@
 const BaseClass = require('./baseclass');
 const Unifi = require('node-unifi');
 const UnifiConstants = require('./constants');
+const WebsocketClient = require('./websocket');
 
 class ApiClient extends BaseClass {
 
@@ -10,6 +11,8 @@ class ApiClient extends BaseClass {
         super(...props);
         this.homey = null;
         this.unifi = null;
+        this.websocket = null;
+
     }
 
     setHomeyObject(homey) {
@@ -19,6 +22,11 @@ class ApiClient extends BaseClass {
     setUnifiObject(hostName, portNumber, userName, passWord, siteName) {
         this.unifi = new Unifi.Controller({host: hostName, port: portNumber, sslverify: false, site: siteName});
         return this.unifi;
+    }
+
+    setWebSocketObject(hostName, portNumber, userName, passWord, siteName) {
+        const options = {host: hostName, port: portNumber, sslverify: false, site: siteName};
+        this.websocket = new WebsocketClient(options, this.unifi, this.homey);
     }
 
     async getAccessPoints() {

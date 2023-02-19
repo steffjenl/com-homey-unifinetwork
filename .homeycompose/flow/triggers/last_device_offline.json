@@ -1,5 +1,4 @@
 {
-  "deprecated": true,
   "id": "last_device_offline",
   "title": {
     "en": "Last device disconnected",
