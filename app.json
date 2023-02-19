@@ -333,7 +333,6 @@
         ]
       },
       {
-        "deprecated": true,
         "id": "first_device_online",
         "title": {
           "en": "First device connected",
@@ -358,7 +357,6 @@
         ]
       },
       {
-        "deprecated": true,
         "id": "last_device_disconnected",
         "title": {
           "en": "Last device disconnected",
@@ -378,7 +376,6 @@
         ]
       },
       {
-        "deprecated": true,
         "id": "last_device_offline",
         "title": {
           "en": "Last device disconnected",
