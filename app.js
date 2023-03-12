@@ -2,11 +2,11 @@
 'use strict';
 
 const Homey = require('homey');
-const { Log } = require('homey-log');
+const {Log} = require('homey-log');
 const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
-const { setFlagsFromString } = require('v8');
-const { runInNewContext } = require('vm');
+const {setFlagsFromString} = require('v8');
+const {runInNewContext} = require('vm');
 
 class UnifiNetwork extends Homey.App {
     /**
@@ -227,7 +227,15 @@ class UnifiNetwork extends Homey.App {
                             device.onUpdateMessagePayload(devicePayload);
                         }
                     });
-                }).catch(this.homey.error);
+                }).catch((error) => {
+                    if (error.response && "status" in error.response && error.response.status === 401) {
+                        this.homey.error(`[checkDevicesState][wlan]: AccessDenied`);
+                        this._appLogin();
+                    }
+                    else {
+                        this.homey.app.debug(`[checkDevicesState][wlan]: error when retrieving getClientDevices`);
+                    }
+                });
             }
 
             // get all Cable devices and there information
@@ -243,7 +251,9 @@ class UnifiNetwork extends Homey.App {
                         }
                     });
                     clientDevices = null;
-                }).catch(this.homey.error);
+                }).catch((error) => {
+                    this.homey.app.debug(`[checkDevicesState][cable]: error when retrieving getClientDevices`);
+                });
             }
         }
 
@@ -267,7 +277,6 @@ class UnifiNetwork extends Homey.App {
         if (this.loggedIn) {
             this.loggedIn = false;
             await this.homey.app.api.unifi.logout();
-            this.homey.app.api.unifi._close();
         }
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
@@ -368,7 +377,7 @@ class UnifiNetwork extends Homey.App {
             if (this.numClientsOnline > 0 && onlineDeviceCount === 0) {
                 this.homey.app._lastDeviceOffline.trigger(tokens);
             }
-        } catch(error) {
+        } catch (error) {
             this.homey.error(`[checkNumClientsConnectedTrigger]: ${JSON.stringify(error)}`);
         }
     }
