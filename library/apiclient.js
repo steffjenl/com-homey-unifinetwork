@@ -7,15 +7,10 @@ const WebsocketClient = require('./websocket');
 
 class ApiClient extends BaseClass {
 
-    constructor(...props) {
-        super(...props);
-        this.homey = null;
+    constructor({homey}) {
+        super();
         this.unifi = null;
         this.websocket = null;
-
-    }
-
-    setHomeyObject(homey) {
         this.homey = homey;
     }
 
@@ -26,7 +21,7 @@ class ApiClient extends BaseClass {
 
     setWebSocketObject(hostName, portNumber, userName, passWord, siteName) {
         const options = {host: hostName, port: portNumber, sslverify: false, site: siteName};
-        this.websocket = new WebsocketClient(options, this.unifi, this.homey);
+        this.websocket = new WebsocketClient(options, this.homey);
     }
 
     async getAccessPoints() {
