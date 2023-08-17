@@ -85,5 +85,8 @@
   },
   "2.3.10": {
     "en": "Add conditional card for blocked devices and RX and TX values."
+  },
+  "2.3.11": {
+    "en": "Bugfix: alarm_connected capabilities"
   }
 }
