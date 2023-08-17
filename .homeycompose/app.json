@@ -54,6 +54,10 @@
     "getSites": {
       "method": "GET",
       "path": "/sites"
+    },
+    "testCredentials": {
+      "method": "POST",
+      "path": "/test"
     }
   }
 }

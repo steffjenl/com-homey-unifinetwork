@@ -30,6 +30,8 @@
     <fieldset>
         <legend data-i18n="settings.nvr"></legend>
 
+        <p><small data-i18n="settings.nvrText"></small></p>
+
         <!-- IP address -->
         <div class="field row">
             <label for="txt_nvrip" data-i18n="settings.nvrip"></label>
@@ -38,7 +40,7 @@
 
         <!-- Port -->
         <div class="field row">
-            <label for="txt_nvrport" data-i18n="settings.txt_nvrport"></label>
+            <label for="txt_nvrport" data-i18n="settings.nvrport"></label>
             <input id="txt_nvrport" type="text" value="443"/>
         </div>
 
@@ -47,6 +49,8 @@
     <!-- Credentials -->
     <fieldset>
         <legend data-i18n="settings.credentials"></legend>
+
+        <p><small data-i18n="settings.credentialsText"></small></p>
 
         <!-- Username -->
         <div class="field row">
@@ -95,7 +99,8 @@
     <!-- Apply button -->
     <fieldset>
         <div class="field row">
-            <button id="btn_apply" class="right" data-i18n="settings.apply"></button>
+            <button style="width: 100%" id="btn_test" class="right" data-i18n="settings.test"></button>
+            <button style="width: 100%" id="btn_apply" class="right" data-i18n="settings.apply"></button>
         </div>
     </fieldset>
 </div>
@@ -141,6 +146,7 @@
     const txtInterval = document.getElementById('txt_interval');
     const txtApplicationFlows = document.getElementById('txt_applicationFlows');
     const btnApply = document.getElementById('btn_apply');
+    const btnTest = document.getElementById('btn_test');
 
     // Event log tab
     var eventLogElement = document.getElementById('eventLogData');
@@ -188,8 +194,36 @@
             Homey.alert(Homey.__('settings.saved'), 'info');
         };
 
+        const testSettings = () => {
+            const settings = {
+                'host': txtNvrIp.value,
+                'port': txtNvrPort.value,
+                'user': txtUsername.value,
+                'pass': txtPassword.value,
+                'site': txtSite.value,
+                'interval': txtInterval.value,
+                'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),
+                'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].value,
+            };
+
+            Homey.api("POST", "/test", settings, function (err, response) {
+                if (err) return Homey.alert(err);
+                if (response) {
+                    if (response.status === 'success') {
+                        Homey.alert(Homey.__('settings.test_status.success'), 'info');
+                    } else {
+                        Homey.alert(Homey.__('settings.test_status.failure'), 'error');
+                    }
+                }
+            });
+        };
+
         btnApply.addEventListener('click', e => {
             saveSettings();
+        });
+
+        btnTest.addEventListener('click', e => {
+            testSettings();
         });
 
         readSettings();

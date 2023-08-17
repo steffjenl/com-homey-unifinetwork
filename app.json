@@ -55,6 +55,10 @@
     "getSites": {
       "method": "GET",
       "path": "/sites"
+    },
+    "testCredentials": {
+      "method": "POST",
+      "path": "/test"
     }
   },
   "flow": {
@@ -856,7 +860,8 @@
               "ap",
               "ap_mac",
               "radio_proto",
-              "ipAddress"
+              "ipAddress",
+              "alarm_connected"
             ],
             "capabilitiesOptions": {
               "onoff": {
@@ -906,7 +911,8 @@
         "ap",
         "ap_mac",
         "radio_proto",
-        "ipAddress"
+        "ipAddress",
+        "alarm_connected"
       ],
       "capabilitiesOptions": {
         "onoff": {
@@ -935,6 +941,19 @@
     }
   ],
   "capabilities": {
+    "alarm_connected": {
+      "type": "boolean",
+      "title": {
+        "en": "Connection state",
+        "nl": "Verbindingsstatus",
+        "es": "Estado de Verbindings"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/connected.svg",
+      "uiComponent": "toggle",
+      "uiQuickAction": true
+    },
     "ap": {
       "type": "string",
       "title": {
