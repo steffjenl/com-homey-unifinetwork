@@ -14,7 +14,8 @@
         "id": "sensor",
         "capabilities": [
           "onoff",
-          "connected"
+          "connected",
+          "blocked"
         ],
         "capabilitiesOptions": {
           "onoff": {
@@ -55,7 +56,9 @@
   },
   "class": "sensor",
   "capabilities": [
-    "connected"
+    "onoff",
+    "connected",
+    "blocked"
   ],
   "capabilitiesOptions": {
     "onoff": {

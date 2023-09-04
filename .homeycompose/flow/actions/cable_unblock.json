@@ -1,0 +1,15 @@
+{
+  "id": "cable_unblock",
+  "title": {
+    "en": "Unblock client",
+    "nl": "Deblokeer cliënt",
+    "es": "Desbloquear cliente"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=cable-client"
+    }
+  ]
+}

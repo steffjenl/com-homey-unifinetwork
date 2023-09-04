@@ -1,6 +1,7 @@
 'use strict';
 
 const {Driver} = require('homey');
+const UnifiConstants = require("../../library/constants");
 
 class CableClient extends Driver {
 
@@ -8,6 +9,12 @@ class CableClient extends Driver {
      * onInit is called when the driver is initialized.
      */
     async onInit() {
+        this._cableClientBlocked = this.homey.flow.getConditionCard(UnifiConstants.EVENT_CABLE_CLIENT_BLOCKED);
+
+        this._cableClientBlocked.registerRunListener(async (args, state) => {
+            const clientBlocked = args.Device.getCapabilityValue('blocked');
+            return Promise.resolve(clientBlocked);
+        });
         this.log('Cable-Client has been initialized');
     }
 

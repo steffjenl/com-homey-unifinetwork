@@ -646,6 +646,25 @@
         ]
       },
       {
+        "id": "cable_client_blocked",
+        "title": {
+          "en": "!{{Blocked|Unblocked}}",
+          "nl": "!{{Geblokkeerd|Gedeblokkeerd}}",
+          "es": "!{{Blocked|Unblocked}}"
+        },
+        "titleFormatted": {
+          "en": "!{{Blocked|Unblocked}}",
+          "nl": "!{{Geblokkeerd|Gedeblokkeerd}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=cable-client"
+          }
+        ]
+      },
+      {
         "deprecated": true,
         "id": "clients_connected",
         "title": {
@@ -722,6 +741,36 @@
     ],
     "actions": [
       {
+        "id": "cable_block",
+        "title": {
+          "en": "Block client",
+          "nl": "Blokeer cliënt",
+          "es": "Bloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=cable-client"
+          }
+        ]
+      },
+      {
+        "id": "cable_unblock",
+        "title": {
+          "en": "Unblock client",
+          "nl": "Deblokeer cliënt",
+          "es": "Desbloquear cliente"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=cable-client"
+          }
+        ]
+      },
+      {
         "id": "wifi_block",
         "title": {
           "en": "Block client",
@@ -770,7 +819,8 @@
             "id": "sensor",
             "capabilities": [
               "onoff",
-              "connected"
+              "connected",
+              "blocked"
             ],
             "capabilitiesOptions": {
               "onoff": {
@@ -811,7 +861,9 @@
       },
       "class": "sensor",
       "capabilities": [
-        "connected"
+        "onoff",
+        "connected",
+        "blocked"
       ],
       "capabilitiesOptions": {
         "onoff": {
@@ -861,7 +913,8 @@
               "ap_mac",
               "radio_proto",
               "ipAddress",
-              "alarm_connected"
+              "alarm_connected",
+              "blocked"
             ],
             "capabilitiesOptions": {
               "onoff": {
@@ -912,7 +965,8 @@
         "ap_mac",
         "radio_proto",
         "ipAddress",
-        "alarm_connected"
+        "alarm_connected",
+        "blocked"
       ],
       "capabilitiesOptions": {
         "onoff": {

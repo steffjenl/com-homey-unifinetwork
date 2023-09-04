@@ -215,6 +215,7 @@ class WiFiDevice extends Device {
     }
 
     onBlockedChange(data) {
+        this.homey.app.debug(`set capability blocked for ${this.getName()} to ${data.blocked}`);
         if (this.hasCapability('blocked')) {
             this.setCapabilityValue('blocked', data.blocked);
         }

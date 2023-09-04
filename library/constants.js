@@ -27,3 +27,4 @@ module.exports.EVENT_WIFI_CLIENT_ROAMED_TO_AP = 'wifi_client_roamed_to_ap';
 module.exports.EVENT_WIFI_CLIENT_SIGNAL_CHANGED = 'wifi_client_signal_changed';
 //
 module.exports.EVENT_WIFI_CLIENT_BLOCKED = 'wifi_client_blocked';
+module.exports.EVENT_CABLE_CLIENT_BLOCKED = 'cable_client_blocked';

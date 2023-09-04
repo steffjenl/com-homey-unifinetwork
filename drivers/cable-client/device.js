@@ -10,6 +10,16 @@ class CableDevice extends Device {
   async onInit() {
     await this._createMissingCapabilities();
     await this.getDeviceStatus();
+
+    this.registerCapabilityListener("blocked", async (value) => {
+      this.homey.app.debug(`${JSON.stringify(value)}`);
+      if (value) {
+        this.homey.app.api.unifi.blockClient(this.getData().id);
+        return;
+      }
+      this.homey.app.api.unifi.unblockClient(this.getData().id);
+    });
+
     this.log('CableDevice has been initialized');
   }
 
@@ -83,6 +93,11 @@ class CableDevice extends Device {
       this.removeCapability('onoff');
       this.homey.app.debug(`deleted capability onoff for ${this.getName()}`);
     }
+
+    if (!this.hasCapability('blocked')) {
+      this.addCapability('blocked');
+      this.homey.app.debug(`created blocked connected for ${this.getName()}`);
+    }
   }
 
   onIsConnected(isConnected) {
@@ -112,12 +127,26 @@ class CableDevice extends Device {
       if (typeof device[0].ip !== 'undefined') {
         this.onIPChange(device[0]);
       }
+
+      if (typeof device[0].blocked !== 'undefined') {
+        this.onBlockedChange(device[0]);
+      }
     }).catch(error => this.homey.app.debug(error));
+  }
+
+  onBlockedChange(data) {
+    if (this.hasCapability('blocked')) {
+      this.setCapabilityValue('blocked', data.blocked);
+    }
   }
 
   onUpdateMessagePayload(playloadMessage) {
     if (typeof playloadMessage.ip !== 'undefined') {
       this.onIPChange(playloadMessage);
+    }
+
+    if (typeof playloadMessage.blocked !== 'undefined') {
+      this.onBlockedChange(playloadMessage);
     }
   }
 }

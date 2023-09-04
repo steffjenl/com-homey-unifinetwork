@@ -70,7 +70,8 @@ class UnifiNetwork extends Homey.App {
             that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
             // get wifi-client driver
             const driver = that.homey.drivers.getDriver('wifi-client');
-            const device = driver.getUnifiDeviceById(payload.user);
+            const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
+            const device = driver.getUnifiDeviceById(deviceMac);
             if (device) {
                 that.checkNumClientsConnectedTrigger();
 
@@ -78,18 +79,40 @@ class UnifiNetwork extends Homey.App {
                     device.onIsConnected(false, null);
                 } else if (payload.key === 'EVT_WU_Connected') {
                     device.onIsConnected(true, payload.ssid);
+                } else if (payload.key === 'EVT_WC_Blocked') {
+                    const tokens = {
+                        blocked: true,
+                    }
+                    device.onBlockedChange(tokens);
+                } else if (payload.key === 'EVT_WC_Unblocked') {
+                    that.homey.log(`AA [websocket] [wlan]: ${JSON.stringify(payload)}`);
+                    const tokens = {
+                        blocked: false,
+                    }
+                    device.onBlockedChange(tokens);
                 }
             }
         } else if (payload.subsystem === 'lan') {
             that.homey.log(`[websocket] [cable]: ${JSON.stringify(payload)}`);
             // get cable-client driver
             const driver = that.homey.drivers.getDriver('cable-client');
-            const device = driver.getUnifiDeviceById(payload.user);
+            const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
+            const device = driver.getUnifiDeviceById(deviceMac);
             if (device) {
                 if (payload.key === 'EVT_WU_Disconnected') {
                     device.onIsConnected(false);
                 } else if (payload.key === 'EVT_WU_Connected') {
                     device.onIsConnected(true);
+                } else if (payload.key === 'EVT_LC_Blocked') {
+                    const tokens = {
+                        blocked: true,
+                    }
+                    device.onBlockedChange(tokens);
+                } else if (payload.key === 'EVT_LC_Unblocked') {
+                    const tokens = {
+                        blocked: false,
+                    }
+                    device.onBlockedChange(tokens);
                 }
             }
         }

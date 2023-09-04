@@ -21,7 +21,8 @@
           "ap_mac",
           "radio_proto",
           "ipAddress",
-          "alarm_connected"
+          "alarm_connected",
+          "blocked"
         ],
         "capabilitiesOptions": {
           "onoff": {
@@ -72,7 +73,8 @@
     "ap_mac",
     "radio_proto",
     "ipAddress",
-    "alarm_connected"
+    "alarm_connected",
+    "blocked"
   ],
   "capabilitiesOptions": {
     "onoff": {
