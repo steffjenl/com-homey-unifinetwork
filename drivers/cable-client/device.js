@@ -123,15 +123,17 @@ class CableDevice extends Device {
   }
 
   getDeviceStatus() {
-    this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
-      if (typeof device[0].ip !== 'undefined') {
-        this.onIPChange(device[0]);
-      }
+    if (this.homey.app.loggedIn === true) {
+      this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
+        if (typeof device[0].ip !== 'undefined') {
+          this.onIPChange(device[0]);
+        }
 
-      if (typeof device[0].blocked !== 'undefined') {
-        this.onBlockedChange(device[0]);
-      }
-    }).catch(error => this.homey.app.debug(error));
+        if (typeof device[0].blocked !== 'undefined') {
+          this.onBlockedChange(device[0]);
+        }
+      }).catch(error => this.homey.app.debug(error));
+    }
   }
 
   onBlockedChange(data) {

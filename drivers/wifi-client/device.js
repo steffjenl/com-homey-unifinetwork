@@ -215,7 +215,6 @@ class WiFiDevice extends Device {
     }
 
     onBlockedChange(data) {
-        this.homey.app.debug(`set capability blocked for ${this.getName()} to ${data.blocked}`);
         if (this.hasCapability('blocked')) {
             this.setCapabilityValue('blocked', data.blocked);
         }
@@ -232,37 +231,39 @@ class WiFiDevice extends Device {
     }
 
     getDeviceStatus() {
-        this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
+        if (this.homey.app.loggedIn === true) {
+            this.homey.app.api.unifi.getClientDevice(this.getData().id).then(device => {
 
-            if (typeof device[0].essid !== 'undefined') {
-                this.onWifiChanged(device[0]);
-            }
+                if (typeof device[0].essid !== 'undefined') {
+                    this.onWifiChanged(device[0]);
+                }
 
-            if (typeof device[0].signal !== 'undefined') {
-                this.onSignalChange(device[0]);
-            }
+                if (typeof device[0].signal !== 'undefined') {
+                    this.onSignalChange(device[0]);
+                }
 
-            if (typeof device[0].rssi !== 'undefined') {
-                this.onRSSIChange(device[0]);
-            }
+                if (typeof device[0].rssi !== 'undefined') {
+                    this.onRSSIChange(device[0]);
+                }
 
-            if (typeof device[0].ap_mac !== 'undefined') {
-                this.onAPChange(device[0]);
-            }
+                if (typeof device[0].ap_mac !== 'undefined') {
+                    this.onAPChange(device[0]);
+                }
 
-            if (typeof device[0].ip !== 'undefined') {
-                this.onIPChange(device[0]);
-            }
+                if (typeof device[0].ip !== 'undefined') {
+                    this.onIPChange(device[0]);
+                }
 
-            if (typeof device[0].radio_proto !== 'undefined') {
-                this.onRadioProtoChange(device[0]);
-            }
+                if (typeof device[0].radio_proto !== 'undefined') {
+                    this.onRadioProtoChange(device[0]);
+                }
 
-            if (typeof device[0].blocked !== 'undefined') {
-                this.onBlockedChange(device[0]);
-            }
+                if (typeof device[0].blocked !== 'undefined') {
+                    this.onBlockedChange(device[0]);
+                }
 
-        }).catch(error => this.homey.app.debug(error));
+            }).catch(error => this.homey.app.debug(error));
+        }
     }
 
     onUpdateMessagePayload(playloadMessage) {

@@ -41,7 +41,7 @@ class UnifiNetwork extends Homey.App {
                 this._appLogin();
             }
         });
-        this._appLogin();
+        await this._appLogin();
 
         this.debug('UnifiNetwork has been initialized');
     }
@@ -80,12 +80,13 @@ class UnifiNetwork extends Homey.App {
                 } else if (payload.key === 'EVT_WU_Connected') {
                     device.onIsConnected(true, payload.ssid);
                 } else if (payload.key === 'EVT_WC_Blocked') {
+                    that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
                     const tokens = {
                         blocked: true,
                     }
                     device.onBlockedChange(tokens);
                 } else if (payload.key === 'EVT_WC_Unblocked') {
-                    that.homey.log(`AA [websocket] [wlan]: ${JSON.stringify(payload)}`);
+                    that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
                     const tokens = {
                         blocked: false,
                     }
