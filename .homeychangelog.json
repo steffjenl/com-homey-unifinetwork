@@ -88,5 +88,8 @@
   },
   "2.3.11": {
     "en": "Bugfix: alarm_connected capabilities"
+  },
+  "2.4.0": {
+    "en": "Add support for block cable devices"
   }
 }
