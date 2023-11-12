@@ -91,5 +91,8 @@
   },
   "2.4.0": {
     "en": "Add support for block cable devices"
+  },
+  "2.4.1": {
+    "en": "Give node-unifi version bump to master branch"
   }
 }
