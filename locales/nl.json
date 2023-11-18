@@ -12,11 +12,11 @@
   "settings": {
     "title": "UniFi Network instellingen",
     "instruction": "Log in met de gegevens van de UniFi Network-gebruiker.",
-    "nvr": "Gegevens van UniFi Cloud Key",
+    "nvr": "Server gegevens",
     "nvrText": "Gebruik poort 443 voor UniFiOS en poort 8443 voor Docker / Standalone.",
     "nvrip": "IP-adres",
     "nvrport": "Port",
-    "credentials": "UniFi Network gebruikersgegevens",
+    "credentials": "Gebruikersgegevens",
     "credentialsText": "MFA Uitgeschakeld en Local Admin User",
     "username": "Gebruikersnaam (min 32 karakters)",
     "password": "Wachtwoord",

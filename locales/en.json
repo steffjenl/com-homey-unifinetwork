@@ -20,11 +20,11 @@
     "settings": {
         "title": "UniFi Network Settings",
         "instruction": "Log in with the credentials of the UniFi Network user.",
-        "nvr": "UniFi Network Server details",
+        "nvr": "Server details",
         "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone.",
         "nvrip": "IP address",
         "nvrport": "Port",
-        "credentials": "UniFi Network user credentials",
+        "credentials": "User credentials",
         "credentialsText": "MFA Disabled and Local Admin User",
         "username": "Username (min 32 chars)",
         "password": "Password",

@@ -27,80 +27,84 @@
                                                               style="font-weight: bold;">Unknown</span></p>
     </p>
     <!-- NVR -->
-    <fieldset>
-        <legend data-i18n="settings.nvr"></legend>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.nvr"></legend>
 
         <p><small data-i18n="settings.nvrText"></small></p>
 
         <!-- IP address -->
         <div class="field row">
-            <label for="txt_nvrip" data-i18n="settings.nvrip"></label>
-            <input id="txt_nvrip" type="text" value=""/>
+            <label class="homey-form-label" for="txt_nvrip" data-i18n="settings.nvrip"></label>
+            <input class="homey-form-input" id="txt_nvrip" type="text" value=""/>
         </div>
 
         <!-- Port -->
         <div class="field row">
-            <label for="txt_nvrport" data-i18n="settings.nvrport"></label>
-            <input id="txt_nvrport" type="text" value="443"/>
+            <label class="homey-form-label" for="txt_nvrport" data-i18n="settings.nvrport"></label>
+            <input class="homey-form-input" id="txt_nvrport" type="text" value="443"/>
         </div>
 
     </fieldset>
 
     <!-- Credentials -->
-    <fieldset>
-        <legend data-i18n="settings.credentials"></legend>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.credentials"></legend>
 
         <p><small data-i18n="settings.credentialsText"></small></p>
 
         <!-- Username -->
         <div class="field row">
-            <label for="txt_username" data-i18n="settings.username"></label>
-            <input id="txt_username" type="text" value=""/>
+            <label class="homey-form-label" for="txt_username" data-i18n="settings.username"></label>
+            <input class="homey-form-input" id="txt_username" type="text" value=""/>
         </div>
 
         <!-- Password -->
         <div class="field row">
-            <label for="txt_password" data-i18n="settings.password"></label>
-            <input id="txt_password" type="password" value=""/>
+            <label class="homey-form-label" for="txt_password" data-i18n="settings.password"></label>
+            <input class="homey-form-input" id="txt_password" type="password" value=""/>
         </div>
     </fieldset>
 
     <!-- site -->
-    <fieldset>
-        <legend data-i18n="settings.site"></legend>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.site"></legend>
         <!-- Site -->
         <div class="field row">
-            <label for="txt_site" data-i18n="settings.site"></label>
-            <input id="txt_site" type="text" value=""/>
+            <label class="homey-form-label" for="txt_site" data-i18n="settings.site"></label>
+            <input class="homey-form-input" id="txt_site" type="text" value=""/>
         </div>
     </fieldset>
 
     <!-- pull methode -->
-    <fieldset>
-        <legend data-i18n="settings.pullmethodeheader"></legend>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.pullmethodeheader"></legend>
         <!-- Pullmethode -->
         <div class="field row">
-            <label for="txt_pullmethode" data-i18n="settings.pullmethode"></label>
-            <select id="txt_pullmethode">
+            <label class="homey-form-label" for="txt_pullmethode" data-i18n="settings.pullmethode"></label>
+            <select class="homey-form-select" id="txt_pullmethode">
                 <option value="1">Interval & Websocket</option>
                 <option value="2">Interval</option>
             </select>
         </div>
         <div class="field row">
-            <label for="txt_interval" data-i18n="settings.interval"></label>
-            <input id="txt_interval" type="text" value="15"/>
+            <label class="homey-form-label" for="txt_interval" data-i18n="settings.interval"></label>
+            <input class="homey-form-input" id="txt_interval" type="text" value="15"/>
         </div>
         <div class="field row">
-            <label for="txt_applicationFlows" data-i18n="settings.applicationFlows"></label>
-            <input id="txt_applicationFlows" type="checkbox" value="1"/>
+            <label class="homey-form-checkbox">
+                <input class="homey-form-checkbox-input" id="txt_applicationFlows" type="checkbox" value="1">
+                <span class="homey-form-checkbox-checkmark"></span>
+                <span class="homey-form-checkbox-text"><span data-i18n="settings.applicationFlows"></span></span>
+            </label>
         </div>
     </fieldset>
 
     <!-- Apply button -->
     <fieldset>
         <div class="field row">
-            <button style="width: 100%" id="btn_test" class="right" data-i18n="settings.test"></button>
-            <button style="width: 100%" id="btn_apply" class="right" data-i18n="settings.apply"></button>
+            <button id="btn_test" class="homey-button-primary-full" data-i18n="settings.test"></button>
+            <br/>
+            <button id="btn_apply" class="homey-button-primary-full" data-i18n="settings.apply"></button>
         </div>
     </fieldset>
 </div>
@@ -129,7 +133,7 @@
             <input id="eventLogEnabled" type="checkbox" value="logEnabled"/>
         </div>
         <div class="field row">
-            <textarea id="eventLogData"></textarea>
+            <textarea class="homey-form-input" id="eventLogData"></textarea>
         </div>
     </fieldset>
 </div>
