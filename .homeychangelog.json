@@ -97,5 +97,8 @@
   },
   "2.4.2": {
     "en": "Change to Homey style settings page"
+  },
+  "2.4.3": {
+    "en": "Fix: cable unblock and block action cards are not working."
   }
 }
