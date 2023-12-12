@@ -100,5 +100,8 @@
   },
   "2.4.3": {
     "en": "Fix: cable unblock and block action cards are not working."
+  },
+  "2.4.4": {
+    "en": "Fix: Autocomplete accessPoints"
   }
 }
