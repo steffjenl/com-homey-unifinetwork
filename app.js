@@ -143,9 +143,41 @@ class UnifiNetwork extends Homey.App {
         this._cableClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_CONNECTED);
         this._cableClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_DISCONNECTED);
         this._firstDeviceConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
+        this._firstDeviceConnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
+            let results = [];
+
+            this.accessPointList.forEach(accessPoint => {
+                results.push({
+                    name: accessPoint.name,
+                    description: accessPoint.mac,
+                    id: accessPoint.mac,
+                });
+            });
+
+            // filter based on the query
+            return results.filter((result) => {
+                return result.name.toLowerCase().includes(query.toLowerCase());
+            });
+        });
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
+        this._lastDeviceDisconnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
+            let results = [];
+
+            this.accessPointList.forEach(accessPoint => {
+                results.push({
+                    name: accessPoint.name,
+                    description: accessPoint.mac,
+                    id: accessPoint.mac,
+                });
+            });
+
+            // filter based on the query
+            return results.filter((result) => {
+                return result.name.toLowerCase().includes(query.toLowerCase());
+            });
+        });
         //this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
         //this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
         this._wifiClientRoamed = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED);
