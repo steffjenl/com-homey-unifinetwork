@@ -163,6 +163,16 @@ class UnifiNetwork extends Homey.App {
         wifiUnBlock.registerRunListener(async (args, state) => {
             this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
         });
+
+        const cableBlock = this.homey.flow.getActionCard('cable_block');
+        cableBlock.registerRunListener(async (args, state) => {
+            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+        });
+
+        const cableUnBlock = this.homey.flow.getActionCard('cable_unblock');
+        cableUnBlock.registerRunListener(async (args, state) => {
+            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+        });
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
