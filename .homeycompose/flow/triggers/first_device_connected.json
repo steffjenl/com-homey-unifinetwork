@@ -5,6 +5,16 @@
     "nl": "Eerste apparaat verbonden",
     "es": "Primer dispositivo conectado"
   },
+  "titleFormatted": {
+    "en": "First device connected at [[accessPoint]]",
+    "nl": "Eerste apparaat verbonden met [[accessPoint]]",
+    "es": "Primer dispositivo conectado a [[accessPoint]]"
+  },
+  "hint": {
+    "en": "Triggers when the first device connects to the accesspoint",
+    "nl": "Wordt getriggerd wanneer het eerste apparaat verbonden is met het accesspoint",
+    "es": "Se activa cuando el primer dispositivo se conecta al punto de acceso"
+  },
   "args": [
     {
       "name": "accessPoint",

@@ -5,6 +5,16 @@
     "nl": "Laatste verbinding verbroken",
     "es": "Último dispositivo desconectado"
   },
+  "titleFormatted": {
+    "en": "Last device disconnected at [[accessPoint]]",
+    "nl": "Laatste verbinding verbroken met [[accessPoint]]",
+    "es": "Último dispositivo desconectado a [[accessPoint]]"
+  },
+  "hint": {
+    "en": "Triggers when the last device disconnects from the accesspoint",
+    "nl": "Wordt getriggerd wanneer het laatste apparaat verbinding verbreekt met het accesspoint",
+    "es": "Se activa cuando el último dispositivo se desconecta del punto de acceso"
+  },
   "args": [
     {
       "name": "accessPoint",
