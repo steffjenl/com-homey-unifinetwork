@@ -145,8 +145,7 @@ class UnifiNetwork extends Homey.App {
         this._firstDeviceConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
         this._firstDeviceConnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
             let results = [];
-
-            this.accessPointList.forEach(accessPoint => {
+            Object.values(this.accessPointList).forEach((accessPoint, value, array) => {
                 results.push({
                     name: accessPoint.name,
                     description: accessPoint.mac,
@@ -164,8 +163,7 @@ class UnifiNetwork extends Homey.App {
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
         this._lastDeviceDisconnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
             let results = [];
-
-            this.accessPointList.forEach(accessPoint => {
+            Object.values(this.accessPointList).forEach((accessPoint, value, array) => {
                 results.push({
                     name: accessPoint.name,
                     description: accessPoint.mac,
