@@ -23,8 +23,13 @@
     <!-- Instruction -->
     <p data-i18n="settings.instruction"></p>
 
-    <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status"
-                                                              style="font-weight: bold;">Unknown</span></p>
+    <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span>
+    </p>
+    <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status"
+                                                                                         style="font-weight: bold;">Unknown</span>
+    </p>
+    <p><span data-i18n="settings.websocket.at">Last update at</span>: <span id="unifi_websocket_at"
+                                                                            style="font-weight: bold;">Unknown</span>
     </p>
     <!-- NVR -->
     <fieldset class="homey-form-fieldset">
@@ -267,13 +272,6 @@
             if (err) {
                 return err;
             }
-
-            //if (typeof data === 'undefined' || data === null) {
-            //    data = 'Unknown';
-            //}
-
-            console.log(data);
-
             var color = 'darkred';
             if (data === 'Connected') color = 'darkgreen';
             if (data === 'Connecting...') color = 'orange';
@@ -291,10 +289,37 @@
             }
         }
 
+        const updateWebsocketAtField = (err, data) => {
+            if (err) {
+                return err;
+            }
 
-        Homey.get('com.ubnt.unifi.status', updateStatusField);
+            document.getElementById('unifi_websocket_at').innerHTML = data;
+        }
+
+
         Homey.on('com.ubnt.unifi.status', (data) => {
             updateStatusField(null, data);
+        });
+        Homey.on('com.ubnt.unifi.websocket.status', (data) => {
+            updateWebsocketStatusField(null, data);
+        });
+        Homey.get('com.ubnt.unifi.status', updateStatusField);
+        Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
+
+        Homey.api("GET", "/status", null, function (err, result) {
+            updateStatusField(null, result);
+            if (err) return Homey.alert(err);
+        });
+
+        Homey.api("GET", "/websocketstatus", null, function (err, result) {
+            updateWebsocketStatusField(null, result);
+            if (err) return Homey.alert(err);
+        });
+
+        Homey.api("GET", "/getLastWebsocketMessageTime", null, function (err, result) {
+            updateWebsocketAtField(null, result);
+            if (err) return Homey.alert(err);
         });
     }
 

@@ -17,6 +17,18 @@ class WebsocketClient extends BaseClass {
         this._autoReconnectInterval = 5 * 1000; // Ms
 
         this.homey = homey;
+        this.lastWebsocketMessage = null;
+    }
+    async isWebsocketConnected() {
+        if (typeof this._ws !== 'undefined' && this._eventListener !== null) {
+            if (this._ws.readyState === WebSocket.OPEN) {
+                return true;
+            }
+        }
+        return false;
+    }
+    getLastWebsocketMessageTime() {
+        return this.lastWebsocketMessage;
     }
     async listen() {
         try {
@@ -48,6 +60,9 @@ class WebsocketClient extends BaseClass {
             });
 
             this._ws.on('message', (data, isBinary) => {
+                // update last websocket message timestamp
+                this.lastWebsocketMessage = this.homey.app.toLocalTime(new Date()).toISOString().slice(0,16);
+                //
                 const message = isBinary ? data : data.toString();
                 if (message === 'pong') {
                     this.homey.app.debug(`Websocket: pong`);

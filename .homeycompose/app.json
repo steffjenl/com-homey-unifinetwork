@@ -58,6 +58,18 @@
     "testCredentials": {
       "method": "POST",
       "path": "/test"
+    },
+    "getStatus": {
+      "method": "GET",
+      "path": "/status"
+    },
+    "getWebsocketStatus": {
+      "method": "GET",
+      "path": "/websocketstatus"
+    },
+    "getLastWebsocketMessageTime": {
+      "method": "GET",
+      "path": "/getLastWebsocketMessageTime"
     }
   }
 }

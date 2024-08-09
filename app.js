@@ -498,6 +498,17 @@ class UnifiNetwork extends Homey.App {
         that = null;
     }
 
+    /**
+     * Convert a Homey time to a local time
+     * @param {Date} homeyTime
+     * @returns {Date}
+     */
+    toLocalTime(homeyTime) {
+        const tz = this.homey.clock.getTimezone();
+        const localTime = new Date(homeyTime.toLocaleString('en-US', { timeZone: tz }));
+        return localTime;
+    }
+
     gcManual() {
         setFlagsFromString('--expose_gc');
         const gc = runInNewContext('gc'); // nocommit
