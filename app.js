@@ -22,6 +22,8 @@ class UnifiNetwork extends Homey.App {
         this.checkDevicesStateInterval = null;
         this.updateAccessPointListInterval = null;
 
+        this._refreshAuthTokensnterval = 60 * 60 * 1000; // 1 hour
+
 
         // Get Settings object
         this.settings = this.homey.settings.get(UnifiConstants.SETTINGS_KEY);
@@ -42,6 +44,8 @@ class UnifiNetwork extends Homey.App {
             }
         });
         await this._appLogin();
+        // refresh auth tokens every hour
+        await this.refreshAuthTokens();
 
         this.debug('UnifiNetwork has been initialized');
     }
@@ -376,6 +380,17 @@ class UnifiNetwork extends Homey.App {
             this.debug('catch error = ' + JSON.stringify(error));
             this.setLoggedIn(false);
         }
+    }
+
+    async refreshAuthTokens()    {
+        const refreshAuthTokens = setInterval(() => {
+            try {
+                this.debug('Refreshing auth tokens');
+                this._appLogin();
+            } catch (error) {
+                this.homey.error(`${JSON.stringify(error)}`);
+            }
+        }, this._refreshAuthTokensnterval);
     }
 
     onIsConnected(isConnected, payload) {
