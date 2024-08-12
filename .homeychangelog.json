@@ -103,5 +103,8 @@
   },
   "2.4.4": {
     "en": "Fix: Autocomplete accessPoints"
+  },
+  "2.4.5": {
+    "en": "Fix session timeout, relogin every hour"
   }
 }

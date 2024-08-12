@@ -10,7 +10,7 @@
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.4.4",
+  "version": "2.4.5",
   "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",
@@ -21,10 +21,6 @@
       {
         "name": "Stèphan Eizinga",
         "email": "stephan@monkeysoft.nl"
-      },
-      {
-        "name": "Michel Nederlof",
-        "email": "michel@nederlof.info"
       }
     ]
   },
@@ -39,10 +35,10 @@
     "security"
   ],
   "bugs": {
-    "url": "https://gitlab.com/monkeysoft/com-homey-unifinetwork/-/issues"
+    "url": "https://github.com/steffjenl/com-homey-unifinetwork/issues"
   },
   "homeyCommunityTopicId": 42967,
-  "source": "https://gitlab.com/monkeysoft/com-homey-unifinetwork",
+  "source": "https://github.com/steffjenl/com-homey-unifinetwork",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
