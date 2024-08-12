@@ -6,10 +6,12 @@ This app adds support for presence detection based on (wifi) clients connected t
 - Wifi device (dis-)connected
 - Wifi device roams from one Accesspoint to any another
 - Wifi device roams to specific Accesspoint
+- Cable device (dis-)connected
 
 ## Device conditions:
 - Wifi client is (dis-)connected
 - Wifi client is (dis-)connected from accesspoint
+- Cable client is (dis-)connected
 
 Please note: only paired devices are being considered as device in all flow contexts. Non-paired devices are only usable for the guest (dis-)connected trigger.
 
@@ -21,6 +23,12 @@ Please note: only paired devices are being considered as device in all flow cont
 - Select device you want to pair with Homey.
 	- It will only show devices known to your controller for the last 24 hours.
 
+## How to create an local account?
+
+* Login in your local UniFi web interface, and click on Admins & Users. **Note:** This must be done from your local device and not from _unifi.ui.com_ or within the app.
+* Click on the '+' icon to add a new user.
+* Fill in the user details, and make sure to select 'Restrict to local access only' as the user type.
+* Give the user Full Management rights and click on 'Add'.
 
 ## Supported devices:
 - Wifi devices connected to UniFi accesspoints, connected via UniFi Controller.
@@ -35,4 +43,3 @@ Version 6.0.x is UnifiOS, please select 'Port' 443 and 'UnifiOS Device (please u
 ## Supported Languages:
 - English
 - Dutch
-- Spanish

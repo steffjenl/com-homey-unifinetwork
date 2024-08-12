@@ -4,7 +4,15 @@ module.exports = {
         const result = await homey.app.api.unifi.getSites();
         return result;
     },
-
+    async getStatus({ homey, query }) {
+        return (homey.app.loggedIn ? 'Connected' : 'Disconnected');
+    },
+    async getWebsocketStatus({ homey, query }) {
+        return homey.app.api.websocket.isWebsocketConnected() ? 'Connected' : 'Unknown';
+    },
+    async getLastWebsocketMessageTime({ homey, query }) {
+        return homey.app.api.websocket.getLastWebsocketMessageTime();
+    },
     async testCredentials({homey, body}) {
 
         try {

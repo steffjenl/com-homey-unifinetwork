@@ -12,10 +12,12 @@ class ApiClient extends BaseClass {
         this.unifi = null;
         this.websocket = null;
         this.homey = homey;
+        this.loggedInStatus = 0;
     }
 
     setUnifiObject(hostName, portNumber, userName, passWord, siteName) {
         this.unifi = new Unifi.Controller({host: hostName, port: portNumber, sslverify: false, site: siteName});
+
         return this.unifi;
     }
 
