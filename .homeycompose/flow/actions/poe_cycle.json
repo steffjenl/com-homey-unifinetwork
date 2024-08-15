@@ -1,0 +1,24 @@
+{
+  "id": "network_switch_power_cycle_port",
+  "title": {
+    "en": "PoE Power Cycle",
+    "nl": "PoE Stroomcyclus",
+    "es": "Ciclo de energía PoE"
+  },
+  "titleFormatted": {
+    "en": "Cylce power on port [[port]]",
+    "nl": "Zet stroom uit en aan op switch poort [[port]]",
+    "es": "Ciclo de energía en puerto [[port]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=network-switch"
+    },
+    {
+      "type": "number",
+      "name": "port"
+    }
+  ]
+}

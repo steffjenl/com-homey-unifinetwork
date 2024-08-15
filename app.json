@@ -40,10 +40,10 @@
     "security"
   ],
   "bugs": {
-    "url": "https://gitlab.com/monkeysoft/com-ubnt-unifi/-/issues"
+    "url": "https://gitlab.com/monkeysoft/com-homey-unifinetwork/-/issues"
   },
   "homeyCommunityTopicId": 42967,
-  "source": "https://gitlab.com/monkeysoft/com-ubnt-unifi",
+  "source": "https://gitlab.com/monkeysoft/com-homey-unifinetwork",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
@@ -803,6 +803,30 @@
         ]
       },
       {
+        "id": "network_switch_power_cycle_port",
+        "title": {
+          "en": "PoE Power Cycle",
+          "nl": "PoE Stroomcyclus",
+          "es": "Ciclo de energía PoE"
+        },
+        "titleFormatted": {
+          "en": "Cylce power on port [[port]]",
+          "nl": "Zet stroom uit en aan op switch poort [[port]]",
+          "es": "Ciclo de energía en puerto [[port]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=network-switch"
+          },
+          {
+            "type": "number",
+            "name": "port"
+          }
+        ]
+      },
+      {
         "id": "wifi_block",
         "title": {
           "en": "Block client",
@@ -906,6 +930,762 @@
           },
           "getable": true,
           "setable": false
+        }
+      },
+      "pair": [
+        {
+          "id": "list_clients",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_clients"
+          }
+        },
+        {
+          "id": "add_clients",
+          "template": "add_devices"
+        }
+      ]
+    },
+    {
+      "id": "network-switch",
+      "name": {
+        "en": "Network Switch",
+        "nl": "Netwerk Switch",
+        "es": "Interruptor de red"
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon"
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "onoff",
+              "ports"
+            ],
+            "capabilitiesOptions": {
+              "onoff": {
+                "title": {
+                  "en": "Connection state",
+                  "nl": "Verbindingsstatus",
+                  "es": "Estado de Verbindings"
+                }
+              },
+              "getable": true,
+              "setable": false
+            },
+            "options": {
+              "icons": {
+                "connected": "assets/lan.svg"
+              },
+              "connected": {
+                "noblink": false,
+                "invert": true,
+                "label": {
+                  "true": {
+                    "en": "Connected",
+                    "es": "Conectado"
+                  },
+                  "false": {
+                    "en": "Disconnected",
+                    "es": "Desconectado"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "images": {
+        "large": "drivers/network-switch/assets/images/large.jpg",
+        "small": "drivers/network-switch/assets/images/small.jpg"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "onoff"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Connection state",
+            "nl": "Verbindingsstatus",
+            "es": "Estado de Verbindings"
+          },
+          "getable": true,
+          "setable": false
+        },
+        "port.port_1": {
+          "title": {
+            "en": "Network Port  1",
+            "nl": "Netwerkpoort 1",
+            "es": "Puerto de red 1"
+          }
+        },
+        "port.port_2": {
+          "title": {
+            "en": "Network Port  2",
+            "nl": "Netwerkpoort 2",
+            "es": "Puerto de red 2"
+          }
+        },
+        "port.port_3": {
+          "title": {
+            "en": "Network Port  3",
+            "nl": "Netwerkpoort 3",
+            "es": "Puerto de red 3"
+          }
+        },
+        "port.port_4": {
+          "title": {
+            "en": "Network Port  4",
+            "nl": "Netwerkpoort 4",
+            "es": "Puerto de red 4"
+          }
+        },
+        "port.port_5": {
+          "title": {
+            "en": "Network Port  5",
+            "nl": "Netwerkpoort 5",
+            "es": "Puerto de red 5"
+          }
+        },
+        "port.port_6": {
+          "title": {
+            "en": "Network Port  6",
+            "nl": "Netwerkpoort 6",
+            "es": "Puerto de red 6"
+          }
+        },
+        "port.port_7": {
+          "title": {
+            "en": "Network Port  7",
+            "nl": "Netwerkpoort 7",
+            "es": "Puerto de red 7"
+          }
+        },
+        "port.port_8": {
+          "title": {
+            "en": "Network Port  8",
+            "nl": "Netwerkpoort 8",
+            "es": "Puerto de red 8"
+          }
+        },
+        "port.port_9": {
+          "title": {
+            "en": "Network Port  9",
+            "nl": "Netwerkpoort 9",
+            "es": "Puerto de red 9"
+          }
+        },
+        "port.port_10": {
+          "title": {
+            "en": "Network Port  10",
+            "nl": "Netwerkpoort 10",
+            "es": "Puerto de red 10"
+          }
+        },
+        "port.port_11": {
+          "title": {
+            "en": "Network Port  11",
+            "nl": "Netwerkpoort 11",
+            "es": "Puerto de red 11"
+          }
+        },
+        "port.port_12": {
+          "title": {
+            "en": "Network Port  12",
+            "nl": "Netwerkpoort 12",
+            "es": "Puerto de red 12"
+          }
+        },
+        "port.port_13": {
+          "title": {
+            "en": "Network Port  13",
+            "nl": "Netwerkpoort 13",
+            "es": "Puerto de red 13"
+          }
+        },
+        "port.port_14": {
+          "title": {
+            "en": "Network Port  14",
+            "nl": "Netwerkpoort 14",
+            "es": "Puerto de red 14"
+          }
+        },
+        "port.port_15": {
+          "title": {
+            "en": "Network Port  15",
+            "nl": "Netwerkpoort 15",
+            "es": "Puerto de red 15"
+          }
+        },
+        "port.port_16": {
+          "title": {
+            "en": "Network Port  16",
+            "nl": "Netwerkpoort 16",
+            "es": "Puerto de red 16"
+          }
+        },
+        "port.port_17": {
+          "title": {
+            "en": "Network Port  17",
+            "nl": "Netwerkpoort 17",
+            "es": "Puerto de red 17"
+          }
+        },
+        "port.port_18": {
+          "title": {
+            "en": "Network Port  18",
+            "nl": "Netwerkpoort 18",
+            "es": "Puerto de red 18"
+          }
+        },
+        "port.port_19": {
+          "title": {
+            "en": "Network Port  19",
+            "nl": "Netwerkpoort 19",
+            "es": "Puerto de red 19"
+          }
+        },
+        "port.port_20": {
+          "title": {
+            "en": "Network Port  20",
+            "nl": "Netwerkpoort 20",
+            "es": "Puerto de red 20"
+          }
+        },
+        "port.port_21": {
+          "title": {
+            "en": "Network Port  21",
+            "nl": "Netwerkpoort 21",
+            "es": "Puerto de red 21"
+          }
+        },
+        "port.port_22": {
+          "title": {
+            "en": "Network Port  22",
+            "nl": "Netwerkpoort 22",
+            "es": "Puerto de red 22"
+          }
+        },
+        "port.port_23": {
+          "title": {
+            "en": "Network Port  23",
+            "nl": "Netwerkpoort 23",
+            "es": "Puerto de red 23"
+          }
+        },
+        "port.port_24": {
+          "title": {
+            "en": "Network Port  24",
+            "nl": "Netwerkpoort 24",
+            "es": "Puerto de red 24"
+          }
+        },
+        "port.port_25": {
+          "title": {
+            "en": "Network Port  25",
+            "nl": "Netwerkpoort 25",
+            "es": "Puerto de red 25"
+          }
+        },
+        "port.port_26": {
+          "title": {
+            "en": "Network Port  26",
+            "nl": "Netwerkpoort 26",
+            "es": "Puerto de red 26"
+          }
+        },
+        "port.port_27": {
+          "title": {
+            "en": "Network Port  27",
+            "nl": "Netwerkpoort 27",
+            "es": "Puerto de red 27"
+          }
+        },
+        "port.port_28": {
+          "title": {
+            "en": "Network Port  28",
+            "nl": "Netwerkpoort 28",
+            "es": "Puerto de red 28"
+          }
+        },
+        "port.port_29": {
+          "title": {
+            "en": "Network Port  29",
+            "nl": "Netwerkpoort 29",
+            "es": "Puerto de red 29"
+          }
+        },
+        "port.port_30": {
+          "title": {
+            "en": "Network Port  30",
+            "nl": "Netwerkpoort 30",
+            "es": "Puerto de red 30"
+          }
+        },
+        "port.port_31": {
+          "title": {
+            "en": "Network Port  31",
+            "nl": "Netwerkpoort 31",
+            "es": "Puerto de red 31"
+          }
+        },
+        "port.port_32": {
+          "title": {
+            "en": "Network Port  32",
+            "nl": "Netwerkpoort 32",
+            "es": "Puerto de red 32"
+          }
+        },
+        "port.port_33": {
+          "title": {
+            "en": "Network Port  33",
+            "nl": "Netwerkpoort 33",
+            "es": "Puerto de red 33"
+          }
+        },
+        "port.port_34": {
+          "title": {
+            "en": "Network Port  34",
+            "nl": "Netwerkpoort 34",
+            "es": "Puerto de red 34"
+          }
+        },
+        "port.port_35": {
+          "title": {
+            "en": "Network Port  35",
+            "nl": "Netwerkpoort 35",
+            "es": "Puerto de red 35"
+          }
+        },
+        "port.port_36": {
+          "title": {
+            "en": "Network Port  36",
+            "nl": "Netwerkpoort 36",
+            "es": "Puerto de red 36"
+          }
+        },
+        "port.port_37": {
+          "title": {
+            "en": "Network Port  37",
+            "nl": "Netwerkpoort 37",
+            "es": "Puerto de red 37"
+          }
+        },
+        "port.port_38": {
+          "title": {
+            "en": "Network Port  38",
+            "nl": "Netwerkpoort 38",
+            "es": "Puerto de red 38"
+          }
+        },
+        "port.port_39": {
+          "title": {
+            "en": "Network Port  39",
+            "nl": "Netwerkpoort 39",
+            "es": "Puerto de red 39"
+          }
+        },
+        "port.port_40": {
+          "title": {
+            "en": "Network Port  40",
+            "nl": "Netwerkpoort 40",
+            "es": "Puerto de red 40"
+          }
+        },
+        "port.port_41": {
+          "title": {
+            "en": "Network Port  41",
+            "nl": "Netwerkpoort 41",
+            "es": "Puerto de red 41"
+          }
+        },
+        "port.port_42": {
+          "title": {
+            "en": "Network Port  42",
+            "nl": "Netwerkpoort 42",
+            "es": "Puerto de red 42"
+          }
+        },
+        "port.port_43": {
+          "title": {
+            "en": "Network Port  43",
+            "nl": "Netwerkpoort 43",
+            "es": "Puerto de red 43"
+          }
+        },
+        "port.port_44": {
+          "title": {
+            "en": "Network Port  44",
+            "nl": "Netwerkpoort 44",
+            "es": "Puerto de red 44"
+          }
+        },
+        "port.port_45": {
+          "title": {
+            "en": "Network Port  45",
+            "nl": "Netwerkpoort 45",
+            "es": "Puerto de red 45"
+          }
+        },
+        "port.port_46": {
+          "title": {
+            "en": "Network Port  46",
+            "nl": "Netwerkpoort 46",
+            "es": "Puerto de red 46"
+          }
+        },
+        "port.port_47": {
+          "title": {
+            "en": "Network Port  47",
+            "nl": "Netwerkpoort 47",
+            "es": "Puerto de red 47"
+          }
+        },
+        "port.port_48": {
+          "title": {
+            "en": "Network Port  48",
+            "nl": "Netwerkpoort 48",
+            "es": "Puerto de red 48"
+          }
+        },
+        "poe.port_1": {
+          "title": {
+            "en": "PoE Port 1",
+            "nl": "PoE Poort 1",
+            "es": "Puerto de red 1"
+          }
+        },
+        "poe.port_2": {
+          "title": {
+            "en": "PoE Port 2",
+            "nl": "PoE Poort 2",
+            "es": "Puerto de red 2"
+          }
+        },
+        "poe.port_3": {
+          "title": {
+            "en": "PoE Port 3",
+            "nl": "PoE Poort 3",
+            "es": "Puerto de red 3"
+          }
+        },
+        "poe.port_4": {
+          "title": {
+            "en": "PoE Port 4",
+            "nl": "PoE Poort 4",
+            "es": "Puerto de red 4"
+          }
+        },
+        "poe.port_5": {
+          "title": {
+            "en": "PoE Port 5",
+            "nl": "PoE Poort 5",
+            "es": "Puerto de red 5"
+          }
+        },
+        "poe.port_6": {
+          "title": {
+            "en": "PoE Port 6",
+            "nl": "PoE Poort 6",
+            "es": "Puerto de red 6"
+          }
+        },
+        "poe.port_7": {
+          "title": {
+            "en": "PoE Port 7",
+            "nl": "PoE Poort 7",
+            "es": "Puerto de red 7"
+          }
+        },
+        "poe.port_8": {
+          "title": {
+            "en": "PoE Port 8",
+            "nl": "PoE Poort 8",
+            "es": "Puerto de red 8"
+          }
+        },
+        "poe.port_9": {
+          "title": {
+            "en": "PoE Port 9",
+            "nl": "PoE Poort 9",
+            "es": "Puerto de red 9"
+          }
+        },
+        "poe.port_10": {
+          "title": {
+            "en": "PoE Port 10",
+            "nl": "PoE Poort 10",
+            "es": "Puerto de red 10"
+          }
+        },
+        "poe.port_11": {
+          "title": {
+            "en": "PoE Port 11",
+            "nl": "PoE Poort 11",
+            "es": "Puerto de red 11"
+          }
+        },
+        "poe.port_12": {
+          "title": {
+            "en": "PoE Port 12",
+            "nl": "PoE Poort 12",
+            "es": "Puerto de red 12"
+          }
+        },
+        "poe.port_13": {
+          "title": {
+            "en": "PoE Port 13",
+            "nl": "PoE Poort 13",
+            "es": "Puerto de red 13"
+          }
+        },
+        "poe.port_14": {
+          "title": {
+            "en": "PoE Port 14",
+            "nl": "PoE Poort 14",
+            "es": "Puerto de red 14"
+          }
+        },
+        "poe.port_15": {
+          "title": {
+            "en": "PoE Port 15",
+            "nl": "PoE Poort 15",
+            "es": "Puerto de red 15"
+          }
+        },
+        "poe.port_16": {
+          "title": {
+            "en": "PoE Port 16",
+            "nl": "PoE Poort 16",
+            "es": "Puerto de red 16"
+          }
+        },
+        "poe.port_17": {
+          "title": {
+            "en": "PoE Port 17",
+            "nl": "PoE Poort 17",
+            "es": "Puerto de red 17"
+          }
+        },
+        "poe.port_18": {
+          "title": {
+            "en": "PoE Port 18",
+            "nl": "PoE Poort 18",
+            "es": "Puerto de red 18"
+          }
+        },
+        "poe.port_19": {
+          "title": {
+            "en": "PoE Port 19",
+            "nl": "PoE Poort 19",
+            "es": "Puerto de red 19"
+          }
+        },
+        "poe.port_20": {
+          "title": {
+            "en": "PoE Port 20",
+            "nl": "PoE Poort 20",
+            "es": "Puerto de red 20"
+          }
+        },
+        "poe.port_21": {
+          "title": {
+            "en": "PoE Port 21",
+            "nl": "PoE Poort 21",
+            "es": "Puerto de red 21"
+          }
+        },
+        "poe.port_22": {
+          "title": {
+            "en": "PoE Port 22",
+            "nl": "PoE Poort 22",
+            "es": "Puerto de red 22"
+          }
+        },
+        "poe.port_23": {
+          "title": {
+            "en": "PoE Port 23",
+            "nl": "PoE Poort 23",
+            "es": "Puerto de red 23"
+          }
+        },
+        "poe.port_24": {
+          "title": {
+            "en": "PoE Port 24",
+            "nl": "PoE Poort 24",
+            "es": "Puerto de red 24"
+          }
+        },
+        "poe.port_25": {
+          "title": {
+            "en": "PoE Port 25",
+            "nl": "PoE Poort 25",
+            "es": "Puerto de red 25"
+          }
+        },
+        "poe.port_26": {
+          "title": {
+            "en": "PoE Port 26",
+            "nl": "PoE Poort 26",
+            "es": "Puerto de red 26"
+          }
+        },
+        "poe.port_27": {
+          "title": {
+            "en": "PoE Port 27",
+            "nl": "PoE Poort 27",
+            "es": "Puerto de red 27"
+          }
+        },
+        "poe.port_28": {
+          "title": {
+            "en": "PoE Port 28",
+            "nl": "PoE Poort 28",
+            "es": "Puerto de red 28"
+          }
+        },
+        "poe.port_29": {
+          "title": {
+            "en": "PoE Port 29",
+            "nl": "PoE Poort 29",
+            "es": "Puerto de red 29"
+          }
+        },
+        "poe.port_30": {
+          "title": {
+            "en": "PoE Port 30",
+            "nl": "PoE Poort 30",
+            "es": "Puerto de red 30"
+          }
+        },
+        "poe.port_31": {
+          "title": {
+            "en": "PoE Port 31",
+            "nl": "PoE Poort 31",
+            "es": "Puerto de red 31"
+          }
+        },
+        "poe.port_32": {
+          "title": {
+            "en": "PoE Port 32",
+            "nl": "PoE Poort 32",
+            "es": "Puerto de red 32"
+          }
+        },
+        "poe.port_33": {
+          "title": {
+            "en": "PoE Port 33",
+            "nl": "PoE Poort 33",
+            "es": "Puerto de red 33"
+          }
+        },
+        "poe.port_34": {
+          "title": {
+            "en": "PoE Port 34",
+            "nl": "PoE Poort 34",
+            "es": "Puerto de red 34"
+          }
+        },
+        "poe.port_35": {
+          "title": {
+            "en": "PoE Port 35",
+            "nl": "PoE Poort 35",
+            "es": "Puerto de red 35"
+          }
+        },
+        "poe.port_36": {
+          "title": {
+            "en": "PoE Port 36",
+            "nl": "PoE Poort 36",
+            "es": "Puerto de red 36"
+          }
+        },
+        "poe.port_37": {
+          "title": {
+            "en": "PoE Port 37",
+            "nl": "PoE Poort 37",
+            "es": "Puerto de red 37"
+          }
+        },
+        "poe.port_38": {
+          "title": {
+            "en": "PoE Port 38",
+            "nl": "PoE Poort 38",
+            "es": "Puerto de red 38"
+          }
+        },
+        "poe.port_39": {
+          "title": {
+            "en": "PoE Port 39",
+            "nl": "PoE Poort 39",
+            "es": "Puerto de red 39"
+          }
+        },
+        "poe.port_40": {
+          "title": {
+            "en": "PoE Port 40",
+            "nl": "PoE Poort 40",
+            "es": "Puerto de red 40"
+          }
+        },
+        "poe.port_41": {
+          "title": {
+            "en": "PoE Port 41",
+            "nl": "PoE Poort 41",
+            "es": "Puerto de red 41"
+          }
+        },
+        "poe.port_42": {
+          "title": {
+            "en": "PoE Port 42",
+            "nl": "PoE Poort 42",
+            "es": "Puerto de red 42"
+          }
+        },
+        "poe.port_43": {
+          "title": {
+            "en": "PoE Port 43",
+            "nl": "PoE Poort 43",
+            "es": "Puerto de red 43"
+          }
+        },
+        "poe.port_44": {
+          "title": {
+            "en": "PoE Port 44",
+            "nl": "PoE Poort 44",
+            "es": "Puerto de red 44"
+          }
+        },
+        "poe.port_45": {
+          "title": {
+            "en": "PoE Port 45",
+            "nl": "PoE Poort 45",
+            "es": "Puerto de red 45"
+          }
+        },
+        "poe.port_46": {
+          "title": {
+            "en": "PoE Port 46",
+            "nl": "PoE Poort 46",
+            "es": "Puerto de red 46"
+          }
+        },
+        "poe.port_47": {
+          "title": {
+            "en": "PoE Port 47",
+            "nl": "PoE Poort 47",
+            "es": "Puerto de red 47"
+          }
+        },
+        "poe.port_48": {
+          "title": {
+            "en": "PoE Port 48",
+            "nl": "PoE Poort 48",
+            "es": "Puerto de red 48"
+          }
         }
       },
       "pair": [
@@ -1168,6 +1948,43 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/signal.svg"
+    },
+    "poe": {
+      "type": "boolean",
+      "title": {
+        "en": "PoE state",
+        "nl": "PoE status",
+        "es": "PoE state"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/lightning-bolt-outline.svg",
+      "uiComponent": "button",
+      "uiQuickAction": true
+    },
+    "port": {
+      "type": "boolean",
+      "title": {
+        "en": "Port state",
+        "nl": "Poort status",
+        "es": "Port state"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/lan.svg",
+      "uiComponent": "button",
+      "uiQuickAction": true
+    },
+    "ports": {
+      "type": "number",
+      "title": {
+        "en": "Amount ports",
+        "nl": "Aantal poorten",
+        "es": "Cantidad de puertos"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "./assets/router-network.svg"
     },
     "radio_proto": {
       "type": "string",

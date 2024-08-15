@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Amount ports",
+    "nl": "Aantal poorten",
+    "es": "Cantidad de puertos"
+  },
+  "getable": true,
+  "setable": false,
+  "icon": "./assets/router-network.svg"
+}

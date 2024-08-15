@@ -72,6 +72,21 @@ class ApiClient extends BaseClass {
         });
     }
 
+    async getNetworkSwitches() {
+        return new Promise((resolve, reject) => {
+            this.unifi.getAccessDevices()
+                .then(response => {
+                    response = response.filter( obj => obj.type === 'usw');
+                    if (response) {
+                        return resolve(response);
+                    } else {
+                        return reject(new Error('Error obtaining network switches.'));
+                    }
+                })
+                .catch(error => reject(error));
+        });
+    }
+
     getDeviceName(payload) {
         let deviceName = payload.name
         if (typeof deviceName === 'undefined' && typeof payload.hostname !== 'undefined') deviceName = payload.hostname;

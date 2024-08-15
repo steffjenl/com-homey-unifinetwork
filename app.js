@@ -7,7 +7,6 @@ const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
 const {setFlagsFromString} = require('v8');
 const {runInNewContext} = require('vm');
-
 class UnifiNetwork extends Homey.App {
     /**
      * onInit is called when the app is initialized.
@@ -55,6 +54,7 @@ class UnifiNetwork extends Homey.App {
      */
     parseWebsocketMessage(payload) {
         let that = this;
+        that.homey.log(`parseWebsocketMessage : ${JSON.stringify(payload)}`);
         // start application flow cards
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
@@ -190,22 +190,51 @@ class UnifiNetwork extends Homey.App {
 
         const wifiBlock = this.homey.flow.getActionCard('wifi_block');
         wifiBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            try {
+                this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            } catch {
+                this.homey.error(`[wifi_block]: ${JSON.stringify(error)}`);
+            }
         });
 
         const wifiUnBlock = this.homey.flow.getActionCard('wifi_unblock');
         wifiUnBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            try {
+                this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            } catch {
+                this.homey.error(`[wifi_unblock]: ${JSON.stringify(error)}`);
+            }
         });
 
         const cableBlock = this.homey.flow.getActionCard('cable_block');
         cableBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            try {
+                this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            } catch {
+                this.homey.error(`[cable_block]: ${JSON.stringify(error)}`);
+            }
         });
 
         const cableUnBlock = this.homey.flow.getActionCard('cable_unblock');
         cableUnBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            try {
+                this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            } catch (error) {
+                this.homey.error(`[cable_unblock]: ${JSON.stringify(error)}`);
+            }
+        });
+
+        const _powerCycleSwitchPort = this.homey.flow.getActionCard('network_switch_power_cycle_port');
+        _powerCycleSwitchPort.registerRunListener(async (args, state) => {
+            try {
+                if (args.device.hasCapability('ports') && args.port > args.device.getCapabilityValue('ports')) {
+                    this.homey.error(`[network_switch_power_cycle_port]: Port ${args.port} is not available on ${args.device.getData().id}`);
+                    return;
+                }
+                this.homey.app.api.unifi.powerCycleSwitchPort(args.device.getData().id, args.port);
+            } catch (error) {
+                this.homey.error(`[network_switch_power_cycle_port]: ${args.device.getData().id} ${args.port} ${JSON.stringify(error)}`);
+            }
         });
         this.debug('UnifiNetwork init Flow Triggers');
     }

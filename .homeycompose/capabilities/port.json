@@ -1,0 +1,13 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Port state",
+    "nl": "Poort status",
+    "es": "Port state"
+  },
+  "getable": true,
+  "setable": false,
+  "icon": "./assets/lan.svg",
+  "uiComponent": "button",
+  "uiQuickAction": true
+}
