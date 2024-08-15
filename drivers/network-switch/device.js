@@ -128,7 +128,6 @@ class NetworkSwitchDevice extends Device {
   }
 
   onUPChange(data, port) {
-    this.homey.app.debug(`onUPChange ${data} for port ${port}`);
     if (this.hasCapability('port.port_' + port)) {
       this.setCapabilityValue('port.port_' + port, data);
     }
@@ -146,6 +145,23 @@ class NetworkSwitchDevice extends Device {
     }
   }
 
+  onStatusChange(data) {
+    if (typeof data.port_table !== 'undefined') {
+
+      this.onAmountPortsChange(data.port_table.length);
+
+      for (let i = 1; i < data.port_table.length + 1; i++) {
+        if (typeof data.port_table[i - 1].up !== 'undefined') {
+          this.onUPChange(data.port_table[i - 1].up, i);
+        }
+
+        if (typeof data.port_table[i - 1].poe_enable !== 'undefined') {
+          this.onPOEChange(data.port_table[i - 1].poe_enable, i);
+        }
+      }
+    }
+  }
+
   getDeviceStatus() {
     if (this.homey.app.loggedIn === true) {
       this.homey.app.api.unifi.getAccessDevices(this.getData().id).then(device => {
@@ -154,18 +170,12 @@ class NetworkSwitchDevice extends Device {
         }
 
         if (typeof device[0].port_table !== 'undefined') {
-
           this.onAmountPortsChange(device[0].port_table.length);
-
           for (let i = 1; i < device[0].port_table.length + 1; i++) {
-
             if (typeof device[0].port_table[i - 1].up !== 'undefined') {
-              this.homey.app.debug('onUPChange');
               this.onUPChange(device[0].port_table[i - 1].up, i);
             }
-
             if (typeof device[0].port_table[i - 1].poe_enable !== 'undefined') {
-              this.homey.app.debug('onPOEChange');
               this.onPOEChange(device[0].port_table[i - 1].poe_enable, i);
             }
           }

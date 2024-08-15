@@ -54,7 +54,6 @@ class UnifiNetwork extends Homey.App {
      */
     parseWebsocketMessage(payload) {
         let that = this;
-        that.homey.log(`parseWebsocketMessage : ${JSON.stringify(payload)}`);
         // start application flow cards
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
@@ -66,6 +65,17 @@ class UnifiNetwork extends Homey.App {
                 that.homey.log(`EVT_WU_Connected : ${JSON.stringify(payload)}`);
                 that.onIsConnected(true, payload);
                 return;
+            }
+        }
+
+        if (payload.type === 'usw') {
+            that.homey.log(`[websocket] [usw]: ${JSON.stringify(payload)}`);
+            const driver = that.homey.drivers.getDriver('network-switch');
+            const deviceMac = payload.mac;
+            const device = driver.getUnifiDeviceById(deviceMac);
+            //
+            if (device) {
+                device.onStatusChange(payload);
             }
         }
 
