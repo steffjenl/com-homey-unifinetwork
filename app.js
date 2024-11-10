@@ -352,29 +352,36 @@ class UnifiNetwork extends Homey.App {
 
         try {
             // LOGIN
-            this.loggedIn = await this.api.unifi.login(settings.user, settings.pass);
-            if (this.loggedIn) {
-                this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
-                this.setLoggedIn(true);
-                this.debug('We are logged in!');
+            this.api.unifi.login(settings.user, settings.pass).then(async (loggedIn) => {
+                if (loggedIn) {
+                    this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
+                    this.setLoggedIn(true);
+                    this.debug('We are logged in!');
 
-                // install timers
-                await this._initTimers();
+                    // install timers
+                    await this._initTimers();
 
-                // get all accesspoints from controller
-                this.updateAccessPointList();
+                    // get all accesspoints from controller
+                    this.updateAccessPointList();
 
-                if ("pullmethode" in settings && settings.pullmethode === '1') {
-                    // LISTEN for WebSocket events
-                    this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
-                    this.api.websocket.listen().then((connected) => {
-                        if (connected) {
-                            this.debug('WebSocket is connected');
-                        }
-                    });
+                    if ("pullmethode" in settings && settings.pullmethode === '1') {
+                        // LISTEN for WebSocket events
+                        this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+                        this.api.websocket.listen().then((connected) => {
+                            if (connected) {
+                                this.debug('WebSocket is connected');
+                            }
+                        }).catch(
+                            (error) => {
+                                this.debug(`WebSocket error: ${JSON.stringify(error)}`);
+                            }
+                        );
+                    }
                 }
-            }
-
+            }).catch((error) => {
+                this.debug('catch error = ' + JSON.stringify(error));
+                this.setLoggedIn(false);
+            });
         } catch (error) {
             //this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
             this.debug('catch error = ' + JSON.stringify(error));
