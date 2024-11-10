@@ -106,5 +106,8 @@
   },
   "2.4.5": {
     "en": "Fix session timeout, relogin every hour"
+  },
+  "2.4.6": {
+    "en": "Updated internal packages"
   }
 }
