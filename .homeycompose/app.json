@@ -39,6 +39,7 @@
   },
   "homeyCommunityTopicId": 42967,
   "source": "https://github.com/steffjenl/com-homey-unifinetwork",
+  "support": "https://monkeysoft.nl/homey-integrations-support/",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
