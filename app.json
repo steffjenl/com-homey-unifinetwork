@@ -40,10 +40,10 @@
     "security"
   ],
   "bugs": {
-    "url": "https://gitlab.com/monkeysoft/com-homey-unifinetwork/-/issues"
+    "url": "https://gitlab.com/monkeysoft/com-ubnt-unifi/-/issues"
   },
   "homeyCommunityTopicId": 42967,
-  "source": "https://gitlab.com/monkeysoft/com-homey-unifinetwork",
+  "source": "https://gitlab.com/monkeysoft/com-ubnt-unifi",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
