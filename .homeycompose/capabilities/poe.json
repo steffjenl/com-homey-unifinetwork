@@ -3,7 +3,10 @@
   "title": {
     "en": "PoE state",
     "nl": "PoE status",
-    "es": "PoE state"
+    "es": "PoE state",
+    "de": "PoE status",
+    "fr": "État PoE",
+    "it": "Stato PoE"
   },
   "getable": true,
   "setable": false,

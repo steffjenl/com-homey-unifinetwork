@@ -3,7 +3,10 @@
   "title": {
     "en": "Port state",
     "nl": "Poort status",
-    "es": "Port state"
+    "es": "Port state",
+    "de": "Port status",
+    "fr": "État du port",
+    "it": "Stato porta"
   },
   "getable": true,
   "setable": false,

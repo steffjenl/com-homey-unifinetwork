@@ -3,7 +3,10 @@
   "title": {
     "en": "WiFi Name",
     "nl": "WiFi Naam",
-    "es": "Nombre WiFi"
+    "es": "Nombre WiFi",
+    "de": "WLAN Name",
+    "fr": "Nom WiFi",
+    "it": "Nome WiFi"
   },
   "getable": true,
   "setable": false,

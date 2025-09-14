@@ -3,7 +3,10 @@
   "title": {
     "en": "IP Address",
     "nl": "IP Adres",
-    "es": "IP Address"
+    "es": "IP Address",
+    "de": "IP Adresse",
+    "fr": "Adresse IP",
+    "it": "Indirizzo IP"
   },
   "getable": true,
   "setable": false,

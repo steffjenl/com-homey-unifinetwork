@@ -3,7 +3,10 @@
   "title": {
     "en": "Unblock client",
     "nl": "Deblokeer cliënt",
-    "es": "Desbloquear cliente"
+    "es": "Desbloquear cliente",
+    "de": "Client entblocken",
+    "fr": "Débloquer le client",
+    "it": "Sblocca client"
   },
   "args": [
     {

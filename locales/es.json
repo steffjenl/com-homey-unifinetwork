@@ -1,0 +1,64 @@
+{
+  "title": "UniFi Network",
+  "pair": {
+    "validate": {
+      "title": "Validar UniFi Cloud Key",
+      "instruction": "Por favor, configure primero la Cloud Key en Ajustes."
+    },
+    "login": {
+      "title": "Iniciar sesión"
+    }
+  },
+  "settings": {
+    "title": "Configuración de UniFi Network",
+    "instruction": "Inicie sesión con los datos del usuario de UniFi Network.",
+    "nvr": "Datos del servidor",
+    "nvrText": "Use el puerto 443 para UniFiOS y el puerto 8443 para Docker / Independiente.",
+    "nvrip": "Dirección IP",
+    "nvrport": "Puerto",
+    "credentials": "Datos de usuario",
+    "credentialsText": "MFA desactivado y usuario administrador local",
+    "username": "Nombre de usuario (mínimo 32 caracteres)",
+    "password": "Contraseña",
+    "apply": "Aplicar",
+    "test": "Probar datos de usuario",
+    "test_status": {
+      "success": "Conexión exitosa.",
+      "failure": "Conexión fallida. Verifique los datos e intente de nuevo."
+    },
+    "saved": "Configuración guardada.",
+    "tab": {
+      "settings": "Configuración",
+      "event_log": "Registro de eventos"
+    }
+  },
+  "events": {
+    "camera": {
+      "motion_started": "Inicio de movimiento",
+      "motion_ended": "Fin de movimiento",
+      "motion_inprogress": "Movimiento",
+      "ftr_inprogress": "Continuo",
+      "disabled": "Desactivado",
+      "failed": "Fallido",
+      "done": "Listo",
+      "always": "Siempre",
+      "motion": "Con movimiento",
+      "never": "Nunca",
+      "detections": "Con movimiento"
+    },
+    "health": {
+      "unknown": "Desconocido",
+      "green": "Saludable",
+      "orange": "Advertencia",
+      "red": "Crítico"
+    }
+  },
+  "status": {
+    "connection": {
+      "Connected": "Conectado",
+      "Connecting": "Conectando...",
+      "Disconnected": "Desconectado",
+      "Initialized": "Inicializando"
+    }
+  }
+}

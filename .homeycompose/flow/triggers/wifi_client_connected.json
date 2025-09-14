@@ -3,7 +3,10 @@
   "title": {
     "en": "Connected",
     "nl": "Verbonden",
-    "es": "Conectado"
+    "es": "Conectado",
+    "fr": "Connecté",
+    "de": "Verbunden",
+    "it": "Connesso"
   },
   "args": [
     {

@@ -3,17 +3,26 @@
   "title": {
     "en": "First device connected",
     "nl": "Eerste apparaat verbonden",
-    "es": "Primer dispositivo conectado"
+    "es": "Primer dispositivo conectado",
+    "fr": "Premier appareil connecté",
+    "de": "Erstes Gerät verbunden",
+    "it": "Primo dispositivo connesso"
   },
   "titleFormatted": {
     "en": "First device connected at [[accessPoint]]",
     "nl": "Eerste apparaat verbonden met [[accessPoint]]",
-    "es": "Primer dispositivo conectado a [[accessPoint]]"
+    "es": "Primer dispositivo conectado a [[accessPoint]]",
+    "fr": "Premier appareil connecté à [[accessPoint]]",
+    "de": "Erstes Gerät verbunden mit [[accessPoint]]",
+    "it": "Primo dispositivo connesso a [[accessPoint]]"
   },
   "hint": {
     "en": "Triggers when the first device connects to the accesspoint",
     "nl": "Wordt getriggerd wanneer het eerste apparaat verbonden is met het accesspoint",
-    "es": "Se activa cuando el primer dispositivo se conecta al punto de acceso"
+    "es": "Se activa cuando el primer dispositivo se conecta al punto de acceso",
+    "fr": "Déclenche lorsque le premier appareil se connecte au point d'accès",
+    "de": "Wird ausgelöst, wenn das erste Gerät mit dem Zugangspunkt verbunden",
+    "it": "Si attiva quando il primo dispositivo si connette al punto di accesso"
   },
   "args": [
     {
@@ -22,7 +31,10 @@
       "placeholder": {
         "en": "Accesspoint name",
         "nl": "Accesspoint naam",
-        "es": "Nombre punto de acceso"
+        "es": "Nombre punto de acceso",
+        "fr": "Nom du point d'accès",
+        "de": "Zugangspunkt Name",
+        "it": "Nome punto di accesso"
       }
     }
   ]

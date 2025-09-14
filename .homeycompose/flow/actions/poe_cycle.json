@@ -3,12 +3,18 @@
   "title": {
     "en": "PoE Power Cycle",
     "nl": "PoE Stroomcyclus",
-    "es": "Ciclo de energía PoE"
+    "es": "Ciclo de energía PoE",
+    "de": "PoE-Stromzyklus",
+    "fr": "Cycle d'alimentation PoE",
+    "it": "Ciclo di alimentazione PoE"
   },
   "titleFormatted": {
     "en": "Cylce power on port [[port]]",
     "nl": "Zet stroom uit en aan op switch poort [[port]]",
-    "es": "Ciclo de energía en puerto [[port]]"
+    "es": "Ciclo de energía en puerto [[port]]",
+    "de": "Stromzyklus an Port [[port]]",
+    "fr": "Cycle d'alimentation sur le port [[port]]",
+    "it": "Ciclo di alimentazione sulla porta [[port]]"
   },
   "args": [
     {

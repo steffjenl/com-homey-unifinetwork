@@ -3,6 +3,9 @@
   "title": {
     "en": "Last device disconnected",
     "nl": "Laatste verbinding verbroken",
-    "es": "Último dispositivo desconectado"
+    "es": "Último dispositivo desconectado",
+    "fr": "Dernier appareil déconnecté",
+    "de": "Letztes Gerät getrennt",
+    "it": "Ultimo dispositivo disconnesso"
   }
 }

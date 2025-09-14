@@ -3,11 +3,18 @@
   "title": {
     "en": "!{{Blocked|Unblocked}}",
     "nl": "!{{Geblokkeerd|Gedeblokkeerd}}",
-    "es": "!{{Blocked|Unblocked}}"
+    "es": "!{{Blocked|Unblocked}}",
+    "de": "!{{Blocked|Unblocked}}",
+    "fr": "!{{Blocked|Unblocked}}",
+    "it": "!{{Bloccato|Sbloccato}}"
   },
   "titleFormatted": {
     "en": "!{{Blocked|Unblocked}}",
-    "nl": "!{{Geblokkeerd|Gedeblokkeerd}}"
+    "nl": "!{{Geblokkeerd|Gedeblokkeerd}}",
+    "es": "!{{Blocked|Unblocked}}",
+    "de": "!{{Blocked|Unblocked}}",
+    "fr": "!{{Blocked|Unblocked}}",
+    "it": "!{{Bloccato|Sbloccato}}"
   },
   "args": [
     {

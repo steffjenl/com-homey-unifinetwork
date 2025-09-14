@@ -3,7 +3,10 @@
   "title": {
     "en": "Accesspoint MAC",
     "nl": "Accesspoint MAC",
-    "es": "Accesspoint MAC"
+    "es": "Accesspoint MAC",
+    "de": "Accesspoint MAC",
+    "fr": "MAC du point d'accès",
+    "it": "Accesspoint MAC"
   },
   "getable": true,
   "setable": false,

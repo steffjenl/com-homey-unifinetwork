@@ -4,12 +4,18 @@
   "title": {
     "en": "AP has !{{|no}} clients",
     "nl": "AP heeft !{{|geen}} apparaten",
-    "es": "AP has !{{|no}} clients"
+    "es": "AP has !{{|no}} clients",
+    "de": "AP hat !{{|keine}} Clients",
+    "fr": "AP has !{{|no}} clients",
+    "it": "AP has !{{|no}} clients"
   },
   "titleFormatted": {
     "en": "[[accessPoint]] has !{{|no}} clients",
     "nl": "[[accessPoint]] heeft !{{|geen}} apparaten",
-    "es": "[[accessPoint]] has !{{|no}} clients"
+    "es": "[[accessPoint]] has !{{|no}} clients",
+    "de": "[[accessPoint]] hat !{{|keine}} Clients",
+    "fr": "[[accessPoint]] has !{{|no}} clients",
+    "it": "[[accessPoint]] has !{{|no}} clients"
   },
   "args": [
     {
@@ -18,7 +24,10 @@
       "placeholder": {
         "en": "Accesspoint name",
         "nl": "Accesspoint naam",
-        "es": "Nombre de punto de acceso"
+        "es": "Nombre de punto de acceso",
+        "de": "Accesspoint Name",
+        "fr": "Nom du point d'accès",
+        "it": "Nome punto di accesso"
       }
     }
   ]

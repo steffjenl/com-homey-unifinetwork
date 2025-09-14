@@ -3,7 +3,10 @@
   "title": {
     "en": "Radio Protocol",
     "nl": "Radio Protocol",
-    "es": "Radio Protocol"
+    "es": "Radio Protocol",
+    "de": "Funkprotokoll",
+    "fr": "Protocole radio",
+    "it": "Protocollo radio"
   },
   "getable": true,
   "setable": false,

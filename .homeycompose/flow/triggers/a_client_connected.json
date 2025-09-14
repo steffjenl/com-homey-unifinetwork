@@ -3,7 +3,10 @@
   "title": {
     "en": "Device just connected",
     "nl": "Apparaat verbonden met wifi",
-    "es": "Dispositivo conectado"
+    "es": "Dispositivo conectado",
+    "fr": "Appareil connecté",
+    "de": "Gerät verbunden",
+    "it": "Dispositivo connesso"
   },
   "tokens": [
     {
@@ -12,12 +15,18 @@
       "title": {
         "en": "mac",
         "nl": "mac",
-        "es": "MAC"
+        "es": "MAC",
+        "fr": "mac",
+        "de": "MAC",
+        "it": "MAC"
       },
       "example": {
         "en": "00:00:00:00:00:00",
         "nl": "00:00:00:00:00:00",
-        "es": "00:00:00:00:00:00"
+        "es": "00:00:00:00:00:00",
+        "fr": "00:00:00:00:00:00",
+        "de": "00:00:00:00:00:00",
+        "it": "00:00:00:00:00:00"
       }
     },
     {
@@ -26,12 +35,18 @@
       "title": {
         "en": "Who",
         "nl": "Wie",
-        "es": "Quien"
+        "es": "Quien",
+        "fr": "Qui",
+        "de": "Wer",
+        "it": "Chi"
       },
       "example": {
         "en": "wifi01",
         "nl": "wifi01",
-        "es": "wifi01"
+        "es": "wifi01",
+        "fr": "wifi01",
+        "de": "wifi01",
+        "it": "wifi01"
       }
     },
     {
@@ -40,10 +55,18 @@
       "title": {
         "en": "SSID",
         "nl": "SSID",
-        "es": "SSID"
+        "es": "SSID",
+        "fr": "SSID",
+        "de": "SSID",
+        "it": "SSID"
       },
       "example": {
-        "en": "MyWifiSSID"
+        "en": "MyWifiSSID",
+        "nl": "MyWifiSSID",
+        "es": "MyWifiSSID",
+        "fr": "MyWifiSSID",
+        "de": "MyWifiSSID",
+        "it": "MyWifiSSID"
       }
     }
   ]

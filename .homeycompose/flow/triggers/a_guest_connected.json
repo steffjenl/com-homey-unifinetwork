@@ -3,7 +3,10 @@
   "title": {
     "en": "Guest just connected",
     "nl": "Gast verbonden met wifi",
-    "es": "Visita conectado"
+    "es": "Visita conectado",
+    "fr": "Visiteur connecté",
+    "de": "Gast verbunden",
+    "it": "Ospite connesso"
   },
   "tokens": [
     {
@@ -26,7 +29,10 @@
       "title": {
         "en": "Who",
         "nl": "Wie",
-        "es": "Quien"
+        "es": "Quien",
+        "fr": "Qui",
+        "de": "Wer",
+        "it": "Chi"
       },
       "example": {
         "en": "wifi01",

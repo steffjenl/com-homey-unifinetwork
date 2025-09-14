@@ -3,11 +3,18 @@
   "title": {
     "en": "!{{Connected|Disconnected}}",
     "nl": "!{{Verbonden|Verbinding verbroken}}",
-    "es": "!{{Connected|Disconnected}}"
+    "es": "!{{Connected|Disconnected}}",
+    "de": "!{{Verbunden|Getrennt}}",
+    "fr": "!{{Connecté|Déconnecté}}",
+    "it": "!{{Connesso|Disconnesso}}"
   },
   "titleFormatted": {
     "en": "!{{Connected|Disconnected}}",
-    "nl": "!{{Verbonden|Verbinding verbroken}}"
+    "nl": "!{{Verbonden|Verbinding verbroken}}",
+    "es": "!{{Connected|Disconnected}}",
+    "de": "!{{Verbunden|Getrennt}}",
+    "fr": "!{{Connecté|Déconnecté}}",
+    "it": "!{{Connesso|Disconnesso}}"
   },
   "args": [
     {

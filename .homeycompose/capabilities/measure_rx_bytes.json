@@ -3,7 +3,10 @@
   "title": {
     "en": "RX Bytes",
     "nl": "RX Bytes",
-    "es": "RX Bytes"
+    "es": "RX Bytes",
+    "de": "RX Bytes",
+    "fr": "RX Bytes",
+    "it": "RX Bytes"
   },
   "units": {
     "en": "MB",

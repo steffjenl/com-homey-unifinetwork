@@ -3,7 +3,10 @@
   "title": {
     "en": "Guest connection lost",
     "nl": "Gast connectie verloren",
-    "es": "Conexión de visita perdida"
+    "es": "Conexión de visita perdida",
+    "fr": "Connexion visiteur perdue",
+    "de": "Gastverbindung verloren",
+    "it": "Connessione ospite persa"
   },
   "tokens": [
     {
@@ -24,7 +27,10 @@
       "title": {
         "en": "Who",
         "nl": "Wie",
-        "es": "Quien"
+        "es": "Quien",
+        "fr": "Qui",
+        "de": "Wer",
+        "it": "Chi"
       },
       "example": {
         "en": "wifi01",

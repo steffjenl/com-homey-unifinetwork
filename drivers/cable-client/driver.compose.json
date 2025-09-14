@@ -3,7 +3,10 @@
   "name": {
     "en": "Wired client",
     "nl": "Bedrade cliënt",
-    "es": "Cliente cableado"
+    "es": "Cliente cableado",
+    "de": "Verkabelter Client",
+    "fr": "Client câblé",
+    "it": "Client cablato"
   },
   "mobile": {
     "components": [
@@ -22,7 +25,10 @@
             "title": {
               "en": "Connection state",
               "nl": "Verbindingsstatus",
-              "es": "Estado de Verbindings"
+              "es": "Estado de Verbindings",
+              "de": "Verbindungsstatus",
+              "fr": "État de la connexion",
+              "it": "Stato della connessione"
             }
           },
           "getable": true,
@@ -38,11 +44,17 @@
             "label": {
               "true": {
                 "en": "Connected",
-                "es": "Conectado"
+                "es": "Conectado",
+                "de": "Verbunden",
+                "fr": "Connecté",
+                "it": "Connesso"
               },
               "false": {
                 "en": "Disconnected",
-                "es": "Desconectado"
+                "es": "Desconectado",
+                "de": "Getrennt",
+                "fr": "Déconnecté",
+                "it": "Disconnesso"
               }
             }
           }
@@ -65,7 +77,10 @@
       "title": {
         "en": "Connection state",
         "nl": "Verbindingsstatus",
-        "es": "Estado de Verbindings"
+        "es": "Estado de Verbindings",
+        "de": "Verbindungsstatus",
+        "fr": "État de la connexion",
+        "it": "Stato della connessione"
       },
       "getable": true,
       "setable": false
