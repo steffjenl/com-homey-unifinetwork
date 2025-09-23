@@ -394,7 +394,7 @@ class UnifiNetwork extends Homey.App {
             this.loggedIn = await this.api.unifi.login(settings.user, settings.pass);
             if (this.loggedIn) {
                 this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
-                this.setLoggedIn(true);
+                this.setLoggedIn(true).catch(this.error);
                 this.debug('We are logged in!');
 
                 // install timers
@@ -417,7 +417,7 @@ class UnifiNetwork extends Homey.App {
         } catch (error) {
             //this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
             this.debug('catch error = ' + JSON.stringify(error));
-            this.setLoggedIn(false);
+            this.setLoggedIn(false).catch(this.error);
         }
     }
 

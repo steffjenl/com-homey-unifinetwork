@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,2C8.89,2 8,2.89 8,4V7C8,8.11 8.89,9 10,9H11V11H2V13H6V15H5C3.89,15 3,15.89 3,17V20C3,21.11 3.89,22 5,22H9C10.11,22 11,21.11 11,20V17C11,15.89 10.11,15 9,15H8V13H16V15H15C13.89,15 13,15.89 13,17V20C13,21.11 13.89,22 15,22H19C20.11,22 21,21.11 21,20V17C21,15.89 20.11,15 19,15H18V13H22V11H13V9H14C15.11,9 16,8.11 16,7V4C16,2.89 15.11,2 14,2H10M10,4H14V7H10V4M5,17H9V20H5V17M15,17H19V20H15V17Z" /></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- License: MIT. Made by vmware: https://github.com/vmware/clarity-assets -->
+<svg fill="#000000" width="800px" height="800px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>network-switch-line</title>
+    <path d="M33.91,18.47,30.78,8.41A2,2,0,0,0,28.87,7H7.13A2,2,0,0,0,5.22,8.41L2.09,18.48a2,2,0,0,0-.09.59V27a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V19.06A2,2,0,0,0,33.91,18.47ZM32,27H4V19.06L7.13,9H28.87L32,19.06Z" class="clr-i-outline clr-i-outline-path-1"></path><rect x="7.12" y="22" width="1.8" height="3" class="clr-i-outline clr-i-outline-path-2"></rect><rect x="12.12" y="22" width="1.8" height="3" class="clr-i-outline clr-i-outline-path-3"></rect><rect x="17.11" y="22" width="1.8" height="3" class="clr-i-outline clr-i-outline-path-4"></rect><rect x="22.1" y="22" width="1.8" height="3" class="clr-i-outline clr-i-outline-path-5"></rect><rect x="27.1" y="22" width="1.8" height="3" class="clr-i-outline clr-i-outline-path-6"></rect><rect x="6.23" y="18" width="23.69" height="1.4" class="clr-i-outline clr-i-outline-path-7"></rect>
+    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+</svg>

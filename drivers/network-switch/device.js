@@ -60,21 +60,21 @@ class NetworkSwitchDevice extends Device {
   async _createMissingCapabilities() {
     if (this.getClass() !== 'sensor') {
       this.homey.app.debug(`changed class to sensor for ${this.getName()}`);
-      this.setClass('sensor');
+      this.setClass('sensor').catch(this.error);
     }
 
     if (!this.hasCapability('ipAddress')) {
-      this.addCapability('ipAddress');
+      this.addCapability('ipAddress').catch(this.error);
       this.homey.app.debug(`created capability ipAddress for ${this.getName()}`);
     }
 
     if (!this.hasCapability('connected')) {
-      this.addCapability('connected');
+      this.addCapability('connected').catch(this.error);
       this.homey.app.debug(`created capability connected for ${this.getName()}`);
     }
 
     if (!this.hasCapability('ports')) {
-      this.addCapability('ports');
+      this.addCapability('ports').catch(this.error);
       this.homey.app.debug(`created capability ports for ${this.getName()}`);
     }
 
@@ -85,14 +85,14 @@ class NetworkSwitchDevice extends Device {
             this.homey.app.debug(`${device[0].port_table.length} Searching Capability for ${device[0].port_table[i - 1].name} for ${this.getName()}`);
 
             if (!this.hasCapability('port.port_' + i)) {
-              this.addCapability('port.port_' + i);
+              this.addCapability('port.port_' + i).catch(this.error);
               this.homey.app.debug(`created capability port_${i} for ${this.getName()}`);
               new Promise(r => setTimeout(r, 500));
             }
 
             if (device[0].port_table[i - 1].port_poe === true) {
               if (!this.hasCapability('poe.port_' + i)) {
-                this.addCapability('poe.port_' + i);
+                this.addCapability('poe.port_' + i).catch(this.error);
                 this.homey.app.debug(`created capability poe_${i} for ${this.getName()}`);
                 new Promise(r => setTimeout(r, 500));
               }
@@ -109,7 +109,7 @@ class NetworkSwitchDevice extends Device {
     let deviceState = this.getState();
 
     if (this.hasCapability('connected')) {
-      this.setCapabilityValue('connected', isConnected);
+      this.setCapabilityValue('connected', isConnected).catch(this.error);
     }
 
     if (deviceState.connected !== isConnected) {
@@ -123,25 +123,25 @@ class NetworkSwitchDevice extends Device {
 
   onIPChange(data) {
     if (this.hasCapability('ipAddress')) {
-      this.setCapabilityValue('ipAddress', data.ip);
+      this.setCapabilityValue('ipAddress', data.ip).catch(this.error);
     }
   }
 
   onUPChange(data, port) {
     if (this.hasCapability('port.port_' + port)) {
-      this.setCapabilityValue('port.port_' + port, data);
+      this.setCapabilityValue('port.port_' + port, data).catch(this.error);
     }
   }
 
   onPOEChange(data, port) {
     if (this.hasCapability('poe.port_' + port)) {
-      this.setCapabilityValue('poe.port_' + port, data);
+      this.setCapabilityValue('poe.port_' + port, data).catch(this.error);
     }
   }
 
   onAmountPortsChange(data) {
     if (this.hasCapability('ports')) {
-      this.setCapabilityValue('ports', data);
+      this.setCapabilityValue('ports', data).catch(this.error);
     }
   }
 

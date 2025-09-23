@@ -61,68 +61,68 @@ class WiFiDevice extends Device {
     async _createMissingCapabilities() {
         if (this.getClass() !== 'sensor') {
             this.homey.app.debug(`changed class to sensor for ${this.getName()}`);
-            this.setClass('sensor');
+            this.setClass('sensor').catch(this.error);
         }
 
         if (!this.hasCapability('wifi_name')) {
-            this.addCapability('wifi_name');
+            this.addCapability('wifi_name').catch(this.error);
             this.homey.app.debug(`created capability wifi_name for ${this.getName()}`);
         }
 
         if (!this.hasCapability('ap_mac')) {
-            this.addCapability('ap_mac');
+            this.addCapability('ap_mac').catch(this.error);
             this.homey.app.debug(`created capability ap_mac for ${this.getName()}`);
         }
 
         if (!this.hasCapability('ap')) {
-            this.addCapability('ap');
+            this.addCapability('ap').catch(this.error);
             this.homey.app.debug(`created capability ap for ${this.getName()}`);
         }
 
         if (!this.hasCapability('ipAddress')) {
-            this.addCapability('ipAddress');
+            this.addCapability('ipAddress').catch(this.error);
             this.homey.app.debug(`created capability ipAddress for ${this.getName()}`);
         }
 
         if (!this.hasCapability('radio_proto')) {
-            this.addCapability('radio_proto');
+            this.addCapability('radio_proto').catch(this.error);
             this.homey.app.debug(`created capability radio_proto for ${this.getName()}`);
         }
 
         if (!this.hasCapability('connected')) {
-            this.addCapability('connected');
+            this.addCapability('connected').catch(this.error);
             this.homey.app.debug(`created capability connected for ${this.getName()}`);
         }
 
         if (this.hasCapability('alarm_connected')) {
-            this.removeCapability('alarm_connected');
+            this.removeCapability('alarm_connected').catch(this.error);
             this.homey.app.debug(`deleted capability alarm_connected for ${this.getName()}`);
         }
 
         if (this.hasCapability('onoff')) {
-            this.removeCapability('onoff');
+            this.removeCapability('onoff').catch(this.error);
             this.homey.app.debug(`deleted capability onoff for ${this.getName()}`);
         }
 
         if (!this.hasCapability('blocked')) {
-            this.addCapability('blocked');
+            this.addCapability('blocked').catch(this.error);
             this.homey.app.debug(`created blocked connected for ${this.getName()}`);
         }
 
         if (!this.hasCapability('measure_rx_bytes')) {
-            this.addCapability('measure_rx_bytes');
+            this.addCapability('measure_rx_bytes').catch(this.error);
             this.homey.app.debug(`created measure_rx_bytes connected for ${this.getName()}`);
         }
 
         if (!this.hasCapability('measure_tx_bytes')) {
-            this.addCapability('measure_tx_bytes');
+            this.addCapability('measure_tx_bytes').catch(this.error);
             this.homey.app.debug(`created measure_tx_bytes connected for ${this.getName()}`);
         }
     }
 
     onWifiChanged(data) {
         if (this.hasCapability('wifi_name')) {
-            this.setCapabilityValue('wifi_name', data.essid);
+            this.setCapabilityValue('wifi_name', data.essid).catch(this.error);
         }
     }
 
@@ -130,7 +130,7 @@ class WiFiDevice extends Device {
         const deviceState = this.getState();
 
         if (this.hasCapability('connected')) {
-            this.setCapabilityValue('connected', isConnected);
+            this.setCapabilityValue('connected', isConnected).catch(this.error);
         }
 
         if (!wifiName) {
@@ -154,7 +154,7 @@ class WiFiDevice extends Device {
 
     onSignalChange(data) {
         if (this.hasCapability('measure_signal')) {
-            this.setCapabilityValue('measure_signal', data.signal);
+            this.setCapabilityValue('measure_signal', data.signal).catch(this.error);
             if (data.signal !== this.getCapabilityValue('measure_signal')) {
 
                 const tokens = {
@@ -172,16 +172,16 @@ class WiFiDevice extends Device {
 
     onRSSIChange(data) {
         if (this.hasCapability('measure_rssi')) {
-            this.setCapabilityValue('measure_rssi', data.rssi);
+            this.setCapabilityValue('measure_rssi', data.rssi).catch(this.error);
         }
     }
 
     onAPChange(data) {
         if (this.hasCapability('ap_mac')) {
-            this.setCapabilityValue('ap_mac', data.ap_mac);
+            this.setCapabilityValue('ap_mac', data.ap_mac).catch(this.error);
             const accessPointName = this.homey.app.getAccessPointName(data.ap_mac);
             if (this.hasCapability('ap')) {
-                this.setCapabilityValue('ap', (accessPointName ? accessPointName : '-'));
+                this.setCapabilityValue('ap', (accessPointName ? accessPointName : '-')).catch(this.error);
             }
 
             if (data.ap_mac !== this.getCapabilityValue('ap_mac')) {
@@ -204,29 +204,29 @@ class WiFiDevice extends Device {
 
     onIPChange(data) {
         if (this.hasCapability('ipAddress')) {
-            this.setCapabilityValue('ipAddress', data.ip);
+            this.setCapabilityValue('ipAddress', data.ip).catch(this.error);
         }
     }
 
     onRadioProtoChange(data) {
         if (this.hasCapability('radio_proto')) {
-            this.setCapabilityValue('radio_proto', data.radio_proto);
+            this.setCapabilityValue('radio_proto', data.radio_proto).catch(this.error);
         }
     }
 
     onBlockedChange(data) {
         if (this.hasCapability('blocked')) {
-            this.setCapabilityValue('blocked', data.blocked);
+            this.setCapabilityValue('blocked', data.blocked).catch(this.error);
         }
     }
 
     onBytesChange(data) {
         if (this.hasCapability('measure_tx_bytes')) {
-            this.setCapabilityValue('measure_tx_bytes', (Math.round((data.tx_bytes * 0.000001) * 100) / 100));
+            this.setCapabilityValue('measure_tx_bytes', (Math.round((data.tx_bytes * 0.000001) * 100) / 100)).catch(this.error);
         }
 
         if (this.hasCapability('measure_rx_bytes')) {
-            this.setCapabilityValue('measure_rx_bytes', (Math.round((data.rx_bytes * 0.000001) * 100) / 100));
+            this.setCapabilityValue('measure_rx_bytes', (Math.round((data.rx_bytes * 0.000001) * 100) / 100)).catch(this.error);
         }
     }
 
