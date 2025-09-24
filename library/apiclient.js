@@ -30,8 +30,8 @@ class ApiClient extends BaseClass {
         return new Promise((resolve, reject) => {
             this.unifi.getAccessDevices()
                 .then(response => {
-                    response = response.filter( obj => obj.adopted === true);
-                    response = response.filter( obj => obj.type === 'uap');
+                    response = response.filter(obj => obj.adopted === true);
+                    response = response.filter(obj => obj.type === 'uap');
                     if (response) {
                         return resolve(response);
                     } else {
@@ -46,7 +46,7 @@ class ApiClient extends BaseClass {
         return new Promise((resolve, reject) => {
             this.unifi.getClientDevices()
                 .then(response => {
-                    response = response.filter( obj => obj.is_wired === false);
+                    response = response.filter(obj => obj.is_wired === false);
                     if (response) {
                         return resolve(response);
                     } else {
@@ -61,7 +61,7 @@ class ApiClient extends BaseClass {
         return new Promise((resolve, reject) => {
             this.unifi.getClientDevices()
                 .then(response => {
-                    response = response.filter( obj => obj.is_wired === true);
+                    response = response.filter(obj => obj.is_wired === true);
                     if (response) {
                         return resolve(response);
                     } else {
@@ -76,7 +76,7 @@ class ApiClient extends BaseClass {
         return new Promise((resolve, reject) => {
             this.unifi.getAccessDevices()
                 .then(response => {
-                    response = response.filter( obj => obj.type === 'usw');
+                    response = response.filter(obj => obj.type === 'usw');
                     if (response) {
                         return resolve(response);
                     } else {
@@ -85,6 +85,32 @@ class ApiClient extends BaseClass {
                 })
                 .catch(error => reject(error));
         });
+    }
+
+    async powerCycleDevice(macAddress, portIndex) {
+        this.unifi.getAccessDevices(macAddress).then(async (deviceData) => {
+            const device = deviceData.filter(obj => {
+                return obj.mac === macAddress
+            });
+            const deviceId = device[0]._id;
+            const portOverrides = device[0].port_overrides;
+            // Set PoE mode to 'off' for the specified port
+            for (const item of portOverrides) {
+                if (item.port_idx === Number.parseInt(portIndex, 10)) {
+                    item.poe_mode = 'off';
+                }
+            }
+            await this.unifi.setDeviceSettingsBase(deviceId, {port_overrides: portOverrides});
+            // sleep for 1 second
+            await new Promise(resolve => setTimeout(resolve, 500));
+            // turn the poe back on
+            for (const item of portOverrides) {
+                if (item.port_idx === Number.parseInt(portIndex, 10)) {
+                    item.poe_mode = 'auto';
+                }
+            }
+            await this.unifi.setDeviceSettingsBase(deviceId, {port_overrides: portOverrides});
+        }).catch(error => this.homey.app.error(error));
     }
 
     getDeviceName(payload) {

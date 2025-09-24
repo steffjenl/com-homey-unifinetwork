@@ -79,7 +79,13 @@
           "es": "Dispositivo conectado",
           "fr": "Appareil connecté",
           "de": "Gerät verbunden",
-          "it": "Dispositivo connesso"
+          "it": "Dispositivo connesso",
+          "da": "Enhed forbundet",
+          "sv": "Enhet ansluten",
+          "no": "Enhet tilkoblet",
+          "ko": "장치 연결됨",
+          "ru": "Устройство подключено",
+          "pt": "Dispositivo conectado"
         },
         "tokens": [
           {
@@ -111,7 +117,13 @@
               "es": "Quien",
               "fr": "Qui",
               "de": "Wer",
-              "it": "Chi"
+              "it": "Chi",
+              "da": "Hvem",
+              "sv": "Vem",
+              "no": "Hvem",
+              "ko": "누구",
+              "ru": "Кто",
+              "pt": "Quem"
             },
             "example": {
               "en": "wifi01",
@@ -152,7 +164,13 @@
           "es": "Conexión perdida",
           "fr": "Connexion Wi-Fi perdue",
           "de": "WLAN-Verbindung verloren",
-          "it": "Connessione Wi-Fi persa"
+          "it": "Connessione Wi-Fi persa",
+          "da": "WiFi-forbindelse mistet",
+          "sv": "WiFi-anslutning förlorad",
+          "no": "WiFi-tilkobling mistet",
+          "ko": "WiFi 연결 끊김",
+          "ru": "Потеряно соединение Wi-Fi",
+          "pt": "Conexão Wi-Fi perdida"
         },
         "tokens": [
           {
@@ -176,7 +194,13 @@
               "es": "Quien",
               "fr": "Qui",
               "de": "Wer",
-              "it": "Chi"
+              "it": "Chi",
+              "da": "Hvem",
+              "sv": "Vem",
+              "no": "Hvem",
+              "ko": "누구",
+              "ru": "Кто",
+              "pt": "Quem"
             },
             "example": {
               "en": "wifi01",
@@ -206,7 +230,13 @@
           "es": "Visita conectado",
           "fr": "Visiteur connecté",
           "de": "Gast verbunden",
-          "it": "Ospite connesso"
+          "it": "Ospite connesso",
+          "da": "Gæst forbundet",
+          "sv": "Gäst ansluten",
+          "no": "Gjest tilkoblet",
+          "ko": "게스트 연결됨",
+          "ru": "Гость подключен",
+          "pt": "Convidado conectado"
         },
         "tokens": [
           {
@@ -232,7 +262,13 @@
               "es": "Quien",
               "fr": "Qui",
               "de": "Wer",
-              "it": "Chi"
+              "it": "Chi",
+              "da": "Hvem",
+              "sv": "Vem",
+              "no": "Hvem",
+              "ko": "누구",
+              "ru": "Кто",
+              "pt": "Quem"
             },
             "example": {
               "en": "wifi01",
@@ -275,7 +311,13 @@
           "es": "Conexión de visita perdida",
           "fr": "Connexion visiteur perdue",
           "de": "Gastverbindung verloren",
-          "it": "Connessione ospite persa"
+          "it": "Connessione ospite persa",
+          "da": "Gæsteforbindelse mistet",
+          "sv": "Gästanslutning förlorad",
+          "no": "Gjestetilkobling mistet",
+          "ko": "게스트 연결 끊김",
+          "ru": "Потеряно соединение гостя",
+          "pt": "Conexão de convidado perdida"
         },
         "tokens": [
           {
@@ -299,7 +341,13 @@
               "es": "Quien",
               "fr": "Qui",
               "de": "Wer",
-              "it": "Chi"
+              "it": "Chi",
+              "da": "Hvem",
+              "sv": "Vem",
+              "no": "Hvem",
+              "ko": "누구",
+              "ru": "Кто",
+              "pt": "Quem"
             },
             "example": {
               "en": "wifi01",
@@ -342,7 +390,13 @@
           "es": "Conectado",
           "fr": "Connecté",
           "de": "Verbunden",
-          "it": "Connesso"
+          "it": "Connesso",
+          "da": "Tilsluttet",
+          "sv": "Ansluten",
+          "no": "Tilkoblet",
+          "ko": "연결됨",
+          "ru": "Подключено",
+          "pt": "Conectado"
         },
         "args": [
           {
@@ -361,7 +415,13 @@
           "es": "Desconectado",
           "fr": "Déconnecté",
           "de": "Getrennt",
-          "it": "Disconnesso"
+          "it": "Disconnesso",
+          "da": "Frakoblet",
+          "sv": "Frånkopplad",
+          "no": "Frakoblet",
+          "ko": "연결 끊김",
+          "ru": "Отключено",
+          "pt": "Desconectado"
         },
         "args": [
           {
@@ -379,7 +439,13 @@
           "es": "Primer dispositivo conectado",
           "fr": "Premier appareil connecté",
           "de": "Erstes Gerät verbunden",
-          "it": "Primo dispositivo connesso"
+          "it": "Primo dispositivo connesso",
+          "da": "Første enhed forbundet",
+          "sv": "Första enheten ansluten",
+          "no": "Første enhet tilkoblet",
+          "ko": "첫 번째 장치 연결됨",
+          "ru": "Первое устройство подключено",
+          "pt": "Primeiro dispositivo conectado"
         },
         "titleFormatted": {
           "en": "First device connected at [[accessPoint]]",
@@ -387,7 +453,13 @@
           "es": "Primer dispositivo conectado a [[accessPoint]]",
           "fr": "Premier appareil connecté à [[accessPoint]]",
           "de": "Erstes Gerät verbunden mit [[accessPoint]]",
-          "it": "Primo dispositivo connesso a [[accessPoint]]"
+          "it": "Primo dispositivo connesso a [[accessPoint]]",
+          "da": "Første enhed forbundet til [[accessPoint]]",
+          "sv": "Första enheten ansluten till [[accessPoint]]",
+          "no": "Første enhet tilkoblet [[accessPoint]]",
+          "ko": "[[accessPoint]]에 첫 번째 장치가 연결됨",
+          "ru": "Первое устройство подключено к [[accessPoint]]",
+          "pt": "Primeiro dispositivo conectado a [[accessPoint]]"
         },
         "hint": {
           "en": "Triggers when the first device connects to the accesspoint",
@@ -395,7 +467,13 @@
           "es": "Se activa cuando el primer dispositivo se conecta al punto de acceso",
           "fr": "Déclenche lorsque le premier appareil se connecte au point d'accès",
           "de": "Wird ausgelöst, wenn das erste Gerät mit dem Zugangspunkt verbunden",
-          "it": "Si attiva quando il primo dispositivo si connette al punto di accesso"
+          "it": "Si attiva quando il primo dispositivo si connette al punto di accesso",
+          "da": "Udløses når den første enhed forbinder til adgangspunktet",
+          "sv": "Utlöses när den första enheten ansluter till accesspunkten",
+          "no": "Utøses når den første enheten kobles til tilgangspunktet",
+          "ko": "첫 번째 장치가 액세스 포인트에 연결될 때 트리거됩니다",
+          "ru": "Срабатывает, когда первое устройство подключается к точке доступа",
+          "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso"
         },
         "args": [
           {
@@ -407,7 +485,13 @@
               "es": "Nombre punto de acceso",
               "fr": "Nom du point d'accès",
               "de": "Zugangspunkt Name",
-              "it": "Nome punto di accesso"
+              "it": "Nome punto di accesso",
+              "da": "Adgangspunkt navn",
+              "sv": "Accesspunktens namn",
+              "no": "Tilgangspunkt navn",
+              "ko": "액세스 포인트 이름",
+              "ru": "Имя точки доступа",
+              "pt": "Nome do ponto de acesso"
             }
           }
         ]
@@ -420,7 +504,13 @@
           "es": "Primer dispositivo conectado",
           "fr": "Premier appareil connecté",
           "de": "Erstes Gerät verbunden",
-          "it": "Primo dispositivo connesso"
+          "it": "Primo dispositivo connesso",
+          "da": "Første enhed forbundet",
+          "sv": "Första enheten ansluten",
+          "no": "Første enhet tilkoblet",
+          "ko": "첫 번째 장치 연결됨",
+          "ru": "Первое устройство подключено",
+          "pt": "Primeiro dispositivo conectado"
         },
         "tokens": [
           {
@@ -432,12 +522,24 @@
               "es": "Quien",
               "fr": "Qui",
               "de": "Wer",
-              "it": "Chi"
+              "it": "Chi",
+              "da": "Hvem",
+              "sv": "Vem",
+              "no": "Hvem",
+              "ko": "누구",
+              "ru": "Кто",
+              "pt": "Quem"
             },
             "example": {
               "en": "wifi01",
               "nl": "wifi01",
-              "es": "wifi01"
+              "es": "wifi01",
+              "da": "wifi01",
+              "sv": "wifi01",
+              "no": "wifi01",
+              "ko": "wifi01",
+              "ru": "wifi01",
+              "pt": "wifi01"
             }
           }
         ]
@@ -450,7 +552,13 @@
           "es": "Último dispositivo desconectado",
           "fr": "Dernier appareil déconnecté",
           "de": "Letztes Gerät getrennt",
-          "it": "Ultimo dispositivo disconnesso"
+          "it": "Ultimo dispositivo disconnesso",
+          "da": "Sidste enhed afbrudt",
+          "sv": "Sista enheten frånkopplad",
+          "no": "Siste enhet frakoblet",
+          "ko": "마지막 장치 연결 해제됨",
+          "ru": "Последнее устройство отключено",
+          "pt": "Último dispositivo desconectado"
         },
         "titleFormatted": {
           "en": "Last device disconnected at [[accessPoint]]",
@@ -458,7 +566,13 @@
           "es": "Último dispositivo desconectado a [[accessPoint]]",
           "fr": "Dernier appareil déconnecté à [[accessPoint]]",
           "de": "Letztes Gerät getrennt bei [[accessPoint]]",
-          "it": "Ultimo dispositivo disconnesso a [[accessPoint]]"
+          "it": "Ultimo dispositivo disconnesso a [[accessPoint]]",
+          "da": "Sidste enhed afbrudt fra [[accessPoint]]",
+          "sv": "Sista enheten frånkopplad från [[accessPoint]]",
+          "no": "Siste enhet frakoblet fra [[accessPoint]]",
+          "ko": "[[accessPoint]]에서 마지막 장치가 연결 해제됨",
+          "ru": "Последнее устройство отключено от [[accessPoint]]",
+          "pt": "Último dispositivo desconectado de [[accessPoint]]"
         },
         "hint": {
           "en": "Triggers when the last device disconnects from the accesspoint",
@@ -466,7 +580,13 @@
           "es": "Se activa cuando el último dispositivo se desconecta del punto de acceso",
           "fr": "Déclenche lorsque le dernier appareil se déconnecte du point d'accès",
           "de": "Wird ausgelöst, wenn das letzte Gerät die Verbindung zum Zugangspunkt trennt",
-          "it": "Si attiva quando l'ultimo dispositivo si disconnette dal punto di accesso"
+          "it": "Si attiva quando l'ultimo dispositivo si disconnette dal punto di accesso",
+          "da": "Udløses når den sidste enhed afbryder forbindelsen til adgangspunktet",
+          "sv": "Utlöses när den sista enheten kopplas från accesspunkten",
+          "no": "Utøses når den siste enheten kobles fra tilgangspunktet",
+          "ko": "마지막 장치가 액세스 포인트에서 연결 해제될 때 트리거됩니다",
+          "ru": "Срабатывает, когда последнее устройство отключается от точки доступа",
+          "pt": "Dispara quando o último dispositivo se desconecta do ponto de acesso"
         },
         "args": [
           {
@@ -478,7 +598,13 @@
               "es": "Nombre de punto de acceso",
               "fr": "Nom du point d'accès",
               "de": "Zugangspunkt Name",
-              "it": "Nome del punto di accesso"
+              "it": "Nome del punto di accesso",
+              "da": "Adgangspunkt navn",
+              "sv": "Accesspunktens namn",
+              "no": "Tilgangspunkt navn",
+              "ko": "액세스 포인트 이름",
+              "ru": "Имя точки доступа",
+              "pt": "Nome do ponto de acesso"
             }
           }
         ]
@@ -491,7 +617,13 @@
           "es": "Último dispositivo desconectado",
           "fr": "Dernier appareil déconnecté",
           "de": "Letztes Gerät getrennt",
-          "it": "Ultimo dispositivo disconnesso"
+          "it": "Ultimo dispositivo disconnesso",
+          "da": "Sidste enhed afbrudt",
+          "sv": "Sista enheten frånkopplad",
+          "no": "Siste enhet frakoblet",
+          "ko": "마지막 장치 연결 해제됨",
+          "ru": "Последнее устройство отключено",
+          "pt": "Último dispositivo desconectado"
         }
       },
       {
@@ -502,7 +634,13 @@
           "es": "Conectado",
           "fr": "Connecté",
           "de": "Verbunden",
-          "it": "Connesso"
+          "it": "Connesso",
+          "da": "Forbundet",
+          "sv": "Ansluten",
+          "no": "Tilkoblet",
+          "ko": "연결됨",
+          "ru": "Подключено",
+          "pt": "Conectado"
         },
         "args": [
           {
@@ -518,7 +656,16 @@
             "title": {
               "en": "dBm",
               "nl": "dBm",
-              "es": "dBm"
+              "es": "dBm",
+              "fr": "dBm",
+              "de": "dBm",
+              "it": "dBm",
+              "da": "dBm",
+              "sv": "dBm",
+              "no": "dBm",
+              "ko": "dBm",
+              "ru": "dBm",
+              "pt": "dBm"
             },
             "example": -75
           },
@@ -528,7 +675,16 @@
             "title": {
               "en": "%",
               "nl": "%",
-              "es": "%"
+              "es": "%",
+              "fr": "%",
+              "de": "%",
+              "it": "%",
+              "da": "%",
+              "sv": "%",
+              "no": "%",
+              "ko": "%",
+              "ru": "%",
+              "pt": "%"
             },
             "example": 75
           },
@@ -538,7 +694,16 @@
             "title": {
               "en": "Proto",
               "nl": "Proto",
-              "es": "Proto"
+              "es": "Proto",
+              "fr": "Proto",
+              "de": "Proto",
+              "it": "Proto",
+              "da": "Proto",
+              "sv": "Proto",
+              "no": "Proto",
+              "ko": "Proto",
+              "ru": "Proto",
+              "pt": "Proto"
             },
             "example": "ac"
           },
@@ -548,10 +713,30 @@
             "title": {
               "en": "SSID",
               "nl": "SSID",
-              "es": "SSID"
+              "es": "SSID",
+              "fr": "SSID",
+              "de": "SSID",
+              "it": "SSID",
+              "da": "SSID",
+              "sv": "SSID",
+              "no": "SSID",
+              "ko": "SSID",
+              "ru": "SSID",
+              "pt": "SSID"
             },
             "example": {
-              "en": "MyWifiSSID"
+              "en": "MyWifiSSID",
+              "nl": "MyWifiSSID",
+              "es": "MyWifiSSID",
+              "fr": "MyWifiSSID",
+              "de": "MyWifiSSID",
+              "it": "MyWifiSSID",
+              "da": "MyWifiSSID",
+              "sv": "MyWifiSSID",
+              "no": "MyWifiSSID",
+              "ko": "MyWifiSSID",
+              "ru": "MyWifiSSID",
+              "pt": "MyWifiSSID"
             }
           }
         ]
@@ -564,7 +749,13 @@
           "es": "Desconectado",
           "fr": "Déconnecté",
           "de": "Getrennt",
-          "it": "Disconnesso"
+          "it": "Disconnesso",
+          "da": "Afbrudt",
+          "sv": "Frånkopplad",
+          "no": "Frakoblet",
+          "ko": "연결 해제됨",
+          "ru": "Отключено",
+          "pt": "Desconectado"
         },
         "args": [
           {
@@ -582,7 +773,13 @@
           "es": "Roaming entre AP",
           "fr": "Rôde entre les points d'accès",
           "de": "Wechselt zwischen AP",
-          "it": "Si sposta tra gli AP"
+          "it": "Si sposta tra gli AP",
+          "da": "Roamer mellem AP",
+          "sv": "Roamar mellan AP",
+          "no": "Roamer mellom AP",
+          "ko": "AP 간 로밍",
+          "ru": "Роуминг между AP",
+          "pt": "Roaming entre AP"
         },
         "args": [
           {
@@ -598,12 +795,30 @@
             "title": {
               "en": "AP",
               "nl": "AP",
-              "es": "AP"
+              "es": "AP",
+              "fr": "AP",
+              "de": "AP",
+              "it": "AP",
+              "da": "AP",
+              "sv": "AP",
+              "no": "AP",
+              "ko": "AP",
+              "ru": "AP",
+              "pt": "AP"
             },
             "example": {
               "en": "ap123",
               "nl": "ap123",
-              "es": "ap123"
+              "es": "ap123",
+              "fr": "ap123",
+              "de": "ap123",
+              "it": "ap123",
+              "da": "ap123",
+              "sv": "ap123",
+              "no": "ap123",
+              "ko": "ap123",
+              "ru": "ap123",
+              "pt": "ap123"
             }
           },
           {
@@ -612,12 +827,30 @@
             "title": {
               "en": "AP MAC",
               "nl": "AP MAC",
-              "es": "AP MAC"
+              "es": "AP MAC",
+              "fr": "AP MAC",
+              "de": "AP MAC",
+              "it": "AP MAC",
+              "da": "AP MAC",
+              "sv": "AP MAC",
+              "no": "AP MAC",
+              "ko": "AP MAC",
+              "ru": "AP MAC",
+              "pt": "AP MAC"
             },
             "example": {
               "en": "00:00:5e:00:53:af",
               "nl": "00:00:5e:00:53:af",
-              "es": "00:00:5e:00:53:af"
+              "es": "00:00:5e:00:53:af",
+              "fr": "00:00:5e:00:53:af",
+              "de": "00:00:5e:00:53:af",
+              "it": "00:00:5e:00:53:af",
+              "da": "00:00:5e:00:53:af",
+              "sv": "00:00:5e:00:53:af",
+              "no": "00:00:5e:00:53:af",
+              "ko": "00:00:5e:00:53:af",
+              "ru": "00:00:5e:00:53:af",
+              "pt": "00:00:5e:00:53:af"
             }
           },
           {
@@ -626,7 +859,16 @@
             "title": {
               "en": "Proto",
               "nl": "Proto",
-              "es": "Proto"
+              "es": "Proto",
+              "fr": "Proto",
+              "de": "Proto",
+              "it": "Proto",
+              "da": "Proto",
+              "sv": "Proto",
+              "no": "Proto",
+              "ko": "Proto",
+              "ru": "Proto",
+              "pt": "Proto"
             },
             "example": "ac"
           }
@@ -641,7 +883,13 @@
           "es": "Ruta a AP",
           "fr": "Rôde vers le point d'accès",
           "de": "Streift zu AP",
-          "it": "Si aggira verso AP"
+          "it": "Si aggira verso AP",
+          "da": "Roamer til AP",
+          "sv": "Roamar till AP",
+          "no": "Roamer til AP",
+          "ko": "AP로 로밍",
+          "ru": "Роуминг к AP",
+          "pt": "Roaming para AP"
         },
         "args": [
           {
@@ -657,12 +905,30 @@
             "title": {
               "en": "AP",
               "nl": "AP",
-              "es": "AP"
+              "es": "AP",
+              "fr": "AP",
+              "de": "AP",
+              "it": "AP",
+              "da": "AP",
+              "sv": "AP",
+              "no": "AP",
+              "ko": "AP",
+              "ru": "AP",
+              "pt": "AP"
             },
             "example": {
               "en": "ap123",
               "nl": "ap123",
-              "es": "ap123"
+              "es": "ap123",
+              "fr": "ap123",
+              "de": "ap123",
+              "it": "ap123",
+              "da": "ap123",
+              "sv": "ap123",
+              "no": "ap123",
+              "ko": "ap123",
+              "ru": "ap123",
+              "pt": "ap123"
             }
           },
           {
@@ -671,12 +937,30 @@
             "title": {
               "en": "AP MAC",
               "nl": "AP MAC",
-              "es": "AP MAC"
+              "es": "AP MAC",
+              "fr": "AP MAC",
+              "de": "AP MAC",
+              "it": "AP MAC",
+              "da": "AP MAC",
+              "sv": "AP MAC",
+              "no": "AP MAC",
+              "ko": "AP MAC",
+              "ru": "AP MAC",
+              "pt": "AP MAC"
             },
             "example": {
               "en": "00:00:5e:00:53:af",
               "nl": "00:00:5e:00:53:af",
-              "es": "00:00:5e:00:53:af"
+              "es": "00:00:5e:00:53:af",
+              "fr": "00:00:5e:00:53:af",
+              "de": "00:00:5e:00:53:af",
+              "it": "00:00:5e:00:53:af",
+              "da": "00:00:5e:00:53:af",
+              "sv": "00:00:5e:00:53:af",
+              "no": "00:00:5e:00:53:af",
+              "ko": "00:00:5e:00:53:af",
+              "ru": "00:00:5e:00:53:af",
+              "pt": "00:00:5e:00:53:af"
             }
           },
           {
@@ -685,7 +969,16 @@
             "title": {
               "en": "Proto",
               "nl": "Proto",
-              "es": "Proto"
+              "es": "Proto",
+              "fr": "Proto",
+              "de": "Proto",
+              "it": "Proto",
+              "da": "Proto",
+              "sv": "Proto",
+              "no": "Proto",
+              "ko": "Proto",
+              "ru": "Proto",
+              "pt": "Proto"
             },
             "example": "ac"
           }
@@ -699,7 +992,13 @@
           "es": "Señal cambiada",
           "fr": "Signal changé",
           "de": "Signal geändert",
-          "it": "Segnale cambiato"
+          "it": "Segnale cambiato",
+          "da": "Signal ændret",
+          "sv": "Signal ändrad",
+          "no": "Signal endret",
+          "ko": "신호 변경됨",
+          "ru": "Сигнал изменён",
+          "pt": "Sinal alterado"
         },
         "args": [
           {
@@ -715,7 +1014,16 @@
             "title": {
               "en": "dBm",
               "nl": "dBm",
-              "es": "dBm"
+              "es": "dBm",
+              "fr": "dBm",
+              "de": "dBm",
+              "it": "dBm",
+              "da": "dBm",
+              "sv": "dBm",
+              "no": "dBm",
+              "ko": "dBm",
+              "ru": "dBm",
+              "pt": "dBm"
             },
             "example": -75
           },
@@ -725,7 +1033,16 @@
             "title": {
               "en": "%",
               "nl": "%",
-              "es": "%"
+              "es": "%",
+              "fr": "%",
+              "de": "%",
+              "it": "%",
+              "da": "%",
+              "sv": "%",
+              "no": "%",
+              "ko": "%",
+              "ru": "%",
+              "pt": "%"
             },
             "example": 75
           },
@@ -738,7 +1055,13 @@
               "es": "Proto",
               "fr": "Proto",
               "de": "Proto",
-              "it": "Proto"
+              "it": "Proto",
+              "da": "Proto",
+              "sv": "Proto",
+              "no": "Proto",
+              "ko": "Proto",
+              "ru": "Proto",
+              "pt": "Proto"
             },
             "example": "ac"
           }
@@ -755,7 +1078,13 @@
           "es": "AP has !{{|no}} clients",
           "de": "AP hat !{{|keine}} Clients",
           "fr": "AP has !{{|no}} clients",
-          "it": "AP has !{{|no}} clients"
+          "it": "AP has !{{|no}} clients",
+          "da": "AP har !{{|ingen}} enheder",
+          "sv": "AP har !{{|inga}} enheter",
+          "no": "AP har !{{|ingen}} enheter",
+          "ko": "AP에 !{{|없음}} 클라이언트",
+          "ru": "AP has !{{|no}} clients",
+          "pt": "AP has !{{|no}} clients"
         },
         "titleFormatted": {
           "en": "[[accessPoint]] has !{{|no}} clients",
@@ -763,7 +1092,13 @@
           "es": "[[accessPoint]] has !{{|no}} clients",
           "de": "[[accessPoint]] hat !{{|keine}} Clients",
           "fr": "[[accessPoint]] has !{{|no}} clients",
-          "it": "[[accessPoint]] has !{{|no}} clients"
+          "it": "[[accessPoint]] has !{{|no}} clients",
+          "da": "[[accessPoint]] har !{{|ingen}} enheder",
+          "sv": "[[accessPoint]] har !{{|inga}} enheter",
+          "no": "[[accessPoint]] har !{{|ingen}} enheter",
+          "ko": "[[accessPoint]]에 !{{|없음}} 클라이언트",
+          "ru": "[[accessPoint]] has !{{|no}} clients",
+          "pt": "[[accessPoint]] has !{{|no}} clients"
         },
         "args": [
           {
@@ -775,7 +1110,13 @@
               "es": "Nombre de punto de acceso",
               "de": "Accesspoint Name",
               "fr": "Nom du point d'accès",
-              "it": "Nome punto di accesso"
+              "it": "Nome punto di accesso",
+              "da": "Adgangspunkt navn",
+              "sv": "Accesspunkt namn",
+              "no": "Accesspunkt navn",
+              "ko": "액세스 포인트 이름",
+              "ru": "Имя точки доступа",
+              "pt": "Nome do ponto de acesso"
             }
           }
         ]
@@ -788,7 +1129,13 @@
           "es": "!{{Blocked|Unblocked}}",
           "de": "!{{Blocked|Unblocked}}",
           "fr": "!{{Blocked|Unblocked}}",
-          "it": "!{{Bloccato|Sbloccato}}"
+          "it": "!{{Bloccato|Sbloccato}}",
+          "da": "!{{Blokeret|Oplåst}}",
+          "sv": "!{{Blockerad|Upplåst}}",
+          "no": "!{{Blokkert|Opplåst}}",
+          "ko": "!{{차단됨|차단 해제됨}}",
+          "ru": "!{{Заблокирован|Разблокирован}}",
+          "pt": "!{{Bloqueado|Desbloqueado}}"
         },
         "titleFormatted": {
           "en": "!{{Blocked|Unblocked}}",
@@ -796,7 +1143,13 @@
           "es": "!{{Blocked|Unblocked}}",
           "de": "!{{Blocked|Unblocked}}",
           "fr": "!{{Blocked|Unblocked}}",
-          "it": "!{{Bloccato|Sbloccato}}"
+          "it": "!{{Bloccato|Sbloccato}}",
+          "da": "!{{Blokeret|Oplåst}}",
+          "sv": "!{{Blockerad|Upplåst}}",
+          "no": "!{{Blokkert|Opplåst}}",
+          "ko": "!{{차단됨|차단 해제됨}}",
+          "ru": "!{{Заблокирован|Разблокирован}}",
+          "pt": "!{{Bloqueado|Desbloqueado}}"
         },
         "args": [
           {
@@ -815,7 +1168,13 @@
           "es": "!{{C|Disc}}onnected Clients",
           "de": "!{{V|K}}onnektierte Clients",
           "fr": "!{{C|Disc}}onnected Clients",
-          "it": "!{{C|Disc}}onnected Clients"
+          "it": "!{{C|Disc}}onnected Clients",
+          "da": "!{{I|In}}gen enheder tilsluttet",
+          "sv": "!{{I|In}}ga enheter anslutna",
+          "no": "!{{I|In}}gen enheter tilkoblet",
+          "ko": "!{{없|없}}음 클라이언트",
+          "ru": "!{{C|Disc}}onnected Clients",
+          "pt": "!{{C|Disc}}onnected Clients"
         }
       },
       {
@@ -826,7 +1185,13 @@
           "es": "!{{Blocked|Unblocked}}",
           "de": "!{{Blocked|Unblocked}}",
           "fr": "!{{Blocked|Unblocked}}",
-          "it": "!{{Bloccato|Sbloccato}}"
+          "it": "!{{Bloccato|Sbloccato}}",
+          "da": "!{{Blokeret|Oplåst}}",
+          "sv": "!{{Blockerad|Upplåst}}",
+          "no": "!{{Blokkert|Opplåst}}",
+          "ko": "!{{차단됨|차단 해제됨}}",
+          "ru": "!{{Заблокирован|Разблокирован}}",
+          "pt": "!{{Bloqueado|Desbloqueado}}"
         },
         "titleFormatted": {
           "en": "!{{Blocked|Unblocked}}",
@@ -834,7 +1199,13 @@
           "es": "!{{Blocked|Unblocked}}",
           "de": "!{{Blocked|Unblocked}}",
           "fr": "!{{Blocked|Unblocked}}",
-          "it": "!{{Bloccato|Sbloccato}}"
+          "it": "!{{Bloccato|Sbloccato}}",
+          "da": "!{{Blokeret|Oplåst}}",
+          "sv": "!{{Blockerad|Upplåst}}",
+          "no": "!{{Blokkert|Opplåst}}",
+          "ko": "!{{차단됨|차단 해제됨}}",
+          "ru": "!{{Заблокирован|Разблокирован}}",
+          "pt": "!{{Bloqueado|Desbloqueado}}"
         },
         "args": [
           {
@@ -852,7 +1223,13 @@
           "es": "!{{Connected|Disconnected}}",
           "de": "!{{Verbunden|Getrennt}}",
           "fr": "!{{Connecté|Déconnecté}}",
-          "it": "!{{Connesso|Disconnesso}}"
+          "it": "!{{Connesso|Disconnesso}}",
+          "da": "!{{Tilsluttet|Frakoblet}}",
+          "sv": "!{{Ansluten|Frånkopplad}}",
+          "no": "!{{Tilkoblet|Frakoblet}}",
+          "ko": "!{{연결됨|연결 끊김}}",
+          "ru": "!{{Подключено|Отключено}}",
+          "pt": "!{{Conectado|Desconectado}}"
         },
         "titleFormatted": {
           "en": "!{{Connected|Disconnected}}",
@@ -860,7 +1237,13 @@
           "es": "!{{Connected|Disconnected}}",
           "de": "!{{Verbunden|Getrennt}}",
           "fr": "!{{Connecté|Déconnecté}}",
-          "it": "!{{Connesso|Disconnesso}}"
+          "it": "!{{Connesso|Disconnesso}}",
+          "da": "!{{Tilsluttet|Frakoblet}}",
+          "sv": "!{{Ansluten|Frånkopplad}}",
+          "no": "!{{Tilkoblet|Frakoblet}}",
+          "ko": "!{{연결됨|연결 끊김}}",
+          "ru": "!{{Подключено|Отключено}}",
+          "pt": "!{{Conectado|Desconectado}}"
         },
         "args": [
           {
@@ -878,7 +1261,13 @@
           "es": "!{{C|Disc}}onnected with accesspoint",
           "de": "!{{C|Disc}}onnected with accesspoint",
           "fr": "!{{C|Disc}}onnected with accesspoint",
-          "it": "!{{C|Disc}}onnected with accesspoint"
+          "it": "!{{C|Disc}}onnected with accesspoint",
+          "da": "!{{I|In}}gen enhed tilsluttet accesspoint",
+          "sv": "!{{I|In}}ga enheter anslutna till accesspoint",
+          "no": "!{{I|In}}gen enheter tilkoblet accesspoint",
+          "ko": "!{{없|없}}음 클라이언트가 액세스 포인트에 연결됨",
+          "ru": "!{{C|Disc}}onnected with accesspoint",
+          "pt": "!{{C|Disc}}onnected with accesspoint"
         },
         "titleFormatted": {
           "en": "!{{C|Disc}}onnected with [[accessPoint]]",
@@ -886,7 +1275,13 @@
           "es": "!{{C|Disc}}onnected with [[accessPoint]]",
           "de": "!{{C|Disc}}onnected with [[accessPoint]]",
           "fr": "!{{C|Disc}}onnected with [[accessPoint]]",
-          "it": "!{{C|Disc}}onnected with [[accessPoint]]"
+          "it": "!{{C|Disc}}onnected with [[accessPoint]]",
+          "da": "!{{I|In}}gen enhed tilsluttet [[accessPoint]]",
+          "sv": "!{{I|In}}ga enheter anslutna till [[accessPoint]]",
+          "no": "!{{I|In}}gen enheter tilkoblet [[accessPoint]]",
+          "ko": "!{{없|없}}음 클라이언트가 [[accessPoint]]에 연결됨",
+          "ru": "!{{C|Disc}}onnected with [[accessPoint]]",
+          "pt": "!{{C|Disc}}onnected with [[accessPoint]]"
         },
         "args": [
           {
@@ -903,7 +1298,13 @@
               "es": "Punto de acceso Mac",
               "de": "Accesspoint Mac oder Name",
               "fr": "Point d'accès Mac ou nom",
-              "it": "Accesspoint Mac o nome"
+              "it": "Accesspoint Mac o nome",
+              "da": "Adgangspunkt Mac eller navn",
+              "sv": "Accesspunkt Mac eller namn",
+              "no": "Accesspunkt Mac eller navn",
+              "ko": "액세스 포인트 Mac 또는 이름",
+              "ru": "Точка доступа Mac или имя",
+              "pt": "Ponto de acesso Mac ou nome"
             }
           }
         ]
@@ -918,7 +1319,13 @@
           "es": "Bloquear cliente",
           "de": "Client blockieren",
           "fr": "Bloquer le client",
-          "it": "Blocca client"
+          "it": "Blocca client",
+          "da": "Bloker klient",
+          "sv": "Blockera klient",
+          "no": "Blokker klient",
+          "ko": "클라이언트 차단",
+          "ru": "Заблокировать клиента",
+          "pt": "Bloquear cliente"
         },
         "args": [
           {
@@ -936,7 +1343,13 @@
           "es": "Desbloquear cliente",
           "de": "Client entblocken",
           "fr": "Débloquer le client",
-          "it": "Sblocca client"
+          "it": "Sblocca client",
+          "da": "Oplås klient",
+          "sv": "Lås upp klient",
+          "no": "Lås opp klient",
+          "ko": "클라이언트 차단 해제",
+          "ru": "Разблокировать клиента",
+          "pt": "Desbloquear cliente"
         },
         "args": [
           {
@@ -954,7 +1367,13 @@
           "es": "Ciclo de energía PoE",
           "de": "PoE-Stromzyklus",
           "fr": "Cycle d'alimentation PoE",
-          "it": "Ciclo di alimentazione PoE"
+          "it": "Ciclo di alimentazione PoE",
+          "da": "PoE Strømcyklus",
+          "sv": "PoE Strömcykel",
+          "no": "PoE Strømssyklus",
+          "ko": "PoE 전원 주기",
+          "ru": "Цикл питания PoE",
+          "pt": "Ciclo de energia PoE"
         },
         "titleFormatted": {
           "en": "Cylce power on port [[port]]",
@@ -962,7 +1381,13 @@
           "es": "Ciclo de energía en puerto [[port]]",
           "de": "Stromzyklus an Port [[port]]",
           "fr": "Cycle d'alimentation sur le port [[port]]",
-          "it": "Ciclo di alimentazione sulla porta [[port]]"
+          "it": "Ciclo di alimentazione sulla porta [[port]]",
+          "da": "Cykel strøm på port [[port]]",
+          "sv": "Cykla ström på port [[port]]",
+          "no": "Syklus strøm på port [[port]]",
+          "ko": "포트 [[port]]에서 전원 주기",
+          "ru": "Цикл питания на порту [[port]]",
+          "pt": "Ciclo de energia na porta [[port]]"
         },
         "args": [
           {
@@ -984,7 +1409,13 @@
           "es": "Bloquear cliente",
           "de": "Client blockieren",
           "fr": "Bloquer le client",
-          "it": "Blocca client"
+          "it": "Blocca client",
+          "da": "Bloker klient",
+          "sv": "Blockera klient",
+          "no": "Blokker klient",
+          "ko": "클라이언트 차단",
+          "ru": "Заблокировать клиента",
+          "pt": "Bloquear cliente"
         },
         "args": [
           {
@@ -1002,7 +1433,13 @@
           "es": "Desbloquear cliente",
           "de": "Client entblocken",
           "fr": "Débloquer le client",
-          "it": "Sblocca client"
+          "it": "Sblocca client",
+          "da": "Oplås klient",
+          "sv": "Lås upp klient",
+          "no": "Lås opp klient",
+          "ko": "클라이언트 차단 해제",
+          "ru": "Разблокировать клиента",
+          "pt": "Desbloquear cliente"
         },
         "args": [
           {
@@ -1023,7 +1460,13 @@
         "es": "Cliente cableado",
         "de": "Verkabelter Client",
         "fr": "Client câblé",
-        "it": "Client cablato"
+        "it": "Client cablato",
+        "da": "Kablet klient",
+        "sv": "Kabelansluten klient",
+        "no": "Kablet klient",
+        "ko": "유선 클라이언트",
+        "ru": "Проводной клиент",
+        "pt": "Cliente com fio"
       },
       "mobile": {
         "components": [
@@ -1045,7 +1488,13 @@
                   "es": "Estado de Verbindings",
                   "de": "Verbindungsstatus",
                   "fr": "État de la connexion",
-                  "it": "Stato della connessione"
+                  "it": "Stato della connessione",
+                  "da": "Forbindelsesstatus",
+                  "sv": "Anslutningsstatus",
+                  "no": "Tilkoblingsstatus",
+                  "ko": "연결 상태",
+                  "ru": "Состояние подключения",
+                  "pt": "Estado da conexão"
                 }
               },
               "getable": true,
@@ -1064,14 +1513,26 @@
                     "es": "Conectado",
                     "de": "Verbunden",
                     "fr": "Connecté",
-                    "it": "Connesso"
+                    "it": "Connesso",
+                    "da": "Tilsluttet",
+                    "sv": "Ansluten",
+                    "no": "Tilkoblet",
+                    "ko": "연결됨",
+                    "ru": "Подключено",
+                    "pt": "Conectado"
                   },
                   "false": {
                     "en": "Disconnected",
                     "es": "Desconectado",
                     "de": "Getrennt",
                     "fr": "Déconnecté",
-                    "it": "Disconnesso"
+                    "it": "Disconnesso",
+                    "da": "Frakoblet",
+                    "sv": "Frånkopplad",
+                    "no": "Frakoblet",
+                    "ko": "연결 끊김",
+                    "ru": "Отключено",
+                    "pt": "Desconectado"
                   }
                 }
               }
@@ -1097,7 +1558,13 @@
             "es": "Estado de Verbindings",
             "de": "Verbindungsstatus",
             "fr": "État de la connexion",
-            "it": "Stato della connessione"
+            "it": "Stato della connessione",
+            "da": "Forbindelsesstatus",
+            "sv": "Anslutningsstatus",
+            "no": "Tilkoblingsstatus",
+            "ko": "연결 상태",
+            "ru": "Состояние подключения",
+            "pt": "Estado da conexão"
           },
           "getable": true,
           "setable": false
@@ -1125,7 +1592,13 @@
         "es": "Interruptor de red",
         "de": "Netzwerk Switch",
         "fr": "Commutateur réseau",
-        "it": "Switch di rete"
+        "it": "Switch di rete",
+        "da": "Netværk Switch",
+        "sv": "Nätverk Switch",
+        "no": "Nettverk Switch",
+        "ko": "네트워크 스위치",
+        "ru": "Сетевой коммутатор",
+        "pt": "Switch de rede"
       },
       "mobile": {
         "components": [
@@ -1146,7 +1619,13 @@
                   "es": "Estado de Verbindings",
                   "de": "Verbindungsstatus",
                   "fr": "État de la connexion",
-                  "it": "Stato della connessione"
+                  "it": "Stato della connessione",
+                  "da": "Forbindelsesstatus",
+                  "sv": "Anslutningsstatus",
+                  "no": "Tilkoblingsstatus",
+                  "ko": "연결 상태",
+                  "ru": "Состояние подключения",
+                  "pt": "Estado da conexão"
                 }
               },
               "getable": true,
@@ -1165,14 +1644,26 @@
                     "es": "Conectado",
                     "de": "Verbunden",
                     "fr": "Connecté",
-                    "it": "Connesso"
+                    "it": "Connesso",
+                    "da": "Tilsluttet",
+                    "sv": "Ansluten",
+                    "no": "Tilkoblet",
+                    "ko": "연결됨",
+                    "ru": "Подключено",
+                    "pt": "Conectado"
                   },
                   "false": {
                     "en": "Disconnected",
                     "es": "Desconectado",
                     "de": "Getrennt",
                     "fr": "Déconnecté",
-                    "it": "Disconnesso"
+                    "it": "Disconnesso",
+                    "da": "Frakoblet",
+                    "sv": "Frånkopplad",
+                    "no": "Frakoblet",
+                    "ko": "연결 끊김",
+                    "ru": "Отключено",
+                    "pt": "Desconectado"
                   }
                 }
               }
@@ -1196,7 +1687,13 @@
             "es": "Estado de Verbindings",
             "de": "Verbindungsstatus",
             "fr": "État de la connexion",
-            "it": "Stato della connessione"
+            "it": "Stato della connessione",
+            "da": "Forbindelsesstatus",
+            "sv": "Anslutningsstatus",
+            "no": "Tilkoblingsstatus",
+            "ko": "연결 상태",
+            "ru": "Состояние подключения",
+            "pt": "Estado da conexão"
           },
           "getable": true,
           "setable": false
@@ -1208,7 +1705,13 @@
             "es": "Puerto de red 1",
             "de": "Netzwerkport 1",
             "fr": "Port réseau 1",
-            "it": "Porta di rete 1"
+            "it": "Porta di rete 1",
+            "da": "Netværksport 1",
+            "sv": "Nätverksport 1",
+            "no": "Nettverksport 1",
+            "ko": "네트워크 포트 1",
+            "ru": "Сетевой порт 1",
+            "pt": "Porta de rede 1"
           }
         },
         "port.port_2": {
@@ -1218,7 +1721,13 @@
             "es": "Puerto de red 2",
             "de": "Netzwerkport 2",
             "fr": "Port réseau 2",
-            "it": "Porta di rete 2"
+            "it": "Porta di rete 2",
+            "da": "Netværksport 2",
+            "sv": "Nätverksport 2",
+            "no": "Nettverksport 2",
+            "ko": "네트워크 포트 2",
+            "ru": "Сетевой порт 2",
+            "pt": "Porta de rede 2"
           }
         },
         "port.port_3": {
@@ -2184,7 +2693,13 @@
         "es": "Cliente Wifi",
         "de": "WLAN-Client",
         "fr": "Client Wifi",
-        "it": "Client Wifi"
+        "it": "Client Wifi",
+        "da": "Wifi-klient",
+        "sv": "Wifi-klient",
+        "no": "Wifi-klient",
+        "ko": "와이파이 클라이언트",
+        "ru": "Wi-Fi клиент",
+        "pt": "Cliente Wifi"
       },
       "mobile": {
         "components": [
@@ -2213,7 +2728,13 @@
                   "es": "Estado de Verbindings",
                   "de": "Verbindungsstatus",
                   "fr": "État de la connexion",
-                  "it": "Stato della connessione"
+                  "it": "Stato della connessione",
+                  "da": "Forbindelsesstatus",
+                  "sv": "Anslutningsstatus",
+                  "no": "Tilkoblingsstatus",
+                  "ko": "연결 상태",
+                  "ru": "Состояние подключения",
+                  "pt": "Estado da conexão"
                 },
                 "getable": true,
                 "setable": false
@@ -2234,14 +2755,26 @@
                     "es": "Conectado",
                     "de": "Verbunden",
                     "fr": "Connecté",
-                    "it": "Connesso"
+                    "it": "Connesso",
+                    "da": "Tilsluttet",
+                    "sv": "Ansluten",
+                    "no": "Tilkoblet",
+                    "ko": "연결됨",
+                    "ru": "Подключено",
+                    "pt": "Conectado"
                   },
                   "false": {
                     "en": "Disconnected",
                     "es": "Desconectado",
                     "de": "Getrennt",
                     "fr": "Déconnecté",
-                    "it": "Disconnesso"
+                    "it": "Disconnesso",
+                    "da": "Frakoblet",
+                    "sv": "Frånkopplad",
+                    "no": "Frakoblet",
+                    "ko": "연결 끊김",
+                    "ru": "Отключено",
+                    "pt": "Desconectado"
                   }
                 }
               }
@@ -2274,7 +2807,13 @@
             "es": "Estado de Verbindings",
             "de": "Verbindungsstatus",
             "fr": "État de la connexion",
-            "it": "Stato della connessione"
+            "it": "Stato della connessione",
+            "da": "Forbindelsesstatus",
+            "sv": "Anslutningsstatus",
+            "no": "Tilkoblingsstatus",
+            "ko": "연결 상태",
+            "ru": "Состояние подключения",
+            "pt": "Estado da conexão"
           },
           "getable": true,
           "setable": false
@@ -2304,7 +2843,13 @@
         "es": "Estado de Verbindings",
         "de": "Verbindungsstatus",
         "fr": "État de la connexion",
-        "it": "Stato di connessione"
+        "it": "Stato di connessione",
+        "da": "Forbindelsesstatus",
+        "sv": "Anslutningsstatus",
+        "no": "Tilkoblingsstatus",
+        "ko": "연결 상태",
+        "ru": "Состояние подключения",
+        "pt": "Estado da conexão"
       },
       "getable": true,
       "setable": false,
@@ -2320,7 +2865,13 @@
         "es": "Accesspoint",
         "de": "Accesspoint",
         "fr": "Point d'accès",
-        "it": "Accesspoint"
+        "it": "Accesspoint",
+        "da": "Adgangspunkt",
+        "sv": "Accesspoint",
+        "no": "Accesspoint",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Accesspoint"
       },
       "getable": true,
       "setable": false,
@@ -2334,7 +2885,13 @@
         "es": "Accesspoint MAC",
         "de": "Accesspoint MAC",
         "fr": "MAC du point d'accès",
-        "it": "Accesspoint MAC"
+        "it": "Accesspoint MAC",
+        "da": "Adgangspunkt MAC",
+        "sv": "Accesspoint MAC",
+        "no": "Accesspoint MAC",
+        "ko": "액세스 포인트 MAC",
+        "ru": "MAC точки доступа",
+        "pt": "Accesspoint MAC"
       },
       "getable": true,
       "setable": false,
@@ -2348,7 +2905,13 @@
         "es": "Obstruido",
         "de": "Blockiert",
         "fr": "Bloqué",
-        "it": "Bloccato"
+        "it": "Bloccato",
+        "da": "Blokeret",
+        "sv": "Blockerad",
+        "no": "Blokkert",
+        "ko": "차단됨",
+        "ru": "Заблокировано",
+        "pt": "Bloqueado"
       },
       "getable": true,
       "setable": true,
@@ -2364,7 +2927,13 @@
         "es": "Estado de Verbindings",
         "de": "Verbindungsstatus",
         "fr": "État de la connexion",
-        "it": "Stato di connessione"
+        "it": "Stato di connessione",
+        "da": "Forbindelsesstatus",
+        "sv": "Anslutningsstatus",
+        "no": "Tilkoblingsstatus",
+        "ko": "연결 상태",
+        "ru": "Состояние подключения",
+        "pt": "Estado da conexão"
       },
       "getable": true,
       "setable": false,
@@ -2380,7 +2949,13 @@
         "es": "IP Address",
         "de": "IP Adresse",
         "fr": "Adresse IP",
-        "it": "Indirizzo IP"
+        "it": "Indirizzo IP",
+        "da": "IP Adresse",
+        "sv": "IP Adress",
+        "no": "IP Adresse",
+        "ko": "IP 주소",
+        "ru": "IP Адрес",
+        "pt": "Endereço IP"
       },
       "getable": true,
       "setable": false,
@@ -2394,7 +2969,13 @@
         "es": "RSSI",
         "de": "RSSI",
         "fr": "RSSI",
-        "it": "RSSI"
+        "it": "RSSI",
+        "da": "RSSI",
+        "sv": "RSSI",
+        "no": "RSSI",
+        "ko": "RSSI",
+        "ru": "RSSI",
+        "pt": "RSSI"
       },
       "units": {
         "en": "%",
@@ -2438,7 +3019,13 @@
         "es": "Intensidad de Señal",
         "de": "Signalstärke",
         "fr": "Puissance du signal",
-        "it": "Intensità del segnale"
+        "it": "Intensità del segnale",
+        "da": "Signalstyrke",
+        "sv": "Signalstyrka",
+        "no": "Signalstyrke",
+        "ko": "신호 강도",
+        "ru": "Уровень сигнала",
+        "pt": "Intensidade do Sinal"
       },
       "units": {
         "en": "dBm",
@@ -2479,7 +3066,13 @@
         "es": "PoE state",
         "de": "PoE status",
         "fr": "État PoE",
-        "it": "Stato PoE"
+        "it": "Stato PoE",
+        "da": "PoE status",
+        "sv": "PoE status",
+        "no": "PoE status",
+        "ko": "PoE 상태",
+        "ru": "Состояние PoE",
+        "pt": "Estado PoE"
       },
       "getable": true,
       "setable": false,
@@ -2495,7 +3088,13 @@
         "es": "Port state",
         "de": "Port status",
         "fr": "État du port",
-        "it": "Stato porta"
+        "it": "Stato porta",
+        "da": "Port status",
+        "sv": "Port status",
+        "no": "Port status",
+        "ko": "포트 상태",
+        "ru": "Состояние порта",
+        "pt": "Estado da porta"
       },
       "getable": true,
       "setable": false,
@@ -2511,7 +3110,13 @@
         "es": "Cantidad de puertos",
         "de": "Anzahl Ports",
         "fr": "Nombre de ports",
-        "it": "Numero di porte"
+        "it": "Numero di porte",
+        "da": "Antal porte",
+        "sv": "Antal portar",
+        "no": "Antall porter",
+        "ko": "포트 수",
+        "ru": "Количество портов",
+        "pt": "Quantidade de portas"
       },
       "getable": true,
       "setable": false,
@@ -2525,7 +3130,13 @@
         "es": "Radio Protocol",
         "de": "Funkprotokoll",
         "fr": "Protocole radio",
-        "it": "Protocollo radio"
+        "it": "Protocollo radio",
+        "da": "Radio protokol",
+        "sv": "Radioprotokoll",
+        "no": "Radio protokoll",
+        "ko": "무선 프로토콜",
+        "ru": "Радиопротокол",
+        "pt": "Protocolo de rádio"
       },
       "getable": true,
       "setable": false,
@@ -2539,7 +3150,13 @@
         "es": "Nombre WiFi",
         "de": "WLAN Name",
         "fr": "Nom WiFi",
-        "it": "Nome WiFi"
+        "it": "Nome WiFi",
+        "da": "WiFi Navn",
+        "sv": "WiFi Namn",
+        "no": "WiFi Navn",
+        "ko": "WiFi 이름",
+        "ru": "Имя WiFi",
+        "pt": "Nome do WiFi"
       },
       "getable": true,
       "setable": false,

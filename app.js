@@ -207,6 +207,12 @@ class UnifiNetwork extends Homey.App {
         cableUnBlock.registerRunListener(async (args, state) => {
             this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
         });
+
+        const poePowerCycle = this.homey.flow.getActionCard('network_switch_power_cycle_port');
+        poePowerCycle.registerRunListener(async (args, state) => {
+            this.debug(`Power cycling port ${args.port} on device ${args.device.getData().id}`);
+            this.homey.app.api.powerCycleDevice(args.device.getData().id, args.port).catch(this.error);
+        });
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
