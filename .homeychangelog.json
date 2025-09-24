@@ -112,5 +112,8 @@
   },
   "2.5.0": {
     "en": "Add support for network switches"
+  },
+  "2.5.1": {
+    "en": "Add POE Power cycle action card"
   }
 }

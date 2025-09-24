@@ -11,7 +11,7 @@
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
     "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
   },
-  "version": "2.5.0",
+  "version": "2.5.1",
   "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",
@@ -1541,8 +1541,9 @@
         ]
       },
       "images": {
-        "large": "drivers/cable-client/assets/images/large.jpg",
-        "small": "drivers/cable-client/assets/images/small.jpg"
+        "xlarge": "drivers/cable-client/assets/images/xlarge.png",
+        "large": "drivers/cable-client/assets/images/large.png",
+        "small": "drivers/cable-client/assets/images/small.png"
       },
       "class": "sensor",
       "capabilities": [
@@ -1672,8 +1673,9 @@
         ]
       },
       "images": {
-        "large": "drivers/network-switch/assets/images/large.jpg",
-        "small": "drivers/network-switch/assets/images/small.jpg"
+        "xlarge": "drivers/network-switch/assets/images/xlarge.png",
+        "large": "drivers/network-switch/assets/images/large.png",
+        "small": "drivers/network-switch/assets/images/small.png"
       },
       "class": "sensor",
       "capabilities": [
@@ -2783,8 +2785,9 @@
         ]
       },
       "images": {
-        "large": "drivers/wifi-client/assets/images/large.jpg",
-        "small": "drivers/wifi-client/assets/images/small.jpg"
+        "xlarge": "drivers/wifi-client/assets/images/xlarge.png",
+        "large": "drivers/wifi-client/assets/images/large.png",
+        "small": "drivers/wifi-client/assets/images/small.png"
       },
       "class": "sensor",
       "capabilities": [
