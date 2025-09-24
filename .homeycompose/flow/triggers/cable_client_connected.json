@@ -6,7 +6,13 @@
     "es": "Conectado",
     "fr": "Connecté",
     "de": "Verbunden",
-    "it": "Connesso"
+    "it": "Connesso",
+    "da": "Tilsluttet",
+    "sv": "Ansluten",
+    "no": "Tilkoblet",
+    "ko": "연결됨",
+    "ru": "Подключено",
+    "pt": "Conectado"
   },
   "args": [
     {

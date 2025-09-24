@@ -6,7 +6,13 @@
     "es": "Primer dispositivo conectado",
     "fr": "Premier appareil connecté",
     "de": "Erstes Gerät verbunden",
-    "it": "Primo dispositivo connesso"
+    "it": "Primo dispositivo connesso",
+    "da": "Første enhed forbundet",
+    "sv": "Första enheten ansluten",
+    "no": "Første enhet tilkoblet",
+    "ko": "첫 번째 장치 연결됨",
+    "ru": "Первое устройство подключено",
+    "pt": "Primeiro dispositivo conectado"
   },
   "tokens": [
     {
@@ -18,12 +24,24 @@
         "es": "Quien",
         "fr": "Qui",
         "de": "Wer",
-        "it": "Chi"
+        "it": "Chi",
+        "da": "Hvem",
+        "sv": "Vem",
+        "no": "Hvem",
+        "ko": "누구",
+        "ru": "Кто",
+        "pt": "Quem"
       },
       "example": {
         "en": "wifi01",
         "nl": "wifi01",
-        "es": "wifi01"
+        "es": "wifi01",
+        "da": "wifi01",
+        "sv": "wifi01",
+        "no": "wifi01",
+        "ko": "wifi01",
+        "ru": "wifi01",
+        "pt": "wifi01"
       }
     }
   ]

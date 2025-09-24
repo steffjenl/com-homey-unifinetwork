@@ -6,7 +6,13 @@
     "es": "Accesspoint MAC",
     "de": "Accesspoint MAC",
     "fr": "MAC du point d'accès",
-    "it": "Accesspoint MAC"
+    "it": "Accesspoint MAC",
+    "da": "Adgangspunkt MAC",
+    "sv": "Accesspoint MAC",
+    "no": "Accesspoint MAC",
+    "ko": "액세스 포인트 MAC",
+    "ru": "MAC точки доступа",
+    "pt": "Accesspoint MAC"
   },
   "getable": true,
   "setable": false,

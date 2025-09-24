@@ -6,7 +6,13 @@
     "es": "Radio Protocol",
     "de": "Funkprotokoll",
     "fr": "Protocole radio",
-    "it": "Protocollo radio"
+    "it": "Protocollo radio",
+    "da": "Radio protokol",
+    "sv": "Radioprotokoll",
+    "no": "Radio protokoll",
+    "ko": "무선 프로토콜",
+    "ru": "Радиопротокол",
+    "pt": "Protocolo de rádio"
   },
   "getable": true,
   "setable": false,

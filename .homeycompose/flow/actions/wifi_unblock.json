@@ -6,7 +6,13 @@
     "es": "Desbloquear cliente",
     "de": "Client entblocken",
     "fr": "Débloquer le client",
-    "it": "Sblocca client"
+    "it": "Sblocca client",
+    "da": "Oplås klient",
+    "sv": "Lås upp klient",
+    "no": "Lås opp klient",
+    "ko": "클라이언트 차단 해제",
+    "ru": "Разблокировать клиента",
+    "pt": "Desbloquear cliente"
   },
   "args": [
     {

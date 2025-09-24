@@ -6,7 +6,13 @@
     "es": "Accesspoint",
     "de": "Accesspoint",
     "fr": "Point d'accès",
-    "it": "Accesspoint"
+    "it": "Accesspoint",
+    "da": "Adgangspunkt",
+    "sv": "Accesspoint",
+    "no": "Accesspoint",
+    "ko": "액세스 포인트",
+    "ru": "Точка доступа",
+    "pt": "Accesspoint"
   },
   "getable": true,
   "setable": false,

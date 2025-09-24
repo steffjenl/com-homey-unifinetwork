@@ -1,0 +1,72 @@
+{
+  "title": "UniFi Сеть",
+  "pair": {
+    "validate": {
+      "title": "Проверка UniFi Cloud Key",
+      "instruction": "Сначала укажите Cloud Key в настройках."
+    },
+    "login": {
+      "title": "Войти"
+    }
+  },
+  "status": {
+    "connection": {
+      "Connected": "Подключено",
+      "Connecting": "Подключение...",
+      "Disconnected": "Отключено",
+      "Initialized": "Инициализировано"
+    }
+  },
+  "settings": {
+    "title": "Настройки UniFi сети",
+    "instruction": "Войдите с учетными данными пользователя UniFi Network.",
+    "nvr": "Детали сервера",
+    "nvrText": "Используйте порт 443 для UniFiOS и порт 8443 для Docker / Standalone.",
+    "nvrip": "IP-адрес",
+    "nvrport": "Порт",
+    "credentials": "Учетные данные пользователя",
+    "credentialsText": "MFA отключено и локальный администратор",
+    "username": "Имя пользователя (мин. 32 символа)",
+    "password": "Пароль",
+    "apply": "Применить",
+    "test": "Проверить учетные данные",
+    "test_status": {
+      "success": "Учетные данные верны.",
+      "failure": "Учетные данные неверны."
+    },
+    "saved": "Настройки сохранены.",
+    "site": "Сайт",
+    "tab": {
+      "settings": "Настройки",
+      "sites": "Сайты",
+      "event_log": "Журнал событий"
+    },
+    "intro2": "",
+    "log_enabled": "Журнал событий включен",
+    "pullmethodeheader": "Метод получения и интервал",
+    "pullmethode": "Метод получения",
+    "interval": "Интервал",
+    "applicationFlows": "Включить потоки приложений"
+  },
+  "events": {
+    "camera": {
+      "motion_started": "Движение началось",
+      "motion_ended": "Движение завершено",
+      "motion_inprogress": "Движение",
+      "ftr_inprogress": "Полное время",
+      "disabled": "Отключено",
+      "failed": "Ошибка",
+      "done": "Готово",
+      "always": "Всегда",
+      "motion": "Движение",
+      "never": "Никогда",
+      "detections": "Обнаружения"
+    },
+    "health": {
+      "unknown": "Неизвестно",
+      "green": "Здорово",
+      "orange": "Предупреждение",
+      "red": "Критично"
+    }
+  }
+}

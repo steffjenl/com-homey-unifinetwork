@@ -6,7 +6,13 @@
     "es": "Bloquear cliente",
     "de": "Client blockieren",
     "fr": "Bloquer le client",
-    "it": "Blocca client"
+    "it": "Blocca client",
+    "da": "Bloker klient",
+    "sv": "Blockera klient",
+    "no": "Blokker klient",
+    "ko": "클라이언트 차단",
+    "ru": "Заблокировать клиента",
+    "pt": "Bloquear cliente"
   },
   "args": [
     {

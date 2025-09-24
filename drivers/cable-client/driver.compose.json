@@ -6,7 +6,13 @@
     "es": "Cliente cableado",
     "de": "Verkabelter Client",
     "fr": "Client câblé",
-    "it": "Client cablato"
+    "it": "Client cablato",
+    "da": "Kablet klient",
+    "sv": "Kabelansluten klient",
+    "no": "Kablet klient",
+    "ko": "유선 클라이언트",
+    "ru": "Проводной клиент",
+    "pt": "Cliente com fio"
   },
   "mobile": {
     "components": [
@@ -28,7 +34,13 @@
               "es": "Estado de Verbindings",
               "de": "Verbindungsstatus",
               "fr": "État de la connexion",
-              "it": "Stato della connessione"
+              "it": "Stato della connessione",
+              "da": "Forbindelsesstatus",
+              "sv": "Anslutningsstatus",
+              "no": "Tilkoblingsstatus",
+              "ko": "연결 상태",
+              "ru": "Состояние подключения",
+              "pt": "Estado da conexão"
             }
           },
           "getable": true,
@@ -47,14 +59,26 @@
                 "es": "Conectado",
                 "de": "Verbunden",
                 "fr": "Connecté",
-                "it": "Connesso"
+                "it": "Connesso",
+                "da": "Tilsluttet",
+                "sv": "Ansluten",
+                "no": "Tilkoblet",
+                "ko": "연결됨",
+                "ru": "Подключено",
+                "pt": "Conectado"
               },
               "false": {
                 "en": "Disconnected",
                 "es": "Desconectado",
                 "de": "Getrennt",
                 "fr": "Déconnecté",
-                "it": "Disconnesso"
+                "it": "Disconnesso",
+                "da": "Frakoblet",
+                "sv": "Frånkopplad",
+                "no": "Frakoblet",
+                "ko": "연결 끊김",
+                "ru": "Отключено",
+                "pt": "Desconectado"
               }
             }
           }
@@ -80,7 +104,13 @@
         "es": "Estado de Verbindings",
         "de": "Verbindungsstatus",
         "fr": "État de la connexion",
-        "it": "Stato della connessione"
+        "it": "Stato della connessione",
+        "da": "Forbindelsesstatus",
+        "sv": "Anslutningsstatus",
+        "no": "Tilkoblingsstatus",
+        "ko": "연결 상태",
+        "ru": "Состояние подключения",
+        "pt": "Estado da conexão"
       },
       "getable": true,
       "setable": false

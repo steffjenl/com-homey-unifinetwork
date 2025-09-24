@@ -6,6 +6,12 @@
     "es": "Último dispositivo desconectado",
     "fr": "Dernier appareil déconnecté",
     "de": "Letztes Gerät getrennt",
-    "it": "Ultimo dispositivo disconnesso"
+    "it": "Ultimo dispositivo disconnesso",
+    "da": "Sidste enhed afbrudt",
+    "sv": "Sista enheten frånkopplad",
+    "no": "Siste enhet frakoblet",
+    "ko": "마지막 장치 연결 해제됨",
+    "ru": "Последнее устройство отключено",
+    "pt": "Último dispositivo desconectado"
   }
 }

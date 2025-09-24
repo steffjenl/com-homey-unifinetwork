@@ -6,7 +6,13 @@
     "es": "Conectado",
     "fr": "Connecté",
     "de": "Verbunden",
-    "it": "Connesso"
+    "it": "Connesso",
+    "da": "Forbundet",
+    "sv": "Ansluten",
+    "no": "Tilkoblet",
+    "ko": "연결됨",
+    "ru": "Подключено",
+    "pt": "Conectado"
   },
   "args": [
     {
@@ -22,7 +28,16 @@
       "title": {
         "en": "dBm",
         "nl": "dBm",
-        "es": "dBm"
+        "es": "dBm",
+        "fr": "dBm",
+        "de": "dBm",
+        "it": "dBm",
+        "da": "dBm",
+        "sv": "dBm",
+        "no": "dBm",
+        "ko": "dBm",
+        "ru": "dBm",
+        "pt": "dBm"
       },
       "example": -75
     },
@@ -32,7 +47,16 @@
       "title": {
         "en": "%",
         "nl": "%",
-        "es": "%"
+        "es": "%",
+        "fr": "%",
+        "de": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "ko": "%",
+        "ru": "%",
+        "pt": "%"
       },
       "example": 75
     },
@@ -42,7 +66,16 @@
       "title": {
         "en": "Proto",
         "nl": "Proto",
-        "es": "Proto"
+        "es": "Proto",
+        "fr": "Proto",
+        "de": "Proto",
+        "it": "Proto",
+        "da": "Proto",
+        "sv": "Proto",
+        "no": "Proto",
+        "ko": "Proto",
+        "ru": "Proto",
+        "pt": "Proto"
       },
       "example": "ac"
     },
@@ -52,10 +85,30 @@
       "title": {
         "en": "SSID",
         "nl": "SSID",
-        "es": "SSID"
+        "es": "SSID",
+        "fr": "SSID",
+        "de": "SSID",
+        "it": "SSID",
+        "da": "SSID",
+        "sv": "SSID",
+        "no": "SSID",
+        "ko": "SSID",
+        "ru": "SSID",
+        "pt": "SSID"
       },
       "example": {
-        "en": "MyWifiSSID"
+        "en": "MyWifiSSID",
+        "nl": "MyWifiSSID",
+        "es": "MyWifiSSID",
+        "fr": "MyWifiSSID",
+        "de": "MyWifiSSID",
+        "it": "MyWifiSSID",
+        "da": "MyWifiSSID",
+        "sv": "MyWifiSSID",
+        "no": "MyWifiSSID",
+        "ko": "MyWifiSSID",
+        "ru": "MyWifiSSID",
+        "pt": "MyWifiSSID"
       }
     }
   ]

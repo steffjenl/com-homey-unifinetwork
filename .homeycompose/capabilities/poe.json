@@ -6,7 +6,13 @@
     "es": "PoE state",
     "de": "PoE status",
     "fr": "État PoE",
-    "it": "Stato PoE"
+    "it": "Stato PoE",
+    "da": "PoE status",
+    "sv": "PoE status",
+    "no": "PoE status",
+    "ko": "PoE 상태",
+    "ru": "Состояние PoE",
+    "pt": "Estado PoE"
   },
   "getable": true,
   "setable": false,

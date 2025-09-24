@@ -6,7 +6,13 @@
     "es": "Primer dispositivo conectado",
     "fr": "Premier appareil connecté",
     "de": "Erstes Gerät verbunden",
-    "it": "Primo dispositivo connesso"
+    "it": "Primo dispositivo connesso",
+    "da": "Første enhed forbundet",
+    "sv": "Första enheten ansluten",
+    "no": "Første enhet tilkoblet",
+    "ko": "첫 번째 장치 연결됨",
+    "ru": "Первое устройство подключено",
+    "pt": "Primeiro dispositivo conectado"
   },
   "titleFormatted": {
     "en": "First device connected at [[accessPoint]]",
@@ -14,7 +20,13 @@
     "es": "Primer dispositivo conectado a [[accessPoint]]",
     "fr": "Premier appareil connecté à [[accessPoint]]",
     "de": "Erstes Gerät verbunden mit [[accessPoint]]",
-    "it": "Primo dispositivo connesso a [[accessPoint]]"
+    "it": "Primo dispositivo connesso a [[accessPoint]]",
+    "da": "Første enhed forbundet til [[accessPoint]]",
+    "sv": "Första enheten ansluten till [[accessPoint]]",
+    "no": "Første enhet tilkoblet [[accessPoint]]",
+    "ko": "[[accessPoint]]에 첫 번째 장치가 연결됨",
+    "ru": "Первое устройство подключено к [[accessPoint]]",
+    "pt": "Primeiro dispositivo conectado a [[accessPoint]]"
   },
   "hint": {
     "en": "Triggers when the first device connects to the accesspoint",
@@ -22,7 +34,13 @@
     "es": "Se activa cuando el primer dispositivo se conecta al punto de acceso",
     "fr": "Déclenche lorsque le premier appareil se connecte au point d'accès",
     "de": "Wird ausgelöst, wenn das erste Gerät mit dem Zugangspunkt verbunden",
-    "it": "Si attiva quando il primo dispositivo si connette al punto di accesso"
+    "it": "Si attiva quando il primo dispositivo si connette al punto di accesso",
+    "da": "Udløses når den første enhed forbinder til adgangspunktet",
+    "sv": "Utlöses när den första enheten ansluter till accesspunkten",
+    "no": "Utøses når den første enheten kobles til tilgangspunktet",
+    "ko": "첫 번째 장치가 액세스 포인트에 연결될 때 트리거됩니다",
+    "ru": "Срабатывает, когда первое устройство подключается к точке доступа",
+    "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso"
   },
   "args": [
     {
@@ -34,7 +52,13 @@
         "es": "Nombre punto de acceso",
         "fr": "Nom du point d'accès",
         "de": "Zugangspunkt Name",
-        "it": "Nome punto di accesso"
+        "it": "Nome punto di accesso",
+        "da": "Adgangspunkt navn",
+        "sv": "Accesspunktens namn",
+        "no": "Tilgangspunkt navn",
+        "ko": "액세스 포인트 이름",
+        "ru": "Имя точки доступа",
+        "pt": "Nome do ponto de acesso"
       }
     }
   ]

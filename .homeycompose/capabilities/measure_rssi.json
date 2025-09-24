@@ -6,7 +6,13 @@
     "es": "RSSI",
     "de": "RSSI",
     "fr": "RSSI",
-    "it": "RSSI"
+    "it": "RSSI",
+    "da": "RSSI",
+    "sv": "RSSI",
+    "no": "RSSI",
+    "ko": "RSSI",
+    "ru": "RSSI",
+    "pt": "RSSI"
   },
   "units": {
     "en": "%",

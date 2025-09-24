@@ -7,7 +7,13 @@
     "es": "AP has !{{|no}} clients",
     "de": "AP hat !{{|keine}} Clients",
     "fr": "AP has !{{|no}} clients",
-    "it": "AP has !{{|no}} clients"
+    "it": "AP has !{{|no}} clients",
+    "da": "AP har !{{|ingen}} enheder",
+    "sv": "AP har !{{|inga}} enheter",
+    "no": "AP har !{{|ingen}} enheter",
+    "ko": "AP에 !{{|없음}} 클라이언트",
+    "ru": "AP has !{{|no}} clients",
+    "pt": "AP has !{{|no}} clients"
   },
   "titleFormatted": {
     "en": "[[accessPoint]] has !{{|no}} clients",
@@ -15,7 +21,13 @@
     "es": "[[accessPoint]] has !{{|no}} clients",
     "de": "[[accessPoint]] hat !{{|keine}} Clients",
     "fr": "[[accessPoint]] has !{{|no}} clients",
-    "it": "[[accessPoint]] has !{{|no}} clients"
+    "it": "[[accessPoint]] has !{{|no}} clients",
+    "da": "[[accessPoint]] har !{{|ingen}} enheder",
+    "sv": "[[accessPoint]] har !{{|inga}} enheter",
+    "no": "[[accessPoint]] har !{{|ingen}} enheter",
+    "ko": "[[accessPoint]]에 !{{|없음}} 클라이언트",
+    "ru": "[[accessPoint]] has !{{|no}} clients",
+    "pt": "[[accessPoint]] has !{{|no}} clients"
   },
   "args": [
     {
@@ -27,7 +39,13 @@
         "es": "Nombre de punto de acceso",
         "de": "Accesspoint Name",
         "fr": "Nom du point d'accès",
-        "it": "Nome punto di accesso"
+        "it": "Nome punto di accesso",
+        "da": "Adgangspunkt navn",
+        "sv": "Accesspunkt namn",
+        "no": "Accesspunkt navn",
+        "ko": "액세스 포인트 이름",
+        "ru": "Имя точки доступа",
+        "pt": "Nome do ponto de acesso"
       }
     }
   ]

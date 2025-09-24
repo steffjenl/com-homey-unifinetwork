@@ -6,7 +6,13 @@
     "es": "Nombre WiFi",
     "de": "WLAN Name",
     "fr": "Nom WiFi",
-    "it": "Nome WiFi"
+    "it": "Nome WiFi",
+    "da": "WiFi Navn",
+    "sv": "WiFi Namn",
+    "no": "WiFi Navn",
+    "ko": "WiFi 이름",
+    "ru": "Имя WiFi",
+    "pt": "Nome do WiFi"
   },
   "getable": true,
   "setable": false,

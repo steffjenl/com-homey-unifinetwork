@@ -6,7 +6,13 @@
     "es": "Interruptor de red",
     "de": "Netzwerk Switch",
     "fr": "Commutateur réseau",
-    "it": "Switch di rete"
+    "it": "Switch di rete",
+    "da": "Netværk Switch",
+    "sv": "Nätverk Switch",
+    "no": "Nettverk Switch",
+    "ko": "네트워크 스위치",
+    "ru": "Сетевой коммутатор",
+    "pt": "Switch de rede"
   },
   "mobile": {
     "components": [
@@ -27,7 +33,13 @@
               "es": "Estado de Verbindings",
               "de": "Verbindungsstatus",
               "fr": "État de la connexion",
-              "it": "Stato della connessione"
+              "it": "Stato della connessione",
+              "da": "Forbindelsesstatus",
+              "sv": "Anslutningsstatus",
+              "no": "Tilkoblingsstatus",
+              "ko": "연결 상태",
+              "ru": "Состояние подключения",
+              "pt": "Estado da conexão"
             }
           },
           "getable": true,
@@ -46,14 +58,26 @@
                 "es": "Conectado",
                 "de": "Verbunden",
                 "fr": "Connecté",
-                "it": "Connesso"
+                "it": "Connesso",
+                "da": "Tilsluttet",
+                "sv": "Ansluten",
+                "no": "Tilkoblet",
+                "ko": "연결됨",
+                "ru": "Подключено",
+                "pt": "Conectado"
               },
               "false": {
                 "en": "Disconnected",
                 "es": "Desconectado",
                 "de": "Getrennt",
                 "fr": "Déconnecté",
-                "it": "Disconnesso"
+                "it": "Disconnesso",
+                "da": "Frakoblet",
+                "sv": "Frånkopplad",
+                "no": "Frakoblet",
+                "ko": "연결 끊김",
+                "ru": "Отключено",
+                "pt": "Desconectado"
               }
             }
           }
@@ -77,7 +101,13 @@
         "es": "Estado de Verbindings",
         "de": "Verbindungsstatus",
         "fr": "État de la connexion",
-        "it": "Stato della connessione"
+        "it": "Stato della connessione",
+        "da": "Forbindelsesstatus",
+        "sv": "Anslutningsstatus",
+        "no": "Tilkoblingsstatus",
+        "ko": "연결 상태",
+        "ru": "Состояние подключения",
+        "pt": "Estado da conexão"
       },
       "getable": true,
       "setable": false
@@ -89,7 +119,13 @@
         "es": "Puerto de red 1",
         "de": "Netzwerkport 1",
         "fr": "Port réseau 1",
-        "it": "Porta di rete 1"
+        "it": "Porta di rete 1",
+        "da": "Netværksport 1",
+        "sv": "Nätverksport 1",
+        "no": "Nettverksport 1",
+        "ko": "네트워크 포트 1",
+        "ru": "Сетевой порт 1",
+        "pt": "Porta de rede 1"
       }
     },
     "port.port_2": {
@@ -99,7 +135,13 @@
         "es": "Puerto de red 2",
         "de": "Netzwerkport 2",
         "fr": "Port réseau 2",
-        "it": "Porta di rete 2"
+        "it": "Porta di rete 2",
+        "da": "Netværksport 2",
+        "sv": "Nätverksport 2",
+        "no": "Nettverksport 2",
+        "ko": "네트워크 포트 2",
+        "ru": "Сетевой порт 2",
+        "pt": "Porta de rede 2"
       }
     },
     "port.port_3": {

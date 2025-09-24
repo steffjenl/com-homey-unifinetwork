@@ -1,0 +1,72 @@
+{
+  "title": "UniFi Netværk",
+  "pair": {
+    "validate": {
+      "title": "Validerer UniFi Cloud Key",
+      "instruction": "Indstil venligst Cloud Key i Indstillinger først."
+    },
+    "login": {
+      "title": "Log ind"
+    }
+  },
+  "status": {
+    "connection": {
+      "Connected": "Forbundet",
+      "Connecting": "Forbinder...",
+      "Disconnected": "Afbrudt",
+      "Initialized": "Initialiseret"
+    }
+  },
+  "settings": {
+    "title": "UniFi Netværksindstillinger",
+    "instruction": "Log ind med UniFi Network brugerens legitimationsoplysninger.",
+    "nvr": "Serverdetaljer",
+    "nvrText": "Brug port 443 til UniFiOS og port 8443 til Docker / Standalone.",
+    "nvrip": "IP-adresse",
+    "nvrport": "Port",
+    "credentials": "Brugeroplysninger",
+    "credentialsText": "MFA deaktiveret og lokal admin-bruger",
+    "username": "Brugernavn (min. 32 tegn)",
+    "password": "Adgangskode",
+    "apply": "Anvend",
+    "test": "Test legitimationsoplysninger",
+    "test_status": {
+      "success": "Legitimationsoplysningerne er gyldige.",
+      "failure": "Legitimationsoplysningerne er ugyldige."
+    },
+    "saved": "Indstillinger gemt.",
+    "site": "Site",
+    "tab": {
+      "settings": "Indstillinger",
+      "sites": "Sites",
+      "event_log": "Hændelseslog"
+    },
+    "intro2": "",
+    "log_enabled": "Hændelseslog aktiveret",
+    "pullmethodeheader": "Pull-metode & Interval",
+    "pullmethode": "Pull-metode",
+    "interval": "Interval",
+    "applicationFlows": "Aktivér applikationsflows"
+  },
+  "events": {
+    "camera": {
+      "motion_started": "Bevægelse startet",
+      "motion_ended": "Bevægelse stoppet",
+      "motion_inprogress": "Bevægelse",
+      "ftr_inprogress": "Fuld tid",
+      "disabled": "Deaktiveret",
+      "failed": "Mislykkedes",
+      "done": "Færdig",
+      "always": "Altid",
+      "motion": "Bevægelse",
+      "never": "Aldrig",
+      "detections": "Detektioner"
+    },
+    "health": {
+      "unknown": "Ukendt",
+      "green": "Sund",
+      "orange": "Advarsel",
+      "red": "Kritisk"
+    }
+  }
+}

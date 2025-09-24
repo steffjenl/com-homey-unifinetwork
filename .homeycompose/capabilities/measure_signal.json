@@ -6,7 +6,13 @@
     "es": "Intensidad de Señal",
     "de": "Signalstärke",
     "fr": "Puissance du signal",
-    "it": "Intensità del segnale"
+    "it": "Intensità del segnale",
+    "da": "Signalstyrke",
+    "sv": "Signalstyrka",
+    "no": "Signalstyrke",
+    "ko": "신호 강도",
+    "ru": "Уровень сигнала",
+    "pt": "Intensidade do Sinal"
   },
   "units": {
     "en": "dBm",

@@ -6,7 +6,13 @@
     "es": "!{{C|Disc}}onnected with accesspoint",
     "de": "!{{C|Disc}}onnected with accesspoint",
     "fr": "!{{C|Disc}}onnected with accesspoint",
-    "it": "!{{C|Disc}}onnected with accesspoint"
+    "it": "!{{C|Disc}}onnected with accesspoint",
+    "da": "!{{I|In}}gen enhed tilsluttet accesspoint",
+    "sv": "!{{I|In}}ga enheter anslutna till accesspoint",
+    "no": "!{{I|In}}gen enheter tilkoblet accesspoint",
+    "ko": "!{{없|없}}음 클라이언트가 액세스 포인트에 연결됨",
+    "ru": "!{{C|Disc}}onnected with accesspoint",
+    "pt": "!{{C|Disc}}onnected with accesspoint"
   },
   "titleFormatted": {
     "en": "!{{C|Disc}}onnected with [[accessPoint]]",
@@ -14,7 +20,13 @@
     "es": "!{{C|Disc}}onnected with [[accessPoint]]",
     "de": "!{{C|Disc}}onnected with [[accessPoint]]",
     "fr": "!{{C|Disc}}onnected with [[accessPoint]]",
-    "it": "!{{C|Disc}}onnected with [[accessPoint]]"
+    "it": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "da": "!{{I|In}}gen enhed tilsluttet [[accessPoint]]",
+    "sv": "!{{I|In}}ga enheter anslutna till [[accessPoint]]",
+    "no": "!{{I|In}}gen enheter tilkoblet [[accessPoint]]",
+    "ko": "!{{없|없}}음 클라이언트가 [[accessPoint]]에 연결됨",
+    "ru": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "pt": "!{{C|Disc}}onnected with [[accessPoint]]"
   },
   "args": [
     {
@@ -31,7 +43,13 @@
         "es": "Punto de acceso Mac",
         "de": "Accesspoint Mac oder Name",
         "fr": "Point d'accès Mac ou nom",
-        "it": "Accesspoint Mac o nome"
+        "it": "Accesspoint Mac o nome",
+        "da": "Adgangspunkt Mac eller navn",
+        "sv": "Accesspunkt Mac eller namn",
+        "no": "Accesspunkt Mac eller navn",
+        "ko": "액세스 포인트 Mac 또는 이름",
+        "ru": "Точка доступа Mac или имя",
+        "pt": "Ponto de acesso Mac ou nome"
       }
     }
   ]

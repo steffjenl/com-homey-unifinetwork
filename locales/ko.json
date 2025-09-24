@@ -1,0 +1,72 @@
+{
+  "title": "UniFi 네트워크",
+  "pair": {
+    "validate": {
+      "title": "UniFi Cloud Key 확인 중",
+      "instruction": "먼저 설정에서 Cloud Key를 설정하세요."
+    },
+    "login": {
+      "title": "로그인"
+    }
+  },
+  "status": {
+    "connection": {
+      "Connected": "연결됨",
+      "Connecting": "연결 중...",
+      "Disconnected": "연결 해제됨",
+      "Initialized": "초기화됨"
+    }
+  },
+  "settings": {
+    "title": "UniFi 네트워크 설정",
+    "instruction": "UniFi 네트워크 사용자의 자격 증명으로 로그인하세요.",
+    "nvr": "서버 세부 정보",
+    "nvrText": "UniFiOS는 포트 443, Docker/Standalone은 포트 8443을 사용하세요.",
+    "nvrip": "IP 주소",
+    "nvrport": "포트",
+    "credentials": "사용자 자격 증명",
+    "credentialsText": "MFA 비활성화 및 로컬 관리자 사용자",
+    "username": "사용자 이름 (최소 32자)",
+    "password": "비밀번호",
+    "apply": "적용",
+    "test": "자격 증명 테스트",
+    "test_status": {
+      "success": "자격 증명이 유효합니다.",
+      "failure": "자격 증명이 유효하지 않습니다."
+    },
+    "saved": "설정이 저장되었습니다.",
+    "site": "사이트",
+    "tab": {
+      "settings": "설정",
+      "sites": "사이트",
+      "event_log": "이벤트 로그"
+    },
+    "intro2": "",
+    "log_enabled": "이벤트 로그 활성화됨",
+    "pullmethodeheader": "풀 방법 및 간격",
+    "pullmethode": "풀 방법",
+    "interval": "간격",
+    "applicationFlows": "애플리케이션 플로우 활성화"
+  },
+  "events": {
+    "camera": {
+      "motion_started": "움직임 시작됨",
+      "motion_ended": "움직임 종료됨",
+      "motion_inprogress": "움직임",
+      "ftr_inprogress": "전체 시간",
+      "disabled": "비활성화됨",
+      "failed": "실패함",
+      "done": "완료됨",
+      "always": "항상",
+      "motion": "움직임",
+      "never": "절대",
+      "detections": "감지"
+    },
+    "health": {
+      "unknown": "알 수 없음",
+      "green": "정상",
+      "orange": "경고",
+      "red": "치명적"
+    }
+  }
+}

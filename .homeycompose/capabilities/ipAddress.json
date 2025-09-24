@@ -6,7 +6,13 @@
     "es": "IP Address",
     "de": "IP Adresse",
     "fr": "Adresse IP",
-    "it": "Indirizzo IP"
+    "it": "Indirizzo IP",
+    "da": "IP Adresse",
+    "sv": "IP Adress",
+    "no": "IP Adresse",
+    "ko": "IP 주소",
+    "ru": "IP Адрес",
+    "pt": "Endereço IP"
   },
   "getable": true,
   "setable": false,

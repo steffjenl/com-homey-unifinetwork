@@ -6,7 +6,13 @@
     "es": "Port state",
     "de": "Port status",
     "fr": "État du port",
-    "it": "Stato porta"
+    "it": "Stato porta",
+    "da": "Port status",
+    "sv": "Port status",
+    "no": "Port status",
+    "ko": "포트 상태",
+    "ru": "Состояние порта",
+    "pt": "Estado da porta"
   },
   "getable": true,
   "setable": false,

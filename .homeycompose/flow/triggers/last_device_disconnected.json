@@ -6,7 +6,13 @@
     "es": "Último dispositivo desconectado",
     "fr": "Dernier appareil déconnecté",
     "de": "Letztes Gerät getrennt",
-    "it": "Ultimo dispositivo disconnesso"
+    "it": "Ultimo dispositivo disconnesso",
+    "da": "Sidste enhed afbrudt",
+    "sv": "Sista enheten frånkopplad",
+    "no": "Siste enhet frakoblet",
+    "ko": "마지막 장치 연결 해제됨",
+    "ru": "Последнее устройство отключено",
+    "pt": "Último dispositivo desconectado"
   },
   "titleFormatted": {
     "en": "Last device disconnected at [[accessPoint]]",
@@ -14,7 +20,13 @@
     "es": "Último dispositivo desconectado a [[accessPoint]]",
     "fr": "Dernier appareil déconnecté à [[accessPoint]]",
     "de": "Letztes Gerät getrennt bei [[accessPoint]]",
-    "it": "Ultimo dispositivo disconnesso a [[accessPoint]]"
+    "it": "Ultimo dispositivo disconnesso a [[accessPoint]]",
+    "da": "Sidste enhed afbrudt fra [[accessPoint]]",
+    "sv": "Sista enheten frånkopplad från [[accessPoint]]",
+    "no": "Siste enhet frakoblet fra [[accessPoint]]",
+    "ko": "[[accessPoint]]에서 마지막 장치가 연결 해제됨",
+    "ru": "Последнее устройство отключено от [[accessPoint]]",
+    "pt": "Último dispositivo desconectado de [[accessPoint]]"
   },
   "hint": {
     "en": "Triggers when the last device disconnects from the accesspoint",
@@ -22,7 +34,13 @@
     "es": "Se activa cuando el último dispositivo se desconecta del punto de acceso",
     "fr": "Déclenche lorsque le dernier appareil se déconnecte du point d'accès",
     "de": "Wird ausgelöst, wenn das letzte Gerät die Verbindung zum Zugangspunkt trennt",
-    "it": "Si attiva quando l'ultimo dispositivo si disconnette dal punto di accesso"
+    "it": "Si attiva quando l'ultimo dispositivo si disconnette dal punto di accesso",
+    "da": "Udløses når den sidste enhed afbryder forbindelsen til adgangspunktet",
+    "sv": "Utlöses när den sista enheten kopplas från accesspunkten",
+    "no": "Utøses når den siste enheten kobles fra tilgangspunktet",
+    "ko": "마지막 장치가 액세스 포인트에서 연결 해제될 때 트리거됩니다",
+    "ru": "Срабатывает, когда последнее устройство отключается от точки доступа",
+    "pt": "Dispara quando o último dispositivo se desconecta do ponto de acesso"
   },
   "args": [
     {
@@ -34,7 +52,13 @@
         "es": "Nombre de punto de acceso",
         "fr": "Nom du point d'accès",
         "de": "Zugangspunkt Name",
-        "it": "Nome del punto di accesso"
+        "it": "Nome del punto di accesso",
+        "da": "Adgangspunkt navn",
+        "sv": "Accesspunktens namn",
+        "no": "Tilgangspunkt navn",
+        "ko": "액세스 포인트 이름",
+        "ru": "Имя точки доступа",
+        "pt": "Nome do ponto de acesso"
       }
     }
   ]

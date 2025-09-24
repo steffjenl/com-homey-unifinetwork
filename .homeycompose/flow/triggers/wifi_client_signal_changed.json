@@ -6,7 +6,13 @@
     "es": "Señal cambiada",
     "fr": "Signal changé",
     "de": "Signal geändert",
-    "it": "Segnale cambiato"
+    "it": "Segnale cambiato",
+    "da": "Signal ændret",
+    "sv": "Signal ändrad",
+    "no": "Signal endret",
+    "ko": "신호 변경됨",
+    "ru": "Сигнал изменён",
+    "pt": "Sinal alterado"
   },
   "args": [
     {
@@ -22,7 +28,16 @@
       "title": {
         "en": "dBm",
         "nl": "dBm",
-        "es": "dBm"
+        "es": "dBm",
+        "fr": "dBm",
+        "de": "dBm",
+        "it": "dBm",
+        "da": "dBm",
+        "sv": "dBm",
+        "no": "dBm",
+        "ko": "dBm",
+        "ru": "dBm",
+        "pt": "dBm"
       },
       "example": -75
     },
@@ -32,7 +47,16 @@
       "title": {
         "en": "%",
         "nl": "%",
-        "es": "%"
+        "es": "%",
+        "fr": "%",
+        "de": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "ko": "%",
+        "ru": "%",
+        "pt": "%"
       },
       "example": 75
     },
@@ -45,7 +69,13 @@
         "es": "Proto",
         "fr": "Proto",
         "de": "Proto",
-        "it": "Proto"
+        "it": "Proto",
+        "da": "Proto",
+        "sv": "Proto",
+        "no": "Proto",
+        "ko": "Proto",
+        "ru": "Proto",
+        "pt": "Proto"
       },
       "example": "ac"
     }

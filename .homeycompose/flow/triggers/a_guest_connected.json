@@ -6,7 +6,13 @@
     "es": "Visita conectado",
     "fr": "Visiteur connecté",
     "de": "Gast verbunden",
-    "it": "Ospite connesso"
+    "it": "Ospite connesso",
+    "da": "Gæst forbundet",
+    "sv": "Gäst ansluten",
+    "no": "Gjest tilkoblet",
+    "ko": "게스트 연결됨",
+    "ru": "Гость подключен",
+    "pt": "Convidado conectado"
   },
   "tokens": [
     {
@@ -32,7 +38,13 @@
         "es": "Quien",
         "fr": "Qui",
         "de": "Wer",
-        "it": "Chi"
+        "it": "Chi",
+        "da": "Hvem",
+        "sv": "Vem",
+        "no": "Hvem",
+        "ko": "누구",
+        "ru": "Кто",
+        "pt": "Quem"
       },
       "example": {
         "en": "wifi01",

@@ -6,7 +6,13 @@
     "es": "Conexión de visita perdida",
     "fr": "Connexion visiteur perdue",
     "de": "Gastverbindung verloren",
-    "it": "Connessione ospite persa"
+    "it": "Connessione ospite persa",
+    "da": "Gæsteforbindelse mistet",
+    "sv": "Gästanslutning förlorad",
+    "no": "Gjestetilkobling mistet",
+    "ko": "게스트 연결 끊김",
+    "ru": "Потеряно соединение гостя",
+    "pt": "Conexão de convidado perdida"
   },
   "tokens": [
     {
@@ -30,7 +36,13 @@
         "es": "Quien",
         "fr": "Qui",
         "de": "Wer",
-        "it": "Chi"
+        "it": "Chi",
+        "da": "Hvem",
+        "sv": "Vem",
+        "no": "Hvem",
+        "ko": "누구",
+        "ru": "Кто",
+        "pt": "Quem"
       },
       "example": {
         "en": "wifi01",

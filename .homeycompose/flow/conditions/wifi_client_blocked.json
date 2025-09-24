@@ -6,7 +6,13 @@
     "es": "!{{Blocked|Unblocked}}",
     "de": "!{{Blocked|Unblocked}}",
     "fr": "!{{Blocked|Unblocked}}",
-    "it": "!{{Bloccato|Sbloccato}}"
+    "it": "!{{Bloccato|Sbloccato}}",
+    "da": "!{{Blokeret|Oplåst}}",
+    "sv": "!{{Blockerad|Upplåst}}",
+    "no": "!{{Blokkert|Opplåst}}",
+    "ko": "!{{차단됨|차단 해제됨}}",
+    "ru": "!{{Заблокирован|Разблокирован}}",
+    "pt": "!{{Bloqueado|Desbloqueado}}"
   },
   "titleFormatted": {
     "en": "!{{Blocked|Unblocked}}",
@@ -14,7 +20,13 @@
     "es": "!{{Blocked|Unblocked}}",
     "de": "!{{Blocked|Unblocked}}",
     "fr": "!{{Blocked|Unblocked}}",
-    "it": "!{{Bloccato|Sbloccato}}"
+    "it": "!{{Bloccato|Sbloccato}}",
+    "da": "!{{Blokeret|Oplåst}}",
+    "sv": "!{{Blockerad|Upplåst}}",
+    "no": "!{{Blokkert|Opplåst}}",
+    "ko": "!{{차단됨|차단 해제됨}}",
+    "ru": "!{{Заблокирован|Разблокирован}}",
+    "pt": "!{{Bloqueado|Desbloqueado}}"
   },
   "args": [
     {

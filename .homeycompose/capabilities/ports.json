@@ -6,7 +6,13 @@
     "es": "Cantidad de puertos",
     "de": "Anzahl Ports",
     "fr": "Nombre de ports",
-    "it": "Numero di porte"
+    "it": "Numero di porte",
+    "da": "Antal porte",
+    "sv": "Antal portar",
+    "no": "Antall porter",
+    "ko": "포트 수",
+    "ru": "Количество портов",
+    "pt": "Quantidade de portas"
   },
   "getable": true,
   "setable": false,

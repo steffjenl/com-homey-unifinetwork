@@ -6,7 +6,13 @@
     "es": "Desconectado",
     "fr": "Déconnecté",
     "de": "Getrennt",
-    "it": "Disconnesso"
+    "it": "Disconnesso",
+    "da": "Afbrudt",
+    "sv": "Frånkopplad",
+    "no": "Frakoblet",
+    "ko": "연결 해제됨",
+    "ru": "Отключено",
+    "pt": "Desconectado"
   },
   "args": [
     {

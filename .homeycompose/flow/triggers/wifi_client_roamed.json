@@ -6,7 +6,13 @@
     "es": "Roaming entre AP",
     "fr": "Rôde entre les points d'accès",
     "de": "Wechselt zwischen AP",
-    "it": "Si sposta tra gli AP"
+    "it": "Si sposta tra gli AP",
+    "da": "Roamer mellem AP",
+    "sv": "Roamar mellan AP",
+    "no": "Roamer mellom AP",
+    "ko": "AP 간 로밍",
+    "ru": "Роуминг между AP",
+    "pt": "Roaming entre AP"
   },
   "args": [
     {
@@ -22,12 +28,30 @@
       "title": {
         "en": "AP",
         "nl": "AP",
-        "es": "AP"
+        "es": "AP",
+        "fr": "AP",
+        "de": "AP",
+        "it": "AP",
+        "da": "AP",
+        "sv": "AP",
+        "no": "AP",
+        "ko": "AP",
+        "ru": "AP",
+        "pt": "AP"
       },
       "example": {
         "en": "ap123",
         "nl": "ap123",
-        "es": "ap123"
+        "es": "ap123",
+        "fr": "ap123",
+        "de": "ap123",
+        "it": "ap123",
+        "da": "ap123",
+        "sv": "ap123",
+        "no": "ap123",
+        "ko": "ap123",
+        "ru": "ap123",
+        "pt": "ap123"
       }
     },
     {
@@ -36,12 +60,30 @@
       "title": {
         "en": "AP MAC",
         "nl": "AP MAC",
-        "es": "AP MAC"
+        "es": "AP MAC",
+        "fr": "AP MAC",
+        "de": "AP MAC",
+        "it": "AP MAC",
+        "da": "AP MAC",
+        "sv": "AP MAC",
+        "no": "AP MAC",
+        "ko": "AP MAC",
+        "ru": "AP MAC",
+        "pt": "AP MAC"
       },
       "example": {
         "en": "00:00:5e:00:53:af",
         "nl": "00:00:5e:00:53:af",
-        "es": "00:00:5e:00:53:af"
+        "es": "00:00:5e:00:53:af",
+        "fr": "00:00:5e:00:53:af",
+        "de": "00:00:5e:00:53:af",
+        "it": "00:00:5e:00:53:af",
+        "da": "00:00:5e:00:53:af",
+        "sv": "00:00:5e:00:53:af",
+        "no": "00:00:5e:00:53:af",
+        "ko": "00:00:5e:00:53:af",
+        "ru": "00:00:5e:00:53:af",
+        "pt": "00:00:5e:00:53:af"
       }
     },
     {
@@ -50,7 +92,16 @@
       "title": {
         "en": "Proto",
         "nl": "Proto",
-        "es": "Proto"
+        "es": "Proto",
+        "fr": "Proto",
+        "de": "Proto",
+        "it": "Proto",
+        "da": "Proto",
+        "sv": "Proto",
+        "no": "Proto",
+        "ko": "Proto",
+        "ru": "Proto",
+        "pt": "Proto"
       },
       "example": "ac"
     }

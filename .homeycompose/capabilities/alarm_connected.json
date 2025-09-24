@@ -6,7 +6,13 @@
     "es": "Estado de Verbindings",
     "de": "Verbindungsstatus",
     "fr": "État de la connexion",
-    "it": "Stato di connessione"
+    "it": "Stato di connessione",
+    "da": "Forbindelsesstatus",
+    "sv": "Anslutningsstatus",
+    "no": "Tilkoblingsstatus",
+    "ko": "연결 상태",
+    "ru": "Состояние подключения",
+    "pt": "Estado da conexão"
   },
   "getable": true,
   "setable": false,

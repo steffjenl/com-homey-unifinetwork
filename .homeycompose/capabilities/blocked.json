@@ -6,7 +6,13 @@
     "es": "Obstruido",
     "de": "Blockiert",
     "fr": "Bloqué",
-    "it": "Bloccato"
+    "it": "Bloccato",
+    "da": "Blokeret",
+    "sv": "Blockerad",
+    "no": "Blokkert",
+    "ko": "차단됨",
+    "ru": "Заблокировано",
+    "pt": "Bloqueado"
   },
   "getable": true,
   "setable": true,

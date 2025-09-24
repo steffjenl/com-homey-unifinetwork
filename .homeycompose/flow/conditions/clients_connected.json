@@ -7,6 +7,12 @@
     "es": "!{{C|Disc}}onnected Clients",
     "de": "!{{V|K}}onnektierte Clients",
     "fr": "!{{C|Disc}}onnected Clients",
-    "it": "!{{C|Disc}}onnected Clients"
+    "it": "!{{C|Disc}}onnected Clients",
+    "da": "!{{I|In}}gen enheder tilsluttet",
+    "sv": "!{{I|In}}ga enheter anslutna",
+    "no": "!{{I|In}}gen enheter tilkoblet",
+    "ko": "!{{없|없}}음 클라이언트",
+    "ru": "!{{C|Disc}}onnected Clients",
+    "pt": "!{{C|Disc}}onnected Clients"
   }
 }

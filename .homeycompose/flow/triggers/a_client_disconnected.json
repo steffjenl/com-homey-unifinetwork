@@ -6,7 +6,13 @@
     "es": "Conexión perdida",
     "fr": "Connexion Wi-Fi perdue",
     "de": "WLAN-Verbindung verloren",
-    "it": "Connessione Wi-Fi persa"
+    "it": "Connessione Wi-Fi persa",
+    "da": "WiFi-forbindelse mistet",
+    "sv": "WiFi-anslutning förlorad",
+    "no": "WiFi-tilkobling mistet",
+    "ko": "WiFi 연결 끊김",
+    "ru": "Потеряно соединение Wi-Fi",
+    "pt": "Conexão Wi-Fi perdida"
   },
   "tokens": [
     {
@@ -30,7 +36,13 @@
         "es": "Quien",
         "fr": "Qui",
         "de": "Wer",
-        "it": "Chi"
+        "it": "Chi",
+        "da": "Hvem",
+        "sv": "Vem",
+        "no": "Hvem",
+        "ko": "누구",
+        "ru": "Кто",
+        "pt": "Quem"
       },
       "example": {
         "en": "wifi01",

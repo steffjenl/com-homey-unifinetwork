@@ -6,7 +6,13 @@
     "es": "!{{Connected|Disconnected}}",
     "de": "!{{Verbunden|Getrennt}}",
     "fr": "!{{Connecté|Déconnecté}}",
-    "it": "!{{Connesso|Disconnesso}}"
+    "it": "!{{Connesso|Disconnesso}}",
+    "da": "!{{Tilsluttet|Frakoblet}}",
+    "sv": "!{{Ansluten|Frånkopplad}}",
+    "no": "!{{Tilkoblet|Frakoblet}}",
+    "ko": "!{{연결됨|연결 끊김}}",
+    "ru": "!{{Подключено|Отключено}}",
+    "pt": "!{{Conectado|Desconectado}}"
   },
   "titleFormatted": {
     "en": "!{{Connected|Disconnected}}",
@@ -14,7 +20,13 @@
     "es": "!{{Connected|Disconnected}}",
     "de": "!{{Verbunden|Getrennt}}",
     "fr": "!{{Connecté|Déconnecté}}",
-    "it": "!{{Connesso|Disconnesso}}"
+    "it": "!{{Connesso|Disconnesso}}",
+    "da": "!{{Tilsluttet|Frakoblet}}",
+    "sv": "!{{Ansluten|Frånkopplad}}",
+    "no": "!{{Tilkoblet|Frakoblet}}",
+    "ko": "!{{연결됨|연결 끊김}}",
+    "ru": "!{{Подключено|Отключено}}",
+    "pt": "!{{Conectado|Desconectado}}"
   },
   "args": [
     {
