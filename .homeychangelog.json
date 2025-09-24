@@ -109,5 +109,8 @@
   },
   "2.4.6": {
     "en": "Updated internal packages"
+  },
+  "2.5.0": {
+    "en": "Add support for network switches"
   }
 }
