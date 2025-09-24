@@ -3,7 +3,10 @@
   "title": {
     "en": "TX Bytes",
     "nl": "TX Bytes",
-    "es": "TX Bytes"
+    "es": "TX Bytes",
+    "de": "TX Bytes",
+    "fr": "TX Bytes",
+    "it": "TX Bytes"
   },
   "units": {
     "en": "MB",

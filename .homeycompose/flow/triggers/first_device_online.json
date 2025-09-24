@@ -3,7 +3,10 @@
   "title": {
     "en": "First device connected",
     "nl": "Eerste apparaat verbonden",
-    "es": "Primer dispositivo conectado"
+    "es": "Primer dispositivo conectado",
+    "fr": "Premier appareil connecté",
+    "de": "Erstes Gerät verbunden",
+    "it": "Primo dispositivo connesso"
   },
   "tokens": [
     {
@@ -12,7 +15,10 @@
       "title": {
         "en": "Who",
         "nl": "Wie",
-        "es": "Quien"
+        "es": "Quien",
+        "fr": "Qui",
+        "de": "Wer",
+        "it": "Chi"
       },
       "example": {
         "en": "wifi01",

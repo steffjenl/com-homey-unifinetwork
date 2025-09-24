@@ -3,7 +3,10 @@
   "title": {
     "en": "Signal strength",
     "nl": "Signaalsterkte",
-    "es": "Intensidad de Señal"
+    "es": "Intensidad de Señal",
+    "de": "Signalstärke",
+    "fr": "Puissance du signal",
+    "it": "Intensità del segnale"
   },
   "units": {
     "en": "dBm",

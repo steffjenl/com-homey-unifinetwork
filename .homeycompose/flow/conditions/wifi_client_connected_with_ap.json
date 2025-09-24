@@ -2,11 +2,19 @@
   "id": "wifi_client_connected_with_ap",
   "title": {
     "en": "!{{C|Disc}}onnected with accesspoint",
-    "nl": "!{{V|Niet v}}erbonden met accesspoint"
+    "nl": "!{{V|Niet v}}erbonden met accesspoint",
+    "es": "!{{C|Disc}}onnected with accesspoint",
+    "de": "!{{C|Disc}}onnected with accesspoint",
+    "fr": "!{{C|Disc}}onnected with accesspoint",
+    "it": "!{{C|Disc}}onnected with accesspoint"
   },
   "titleFormatted": {
     "en": "!{{C|Disc}}onnected with [[accessPoint]]",
-    "nl": "!{{V|Niet v}}erbonden met [[accessPoint]]"
+    "nl": "!{{V|Niet v}}erbonden met [[accessPoint]]",
+    "es": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "de": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "fr": "!{{C|Disc}}onnected with [[accessPoint]]",
+    "it": "!{{C|Disc}}onnected with [[accessPoint]]"
   },
   "args": [
     {
@@ -20,7 +28,10 @@
       "placeholder": {
         "en": "Accesspoint mac or name",
         "nl": "Accesspoint mac of naam",
-        "es": "Punto de acceso Mac"
+        "es": "Punto de acceso Mac",
+        "de": "Accesspoint Mac oder Name",
+        "fr": "Point d'accès Mac ou nom",
+        "it": "Accesspoint Mac o nome"
       }
     }
   ]

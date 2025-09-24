@@ -3,7 +3,10 @@
   "title": {
     "en": "Roams to AP",
     "nl": "Zwerft naar AP",
-    "es": "Ruta a AP"
+    "es": "Ruta a AP",
+    "fr": "Rôde vers le point d'accès",
+    "de": "Streift zu AP",
+    "it": "Si aggira verso AP"
   },
   "args": [
     {

@@ -3,12 +3,18 @@
   "title": {
     "en": "RSSI",
     "nl": "RSSI",
-    "es": "RSSI"
+    "es": "RSSI",
+    "de": "RSSI",
+    "fr": "RSSI",
+    "it": "RSSI"
   },
   "units": {
     "en": "%",
     "nl": "%",
-    "es": "%"
+    "es": "%",
+    "de": "%",
+    "fr": "%",
+    "it": "%"
   },
   "getable": true,
   "setable": false,

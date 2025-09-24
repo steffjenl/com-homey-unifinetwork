@@ -3,7 +3,10 @@
   "title": {
     "en": "Roams between AP",
     "nl": "Zwerft naar ander AP",
-    "es": "Roaming entre AP"
+    "es": "Roaming entre AP",
+    "fr": "Rôde entre les points d'accès",
+    "de": "Wechselt zwischen AP",
+    "it": "Si sposta tra gli AP"
   },
   "args": [
     {

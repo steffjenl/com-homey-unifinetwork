@@ -3,7 +3,10 @@
   "title": {
     "en": "Blocked",
     "nl": "Geblokkeerd",
-    "es": "Obstruido"
+    "es": "Obstruido",
+    "de": "Blockiert",
+    "fr": "Bloqué",
+    "it": "Bloccato"
   },
   "getable": true,
   "setable": true,

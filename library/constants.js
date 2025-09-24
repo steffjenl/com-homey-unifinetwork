@@ -28,3 +28,5 @@ module.exports.EVENT_WIFI_CLIENT_SIGNAL_CHANGED = 'wifi_client_signal_changed';
 //
 module.exports.EVENT_WIFI_CLIENT_BLOCKED = 'wifi_client_blocked';
 module.exports.EVENT_CABLE_CLIENT_BLOCKED = 'cable_client_blocked';
+//
+module.exports.EVENT_NETWORK_SWITCH_POWER_CYCLE_PORT = 'network_switch_power_cycle_port';

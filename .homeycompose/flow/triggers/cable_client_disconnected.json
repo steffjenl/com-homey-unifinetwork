@@ -3,7 +3,10 @@
   "title": {
     "en": "Disconnected",
     "nl": "Verbinding verbroken",
-    "es": "Desconectado"
+    "es": "Desconectado",
+    "fr": "Déconnecté",
+    "de": "Getrennt",
+    "it": "Disconnesso"
   },
   "args": [
     {

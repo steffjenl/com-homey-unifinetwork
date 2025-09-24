@@ -1,0 +1,16 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "PoE state",
+    "nl": "PoE status",
+    "es": "PoE state",
+    "de": "PoE status",
+    "fr": "État PoE",
+    "it": "Stato PoE"
+  },
+  "getable": true,
+  "setable": false,
+  "icon": "./assets/lightning-bolt-outline.svg",
+  "uiComponent": "button",
+  "uiQuickAction": true
+}

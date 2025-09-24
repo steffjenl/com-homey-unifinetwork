@@ -3,7 +3,10 @@
   "title": {
     "en": "Wifi connection lost",
     "nl": "Wifi connectie verloren",
-    "es": "Conexión perdida"
+    "es": "Conexión perdida",
+    "fr": "Connexion Wi-Fi perdue",
+    "de": "WLAN-Verbindung verloren",
+    "it": "Connessione Wi-Fi persa"
   },
   "tokens": [
     {
@@ -24,7 +27,10 @@
       "title": {
         "en": "Who",
         "nl": "Wie",
-        "es": "Quien"
+        "es": "Quien",
+        "fr": "Qui",
+        "de": "Wer",
+        "it": "Chi"
       },
       "example": {
         "en": "wifi01",

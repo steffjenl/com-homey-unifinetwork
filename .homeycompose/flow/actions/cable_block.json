@@ -3,7 +3,10 @@
   "title": {
     "en": "Block client",
     "nl": "Blokeer cliënt",
-    "es": "Bloquear cliente"
+    "es": "Bloquear cliente",
+    "de": "Client blockieren",
+    "fr": "Bloquer le client",
+    "it": "Blocca client"
   },
   "args": [
     {

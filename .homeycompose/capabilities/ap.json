@@ -3,7 +3,10 @@
   "title": {
     "en": "Accesspoint",
     "nl": "Accesspoint",
-    "es": "Accesspoint"
+    "es": "Accesspoint",
+    "de": "Accesspoint",
+    "fr": "Point d'accès",
+    "it": "Accesspoint"
   },
   "getable": true,
   "setable": false,

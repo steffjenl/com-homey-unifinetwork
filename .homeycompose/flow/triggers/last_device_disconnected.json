@@ -3,17 +3,26 @@
   "title": {
     "en": "Last device disconnected",
     "nl": "Laatste verbinding verbroken",
-    "es": "Último dispositivo desconectado"
+    "es": "Último dispositivo desconectado",
+    "fr": "Dernier appareil déconnecté",
+    "de": "Letztes Gerät getrennt",
+    "it": "Ultimo dispositivo disconnesso"
   },
   "titleFormatted": {
     "en": "Last device disconnected at [[accessPoint]]",
     "nl": "Laatste verbinding verbroken met [[accessPoint]]",
-    "es": "Último dispositivo desconectado a [[accessPoint]]"
+    "es": "Último dispositivo desconectado a [[accessPoint]]",
+    "fr": "Dernier appareil déconnecté à [[accessPoint]]",
+    "de": "Letztes Gerät getrennt bei [[accessPoint]]",
+    "it": "Ultimo dispositivo disconnesso a [[accessPoint]]"
   },
   "hint": {
     "en": "Triggers when the last device disconnects from the accesspoint",
     "nl": "Wordt getriggerd wanneer het laatste apparaat verbinding verbreekt met het accesspoint",
-    "es": "Se activa cuando el último dispositivo se desconecta del punto de acceso"
+    "es": "Se activa cuando el último dispositivo se desconecta del punto de acceso",
+    "fr": "Déclenche lorsque le dernier appareil se déconnecte du point d'accès",
+    "de": "Wird ausgelöst, wenn das letzte Gerät die Verbindung zum Zugangspunkt trennt",
+    "it": "Si attiva quando l'ultimo dispositivo si disconnette dal punto di accesso"
   },
   "args": [
     {
@@ -22,7 +31,10 @@
       "placeholder": {
         "en": "Accesspoint name",
         "nl": "Accesspoint naam",
-        "es": "Nombre de punto de acceso"
+        "es": "Nombre de punto de acceso",
+        "fr": "Nom du point d'accès",
+        "de": "Zugangspunkt Name",
+        "it": "Nome del punto di accesso"
       }
     }
   ]

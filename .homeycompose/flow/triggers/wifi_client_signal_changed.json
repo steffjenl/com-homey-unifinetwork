@@ -3,7 +3,10 @@
   "title": {
     "en": "Signal changed",
     "nl": "Signaal veranderd",
-    "es": "Señal cambiada"
+    "es": "Señal cambiada",
+    "fr": "Signal changé",
+    "de": "Signal geändert",
+    "it": "Segnale cambiato"
   },
   "args": [
     {
@@ -39,7 +42,10 @@
       "title": {
         "en": "Proto",
         "nl": "Proto",
-        "es": "Proto"
+        "es": "Proto",
+        "fr": "Proto",
+        "de": "Proto",
+        "it": "Proto"
       },
       "example": "ac"
     }
