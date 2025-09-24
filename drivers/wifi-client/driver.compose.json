@@ -96,8 +96,9 @@
     ]
   },
   "images": {
-    "large": "drivers/wifi-client/assets/images/large.jpg",
-    "small": "drivers/wifi-client/assets/images/small.jpg"
+    "xlarge": "drivers/wifi-client/assets/images/xlarge.png",
+    "large": "drivers/wifi-client/assets/images/large.png",
+    "small": "drivers/wifi-client/assets/images/small.png"
   },
   "class": "sensor",
   "capabilities": [

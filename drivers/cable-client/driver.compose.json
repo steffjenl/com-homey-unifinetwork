@@ -87,8 +87,9 @@
     ]
   },
   "images": {
-    "large": "drivers/cable-client/assets/images/large.jpg",
-    "small": "drivers/cable-client/assets/images/small.jpg"
+    "xlarge": "drivers/cable-client/assets/images/xlarge.png",
+    "large": "drivers/cable-client/assets/images/large.png",
+    "small": "drivers/cable-client/assets/images/small.png"
   },
   "class": "sensor",
   "capabilities": [

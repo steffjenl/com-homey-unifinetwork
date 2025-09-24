@@ -86,8 +86,9 @@
     ]
   },
   "images": {
-    "large": "drivers/network-switch/assets/images/large.jpg",
-    "small": "drivers/network-switch/assets/images/small.jpg"
+    "xlarge": "drivers/network-switch/assets/images/xlarge.png",
+    "large": "drivers/network-switch/assets/images/large.png",
+    "small": "drivers/network-switch/assets/images/small.png"
   },
   "class": "sensor",
   "capabilities": [
