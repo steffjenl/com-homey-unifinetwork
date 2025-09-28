@@ -315,8 +315,7 @@ class UnifiNetwork extends Homey.App {
                     if (error.response && "status" in error.response && error.response.status === 401) {
                         this.homey.error(`[checkDevicesState][wlan]: AccessDenied`);
                         this._appLogin();
-                    }
-                    else {
+                    } else {
                         this.homey.app.debug(`[checkDevicesState][wlan]: error when retrieving getClientDevices`);
                     }
                 });
@@ -366,46 +365,41 @@ class UnifiNetwork extends Homey.App {
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
         this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
 
-        try {
-            // LOGIN
-            this.api.unifi.login(settings.user, settings.pass).then(async (loggedIn) => {
-                if (loggedIn) {
-                    this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
-                    this.setLoggedIn(true);
-                    this.debug('We are logged in!');
+        await (async () => {
+            try {
+                // LOGIN
+                await this.api.unifi.login(settings.user, settings.pass);
+                this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
+                await this.setLoggedIn(true);
+                this.debug('We are logged in!');
 
-                    // install timers
-                    await this._initTimers();
+                // install timers
+                await this._initTimers();
 
-                    // get all accesspoints from controller
-                    this.updateAccessPointList();
+                // get all accesspoints from controller
+                this.updateAccessPointList();
 
-                    if ("pullmethode" in settings && settings.pullmethode === '1') {
-                        // LISTEN for WebSocket events
-                        this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
-                        this.api.websocket.listen().then((connected) => {
-                            if (connected) {
-                                this.debug('WebSocket is connected');
-                            }
-                        }).catch(
-                            (error) => {
-                                this.debug(`WebSocket error: ${JSON.stringify(error)}`);
-                            }
-                        );
-                    }
+                if ("pullmethode" in settings && settings.pullmethode === '1') {
+                    // LISTEN for WebSocket events
+                    this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+                    this.api.websocket.listen().then((connected) => {
+                        if (connected) {
+                            this.debug('WebSocket is connected');
+                        }
+                    }).catch(
+                        (error) => {
+                            this.debug(`WebSocket error: ${JSON.stringify(error)}`);
+                        }
+                    );
                 }
-            }).catch((error) => {
-                this.debug('catch error = ' + JSON.stringify(error));
-                this.setLoggedIn(false);
-            });
-        } catch (error) {
-            //this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, JSON.stringify(error));
-            this.debug('catch error = ' + JSON.stringify(error));
-            this.setLoggedIn(false);
-        }
+            } catch (error) {
+                await this.setLoggedIn(false);
+                this.error(`${JSON.stringify(error)}`); // we want to see the error in the log
+            }
+        })();
     }
 
-    async refreshAuthTokens()    {
+    async refreshAuthTokens() {
         const refreshAuthTokens = setInterval(() => {
             try {
                 this.debug('Refreshing auth tokens');
@@ -529,7 +523,7 @@ class UnifiNetwork extends Homey.App {
      */
     toLocalTime(homeyTime) {
         const tz = this.homey.clock.getTimezone();
-        const localTime = new Date(homeyTime.toLocaleString('en-US', { timeZone: tz }));
+        const localTime = new Date(homeyTime.toLocaleString('en-US', {timeZone: tz}));
         return localTime;
     }
 
