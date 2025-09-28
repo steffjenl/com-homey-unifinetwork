@@ -115,5 +115,8 @@
   },
   "2.5.1": {
     "en": "Add POE Power cycle action card"
+  },
+  "2.5.2": {
+    "en": "Add action cards to power on and off POE ports"
   }
 }
