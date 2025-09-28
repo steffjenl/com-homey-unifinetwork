@@ -213,6 +213,16 @@ class UnifiNetwork extends Homey.App {
             this.debug(`Power cycling port ${args.port} on device ${args.device.getData().id}`);
             this.homey.app.api.powerCycleDevice(args.device.getData().id, args.port).catch(this.error);
         });
+        const poePowerOff = this.homey.flow.getActionCard('network_switch_power_off_port');
+        poePowerOff.registerRunListener(async (args, state) => {
+            this.debug(`Power off port ${args.port} on device ${args.device.getData().id}`);
+            this.homey.app.api.powerOffDevice(args.device.getData().id, args.port).catch(this.error);
+        });
+        const poePowerOn = this.homey.flow.getActionCard('network_switch_power_on_port');
+        poePowerOn.registerRunListener(async (args, state) => {
+            this.debug(`Power on port ${args.port} on device ${args.device.getData().id}`);
+            this.homey.app.api.powerOnDevice(args.device.getData().id, args.port).catch(this.error);
+        });
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
@@ -408,6 +418,7 @@ class UnifiNetwork extends Homey.App {
 
     onIsConnected(isConnected, payload) {
         const deviceName = this.homey.app.api.getDeviceName(payload);
+        this.debug(`Device ${deviceName} (${payload.user}) is ${isConnected ? 'connected' : 'disconnected'}`);
         if (isConnected) {
             const tokens = {
                 mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,

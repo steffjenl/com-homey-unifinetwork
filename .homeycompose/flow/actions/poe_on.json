@@ -1,0 +1,42 @@
+{
+  "id": "network_switch_power_on_port",
+  "title": {
+    "en": "PoE Power On",
+    "nl": "PoE Stroom Aan",
+    "es": "Encender PoE",
+    "de": "PoE Strom an",
+    "fr": "Allumer PoE",
+    "it": "Accendi PoE",
+    "da": "Tænd PoE",
+    "sv": "Slå på PoE",
+    "no": "Slå på PoE",
+    "ko": "PoE 전원 켜기",
+    "ru": "Включить питание PoE",
+    "pt": "Ligar PoE"
+  },
+  "titleFormatted": {
+    "en": "Cylce power on port [[port]]",
+    "nl": "Zet stroom aan op switch poort [[port]]",
+    "es": "Encender puerto [[port]]",
+    "de": "Strom an Port [[port]] einschalten",
+    "fr": "Allumer le port [[port]]",
+    "it": "Accendi la porta [[port]]",
+    "da": "Tænd port [[port]]",
+    "sv": "Slå på port [[port]]",
+    "no": "Slå på port [[port]]",
+    "ko": "포트 [[port]] 전원 켜기",
+    "ru": "Включить питание на порту [[port]]",
+    "pt": "Ligar porta [[port]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=network-switch"
+    },
+    {
+      "type": "number",
+      "name": "port"
+    }
+  ]
+}

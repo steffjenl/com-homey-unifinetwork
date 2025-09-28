@@ -39,6 +39,7 @@
   },
   "homeyCommunityTopicId": 42967,
   "support": "https://monkeysoft.nl/homey-integrations-support/",
+  "homepage": "https://monkeysoft.nl/",
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"

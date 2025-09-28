@@ -1,0 +1,42 @@
+{
+  "id": "network_switch_power_off_port",
+  "title": {
+    "en": "PoE Power Off",
+    "nl": "PoE Stroom Uit",
+    "es": "Apagar PoE",
+    "de": "PoE Strom aus",
+    "fr": "Couper l'alimentation PoE",
+    "it": "Spegni PoE",
+    "da": "Sluk PoE",
+    "sv": "Stäng av PoE",
+    "no": "Slå av PoE",
+    "ko": "PoE 전원 끄기",
+    "ru": "Отключить питание PoE",
+    "pt": "Desligar PoE"
+  },
+  "titleFormatted": {
+    "en": "Power off port [[port]]",
+    "nl": "Zet stroom uit op switch poort [[port]]",
+    "es": "Apagar puerto [[port]]",
+    "de": "Strom an Port [[port]] ausschalten",
+    "fr": "Couper l'alimentation du port [[port]]",
+    "it": "Spegni la porta [[port]]",
+    "da": "Sluk port [[port]]",
+    "sv": "Stäng av port [[port]]",
+    "no": "Slå av port [[port]]",
+    "ko": "포트 [[port]] 전원 끄기",
+    "ru": "Отключить питание на порту [[port]]",
+    "pt": "Desligar porta [[port]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=network-switch"
+    },
+    {
+      "type": "number",
+      "name": "port"
+    }
+  ]
+}

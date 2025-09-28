@@ -87,6 +87,42 @@ class ApiClient extends BaseClass {
         });
     }
 
+    async powerOnDevice(macAddress, portIndex) {
+        this.unifi.getAccessDevices(macAddress).then(async (deviceData) => {
+            const device = deviceData.filter(obj => {
+                return obj.mac === macAddress
+            });
+            const deviceId = device[0]._id;
+            const portOverrides = device[0].port_overrides;
+            // turn the poe back on
+            for (const item of portOverrides) {
+                if (item.port_idx === Number.parseInt(portIndex, 10)) {
+                    item.poe_mode = 'auto';
+                }
+            }
+            await this.unifi.setDeviceSettingsBase(deviceId, {port_overrides: portOverrides});
+        }).catch(error => this.homey.app.error(error));
+    }
+
+    async powerOffDevice(macAddress, portIndex) {
+        this.unifi.getAccessDevices(macAddress).then(async (deviceData) => {
+            const device = deviceData.filter(obj => {
+                return obj.mac === macAddress
+            });
+            const deviceId = device[0]._id;
+            const portOverrides = device[0].port_overrides;
+            // Set PoE mode to 'off' for the specified port
+            for (const item of portOverrides) {
+                if (item.port_idx === Number.parseInt(portIndex, 10)) {
+                    item.poe_mode = 'off';
+                }
+            }
+            await this.unifi.setDeviceSettingsBase(deviceId, {port_overrides: portOverrides});
+        }).catch(error => this.homey.app.error(error));
+    }
+
+
+
     async powerCycleDevice(macAddress, portIndex) {
         this.unifi.getAccessDevices(macAddress).then(async (deviceData) => {
             const device = deviceData.filter(obj => {
