@@ -29,19 +29,14 @@ class NetworkSwitch extends Driver {
         });
     }
 
-    /**
-     * getUnifiDeviceById is called to get the Device class from an mac address.
-     *
-     * @param deviceId
-     * @returns {Device|boolean}
-     */
     getUnifiDeviceById(deviceId) {
         try {
-            const device = this.getDevice({
-                id: deviceId,
-            });
+            const driver = this.driver;
+            const devices = driver.getDevices();
+            const device = devices.find(device => String(device.getData().id) === String(deviceId));
+            if (!device) return false;
             return device;
-        } catch (error) {
+        } catch (Error) {
             return false;
         }
     }
