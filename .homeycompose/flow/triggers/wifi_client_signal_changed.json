@@ -23,7 +23,7 @@
   ],
   "tokens": [
     {
-      "name": "rssi",
+      "name": "signal",
       "type": "number",
       "title": {
         "en": "dBm",
@@ -42,7 +42,7 @@
       "example": -75
     },
     {
-      "name": "signal",
+      "name": "rssi",
       "type": "number",
       "title": {
         "en": "%",
