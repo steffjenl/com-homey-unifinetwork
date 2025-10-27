@@ -157,6 +157,13 @@ class ApiClient extends BaseClass {
         if (typeof deviceName === 'undefined') deviceName = "unknown";
         return deviceName;
     }
+
+    async getDeviceByMac(macAddress) {
+        const users = await this.unifi.getAllUsers();
+        return users.filter(obj => {
+            return obj.mac === macAddress
+        });
+    }
 }
 
 module.exports = ApiClient;

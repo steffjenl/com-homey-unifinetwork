@@ -223,6 +223,13 @@ class UnifiNetwork extends Homey.App {
             this.debug(`Power on port ${args.port} on device ${args.device.getData().id}`);
             this.homey.app.api.powerOnDevice(args.device.getData().id, args.port).catch(this.error);
         });
+
+        const areThereGuests = this.homey.flow.getConditionCard('guests_connected');
+        areThereGuests.registerRunListener(async (args, state) => {
+            const guestClients = await this.homey.app.api.unifi.getGuests();
+            return guestClients.length > 0;
+        });
+
         this.debug('UnifiNetwork init Flow Triggers');
     }
 
@@ -410,22 +417,31 @@ class UnifiNetwork extends Homey.App {
         }, this._refreshAuthTokensnterval);
     }
 
+    // {"user":"82:74:71:f9:15:25","ssid":"MonkeySoft","hostname":"2001-1c04-352c-6900-4990-fde6-f18d-3d8f.cable.dynamic.v6.ziggo.nl","ap":"d0:21:f9:89:df:f9","duration":1058,"bytes":2527451,"ap_model":"UAP6MP","ap_name":"BenedenAP","ap_displayName":"BenedenAP","key":"EVT_WU_Disconnected","subsystem":"wlan","is_negative":false,"site_id":"6550cbaad28ec670541702d5","time":1761598537000,"datetime":"2025-10-27T20:55:37Z","msg":"User[82:74:71:f9:15:25] disconnected from \"MonkeySoft\" (17m 38s connected, 2.41M bytes, last AP[d0:21:f9:89:df:f9])"}
+
+    // {"user":"ea:5b:28:b2:00:b5","ssid":"Ziggo6322902","ap":"d0:21:f9:89:df:f9","radio":"na","channel":"40","channelWidth":"80","hostname":"iPhone","ap_model":"UAP6MP","ap_name":"BenedenAP","ap_displayName":"BenedenAP","key":"EVT_WU_Connected","subsystem":"wlan","is_negative":false,"site_id":"6550cbaad28ec670541702d5","time":1761598567827,"datetime":"2025-10-27T20:56:07Z","msg":"User[ea:5b:28:b2:00:b5] has connected to AP[d0:21:f9:89:df:f9] with SSID \"Ziggo6322902\" on \"channel 40(na)\""
+
     onIsConnected(isConnected, payload) {
         const deviceName = this.homey.app.api.getDeviceName(payload);
         this.debug(`Device ${deviceName} (${payload.user}) is ${isConnected ? 'connected' : 'disconnected'}`);
         if (isConnected) {
+            const device = this.api.getDeviceByMac(payload.user);
             const tokens = {
                 mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
                 name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
+                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
+                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
             };
+
             this.homey.app._clientConnected.trigger(tokens);
 
         } else {
+            const device = this.api.getDeviceByMac(payload.user);
             const tokens = {
                 mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
                 name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid
+                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
+                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
             };
             this.homey.app._clientDisconnected.trigger(tokens);
         }

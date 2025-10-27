@@ -1,0 +1,31 @@
+{
+  "id": "guests_connected",
+  "title": {
+    "en": "Guests !{{|not}} connected",
+    "nl": "Gasten !{{|niet}} verbonden",
+    "es": "Guests !{{|not}} connected",
+    "de": "Gäste !{{|nicht}} verbunden",
+    "fr": "Guests !{{|not}} connected",
+    "it": "Guests !{{|not}} connected",
+    "da": "Gæster !{{|ikke}} forbundet",
+    "sv": "Gäster !{{|inte}} anslutna",
+    "no": "Gjester !{{|ikke}} tilkoblet",
+    "ko": "게스트 !{{|아님}} 연결됨",
+    "ru": "Guests !{{|not}} connected",
+    "pt": "Guests !{{|not}} connected"
+  },
+  "titleFormatted": {
+    "en": "Guests !{{|not}} connected",
+    "nl": "Gasten !{{|niet}} verbonden",
+    "es": "Guests !{{|not}} connected",
+    "de": "Gäste !{{|nicht}} verbunden",
+    "fr": "Guests !{{|not}} connected",
+    "it": "Guests !{{|not}} connected",
+    "da": "Gæster !{{|ikke}} forbundet",
+    "sv": "Gäster !{{|inte}} anslutna",
+    "no": "Gjester !{{|ikke}} tilkoblet",
+    "ko": "게스트 !{{|아님}} 연결됨",
+    "ru": "Guests !{{|not}} connected",
+    "pt": "Guests !{{|not}} connected"
+  }
+}

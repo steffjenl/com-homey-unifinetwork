@@ -80,6 +80,21 @@
         "de": "MyWifiSSID",
         "it": "MyWifiSSID"
       }
+    },
+    {
+      "name": "ipAddress",
+      "type": "string",
+      "title": {
+        "en": "IP Address",
+        "nl": "IP Adres",
+        "es": "Dirección IP",
+        "fr": "Adresse IP",
+        "de": "IP-Adresse",
+        "it": "Indirizzo IP"
+      },
+      "example": {
+        "en": "192.168.0.1"
+      }
     }
   ]
 }
