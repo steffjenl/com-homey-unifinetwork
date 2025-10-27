@@ -121,5 +121,8 @@
   },
   "2.5.3": {
     "en": "Fixing App Crash when devices are removed from Homey and still get events from it"
+  },
+  "2.5.4": {
+    "en": "Add support for guests and add ipAddress tag on connected and disconnected trigger cards"
   }
 }
