@@ -124,5 +124,8 @@
   },
   "2.5.4": {
     "en": "Add support for guests and add ipAddress tag on connected and disconnected trigger cards"
+  },
+  "2.5.5": {
+    "en": "Add extra text on settings page and fix error when invalid credentials on settings page"
   }
 }
