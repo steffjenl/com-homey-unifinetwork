@@ -8,9 +8,15 @@ module.exports = {
         return (homey.app.loggedIn ? 'Connected' : 'Disconnected');
     },
     async getWebsocketStatus({ homey, query }) {
+        if (!homey.app.api.websocket) {
+            return 'Disabled';
+        }
         return homey.app.api.websocket.isWebsocketConnected() ? 'Connected' : 'Unknown';
     },
     async getLastWebsocketMessageTime({ homey, query }) {
+        if (!homey.app.api.websocket) {
+            return 'N/A';
+        }
         return homey.app.api.websocket.getLastWebsocketMessageTime();
     },
     async testCredentials({homey, body}) {
