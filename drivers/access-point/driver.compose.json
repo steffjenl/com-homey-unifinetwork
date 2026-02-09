@@ -1,0 +1,41 @@
+{
+  "id": "access-point",
+  "name": {
+    "en": "Access Point",
+    "nl": "Toegangspunt",
+    "es": "Punto de acceso",
+    "de": "Zugangspunkt",
+    "fr": "Point d'accès",
+    "it": "Punto di accesso",
+    "da": "Adgangspunkt",
+    "sv": "Åtkomstpunkt",
+    "no": "Tilgangspunkt",
+    "ko": "액세스 포인트",
+    "ru": "Точка доступа",
+    "pt": "Ponto de acesso"
+  },
+  "images": {
+    "xlarge": "drivers/access-point/assets/images/xlarge.png",
+    "large": "drivers/access-point/assets/images/large.png",
+    "small": "drivers/access-point/assets/images/small.png"
+  },
+  "class": "sensor",
+  "capabilities": [
+
+  ],
+  "capabilitiesOptions": {
+  },
+  "pair": [
+    {
+      "id": "list_clients",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_clients"
+      }
+    },
+    {
+      "id": "add_clients",
+      "template": "add_devices"
+    }
+  ]
+}
