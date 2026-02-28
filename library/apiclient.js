@@ -22,6 +22,10 @@ class ApiClient extends BaseClass {
     }
 
     setWebSocketObject(hostName, portNumber, userName, passWord, siteName) {
+        // Cleanly shut down old client (stops reconnect loop + terminates socket)
+        if (this.websocket) {
+            this.websocket.destroy();
+        }
         const options = {host: hostName, port: portNumber, sslverify: false, site: siteName};
         this.websocket = new WebsocketClient(options, this.homey);
     }

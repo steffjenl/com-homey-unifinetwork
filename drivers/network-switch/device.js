@@ -1,13 +1,15 @@
 'use strict';
 
 const {Device} = require('homey');
+const PoePowerMixin = require('../../library/poe-power-mixin');
 
-class NetworkSwitchDevice extends Device {
+class NetworkSwitchDevice extends PoePowerMixin(Device) {
 
     /**
      * onInit is called when the device is initialized.
      */
     async onInit() {
+        await this.initPoeMeter(); // restore kWh total from store (from PoePowerMixin)
         await this.waitForBootstrap();
 
         this.registerCapabilityListener("poe", async (value) => {
@@ -62,7 +64,8 @@ class NetworkSwitchDevice extends Device {
      * onDeleted is called when the user deleted the device.
      */
     async onDeleted() {
-        this.log('CableDevice has been deleted');
+        this.destroyPoeMeter();
+        this.log('Network-Switch has been deleted');
     }
 
     async _createMissingCapabilities() {
@@ -176,20 +179,30 @@ class NetworkSwitchDevice extends Device {
     getDeviceStatus() {
         if (this.homey.app.loggedIn === true) {
             this.homey.app.api.unifi.getAccessDevices(this.getData().id).then(device => {
-                if (typeof device[0].ip !== 'undefined') {
-                    this.onIPChange(device[0]);
+                // Filter by MAC so we always use this switch's own data, not another device at index 0
+                const networkSwitch = device.filter(obj => obj.mac === this.getData().id);
+                if (!networkSwitch[0]) return;
+
+                if (typeof networkSwitch[0].ip !== 'undefined') {
+                    this.onIPChange(networkSwitch[0]);
                 }
 
-                if (typeof device[0].port_table !== 'undefined') {
-                    this.onAmountPortsChange(device[0].port_table.length);
-                    for (let i = 1; i < device[0].port_table.length + 1; i++) {
-                        if (typeof device[0].port_table[i - 1].up !== 'undefined') {
-                            this.onUPChange(device[0].port_table[i - 1].up, i);
+                if (typeof networkSwitch[0].port_table !== 'undefined') {
+                    this.onAmountPortsChange(networkSwitch[0].port_table.length);
+                    for (let i = 1; i < networkSwitch[0].port_table.length + 1; i++) {
+                        if (typeof networkSwitch[0].port_table[i - 1].up !== 'undefined') {
+                            this.onUPChange(networkSwitch[0].port_table[i - 1].up, i);
                         }
-                        if (typeof device[0].port_table[i - 1].poe_enable !== 'undefined') {
-                            this.onPOEChange(device[0].port_table[i - 1].poe_enable, i);
+                        if (typeof networkSwitch[0].port_table[i - 1].poe_enable !== 'undefined') {
+                            this.onPOEChange(networkSwitch[0].port_table[i - 1].poe_enable, i);
                         }
                     }
+                }
+
+                // If this switch is itself PoE-powered by an upstream switch, track its own draw
+                this.updatePoeUplink(networkSwitch[0]);
+                if (this._swMac && this._swPort) {
+                    this._fetchPoeData(this._swMac, this._swPort);
                 }
 
             }).catch(error => this.homey.app.debug(error));
