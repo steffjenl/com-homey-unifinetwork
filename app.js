@@ -52,8 +52,10 @@ class UnifiNetwork extends Homey.App {
 
     /**
      * parseWebsocketMessage
+     * @param {object} payload - the data entry from the WebSocket message
+     * @param {object} [meta]  - the meta object from the WebSocket message (contains message type)
      */
-    parseWebsocketMessage(payload) {
+    parseWebsocketMessage(payload, meta) {
         let that = this;
         // start application flow cards
         // created a setting because this function has memory overload on Homey
@@ -120,6 +122,44 @@ class UnifiNetwork extends Homey.App {
                     device.onBlockedChange(tokens);
                 }
             }
+        }
+
+        // device:sync is independent of subsystem — check separately so it is never
+        // accidentally swallowed by the wlan/lan branches above
+        if (meta && meta.message === 'device:sync' && payload.mac) {
+            // Real-time switch status update — debug only to avoid log flooding (~30s cadence per switch)
+            that.homey.app.debug(`[websocket] [device:sync]: mac=${payload.mac}`);
+
+            // Update port up/down and PoE on/off state on the switch device itself
+            const switchDriver = that.homey.drivers.getDriver('network-switch');
+            const switchDevice = switchDriver.getUnifiDeviceById(payload.mac);
+            if (switchDevice) {
+                switchDevice.onStatusChange(payload);
+            }
+
+            // Push live PoE wattage to any device powered by a port on this switch.
+            // Covers cable-clients, access-points, and PoE-powered downstream switches —
+            // all use PoePowerMixin and store _swMac/_swPort for exactly this lookup.
+            if (payload.port_table) {
+                for (const driverName of ['cable-client', 'access-point', 'network-switch']) {
+                    let driver;
+                    try {
+                        driver = that.homey.drivers.getDriver(driverName);
+                    } catch (e) { /* driver not yet initialised — skip */ continue; }
+                    driver.getDevices().forEach(async device => {
+                        if (device._swMac === payload.mac && device._swPort) {
+                            const port = payload.port_table[device._swPort - 1];
+                            if (port && port.port_poe && typeof port.poe_power !== 'undefined') {
+                                if (typeof device._ensurePoeCapabilities === 'function') {
+                                    await device._ensurePoeCapabilities(port);
+                                }
+                                device.onPoeUpdate(port);
+                            }
+                        }
+                    });
+                }
+            }
+
         }
         that = null;
     }
@@ -415,7 +455,7 @@ class UnifiNetwork extends Homey.App {
     }
 
     async refreshAuthTokens() {
-        const refreshAuthTokens = setInterval(() => {
+        const refreshAuthTokens = this.homey.setInterval(() => {
             try {
                 this.debug('Refreshing auth tokens');
                 this._appLogin();
