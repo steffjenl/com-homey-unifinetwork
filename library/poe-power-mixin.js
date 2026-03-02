@@ -27,6 +27,7 @@ const PoePowerMixin = (Base) => class extends Base {
     async initPoeMeter() {
         this._meterPower = await this.getStoreValue('meter_power') || 0;
         this._lastPowerTs = null; // null = first reading this session; gap while app was down is skipped
+        this._fetchPoeDataInFlight = false;
         this._poePollingInterval = this.homey.setInterval(() => {
             if (this._swMac && this._swPort) {
                 this._fetchPoeData(this._swMac, this._swPort);
@@ -62,18 +63,24 @@ const PoePowerMixin = (Base) => class extends Base {
     // Also cleans up stale PoE capabilities on devices that are not actually PoE-powered
     // (e.g. a mains-powered switch whose upstream port has port_poe: false).
     async _fetchPoeData(swMac, swPort) {
+        if (this._fetchPoeDataInFlight) return;
+        this._fetchPoeDataInFlight = true;
         try {
             const devices = await this.homey.app.api.unifi.getAccessDevices(swMac);
             const sw = devices.find(d => d.mac === swMac);
             if (!sw || !sw.port_table) return;
-            const port = sw.port_table[swPort - 1];
+            const portIndex = parseInt(swPort, 10) - 1;
+            if (portIndex < 0 || portIndex >= sw.port_table.length) return;
+            const port = sw.port_table[portIndex];
             if (!port || !port.port_poe) {
                 // Upstream port is not a PoE port — this device is not PoE-powered.
                 // Remove any stale PoE capabilities left over from a previous buggy run.
                 await this._removePoeCapabilities();
-                // Clear uplink tracking so polling stops trying
-                this._swMac = null;
-                this._swPort = null;
+                // Clear uplink tracking so polling stops trying; only clear if we still own this port (not been reassigned mid-flight)
+                if (this._swMac === swMac && this._swPort === swPort) {
+                    this._swMac = null;
+                    this._swPort = null;
+                }
                 return;
             }
             if (typeof port.poe_power === 'undefined') return; // No reading yet; polling will retry
@@ -81,6 +88,8 @@ const PoePowerMixin = (Base) => class extends Base {
             this.onPoeUpdate(port);
         } catch (error) {
             this.homey.app.debug(error);
+        } finally {
+            this._fetchPoeDataInFlight = false;
         }
     }
 
@@ -102,7 +111,7 @@ const PoePowerMixin = (Base) => class extends Base {
         for (const cap of ['measure_power', 'measure_voltage', 'measure_current', 'meter_power']) {
             if (this.hasCapability(cap)) {
                 this.log(`removing stale PoE capability '${cap}' from ${this.getName()}`);
-                await this.removeCapability(cap).catch(this.error);
+                await this.removeCapability(cap);
             }
         }
     }
@@ -115,13 +124,15 @@ const PoePowerMixin = (Base) => class extends Base {
         const amps  = parseFloat(port.poe_current || '0') / 1000; // UniFi reports mA; Homey wants A
 
         // Accumulate kWh — skip the gap while the app was not running (_lastPowerTs === null)
-        const now = Date.now();
-        if (this._lastPowerTs !== null) {
-            const hoursElapsed = (now - this._lastPowerTs) / 3600000;
-            this._meterPower += (watts / 1000) * hoursElapsed;
-            this.setStoreValue('meter_power', this._meterPower).catch(this.error);
+        if (this.hasCapability('meter_power')) {
+            const now = Date.now();
+            if (this._lastPowerTs !== null) {
+                const hoursElapsed = Math.min((now - this._lastPowerTs) / 3600000, 1); // cap at 1hr to protect against clock jumps
+                this._meterPower += (watts / 1000) * hoursElapsed;
+                this.setStoreValue('meter_power', this._meterPower).catch(this.error);
+            }
+            this._lastPowerTs = now;
         }
-        this._lastPowerTs = now;
 
         if (this.hasCapability('measure_power'))  this.setCapabilityValue('measure_power',  watts).catch(this.error);
         if (this.hasCapability('measure_voltage')) this.setCapabilityValue('measure_voltage', volts).catch(this.error);
