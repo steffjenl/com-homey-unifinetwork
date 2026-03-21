@@ -48,7 +48,7 @@
         "interval": "Interval (seconds, minimum 10)",
         "applicationFlows": "Enable application flows",
         "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates (Docker / Cloud Key Gen1).",
+        "sslverify_hint": "Default: unchecked (recommended for most setups). Only enable this if your controller has a valid trusted TLS certificate (not self-signed).",
         "apikey": "API Key (optional)",
         "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS → Settings → API. When set, v1 REST calls use Bearer auth instead of session cookie."
     },

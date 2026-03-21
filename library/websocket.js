@@ -10,7 +10,7 @@ class WebsocketClient extends BaseClass {
         this.opts.username = (typeof (this.opts.username) === 'undefined' ? 'admin' : this.opts.username);
         this.opts.password = (typeof (this.opts.password) === 'undefined' ? 'ubnt' : this.opts.password);
         this.opts.site = (typeof (this.opts.site) === 'undefined' ? 'default' : this.opts.site);
-        this.opts.sslverify = (typeof (this.opts.sslverify) === 'undefined' ? true : this.opts.sslverify);
+        this.opts.sslverify = (typeof (this.opts.sslverify) === 'undefined' ? false : this.opts.sslverify);
 
         this._baseurl = new URL(`https://${options.host}:${options.port}`);
         this._pingPongInterval = 3 * 1000; // Ms
