@@ -168,7 +168,7 @@ class UnifiNetwork extends Homey.App {
         // WLAN toggle action (v2.6) — requires API key + UniFi OS 7+
         const toggleWlan = this.homey.flow.getActionCard(UnifiConstants.ACTION_TOGGLE_WLAN);
 
-        toggleWlan.registerAutocompleteListener('wlan_id', async (query) => {
+        toggleWlan.registerArgumentAutocompleteListener('wlan_id', async (query) => {
             try {
                 const site = this.settings && this.settings.site ? this.settings.site : 'default';
                 const response = await this.api._callV1('GET', `/sites/${site}/wifi/broadcasts`);
