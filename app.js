@@ -247,8 +247,10 @@ class UnifiNetwork extends Homey.App {
             this.homey.clearInterval(this.updateAccessPointListInterval);
         }
 
-        // update device status every x
-        this.checkDevicesStateInterval = this.homey.setInterval(this.checkDevicesState.bind(this), (this.settings && "interval" in this.settings ? (this.settings.interval * 1000) : 15000));
+        // update device status every x seconds (minimum 10 s)
+        const rawInterval = this.settings && 'interval' in this.settings ? parseInt(this.settings.interval, 10) : 15;
+        const intervalMs = Math.max(10, rawInterval) * 1000;
+        this.checkDevicesStateInterval = this.homey.setInterval(this.checkDevicesState.bind(this), intervalMs);
         // update every 12 hours all accessPoints
         this.updateAccessPointListInterval = this.homey.setInterval(this.updateAccessPointList.bind(this), 43200000);
         //

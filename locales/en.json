@@ -45,7 +45,7 @@
         "log_enabled": "Event log enabled",
         "pullmethodeheader": "Pull Methode & Interval",
         "pullmethode": "Pull Methode",
-        "interval": "Interval",
+        "interval": "Interval (seconds, minimum 10)",
         "applicationFlows": "Enable application flows",
         "sslverify": "Verify SSL certificate",
         "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates (Docker / Cloud Key Gen1)."
