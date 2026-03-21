@@ -133,5 +133,8 @@
   },
   "2.6.1": {
     "en": "Merged two branched into one and updated packages"
+  },
+  "2.6.2": {
+    "en": "Add functions for access-point"
   }
 }
