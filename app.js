@@ -61,6 +61,9 @@ class UnifiNetwork extends Homey.App {
     parseWebsocketMessage(payload) {
         let that = this;
 
+        // Ignore non-event payloads (no key field) — these are stats syncs, not events
+        if (!payload.key) return;
+
         // Deduplication guard — skip events already processed within the last 60 s
         const dedupKey = `${payload.key}_${payload.user ?? payload.client ?? ''}_${payload.time ?? ''}`;
         if (this._recentEventIds.has(dedupKey)) {

@@ -75,8 +75,9 @@ class WebsocketClient extends BaseClass {
                 try {
                     const parsed = JSON.parse(message);
                     if ('meta' in parsed && Array.isArray(parsed.data)) {
+                        // Only process event messages — skip device:sync, sta:sync, etc.
+                        if (parsed.meta.message !== 'events') return;
                         for (const entry of parsed.data) {
-                            //                       this.homey.app.debug(`${JSON.stringify(entry)}`);
                             this.homey.app.parseWebsocketMessage(entry);
                         }
                     }
