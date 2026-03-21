@@ -13,6 +13,8 @@ class ApiClient extends BaseClass {
         this.websocket = null;
         this.homey = homey;
         this.loggedInStatus = 0;
+        this._apiKey = null;
+        this._v1BaseUrl = null;
     }
 
     setUnifiObject(hostName, portNumber, userName, passWord, siteName, sslVerify) {
@@ -27,6 +29,83 @@ class ApiClient extends BaseClass {
         const sslverify = typeof sslVerify === 'boolean' ? sslVerify : false;
         const options = {host: hostName, port: portNumber, sslverify, site: siteName};
         this.websocket = new WebsocketClient(options, this.homey);
+    }
+
+    /**
+     * Store an optional API key for v1 REST calls.
+     * @param {string|null} apiKey
+     * @param {string} host
+     * @param {string|number} port
+     */
+    setApiKey(apiKey, host, port) {
+        this._apiKey = apiKey || null;
+        this._v1BaseUrl = `https://${host}:${port}/proxy/network/v1`;
+    }
+
+    /**
+     * Make an authenticated call to the UniFi v1 REST API.
+     * Uses Bearer token if an API key is configured, otherwise falls back to
+     * the session cookie maintained by node-unifi.
+     *
+     * @param {string} method  HTTP method (GET, POST, PATCH, DELETE)
+     * @param {string} path    Path relative to /proxy/network/v1 (e.g. '/sites')
+     * @param {object|null} body  Optional request body
+     * @returns {Promise<object>}
+     */
+    async _callV1(method, path, body = null) {
+        const https = require('https');
+        const url = `${this._v1BaseUrl}${path}`;
+
+        const headers = {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        };
+
+        if (this._apiKey) {
+            headers['Authorization'] = `Bearer ${this._apiKey}`;
+        } else {
+            // Fallback: use session cookie from node-unifi cookie jar
+            try {
+                const baseUrl = new URL(this._v1BaseUrl);
+                const cookies = await this.unifi._cookieJar.getCookieString(baseUrl.origin);
+                if (cookies) headers['Cookie'] = cookies;
+            } catch (_e) {
+                // Cookie fallback unavailable — request will proceed without auth
+            }
+        }
+
+        const sslVerify = this.unifi ? this.unifi._sslverify !== false : false;
+
+        return new Promise((resolve, reject) => {
+            const reqUrl = new URL(url);
+            const payload = body ? JSON.stringify(body) : null;
+            if (payload) headers['Content-Length'] = Buffer.byteLength(payload);
+
+            const options = {
+                hostname: reqUrl.hostname,
+                port: reqUrl.port || 443,
+                path: reqUrl.pathname + reqUrl.search,
+                method,
+                headers,
+                rejectUnauthorized: sslVerify,
+            };
+
+            const req = https.request(options, (res) => {
+                let data = '';
+                res.on('data', (chunk) => { data += chunk; });
+                res.on('end', () => {
+                    try {
+                        resolve(JSON.parse(data));
+                    } catch (_e) {
+                        resolve(data);
+                    }
+                });
+            });
+
+            req.on('error', reject);
+            if (payload) req.write(payload);
+            req.end();
+        });
     }
 
     async getAccessPoints() {

@@ -48,7 +48,9 @@
         "interval": "Interval",
         "applicationFlows": "Aktivér applikationsflows",
         "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates."
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
+        "apikey": "API Key (optional)",
+        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
     },
     "events": {
         "camera": {

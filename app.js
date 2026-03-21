@@ -392,6 +392,7 @@ class UnifiNetwork extends Homey.App {
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
                 this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
+                this.api.setApiKey(settings.apiKey || null, settings.host, settings.port);
 
         await (async () => {
             try {

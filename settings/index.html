@@ -79,6 +79,13 @@
             </label>
             <p><small data-i18n="settings.sslverify_hint"></small></p>
         </div>
+
+        <!-- API Key (optional, for v1 REST — UniFi OS 7+) -->
+        <div class="field row">
+            <label class="homey-form-label" for="txt_apikey" data-i18n="settings.apikey"></label>
+            <input class="homey-form-input" id="txt_apikey" type="password" value="" autocomplete="off"/>
+            <p><small data-i18n="settings.apikey_hint"></small></p>
+        </div>
     </fieldset>
 
     <!-- site -->
@@ -162,6 +169,7 @@
     const txtUsername = document.getElementById('txt_username');
     const txtPassword = document.getElementById('txt_password');
     const txtSslVerify = document.getElementById('txt_sslverify');
+    const txtApiKey = document.getElementById('txt_apikey');
     const txtSite = document.getElementById('txt_site');
     const txtPullMethode = document.getElementById('txt_pullmethode');
     const txtInterval = document.getElementById('txt_interval');
@@ -186,6 +194,7 @@
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
                     txtSslVerify.checked = (settings.sslverify === true);
+                    txtApiKey.value = settings.apiKey || '';
                     txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
                     txtApplicationFlows.checked = (settings.applicationFlows === "1");
@@ -204,6 +213,7 @@
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
                 'sslverify': txtSslVerify.checked,
+                'apiKey': txtApiKey.value.trim() || null,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
                 'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),
