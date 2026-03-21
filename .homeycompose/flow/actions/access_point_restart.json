@@ -1,0 +1,43 @@
+{
+  "id": "access_point_restart",
+  "title": {
+    "en": "Restart access point",
+    "nl": "Toegangspunt herstarten",
+    "de": "Access Point neu starten",
+    "fr": "Redémarrer le point d'accès",
+    "it": "Riavvia punto di accesso",
+    "es": "Reiniciar punto de acceso",
+    "da": "Genstart adgangspunkt",
+    "sv": "Starta om åtkomstpunkt",
+    "no": "Start tilgangspunkt på nytt",
+    "ko": "액세스 포인트 재시작",
+    "ru": "Перезапустить точку доступа",
+    "pt": "Reiniciar ponto de acesso"
+  },
+  "hint": {
+    "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=access-point",
+      "title": {
+        "en": "Access point",
+        "nl": "Toegangspunt",
+        "de": "Access Point",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "es": "Punto de acceso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
+      }
+    }
+  ]
+}
+

@@ -35,3 +35,10 @@ module.exports.EVENT_WAN_UP = 'wan_up';
 module.exports.EVENT_WAN_DOWN = 'wan_down';
 // WLAN toggle action (v2.6)
 module.exports.ACTION_TOGGLE_WLAN = 'toggle_wlan';
+// Access-point device events
+module.exports.EVENT_ACCESS_POINT_CONNECTED = 'access_point_connected';
+module.exports.EVENT_ACCESS_POINT_DISCONNECTED = 'access_point_disconnected';
+module.exports.EVENT_ACCESS_POINT_CLIENT_COUNT_CHANGED = 'access_point_client_count_changed';
+// Access-point actions
+module.exports.ACTION_ACCESS_POINT_RESTART = 'access_point_restart';
+

@@ -1,0 +1,26 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Connected clients",
+    "nl": "Verbonden apparaten",
+    "de": "Verbundene Clients",
+    "fr": "Appareils connectés",
+    "it": "Client connessi",
+    "es": "Clientes conectados",
+    "da": "Tilsluttede enheder",
+    "sv": "Anslutna enheter",
+    "no": "Tilkoblede enheter",
+    "ko": "연결된 클라이언트",
+    "ru": "Подключённые клиенты",
+    "pt": "Clientes conectados"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "min": 0,
+  "decimals": 0,
+  "icon": "./assets/connected.svg"
+}
+
+

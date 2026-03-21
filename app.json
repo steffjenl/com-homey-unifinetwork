@@ -414,6 +414,141 @@
         "deprecated": true
       },
       {
+        "id": "access_point_client_count_changed",
+        "title": {
+          "en": "Number of clients changed",
+          "nl": "Aantal verbonden apparaten gewijzigd",
+          "de": "Anzahl der Clients geändert",
+          "fr": "Nombre de clients modifié",
+          "it": "Numero di client cambiato",
+          "es": "Número de clientes cambiado",
+          "da": "Antal klienter ændret",
+          "sv": "Antal klienter ändrat",
+          "no": "Antall klienter endret",
+          "ko": "클라이언트 수 변경됨",
+          "ru": "Количество клиентов изменилось",
+          "pt": "Número de clientes alterado"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=access-point",
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Access Point",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "num_clients",
+            "type": "number",
+            "title": {
+              "en": "Number of clients",
+              "nl": "Aantal apparaten",
+              "de": "Anzahl der Clients",
+              "fr": "Nombre de clients",
+              "it": "Numero di client",
+              "es": "Número de clientes",
+              "da": "Antal klienter",
+              "sv": "Antal klienter",
+              "no": "Antall klienter",
+              "ko": "클라이언트 수",
+              "ru": "Количество клиентов",
+              "pt": "Número de clientes"
+            },
+            "example": 5
+          }
+        ]
+      },
+      {
+        "id": "access_point_connected",
+        "title": {
+          "en": "Access point came online",
+          "nl": "Toegangspunt is online gekomen",
+          "de": "Access Point ist online",
+          "fr": "Le point d'accès est en ligne",
+          "it": "Punto di accesso online",
+          "es": "Punto de acceso en línea",
+          "da": "Adgangspunkt er online",
+          "sv": "Åtkomstpunkt online",
+          "no": "Tilgangspunkt er online",
+          "ko": "액세스 포인트 온라인",
+          "ru": "Точка доступа в сети",
+          "pt": "Ponto de acesso online"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=access-point",
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Access Point",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
+            }
+          }
+        ]
+      },
+      {
+        "id": "access_point_disconnected",
+        "title": {
+          "en": "Access point went offline",
+          "nl": "Toegangspunt is offline gegaan",
+          "de": "Access Point ist offline",
+          "fr": "Le point d'accès est hors ligne",
+          "it": "Punto di accesso offline",
+          "es": "Punto de acceso sin conexión",
+          "da": "Adgangspunkt er offline",
+          "sv": "Åtkomstpunkt offline",
+          "no": "Tilgangspunkt er offline",
+          "ko": "액세스 포인트 오프라인",
+          "ru": "Точка доступа не в сети",
+          "pt": "Ponto de acesso offline"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "Device",
+            "filter": "driver_id=access-point",
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Access Point",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
+            }
+          }
+        ]
+      },
+      {
         "id": "cable_client_connected",
         "title": {
           "en": "Connected",
@@ -1631,6 +1766,48 @@
     ],
     "actions": [
       {
+        "id": "access_point_restart",
+        "title": {
+          "en": "Restart access point",
+          "nl": "Toegangspunt herstarten",
+          "de": "Access Point neu starten",
+          "fr": "Redémarrer le point d'accès",
+          "it": "Riavvia punto di accesso",
+          "es": "Reiniciar punto de acceso",
+          "da": "Genstart adgangspunkt",
+          "sv": "Starta om åtkomstpunkt",
+          "no": "Start tilgangspunkt på nytt",
+          "ko": "액세스 포인트 재시작",
+          "ru": "Перезапустить точку доступа",
+          "pt": "Reiniciar ponto de acesso"
+        },
+        "hint": {
+          "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=access-point",
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Access Point",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
+            }
+          }
+        ]
+      },
+      {
         "id": "cable_block",
         "title": {
           "en": "Block client",
@@ -2095,8 +2272,32 @@
         "small": "drivers/access-point/assets/images/small.png"
       },
       "class": "sensor",
-      "capabilities": [],
-      "capabilitiesOptions": {},
+      "capabilities": [
+        "connected",
+        "ipAddress",
+        "measure_connected_clients",
+        "uptime"
+      ],
+      "capabilitiesOptions": {
+        "connected": {
+          "title": {
+            "en": "Connection state",
+            "nl": "Verbindingsstatus",
+            "de": "Verbindungsstatus",
+            "fr": "État de la connexion",
+            "it": "Stato della connessione",
+            "es": "Estado de conexión",
+            "da": "Forbindelsesstatus",
+            "sv": "Anslutningsstatus",
+            "no": "Tilkoblingsstatus",
+            "ko": "연결 상태",
+            "ru": "Состояние подключения",
+            "pt": "Estado da conexão"
+          },
+          "getable": true,
+          "setable": false
+        }
+      },
       "pair": [
         {
           "id": "list_clients",
@@ -4205,6 +4406,30 @@
       "setable": false,
       "icon": "./assets/ipaddress.svg"
     },
+    "measure_connected_clients": {
+      "type": "number",
+      "title": {
+        "en": "Connected clients",
+        "nl": "Verbonden apparaten",
+        "de": "Verbundene Clients",
+        "fr": "Appareils connectés",
+        "it": "Client connessi",
+        "es": "Clientes conectados",
+        "da": "Tilsluttede enheder",
+        "sv": "Anslutna enheter",
+        "no": "Tilkoblede enheter",
+        "ko": "연결된 클라이언트",
+        "ru": "Подключённые клиенты",
+        "pt": "Clientes conectados"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "min": 0,
+      "decimals": 0,
+      "icon": "./assets/connected.svg"
+    },
     "measure_rssi": {
       "type": "number",
       "title": {
@@ -4526,6 +4751,31 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/signal.svg"
+    },
+    "uptime": {
+      "type": "number",
+      "title": {
+        "en": "Uptime",
+        "nl": "Uptime",
+        "de": "Betriebszeit",
+        "fr": "Durée de fonctionnement",
+        "it": "Tempo di attività",
+        "es": "Tiempo de actividad",
+        "da": "Oppetid",
+        "sv": "Drifttid",
+        "no": "Driftstid",
+        "ko": "가동 시간",
+        "ru": "Время работы",
+        "pt": "Tempo de atividade"
+      },
+      "units": "s",
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "min": 0,
+      "decimals": 0,
+      "icon": "./assets/cpu.svg"
     },
     "wifi_name": {
       "type": "string",

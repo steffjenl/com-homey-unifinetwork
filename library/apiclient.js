@@ -235,6 +235,16 @@ class ApiClient extends BaseClass {
         }).catch(error => this.homey.app.error(error));
     }
 
+    /**
+     * Restart (reboot) an access point via the UniFi v1 REST API.
+     * Requires an API key or valid session cookie.
+     * @param {string} deviceId  The UniFi device _id (not the MAC)
+     * @param {string} siteId    The site name / id (e.g. 'default')
+     */
+    async restartAccessPoint(deviceId, siteId) {
+        return this._callV1('POST', `/sites/${siteId}/devices/${deviceId}/actions`, { action: 'restart' });
+    }
+
     getDeviceName(payload) {
         let deviceName = payload.name
         if (typeof deviceName === 'undefined' && typeof payload.hostname !== 'undefined') deviceName = payload.hostname;

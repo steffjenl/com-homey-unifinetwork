@@ -1,0 +1,39 @@
+{
+  "id": "access_point_connected",
+  "title": {
+    "en": "Access point came online",
+    "nl": "Toegangspunt is online gekomen",
+    "de": "Access Point ist online",
+    "fr": "Le point d'accès est en ligne",
+    "it": "Punto di accesso online",
+    "es": "Punto de acceso en línea",
+    "da": "Adgangspunkt er online",
+    "sv": "Åtkomstpunkt online",
+    "no": "Tilgangspunkt er online",
+    "ko": "액세스 포인트 온라인",
+    "ru": "Точка доступа в сети",
+    "pt": "Ponto de acesso online"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=access-point",
+      "title": {
+        "en": "Access point",
+        "nl": "Toegangspunt",
+        "de": "Access Point",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "es": "Punto de acceso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
+      }
+    }
+  ]
+}
+

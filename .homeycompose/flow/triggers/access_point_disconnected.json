@@ -1,0 +1,39 @@
+{
+  "id": "access_point_disconnected",
+  "title": {
+    "en": "Access point went offline",
+    "nl": "Toegangspunt is offline gegaan",
+    "de": "Access Point ist offline",
+    "fr": "Le point d'accès est hors ligne",
+    "it": "Punto di accesso offline",
+    "es": "Punto de acceso sin conexión",
+    "da": "Adgangspunkt er offline",
+    "sv": "Åtkomstpunkt offline",
+    "no": "Tilgangspunkt er offline",
+    "ko": "액세스 포인트 오프라인",
+    "ru": "Точка доступа не в сети",
+    "pt": "Ponto de acesso offline"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=access-point",
+      "title": {
+        "en": "Access point",
+        "nl": "Toegangspunt",
+        "de": "Access Point",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "es": "Punto de acceso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
+      }
+    }
+  ]
+}
+

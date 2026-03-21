@@ -27,9 +27,30 @@
   },
   "class": "sensor",
   "capabilities": [
-
+    "connected",
+    "ipAddress",
+    "measure_connected_clients",
+    "uptime"
   ],
   "capabilitiesOptions": {
+    "connected": {
+      "title": {
+        "en": "Connection state",
+        "nl": "Verbindingsstatus",
+        "de": "Verbindungsstatus",
+        "fr": "État de la connexion",
+        "it": "Stato della connessione",
+        "es": "Estado de conexión",
+        "da": "Forbindelsesstatus",
+        "sv": "Anslutningsstatus",
+        "no": "Tilkoblingsstatus",
+        "ko": "연결 상태",
+        "ru": "Состояние подключения",
+        "pt": "Estado da conexão"
+      },
+      "getable": true,
+      "setable": false
+    }
   },
   "pair": [
     {

@@ -151,6 +151,23 @@ class UnifiNetwork extends Homey.App {
                     device.onBlockedChange(tokens);
                 }
             }
+        } else if (payload.subsystem === 'ap') {
+            that.homey.log(`[websocket] [ap]: ${JSON.stringify(payload)}`);
+            const apMac = payload.ap || payload.device || payload.mac;
+            if (apMac) {
+                let apDriver;
+                try { apDriver = that.homey.drivers.getDriver('access-point'); } catch (e) { /* not ready */ }
+                if (apDriver) {
+                    const apDevice = apDriver.getUnifiDeviceById(apMac);
+                    if (apDevice) {
+                        if (payload.key === 'EVT_AP_Connected') {
+                            apDevice.onIsConnected(true);
+                        } else if (payload.key === 'EVT_AP_Disconnected') {
+                            apDevice.onIsConnected(false);
+                        }
+                    }
+                }
+            }
         }
 
         // device:sync is independent of subsystem — check separately so it is never
@@ -168,6 +185,16 @@ class UnifiNetwork extends Homey.App {
                 const switchDevice = switchDriver.getUnifiDeviceById(payload.mac);
                 if (switchDevice) {
                     switchDevice.onStatusChange(payload);
+                }
+            }
+
+            // Push real-time state/client-count/uptime updates to access-point devices
+            let apDriver;
+            try { apDriver = that.homey.drivers.getDriver('access-point'); } catch (e) { /* not ready */ }
+            if (apDriver) {
+                const apDevice = apDriver.getUnifiDeviceById(payload.mac);
+                if (apDevice) {
+                    apDevice.onUpdateMessagePayload(payload);
                 }
             }
 
@@ -226,7 +253,6 @@ class UnifiNetwork extends Homey.App {
 
         // WLAN toggle action (v2.6) — requires API key + UniFi OS 7+
         const toggleWlan = this.homey.flow.getActionCard(UnifiConstants.ACTION_TOGGLE_WLAN);
-
         toggleWlan.registerArgumentAutocompleteListener('wlan_id', async (query) => {
             try {
                 const site = this.settings && this.settings.site ? this.settings.site : 'default';
@@ -246,6 +272,19 @@ class UnifiNetwork extends Homey.App {
             const enabled = args.enabled === 'true';
             await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
             this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
+        });
+
+        // Access-point restart action
+        const apRestart = this.homey.flow.getActionCard(UnifiConstants.ACTION_ACCESS_POINT_RESTART);
+        apRestart.registerRunListener(async (args) => {
+            const site = this.settings && this.settings.site ? this.settings.site : 'default';
+            const deviceMac = args.device.getData().id;
+            // Resolve the device _id from the MAC via the UniFi API
+            const devices = await this.api.unifi.getAccessDevices(deviceMac);
+            const ap = devices.find(d => d.mac === deviceMac);
+            if (!ap) throw new Error(`Access point ${deviceMac} not found`);
+            await this.api.restartAccessPoint(ap._id, site);
+            this.debug(`access_point_restart: restarted ${args.device.getName()} (${deviceMac})`);
         });
     }
 
@@ -299,6 +338,11 @@ class UnifiNetwork extends Homey.App {
         // WAN up/down triggers (v2.6)
         this._wanUp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_UP);
         this._wanDown = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_DOWN);
+
+        // Access-point device triggers
+        this._accessPointConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_ACCESS_POINT_CONNECTED);
+        this._accessPointDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_ACCESS_POINT_DISCONNECTED);
+        this._accessPointClientCountChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_ACCESS_POINT_CLIENT_COUNT_CHANGED);
 
         const wifiBlock = this.homey.flow.getActionCard('wifi_block');
         wifiBlock.registerRunListener(async (args, state) => {
@@ -463,6 +507,22 @@ class UnifiNetwork extends Homey.App {
                     this.homey.app.debug(`[checkDevicesState]: error when retrieving getClientDevices`);
                 }
             });
+
+            // Poll all paired access-point devices for state/client-count/uptime
+            let apDriver;
+            try { apDriver = this.homey.drivers.getDriver('access-point'); } catch (e) { /* not ready */ }
+            if (apDriver && apDriver.getDevices().length > 0) {
+                this.api.unifi.getAccessDevices().then(apDevices => {
+                    apDriver.getDevices().forEach(device => {
+                        const apData = apDevices.find(d => d.mac === device.getData().id);
+                        if (apData) {
+                            device.onUpdateMessagePayload(apData);
+                        } else {
+                            device.onIsConnected(false);
+                        }
+                    });
+                }).catch(err => this.homey.app.debug(`[checkDevicesState] AP poll error: ${err}`));
+            }
         }
     }
 

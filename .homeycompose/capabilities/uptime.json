@@ -1,0 +1,26 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Uptime",
+    "nl": "Uptime",
+    "de": "Betriebszeit",
+    "fr": "Durée de fonctionnement",
+    "it": "Tempo di attività",
+    "es": "Tiempo de actividad",
+    "da": "Oppetid",
+    "sv": "Drifttid",
+    "no": "Driftstid",
+    "ko": "가동 시간",
+    "ru": "Время работы",
+    "pt": "Tempo de atividade"
+  },
+  "units": "s",
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "min": 0,
+  "decimals": 0,
+  "icon": "./assets/cpu.svg"
+}
+

@@ -1,0 +1,60 @@
+{
+  "id": "access_point_client_count_changed",
+  "title": {
+    "en": "Number of clients changed",
+    "nl": "Aantal verbonden apparaten gewijzigd",
+    "de": "Anzahl der Clients geändert",
+    "fr": "Nombre de clients modifié",
+    "it": "Numero di client cambiato",
+    "es": "Número de clientes cambiado",
+    "da": "Antal klienter ændret",
+    "sv": "Antal klienter ändrat",
+    "no": "Antall klienter endret",
+    "ko": "클라이언트 수 변경됨",
+    "ru": "Количество клиентов изменилось",
+    "pt": "Número de clientes alterado"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=access-point",
+      "title": {
+        "en": "Access point",
+        "nl": "Toegangspunt",
+        "de": "Access Point",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "es": "Punto de acceso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "num_clients",
+      "type": "number",
+      "title": {
+        "en": "Number of clients",
+        "nl": "Aantal apparaten",
+        "de": "Anzahl der Clients",
+        "fr": "Nombre de clients",
+        "it": "Numero di client",
+        "es": "Número de clientes",
+        "da": "Antal klienter",
+        "sv": "Antal klienter",
+        "no": "Antall klienter",
+        "ko": "클라이언트 수",
+        "ru": "Количество клиентов",
+        "pt": "Número de clientes"
+      },
+      "example": 5
+    }
+  ]
+}
+
