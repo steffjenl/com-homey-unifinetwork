@@ -243,7 +243,34 @@ class ApiClient extends BaseClass {
     async getDeviceByMac(macAddress) {
         const users = await this.unifi.getAllUsers();
         return users.filter(obj => {
-            return obj.mac === macAddress
+            return obj.mac === macAddress;
+        });
+    }
+
+    /**
+     * Fetch per-radio statistics for a specific AP from /stat/device.
+     * Returns an object with radio prefix keys: ng-rx_bytes, na-rx_bytes, 6e-rx_bytes, etc.
+     * @param {string} mac  AP MAC address
+     * @returns {Promise<object|null>}
+     */
+    async getAccessPointStats(mac) {
+        return new Promise((resolve, reject) => {
+            this.unifi.getAccessDevices(mac)
+                .then(response => {
+                    const ap = response.find(obj => obj.mac === mac);
+                    if (!ap) return resolve(null);
+                    // Extract the flat per-radio stats fields (ng-*, na-*, 6e-*)
+                    const stats = {};
+                    const radioPrefixes = ['ng', 'na', '6e'];
+                    for (const prefix of radioPrefixes) {
+                        for (const field of ['rx_bytes', 'tx_bytes', 'rx_packets', 'tx_packets']) {
+                            const key = `${prefix}-${field}`;
+                            if (typeof ap[key] === 'number') stats[key] = ap[key];
+                        }
+                    }
+                    resolve(stats);
+                })
+                .catch(error => reject(error));
         });
     }
 }

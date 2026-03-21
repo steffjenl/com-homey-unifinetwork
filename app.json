@@ -3862,6 +3862,63 @@
       "step": 1,
       "icon": "./assets/rssi.svg"
     },
+    "measure_rssi_2g": {
+      "title": {
+        "en": "RSSI 2.4 GHz",
+        "nl": "RSSI 2,4 GHz",
+        "de": "RSSI 2,4 GHz",
+        "fr": "RSSI 2,4 GHz",
+        "it": "RSSI 2,4 GHz"
+      },
+      "type": "number",
+      "units": "dBm",
+      "icon": "/assets/rssi.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": -120,
+      "max": 0,
+      "decimals": 0
+    },
+    "measure_rssi_5g": {
+      "title": {
+        "en": "RSSI 5 GHz",
+        "nl": "RSSI 5 GHz",
+        "de": "RSSI 5 GHz",
+        "fr": "RSSI 5 GHz",
+        "it": "RSSI 5 GHz"
+      },
+      "type": "number",
+      "units": "dBm",
+      "icon": "/assets/rssi.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": -120,
+      "max": 0,
+      "decimals": 0
+    },
+    "measure_rssi_6g": {
+      "title": {
+        "en": "RSSI 6 GHz",
+        "nl": "RSSI 6 GHz",
+        "de": "RSSI 6 GHz",
+        "fr": "RSSI 6 GHz",
+        "it": "RSSI 6 GHz"
+      },
+      "type": "number",
+      "units": "dBm",
+      "icon": "/assets/rssi.svg",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": -120,
+      "max": 0,
+      "decimals": 0
+    },
     "measure_rx_bytes": {
       "type": "number",
       "title": {
@@ -3880,6 +3937,48 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/signal.svg"
+    },
+    "measure_rx_bytes_2g": {
+      "title": {
+        "en": "Urx bytes 2.4 GHz",
+        "nl": "Urx bytes 2.4 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
+    },
+    "measure_rx_bytes_5g": {
+      "title": {
+        "en": "Urx bytes 5 GHz",
+        "nl": "Urx bytes 5 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
+    },
+    "measure_rx_bytes_6g": {
+      "title": {
+        "en": "Urx bytes 6 GHz",
+        "nl": "Urx bytes 6 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
     },
     "measure_signal": {
       "type": "number",
@@ -3927,6 +4026,48 @@
       "getable": true,
       "setable": false,
       "icon": "./assets/signal.svg"
+    },
+    "measure_tx_bytes_2g": {
+      "title": {
+        "en": "Utx bytes 2.4 GHz",
+        "nl": "Utx bytes 2.4 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
+    },
+    "measure_tx_bytes_5g": {
+      "title": {
+        "en": "Utx bytes 5 GHz",
+        "nl": "Utx bytes 5 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
+    },
+    "measure_tx_bytes_6g": {
+      "title": {
+        "en": "Utx bytes 6 GHz",
+        "nl": "Utx bytes 6 GHz"
+      },
+      "type": "number",
+      "units": "MB",
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "min": 0,
+      "decimals": 2
     },
     "poe": {
       "type": "boolean",

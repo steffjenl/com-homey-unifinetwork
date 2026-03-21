@@ -1,0 +1,14 @@
+{
+  "title": { "en": "RSSI 2.4 GHz", "nl": "RSSI 2,4 GHz", "de": "RSSI 2,4 GHz", "fr": "RSSI 2,4 GHz", "it": "RSSI 2,4 GHz" },
+  "type": "number",
+  "units": "dBm",
+  "icon": "/assets/rssi.svg",
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "min": -120,
+  "max": 0,
+  "decimals": 0
+}
+

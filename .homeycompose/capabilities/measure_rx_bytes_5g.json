@@ -1,0 +1,11 @@
+{
+  "title": { "en": "Urx bytes 5 GHz", "nl": "Urx bytes 5 GHz" },
+  "type": "number",
+  "units": "MB",
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "min": 0,
+  "decimals": 2
+}

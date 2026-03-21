@@ -52,6 +52,17 @@
         "apikey": "API Key (optional)",
         "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS → Settings → API. When set, v1 REST calls use Bearer auth instead of session cookie."
     },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2.4 GHz",
+        "measure_rssi_5g": "RSSI 5 GHz",
+        "measure_rssi_6g": "RSSI 6 GHz",
+        "measure_rx_bytes_2g": "RX traffic 2.4 GHz (MB)",
+        "measure_tx_bytes_2g": "TX traffic 2.4 GHz (MB)",
+        "measure_rx_bytes_5g": "RX traffic 5 GHz (MB)",
+        "measure_tx_bytes_5g": "TX traffic 5 GHz (MB)",
+        "measure_rx_bytes_6g": "RX traffic 6 GHz (MB)",
+        "measure_tx_bytes_6g": "TX traffic 6 GHz (MB)"
+    },
     "events": {
         "camera": {
             "motion_started": "Motion started",
