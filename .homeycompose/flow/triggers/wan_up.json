@@ -1,0 +1,26 @@
+{
+  "id": "wan_up",
+  "title": {
+    "en": "WAN connection restored",
+    "nl": "WAN verbinding hersteld",
+    "de": "WAN-Verbindung wiederhergestellt",
+    "fr": "Connexion WAN rétablie",
+    "it": "Connessione WAN ripristinata",
+    "es": "Conexión WAN restaurada",
+    "da": "WAN-forbindelse genoprettet",
+    "sv": "WAN-anslutning återupprättad",
+    "no": "WAN-tilkobling gjenopprettet",
+    "ko": "WAN 연결 복구됨",
+    "ru": "WAN-соединение восстановлено",
+    "pt": "Conexão WAN restaurada"
+  },
+  "tokens": [
+    {
+      "name": "wan_ip",
+      "type": "string",
+      "title": { "en": "WAN IP" },
+      "example": { "en": "1.2.3.4" }
+    }
+  ]
+}
+

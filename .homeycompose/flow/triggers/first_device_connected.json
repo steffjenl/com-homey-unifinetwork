@@ -59,6 +59,20 @@
         "ko": "액세스 포인트 이름",
         "ru": "Имя точки доступа",
         "pt": "Nome do ponto de acesso"
+      },
+      "title": {
+        "en": "Access point",
+        "nl": "Toegangspunt",
+        "de": "Zugangspunkt",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "es": "Punto de acceso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
       }
     }
   ]

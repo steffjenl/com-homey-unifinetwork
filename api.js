@@ -20,30 +20,24 @@ module.exports = {
         return homey.app.api.websocket.getLastWebsocketMessageTime();
     },
     async testCredentials({homey, body}) {
-
         try {
-            this.api = new ApiClient({homey: this.homey});
-            const console = this.api.setUnifiObject(body.host, body.port, body.user, body.pass, body.site);
-            const loggedIn = await this.api.unifi.login(body.user, body.pass);
-            const accessPoints = await this.api.unifi.getAccessDevices();
-            const wifiDevices = await this.api.unifi.getClientDevices();
-            const allUsers = await this.api.unifi.getAllUsers();
-            const loggedOut = await this.api.unifi.logout();
+            const api = new ApiClient({homey});
+            api.setUnifiObject(body.host, body.port, body.user, body.pass, body.site);
+            await api.unifi.login(body.user, body.pass);
+            await api.unifi.getAccessDevices();
+            await api.unifi.getClientDevices();
+            await api.unifi.getAllUsers();
+            await api.unifi.logout();
 
             return {
                 status: 'success',
             };
         } catch (error) {
-            console.log('testCredentials error', error);
+            homey.app.error('testCredentials error', error.message);
             return {
                 status: 'failure',
                 error: error.message,
             };
         }
-
-
-        return {
-            status: 'failure',
-        };
     }
 };

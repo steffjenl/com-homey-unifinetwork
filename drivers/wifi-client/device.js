@@ -118,6 +118,53 @@ class WiFiDevice extends Device {
             this.addCapability('measure_tx_bytes').catch(this.error);
             this.homey.app.debug(`created measure_tx_bytes connected for ${this.getName()}`);
         }
+
+        // Per-band RSSI capabilities for MLO (Wi-Fi 7) — added dynamically when API data is present
+        // Capabilities are created/removed based on what the UniFi API returns for this device.
+        // Existing devices keep measure_rssi as the primary (backward-compatible) value.
+    }
+
+    /**
+     * Map UniFi radio type prefix to capability suffix.
+     * UniFi API uses: ng = 2.4 GHz, na = 5 GHz, 6e = 6 GHz
+     */
+    _radioPrefixToBand(prefix) {
+        if (prefix === 'ng') return '2g';
+        if (prefix === 'na') return '5g';
+        if (prefix === '6e' || prefix === '6g') return '6g';
+        return null;
+    }
+
+    /**
+     * Update per-band RSSI capabilities from a UniFi client payload.
+     * The API uses prefixed fields like ng-rssi, na-rssi, 6e-rssi for MLO clients.
+     * Falls back gracefully if per-band data is absent (non-MLO devices).
+     */
+    onPerBandRssiChange(data) {
+        const bands = [
+            { prefix: 'ng', cap: 'measure_rssi_2g' },
+            { prefix: 'na', cap: 'measure_rssi_5g' },
+            { prefix: '6e', cap: 'measure_rssi_6g' },
+        ];
+
+        for (const { prefix, cap } of bands) {
+            const rssiKey = `${prefix}-rssi`;
+            const signalKey = `${prefix}-signal`;
+            // Use rssi field if available, fall back to signal
+            const value = typeof data[rssiKey] === 'number' ? data[rssiKey]
+                        : typeof data[signalKey] === 'number' ? data[signalKey]
+                        : null;
+
+            if (value !== null) {
+                if (!this.hasCapability(cap)) {
+                    this.addCapability(cap).catch(this.error);
+                    this.homey.app.debug(`created ${cap} for ${this.getName()}`);
+                }
+                this.setCapabilityValue(cap, value).catch(this.error);
+            }
+            // Note: we intentionally do NOT remove the capability when value is absent
+            // to avoid flickering when a band is temporarily idle in an MLO session.
+        }
     }
 
     onWifiChanged(data) {
@@ -262,6 +309,9 @@ class WiFiDevice extends Device {
                     this.onBlockedChange(device[0]);
                 }
 
+                // Per-band RSSI for MLO (Wi-Fi 7) — always pass full payload
+                this.onPerBandRssiChange(device[0]);
+
             }).catch(error => this.homey.app.debug(error));
         }
     }
@@ -298,6 +348,9 @@ class WiFiDevice extends Device {
         if (typeof playloadMessage.rx_bytes !== 'undefined' && typeof playloadMessage.tx_bytes !== 'undefined') {
             this.onBytesChange(playloadMessage);
         }
+
+        // Per-band RSSI for MLO (Wi-Fi 7) — check every update cycle
+        this.onPerBandRssiChange(playloadMessage);
     }
 }
 

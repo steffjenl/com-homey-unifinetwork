@@ -15,7 +15,7 @@ class NetworkSwitchDevice extends PoePowerMixin(Device) {
         this.registerCapabilityListener("poe", async (value) => {
             this.homey.app.debug(`${JSON.stringify(value)}`);
             if (value) {
-
+                // PoE enable — not yet implemented
             }
 
         });

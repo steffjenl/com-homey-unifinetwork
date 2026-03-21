@@ -1,0 +1,123 @@
+{
+  "_meta": {
+    "created_by": "Sonnet 4.6",
+    "created_at": "2026-03-21",
+    "description": "Index of all reference materials and integration sources for com.ubnt.unifi"
+  },
+  "sources": [
+    {
+      "id": "node-unifi-vendor",
+      "path": ".ai/repo-node-unifi/",
+      "type": "library",
+      "language": "JavaScript/CJS",
+      "license": "MIT",
+      "version": "2.5.1",
+      "summary": "Primary UniFi controller client. Handles session-cookie auth (legacy + UniFi OS), CSRF, WebSocket event stream via EventEmitter2. Auto-detects UniFi OS (_unifios flag) and switches between /api/login and /api/auth/login and /proxy/network prefix. Used directly in library/apiclient.js.",
+      "key_files": [
+        ".ai/repo-node-unifi/unifi.js",
+        ".ai/repo-node-unifi/README.md",
+        ".ai/repo-node-unifi/package.json"
+      ],
+      "homey_usage": "library/apiclient.js — new Unifi.Controller({host, port, sslverify, site})"
+    },
+    {
+      "id": "unifi-openapi-spec",
+      "path": "specs/openapi-unifi-network.yaml",
+      "type": "api-spec",
+      "format": "OpenAPI 3.0",
+      "api_version": "v1",
+      "summary": "Official Ubiquiti UniFi Network REST API OpenAPI spec. Covers /v1/ endpoints: sites, devices, clients, networks, WiFi broadcasts, hotspot vouchers, firewall zones/policies, ACL rules, DNS policies, traffic matching lists. Auth: Bearer API Key.",
+      "key_resources": ["sites", "devices", "clients", "networks", "wifi/broadcasts", "firewall/policies", "acl-rules"]
+    },
+    {
+      "id": "unifi-api-cheatsheet",
+      "path": "specs/unifi-network-api-cheatsheet.md",
+      "type": "reference",
+      "summary": "Quick-reference list of all /v1/ REST endpoints with HTTP methods. Useful for finding the right endpoint for a given operation.",
+      "related": "unifi-openapi-spec"
+    },
+    {
+      "id": "unifi-api-summary",
+      "path": "specs/unifi-network-api-summary.md",
+      "type": "reference",
+      "summary": "High-level summary of the official UniFi Network API: auth model (Bearer API key), pagination, filtering, error model, primary domains.",
+      "related": "unifi-openapi-spec"
+    },
+    {
+      "id": "unifi-api-schema",
+      "path": "specs/unifi-network-api-schema.json",
+      "type": "api-spec",
+      "format": "JSON Schema",
+      "summary": "JSON Schema for UniFi Network API request/response objects. Use for runtime validation and type generation."
+    },
+    {
+      "id": "unifi-api-markdown",
+      "path": "specs/unifi-network-api.md",
+      "type": "reference",
+      "summary": "Full prose documentation of the UniFi Network API including authentication flow, rate limits, and error handling patterns."
+    },
+    {
+      "id": "integration-api-notes",
+      "path": "specs/integration/unifi-network/api-notes.md",
+      "type": "integration-note",
+      "summary": "Detailed notes on controller base paths, auth endpoints, UniFi OS vs legacy differences, CSRF handling, site scoping, and API-key setup."
+    },
+    {
+      "id": "integration-device-matrix",
+      "path": "specs/integration/unifi-network/device-matrix.md",
+      "type": "integration-note",
+      "summary": "Matrix of supported UniFi device classes (UAP, USW, UDM/UXG, clients) with relevant metrics, capabilities, and Homey driver mappings."
+    },
+    {
+      "id": "integration-flow-cards",
+      "path": "specs/integration/unifi-network/flow-cards.md",
+      "type": "integration-note",
+      "summary": "Complete catalogue of implemented and planned Homey flow cards (triggers, conditions, actions) with UniFi event/API sources."
+    },
+    {
+      "id": "integration-rate-limits",
+      "path": "specs/integration/unifi-network/rate-limits-and-events.md",
+      "type": "integration-note",
+      "summary": "WebSocket endpoints, reconnect backoff spec, ping/pong heartbeat, safe polling intervals, firmware version caveats."
+    },
+    {
+      "id": "integration-compatibility",
+      "path": "specs/integration/unifi-network/compatibility.md",
+      "type": "integration-note",
+      "summary": "UniFi Network 7.x/8.x/9.x compatibility notes, UniFi OS version differences, controller deployment type detection."
+    }
+  ],
+  "external_references": [
+    {
+      "id": "ubiquiti-developer-portal",
+      "url": "https://developer.ui.com/network",
+      "description": "Official Ubiquiti developer portal for UniFi Network API"
+    },
+    {
+      "id": "ubiquiti-api-getting-started",
+      "url": "https://help.ui.com/hc/en-us/articles/30076656117655-Getting-Started-with-the-Official-UniFi-API",
+      "description": "Official guide for creating API keys and using the /v1/ REST API"
+    },
+    {
+      "id": "node-unifi-npm",
+      "url": "https://www.npmjs.com/package/node-unifi",
+      "description": "node-unifi on npm"
+    },
+    {
+      "id": "node-unifi-github",
+      "url": "https://github.com/jens-maus/node-unifi",
+      "description": "node-unifi GitHub repository — EventEmitter2-based WS, axios HTTP"
+    },
+    {
+      "id": "homey-sdk-v3-js",
+      "url": "https://apps-sdk-v3.developer.homey.app/",
+      "description": "Homey Apps SDK v3 JavaScript reference"
+    },
+    {
+      "id": "homey-apps-guide",
+      "url": "https://apps.developer.homey.app/",
+      "description": "Homey Apps developer guide including SDK v3 migration"
+    }
+  ]
+}
+

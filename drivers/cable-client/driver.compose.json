@@ -1,5 +1,11 @@
 {
   "id": "cable-client",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
   "name": {
     "en": "Wired client",
     "nl": "Bedrade cliënt",

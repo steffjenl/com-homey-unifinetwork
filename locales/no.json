@@ -1,72 +1,76 @@
 {
-  "title": "UniFi Nettverk",
-  "pair": {
-    "validate": {
-      "title": "Validerer UniFi Cloud Key",
-      "instruction": "Vennligst sett Cloud Key i Innstillinger først."
+    "title": "UniFi Nettverk",
+    "pair": {
+        "validate": {
+            "title": "Validerer UniFi Cloud Key",
+            "instruction": "Vennligst sett Cloud Key i Innstillinger først."
+        },
+        "login": {
+            "title": "Logg inn"
+        }
     },
-    "login": {
-      "title": "Logg inn"
+    "status": {
+        "connection": {
+            "Connected": "Tilkoblet",
+            "Connecting": "Kobler til...",
+            "Disconnected": "Frakoblet",
+            "Initialized": "Initialisert"
+        }
+    },
+    "settings": {
+        "title": "UniFi Nettverksinnstillinger",
+        "instruction": "Logg inn med legitimasjonen til UniFi Network-brukeren.",
+        "nvr": "Serverdetaljer",
+        "nvrText": "Bruk port 443 for UniFiOS og port 8443 for Docker / Standalone.",
+        "nvrip": "IP-adresse",
+        "nvrport": "Port",
+        "credentials": "Brukerlegitimasjon",
+        "credentialsText": "MFA deaktivert og lokal admin-bruker",
+        "username": "Brukernavn",
+        "password": "Passord (min. 32 tegn)",
+        "apply": "Bruk",
+        "test": "Test legitimasjon",
+        "test_status": {
+            "success": "Legitimasjonen er gyldig.",
+            "failure": "Legitimasjonen er ugyldig."
+        },
+        "saved": "Innstillinger lagret.",
+        "site": "Site",
+        "tab": {
+            "settings": "Innstillinger",
+            "sites": "Sites",
+            "event_log": "Hendelseslogg"
+        },
+        "intro2": "",
+        "log_enabled": "Hendelseslogg aktivert",
+        "pullmethodeheader": "Pull-metode og intervall",
+        "pullmethode": "Pull-metode",
+        "interval": "Intervall",
+        "applicationFlows": "Aktiver applikasjonsflyt",
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
+        "apikey": "API Key (optional)",
+        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+    },
+    "events": {
+        "camera": {
+            "motion_started": "Bevegelse startet",
+            "motion_ended": "Bevegelse avsluttet",
+            "motion_inprogress": "Bevegelse",
+            "ftr_inprogress": "Full tid",
+            "disabled": "Deaktivert",
+            "failed": "Mislyktes",
+            "done": "Ferdig",
+            "always": "Alltid",
+            "motion": "Bevegelse",
+            "never": "Aldri",
+            "detections": "Deteksjoner"
+        },
+        "health": {
+            "unknown": "Ukjent",
+            "green": "Sunn",
+            "orange": "Advarsel",
+            "red": "Kritisk"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Tilkoblet",
-      "Connecting": "Kobler til...",
-      "Disconnected": "Frakoblet",
-      "Initialized": "Initialisert"
-    }
-  },
-  "settings": {
-    "title": "UniFi Nettverksinnstillinger",
-    "instruction": "Logg inn med legitimasjonen til UniFi Network-brukeren.",
-    "nvr": "Serverdetaljer",
-    "nvrText": "Bruk port 443 for UniFiOS og port 8443 for Docker / Standalone.",
-    "nvrip": "IP-adresse",
-    "nvrport": "Port",
-    "credentials": "Brukerlegitimasjon",
-    "credentialsText": "MFA deaktivert og lokal admin-bruker",
-    "username": "Brukernavn (min. 32 tegn)",
-    "password": "Passord",
-    "apply": "Bruk",
-    "test": "Test legitimasjon",
-    "test_status": {
-      "success": "Legitimasjonen er gyldig.",
-      "failure": "Legitimasjonen er ugyldig."
-    },
-    "saved": "Innstillinger lagret.",
-    "site": "Site",
-    "tab": {
-      "settings": "Innstillinger",
-      "sites": "Sites",
-      "event_log": "Hendelseslogg"
-    },
-    "intro2": "",
-    "log_enabled": "Hendelseslogg aktivert",
-    "pullmethodeheader": "Pull-metode og intervall",
-    "pullmethode": "Pull-metode",
-    "interval": "Intervall",
-    "applicationFlows": "Aktiver applikasjonsflyt"
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Bevegelse startet",
-      "motion_ended": "Bevegelse avsluttet",
-      "motion_inprogress": "Bevegelse",
-      "ftr_inprogress": "Full tid",
-      "disabled": "Deaktivert",
-      "failed": "Mislyktes",
-      "done": "Ferdig",
-      "always": "Alltid",
-      "motion": "Bevegelse",
-      "never": "Aldri",
-      "detections": "Deteksjoner"
-    },
-    "health": {
-      "unknown": "Ukjent",
-      "green": "Sunn",
-      "orange": "Advarsel",
-      "red": "Kritisk"
-    }
-  }
 }

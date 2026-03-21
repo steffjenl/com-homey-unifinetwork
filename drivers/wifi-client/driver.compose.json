@@ -1,5 +1,11 @@
 {
   "id": "wifi-client",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
   "name": {
     "en": "Wifi Client",
     "nl": "Wifi Client",

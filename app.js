@@ -1,12 +1,10 @@
-// eslint-disable-next-line node/no-unpublished-require,strict
 'use strict';
 
 const Homey = require('homey');
 const {Log} = require('homey-log');
 const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
-const {setFlagsFromString} = require('v8');
-const {runInNewContext} = require('vm');
+const {sanitise} = require('./library/sanitise');
 
 class UnifiNetwork extends Homey.App {
     /**
@@ -23,6 +21,8 @@ class UnifiNetwork extends Homey.App {
         this.checkDevicesStateInterval = null;
         this.updateAccessPointListInterval = null;
 
+        this._recentEventIds = new Set();
+
         this._refreshAuthTokensnterval = 60 * 60 * 1000; // 1 hour
 
 
@@ -34,6 +34,11 @@ class UnifiNetwork extends Homey.App {
 
         await this._initFlowTriggers();
         await this._initActionCards();
+
+        // Clear dedup event Set every 60 s to avoid unbounded growth
+        this.homey.setInterval(() => {
+            this._recentEventIds.clear();
+        }, 60 * 1000);
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Initialized');
 
@@ -58,6 +63,18 @@ class UnifiNetwork extends Homey.App {
      */
     parseWebsocketMessage(payload, meta) {
         let that = this;
+
+        // Ignore non-event payloads (no key field) — these are stats syncs, not events
+        if (!payload.key) return;
+
+        // Deduplication guard — skip events already processed within the last 60 s
+        const dedupKey = `${payload.key}_${payload.user ?? payload.client ?? ''}_${payload.time ?? ''}`;
+        if (this._recentEventIds.has(dedupKey)) {
+            this.debug(`[dedup] Skipping duplicate event: ${dedupKey}`);
+            return;
+        }
+        this._recentEventIds.add(dedupKey);
+
         // start application flow cards
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
@@ -72,9 +89,20 @@ class UnifiNetwork extends Homey.App {
             }
         }
 
+        // WAN up/down events (subsystem: wan)
+        if (payload.subsystem === 'wan') {
+            if (payload.key === 'EVT_WAN_Up') {
+                that.homey.log(`EVT_WAN_Up: ${JSON.stringify(payload)}`);
+                that._wanUp.trigger({ wan_ip: payload.wan_ip || '' }).catch(that.homey.log);
+            } else if (payload.key === 'EVT_WAN_Down') {
+                that.homey.log(`EVT_WAN_Down: ${JSON.stringify(payload)}`);
+                that._wanDown.trigger({}).catch(that.homey.log);
+            }
+            return;
+        }
+
         // start device flow cards
-        if (payload.subsystem === 'wlan') {
-            that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
+        if (payload.subsystem === 'wlan') {            that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
             // get wifi-client driver
             const driver = that.homey.drivers.getDriver('wifi-client');
             const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
@@ -195,6 +223,30 @@ class UnifiNetwork extends Homey.App {
 
     async _initActionCards() {
         this.debug('UnifiNetwork init Action Cards');
+
+        // WLAN toggle action (v2.6) — requires API key + UniFi OS 7+
+        const toggleWlan = this.homey.flow.getActionCard(UnifiConstants.ACTION_TOGGLE_WLAN);
+
+        toggleWlan.registerArgumentAutocompleteListener('wlan_id', async (query) => {
+            try {
+                const site = this.settings && this.settings.site ? this.settings.site : 'default';
+                const response = await this.api._callV1('GET', `/sites/${site}/wifi/broadcasts`);
+                const broadcasts = Array.isArray(response.data) ? response.data : (Array.isArray(response) ? response : []);
+                return broadcasts
+                    .filter(w => !query || w.name.toLowerCase().includes(query.toLowerCase()))
+                    .map(w => ({ id: w.id, name: w.name, description: w.enabled ? 'Enabled' : 'Disabled' }));
+            } catch (err) {
+                this.error('toggle_wlan autocomplete error:', err.message);
+                return [];
+            }
+        });
+
+        toggleWlan.registerRunListener(async (args) => {
+            const site = this.settings && this.settings.site ? this.settings.site : 'default';
+            const enabled = args.enabled === 'true';
+            await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
+            this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
+        });
     }
 
     async _initFlowTriggers() {
@@ -243,6 +295,10 @@ class UnifiNetwork extends Homey.App {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+
+        // WAN up/down triggers (v2.6)
+        this._wanUp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_UP);
+        this._wanDown = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_DOWN);
 
         const wifiBlock = this.homey.flow.getActionCard('wifi_block');
         wifiBlock.registerRunListener(async (args, state) => {
@@ -306,8 +362,10 @@ class UnifiNetwork extends Homey.App {
             this.homey.clearInterval(this.updateAccessPointListInterval);
         }
 
-        // update device status every x
-        this.checkDevicesStateInterval = this.homey.setInterval(this.checkDevicesState.bind(this), (this.settings && "interval" in this.settings ? (this.settings.interval * 1000) : 15000));
+        // update device status every x seconds (minimum 10 s)
+        const rawInterval = this.settings && 'interval' in this.settings ? parseInt(this.settings.interval, 10) : 15;
+        const intervalMs = Math.max(10, rawInterval) * 1000;
+        this.checkDevicesStateInterval = this.homey.setInterval(this.checkDevicesState.bind(this), intervalMs);
         // update every 12 hours all accessPoints
         this.updateAccessPointListInterval = this.homey.setInterval(this.updateAccessPointList.bind(this), 43200000);
         //
@@ -322,7 +380,7 @@ class UnifiNetwork extends Homey.App {
                 .then(response => {
                     response.forEach(accessPoint => {
                         if (!accessPoint.adopted || accessPoint.type !== 'uap') return;
-                        if (this.accessPointList.hasOwnProperty(accessPoint.mac)) return;
+                        if (Object.prototype.hasOwnProperty.call(this.accessPointList, accessPoint.mac)) return;
                         this.accessPointList[accessPoint.mac] = {
                             name: accessPoint.name,
                             mac: accessPoint.mac,
@@ -366,56 +424,46 @@ class UnifiNetwork extends Homey.App {
 
     checkDevicesState() {
         if (this.loggedIn) {
-            // get all Wi-Fi devices and there information
             const devicesWifi = this.homey.drivers.getDriver('wifi-client').getDevices();
-            if (devicesWifi.length > 0) {
-                this.api.unifi.getClientDevices().then(clientDevices => {
-                    devicesWifi.forEach(device => {
-                        const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
-                        if (this.isDeviceInArray(device.getData().id, clientDevices)) {
-                            this.homey.app.debug(`Interval Device ${device.getName()} is connected`);
-                            device.onIsConnected(true, devicePayload.essid);
-                            device.onUpdateMessagePayload(devicePayload);
-                        } else {
-                            this.homey.app.debug(`Interval Device ${device.getName()} is disconnected`);
-                            device.onIsConnected(false, null);
-                            device.onUpdateMessagePayload(devicePayload);
-                        }
-                    });
-                }).catch((error) => {
-                    if (error.response && "status" in error.response && error.response.status === 401) {
-                        this.homey.error(`[checkDevicesState][wlan]: AccessDenied`);
-                        this._appLogin();
+            const devicesCable = this.homey.drivers.getDriver('cable-client').getDevices();
+
+            // Single getClientDevices call — used for both device updates and per-AP client counting
+            this.api.unifi.getClientDevices().then(clientDevices => {
+                // Update all paired Wi-Fi client devices
+                devicesWifi.forEach(device => {
+                    const devicePayload = this.getDeviceFromArray(device.getData().id, clientDevices);
+                    if (this.isDeviceInArray(device.getData().id, clientDevices)) {
+                        this.homey.app.debug(`Interval Device ${device.getName()} is connected`);
+                        device.onIsConnected(true, devicePayload.essid);
+                        device.onUpdateMessagePayload(devicePayload);
                     } else {
-                        this.homey.app.debug(`[checkDevicesState][wlan]: error when retrieving getClientDevices`);
+                        this.homey.app.debug(`Interval Device ${device.getName()} is disconnected`);
+                        device.onIsConnected(false, null);
                     }
                 });
-            }
 
-            // get all Cable devices and there information
-            const devicesCable = this.homey.drivers.getDriver('cable-client').getDevices();
-            if (devicesCable.length > 0) {
-                this.api.unifi.getClientDevices().then(clientDevices => {
-                    devicesCable.forEach(device => {
-                        if (this.isDeviceInArray(device.getData().id, clientDevices)) {
-                            device.onIsConnected(true);
-                            device.onUpdateMessagePayload(this.getDeviceFromArray(device.getData().id, clientDevices));
-                        } else {
-                            device.onIsConnected(false);
-                        }
-                    });
-                    clientDevices = null;
-                }).catch((error) => {
-                    this.homey.app.debug(`[checkDevicesState][cable]: error when retrieving getClientDevices`);
+                // Update all paired cable client devices
+                devicesCable.forEach(device => {
+                    if (this.isDeviceInArray(device.getData().id, clientDevices)) {
+                        device.onIsConnected(true);
+                        device.onUpdateMessagePayload(this.getDeviceFromArray(device.getData().id, clientDevices));
+                    } else {
+                        device.onIsConnected(false);
+                    }
                 });
-            }
+
+                // Update per-AP client counts from ALL connected UniFi clients (not just paired)
+                // and fire first/last connected flow triggers if the count changed
+                this.checkAccessPoints(clientDevices);
+            }).catch((error) => {
+                if (error.response && 'status' in error.response && error.response.status === 401) {
+                    this.homey.error(`[checkDevicesState]: AccessDenied`);
+                    this._appLogin();
+                } else {
+                    this.homey.app.debug(`[checkDevicesState]: error when retrieving getClientDevices`);
+                }
+            });
         }
-
-        // check for first and last connected devices on accesspoints
-        this.checkAccessPoints();
-
-        // clean memory every time we collect some information
-        this.gcManual();
     }
 
     async _appLogin() {
@@ -444,7 +492,8 @@ class UnifiNetwork extends Homey.App {
             }
 
             this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
-            this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+            this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
+            this.api.setApiKey(settings.apiKey || null, settings.host, settings.port);
 
             await (async () => {
                 try {
@@ -462,7 +511,7 @@ class UnifiNetwork extends Homey.App {
 
                     if ("pullmethode" in settings && settings.pullmethode === '1') {
                         // LISTEN for WebSocket events
-                        this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+                        this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
                         this.api.websocket.listen().then((connected) => {
                             if (connected) {
                                 this.debug('WebSocket is connected');
@@ -475,7 +524,7 @@ class UnifiNetwork extends Homey.App {
                     }
                 } catch (error) {
                     await this.setLoggedIn(false);
-                    this.error(`${JSON.stringify(error)}`); // we want to see the error in the log
+                    this.error(`${JSON.stringify(sanitise(error))}`); // we want to see the error in the log
                 }
             })();
         } finally {
@@ -538,7 +587,7 @@ class UnifiNetwork extends Homey.App {
                 //this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
                 //this.homey.log(args.join(' '));
                 const debugMessage = `[debug] ${message}`;
-                this.homey.api.realtime(debugMessage);
+                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, debugMessage);
                 this.homey.log(debugMessage);
             }
         } catch (exception) {
@@ -572,33 +621,42 @@ class UnifiNetwork extends Homey.App {
         }
     }
 
-    checkAccessPoints() {
+    checkAccessPoints(clientDevices) {
         let that = this;
         if (!that.accessPointList) return;
         const wifiDriver = that.homey.drivers.getDriver('wifi-client');
 
-        for (var ap_mac in that.accessPointList) {
+        for (const ap_mac in that.accessPointList) {
             let num_clients = 0;
 
-            wifiDriver.getDevices().forEach(device => {
-                if (device.getCapabilityValue('ap_mac') === ap_mac) num_clients += 1;
-            });
-            let ap_name = that.getAccessPointName(ap_mac);
+            if (Array.isArray(clientDevices)) {
+                // Count ALL connected UniFi clients per AP (not just paired Homey devices)
+                clientDevices.forEach(client => {
+                    if (client.ap_mac === ap_mac) num_clients += 1;
+                });
+            } else {
+                // Fallback: count paired Homey wifi-client devices (old behaviour)
+                wifiDriver.getDevices().forEach(device => {
+                    if (device.getCapabilityValue('ap_mac') === ap_mac) num_clients += 1;
+                });
+            }
+
+            const ap_name = that.getAccessPointName(ap_mac);
             that.homey.app.debug(`Accesspoint ${ap_name} (${ap_mac}) has ${num_clients} clients`);
 
             if (num_clients !== that.accessPointList[ap_mac].num_clients && that.accessPointList[ap_mac].num_clients !== null) {
-                let tokens = {
+                const tokens = {
                     accessPoint: that.getAccessPointName(ap_mac),
                     last_num: that.accessPointList[ap_mac].num_clients,
                     curr_num: num_clients,
                 };
 
-                if (tokens.last_num === 0 && tokens.curr_num >= 0) {
-                    that.homey.app.debug("Triggering first_device_connected with state", tokens);
+                if (tokens.last_num === 0 && tokens.curr_num > 0) {
+                    that.homey.app.debug('Triggering first_device_connected with state', tokens);
                     that._firstDeviceConnected.trigger(tokens);
                 }
                 if (tokens.last_num > 0 && tokens.curr_num === 0) {
-                    that.homey.app.debug("Triggering last_device_disconnected with state", tokens);
+                    that.homey.app.debug('Triggering last_device_disconnected with state', tokens);
                     that._lastDeviceDisconnected.trigger(tokens);
                 }
             }
@@ -618,12 +676,6 @@ class UnifiNetwork extends Homey.App {
         const tz = this.homey.clock.getTimezone();
         const localTime = new Date(homeyTime.toLocaleString('en-US', {timeZone: tz}));
         return localTime;
-    }
-
-    gcManual() {
-        setFlagsFromString('--expose_gc');
-        const gc = runInNewContext('gc'); // nocommit
-        gc();
     }
 }
 

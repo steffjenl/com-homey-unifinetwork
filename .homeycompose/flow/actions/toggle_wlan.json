@@ -1,0 +1,61 @@
+{
+  "id": "toggle_wlan",
+  "title": {
+    "en": "Enable or disable a WiFi network",
+    "nl": "Wifi netwerk in- of uitschakelen",
+    "de": "WLAN-Netzwerk aktivieren oder deaktivieren",
+    "fr": "Activer ou désactiver un réseau WiFi",
+    "it": "Abilitare o disabilitare una rete WiFi",
+    "es": "Activar o desactivar una red WiFi",
+    "da": "Aktiver eller deaktiver et WiFi-netværk",
+    "sv": "Aktivera eller inaktivera ett WiFi-nätverk",
+    "no": "Aktiver eller deaktiver et WiFi-nettverk",
+    "ko": "WiFi 네트워크 활성화 또는 비활성화",
+    "ru": "Включить или отключить сеть WiFi",
+    "pt": "Ativar ou desativar uma rede WiFi"
+  },
+  "titleFormatted": {
+    "en": "Set WiFi network [[wlan_id]] to [[enabled]]",
+    "nl": "Stel WiFi netwerk [[wlan_id]] in op [[enabled]]",
+    "de": "WLAN-Netzwerk [[wlan_id]] auf [[enabled]] setzen",
+    "fr": "Définir le réseau WiFi [[wlan_id]] sur [[enabled]]",
+    "it": "Imposta la rete WiFi [[wlan_id]] su [[enabled]]",
+    "es": "Establecer la red WiFi [[wlan_id]] en [[enabled]]",
+    "da": "Sæt WiFi-netværk [[wlan_id]] til [[enabled]]",
+    "sv": "Ställ in WiFi-nätverk [[wlan_id]] till [[enabled]]",
+    "no": "Sett WiFi-nettverk [[wlan_id]] til [[enabled]]",
+    "ko": "WiFi 네트워크 [[wlan_id]]를 [[enabled]]로 설정",
+    "ru": "Установить сеть WiFi [[wlan_id]] в [[enabled]]",
+    "pt": "Definir rede WiFi [[wlan_id]] como [[enabled]]"
+  },
+  "hint": {
+    "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "wlan_id",
+      "title": {
+        "en": "WiFi network",
+        "nl": "WiFi netwerk"
+      },
+      "placeholder": {
+        "en": "Select a WiFi network..."
+      }
+    },
+    {
+      "type": "dropdown",
+      "name": "enabled",
+      "title": {
+        "en": "State",
+        "nl": "Status"
+      },
+      "values": [
+        { "id": "true",  "label": { "en": "Enabled",  "nl": "Ingeschakeld" } },
+        { "id": "false", "label": { "en": "Disabled", "nl": "Uitgeschakeld" } }
+      ]
+    }
+  ]
+}
+

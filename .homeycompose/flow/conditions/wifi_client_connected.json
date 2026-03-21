@@ -32,7 +32,21 @@
     {
       "type": "device",
       "name": "Device",
-      "filter": "driver_id=wifi-client"
+      "filter": "driver_id=wifi-client",
+      "title": {
+        "en": "Wi-Fi client",
+        "nl": "Wifi-client",
+        "de": "WLAN-Client",
+        "fr": "Client Wi-Fi",
+        "it": "Client Wi-Fi",
+        "es": "Cliente Wi-Fi",
+        "da": "Wifi-klient",
+        "sv": "Wifi-klient",
+        "no": "Wifi-klient",
+        "ko": "Wi-Fi 클라이언트",
+        "ru": "Wi-Fi клиент",
+        "pt": "Cliente Wi-Fi"
+      }
     }
   ]
 }

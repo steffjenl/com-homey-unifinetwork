@@ -1,0 +1,979 @@
+
+openapi: 3.0.3
+info:
+  title: UniFi Network API (Subset)
+  version: 1.0.0
+  description: >-
+    Subset of the UniFi Network API based on the local controller documentation.
+servers:
+  - url: https://unifi.local
+    description: Local UniFi Network application
+security:
+  - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API-Key
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode: { type: integer }
+        statusName: { type: string }
+        code: { type: string }
+        message: { type: string }
+        timestamp: { type: string, format: date-time }
+        requestPath: { type: string }
+        requestId: { type: string, format: uuid }
+    PageEnvelope:
+      type: object
+      properties:
+        offset: { type: integer }
+        limit: { type: integer }
+        count: { type: integer }
+        totalCount: { type: integer }
+        data:
+          type: array
+          items: { type: object }
+    AdoptDeviceRequest:
+      type: object
+      required: [ macAddress, ignoreDeviceLimit ]
+      properties:
+        macAddress: { type: string }
+        ignoreDeviceLimit: { type: boolean }
+    DeviceActionRequest:
+      type: object
+      required: [ action ]
+      properties:
+        action: { type: string, example: POWER_CYCLE }
+    ClientActionRequest:
+      type: object
+      required: [ action ]
+      properties:
+        action: { type: string, example: AUTHORIZE_GUEST_ACCESS }
+        timeLimitMinutes: { type: integer, minimum: 1 }
+        dataUsageLimitMBytes: { type: integer, minimum: 1 }
+        rxRateLimitKbps: { type: integer, minimum: 2 }
+        txRateLimitKbps: { type: integer, minimum: 2 }
+paths:
+  /v1/info:
+    get:
+      summary: Get application info
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applicationVersion: { type: string }
+  /v1/sites:
+    get:
+      summary: List sites
+      parameters:
+        - in: query
+          name: offset
+          schema: { type: integer, minimum: 0 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 0, maximum: 200 }
+        - in: query
+          name: filter
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageEnvelope'
+        '4XX': { description: Client error, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        '5XX': { description: Server error, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+  /v1/sites/{siteId}/devices:
+    get:
+      summary: List adopted devices
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: query
+          name: offset
+          schema: { type: integer, minimum: 0 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 0, maximum: 200 }
+        - in: query
+          name: filter
+          schema: { type: string }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Adopt device
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AdoptDeviceRequest' }
+      responses:
+        '200': { description: Adopted }
+  /v1/sites/{siteId}/devices/{deviceId}:
+    get:
+      summary: Get adopted device details
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: deviceId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Remove (unadopt) device
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: deviceId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/devices/{deviceId}/actions:
+    post:
+      summary: Execute adopted device action
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: deviceId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DeviceActionRequest' }
+      responses:
+        '200': { description: OK }
+  /v1/pending-devices:
+    get:
+      summary: List devices pending adoption
+      parameters:
+        - in: query
+          name: offset
+          schema: { type: integer, minimum: 0 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 0, maximum: 200 }
+        - in: query
+          name: filter
+          schema: { type: string }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+  /v1/sites/{siteId}/clients:
+    get:
+      summary: List connected clients
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: query
+          name: offset
+          schema: { type: integer, minimum: 0 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 0, maximum: 200 }
+        - in: query
+          name: filter
+          schema: { type: string }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+  /v1/sites/{siteId}/clients/{clientId}/actions:
+    post:
+      summary: Execute client action
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: clientId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ClientActionRequest' }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/networks:
+    get:
+      summary: List networks
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create network
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ management, name, enabled, vlanId ]
+              properties:
+                management: { type: string, enum: [ UNMANAGED ] }
+                name: { type: string }
+                enabled: { type: boolean }
+                vlanId: { type: integer, minimum: 1, maximum: 4009 }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/networks/{networkId}:
+    get:
+      summary: Get network details
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: networkId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update network
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: networkId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                management: { type: string }
+                name: { type: string }
+                enabled: { type: boolean }
+                vlanId: { type: integer, minimum: 1, maximum: 4009 }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete network
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: networkId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/wifi/broadcasts:
+    get:
+      summary: List WiFi broadcasts
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create WiFi broadcast
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ type, name, enabled ]
+              properties:
+                type: { type: string, enum: [ STANDARD ] }
+                name: { type: string }
+                enabled: { type: boolean }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/wifi/broadcasts/{wifiBroadcastId}:
+    get:
+      summary: Get WiFi broadcast details
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: wifiBroadcastId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update WiFi broadcast
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: wifiBroadcastId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                enabled: { type: boolean }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete WiFi broadcast
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: wifiBroadcastId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/hotspot/vouchers:
+    get:
+      summary: List vouchers
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Generate vouchers
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ count, name, timeLimitMinutes ]
+              properties:
+                count: { type: integer, minimum: 1, maximum: 1000 }
+                name: { type: string }
+                authorizedGuestLimit: { type: integer, minimum: 1 }
+                timeLimitMinutes: { type: integer, minimum: 1 }
+                dataUsageLimitMBytes: { type: integer, minimum: 1 }
+                rxRateLimitKbps: { type: integer, minimum: 2 }
+                txRateLimitKbps: { type: integer, minimum: 2 }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/hotspot/vouchers/{voucherId}:
+    get:
+      summary: Get voucher details
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: voucherId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete voucher
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: voucherId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/firewall/zones:
+    get:
+      summary: List firewall zones
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create firewall zone
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ name, networkIds ]
+              properties:
+                name: { type: string }
+                networkIds:
+                  type: array
+                  items: { type: string, format: uuid }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/firewall/zones/{firewallZoneId}:
+    get:
+      summary: Get firewall zone
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallZoneId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update firewall zone
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallZoneId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ name, networkIds ]
+              properties:
+                name: { type: string }
+                networkIds:
+                  type: array
+                  items: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete firewall zone
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallZoneId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/firewall/policies:
+    get:
+      summary: List firewall policies
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create firewall policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ enabled, name, action, source, destination, ipProtocolScope ]
+              properties:
+                enabled: { type: boolean }
+                name: { type: string }
+                description: { type: string }
+                action: { type: object }
+                source: { type: object }
+                destination: { type: object }
+                ipProtocolScope: { type: object }
+                connectionStateFilter:
+                  type: array
+                  items:
+                    type: string
+                    enum: [ NEW, INVALID, ESTABLISHED, RELATED ]
+                ipsecFilter:
+                  type: string
+                  enum: [ MATCH_ENCRYPTED, MATCH_NOT_ENCRYPTED ]
+                loggingEnabled: { type: boolean }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/firewall/policies/{firewallPolicyId}:
+    get:
+      summary: Get firewall policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update firewall policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+                name: { type: string }
+                description: { type: string }
+                action: { type: object }
+                source: { type: object }
+                destination: { type: object }
+                ipProtocolScope: { type: object }
+                connectionStateFilter:
+                  type: array
+                  items:
+                    type: string
+                    enum: [ NEW, INVALID, ESTABLISHED, RELATED ]
+                ipsecFilter:
+                  type: string
+                  enum: [ MATCH_ENCRYPTED, MATCH_NOT_ENCRYPTED ]
+                loggingEnabled: { type: boolean }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete firewall policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: firewallPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/firewall/policies/ordering:
+    get:
+      summary: Get user-defined firewall policy ordering
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: query
+          name: sourceFirewallZoneId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: query
+          name: destinationFirewallZoneId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    post:
+      summary: Reorder user-defined firewall policies
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderedFirewallPolicyIds:
+                  type: object
+                  properties:
+                    beforeSystemDefined:
+                      type: array
+                      items: { type: string, format: uuid }
+                    afterSystemDefined:
+                      type: array
+                      items: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/acl-rules:
+    get:
+      summary: List ACL rules
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create ACL rule
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ type, enabled, name, action ]
+              properties:
+                type: { type: string, enum: [ IPV4 ] }
+                enabled: { type: boolean }
+                name: { type: string }
+                description: { type: string }
+                action: { type: string, enum: [ ALLOW, BLOCK ] }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/acl-rules/{aclRuleId}:
+    get:
+      summary: Get ACL rule
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: aclRuleId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update ACL rule
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: aclRuleId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+                name: { type: string }
+                description: { type: string }
+                action: { type: string, enum: [ ALLOW, BLOCK ] }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete ACL rule
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: aclRuleId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/acl-rules/ordering:
+    get:
+      summary: Get user-defined ACL rule ordering
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    post:
+      summary: Reorder user-defined ACL rules
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderedAclRuleIds:
+                  type: array
+                  items: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/dns/policies:
+    get:
+      summary: List DNS policies
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create DNS policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ type, enabled ]
+              properties:
+                type: { type: string, enum: [ A_RECORD ] }
+                enabled: { type: boolean }
+                domain: { type: string }
+                ipv4Address: { type: string }
+                ttlSeconds: { type: integer, minimum: 0, maximum: 86400 }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/dns/policies/{dnsPolicyId}:
+    get:
+      summary: Get DNS policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: dnsPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update DNS policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: dnsPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+                domain: { type: string }
+                ipv4Address: { type: string }
+                ttlSeconds: { type: integer, minimum: 0, maximum: 86400 }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete DNS policy
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: dnsPolicyId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/traffic-matching-lists:
+    get:
+      summary: List traffic matching lists
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+    post:
+      summary: Create traffic matching list
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ type, name, items ]
+              properties:
+                type: { type: string, enum: [ PORTS ] }
+                name: { type: string }
+                items:
+                  type: array
+                  items: { type: object }
+      responses:
+        '201': { description: Created }
+  /v1/sites/{siteId}/traffic-matching-lists/{trafficMatchingListId}:
+    get:
+      summary: Get traffic matching list
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: trafficMatchingListId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+    patch:
+      summary: Update traffic matching list
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: trafficMatchingListId
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type: { type: string, enum: [ PORTS ] }
+                name: { type: string }
+                items:
+                  type: array
+                  items: { type: object }
+      responses:
+        '200': { description: OK }
+    delete:
+      summary: Delete traffic matching list
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+        - in: path
+          name: trafficMatchingListId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK }
+  /v1/sites/{siteId}/wans:
+    get:
+      summary: List WAN interfaces
+      parameters:
+        - in: path
+          name: siteId
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+  /v1/dpi/categories:
+    get:
+      summary: List DPI categories
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }
+  /v1/countries:
+    get:
+      summary: List countries
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/PageEnvelope' } } } }

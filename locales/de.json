@@ -1,64 +1,68 @@
 {
-  "title": "UniFi Netzwerk",
-  "pair": {
-    "validate": {
-      "title": "UniFi Cloud Key validieren",
-      "instruction": "Bitte richten Sie zuerst den Cloud Key in den Einstellungen ein."
+    "title": "UniFi Netzwerk",
+    "pair": {
+        "validate": {
+            "title": "UniFi Cloud Key validieren",
+            "instruction": "Bitte richten Sie zuerst den Cloud Key in den Einstellungen ein."
+        },
+        "login": {
+            "title": "Anmelden"
+        }
     },
-    "login": {
-      "title": "Anmelden"
-    }
-  },
-  "settings": {
-    "title": "UniFi Netzwerk Einstellungen",
-    "instruction": "Melden Sie sich mit den UniFi Netzwerk-Benutzerdaten an.",
-    "nvr": "Serverdaten",
-    "nvrText": "Verwenden Sie Port 443 für UniFiOS und Port 8443 für Docker / Standalone.",
-    "nvrip": "IP-Adresse",
-    "nvrport": "Port",
-    "credentials": "Benutzerdaten",
-    "credentialsText": "MFA deaktiviert und lokaler Admin-Benutzer",
-    "username": "Benutzername (mindestens 32 Zeichen)",
-    "password": "Passwort",
-    "apply": "Anwenden",
-    "test": "Benutzerdaten testen",
-    "test_status": {
-      "success": "Verbindung erfolgreich.",
-      "failure": "Verbindung fehlgeschlagen. Überprüfen Sie die Daten und versuchen Sie es erneut."
+    "settings": {
+        "title": "UniFi Netzwerk Einstellungen",
+        "instruction": "Melden Sie sich mit den UniFi Netzwerk-Benutzerdaten an.",
+        "nvr": "Serverdaten",
+        "nvrText": "Verwenden Sie Port 443 für UniFiOS und Port 8443 für Docker / Standalone.",
+        "nvrip": "IP-Adresse",
+        "nvrport": "Port",
+        "credentials": "Benutzerdaten",
+        "credentialsText": "MFA deaktiviert und lokaler Admin-Benutzer",
+        "username": "Benutzername",
+        "password": "Passwort (mindestens 32 Zeichen)",
+        "apply": "Anwenden",
+        "test": "Benutzerdaten testen",
+        "test_status": {
+            "success": "Verbindung erfolgreich.",
+            "failure": "Verbindung fehlgeschlagen. Überprüfen Sie die Daten und versuchen Sie es erneut."
+        },
+        "saved": "Einstellungen gespeichert.",
+        "tab": {
+            "settings": "Einstellungen",
+            "event_log": "Ereignisprotokoll"
+        },
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
+        "apikey": "API Key (optional)",
+        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
     },
-    "saved": "Einstellungen gespeichert.",
-    "tab": {
-      "settings": "Einstellungen",
-      "event_log": "Ereignisprotokoll"
-    }
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Bewegung gestartet",
-      "motion_ended": "Bewegung beendet",
-      "motion_inprogress": "Bewegung",
-      "ftr_inprogress": "Fortlaufend",
-      "disabled": "Deaktiviert",
-      "failed": "Fehlgeschlagen",
-      "done": "Fertig",
-      "always": "Immer",
-      "motion": "Bei Bewegung",
-      "never": "Nie",
-      "detections": "Bei Bewegung"
+    "events": {
+        "camera": {
+            "motion_started": "Bewegung gestartet",
+            "motion_ended": "Bewegung beendet",
+            "motion_inprogress": "Bewegung",
+            "ftr_inprogress": "Fortlaufend",
+            "disabled": "Deaktiviert",
+            "failed": "Fehlgeschlagen",
+            "done": "Fertig",
+            "always": "Immer",
+            "motion": "Bei Bewegung",
+            "never": "Nie",
+            "detections": "Bei Bewegung"
+        },
+        "health": {
+            "unknown": "Unbekannt",
+            "green": "Gesund",
+            "orange": "Warnung",
+            "red": "Kritisch"
+        }
     },
-    "health": {
-      "unknown": "Unbekannt",
-      "green": "Gesund",
-      "orange": "Warnung",
-      "red": "Kritisch"
+    "status": {
+        "connection": {
+            "Connected": "Verbunden",
+            "Connecting": "Verbinden...",
+            "Disconnected": "Verbindung getrennt",
+            "Initialized": "Initialisierung"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Verbunden",
-      "Connecting": "Verbinden...",
-      "Disconnected": "Verbindung getrennt",
-      "Initialized": "Initialisierung"
-    }
-  }
 }

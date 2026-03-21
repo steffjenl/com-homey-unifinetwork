@@ -22,7 +22,7 @@
 
     <!-- Instruction -->
     <p data-i18n="settings.instruction"></p>
-    <p>Please read first the instructions and create a separate user for UniFi Protect</p>
+    <p>Please read the setup guide first and create a dedicated local admin user for UniFi Network.</p>
 
     <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span>
     </p>
@@ -69,6 +69,23 @@
             <label class="homey-form-label" for="txt_password" data-i18n="settings.password"></label>
             <input class="homey-form-input" id="txt_password" type="password" value=""/>
         </div>
+
+        <!-- SSL verify -->
+        <div class="field row">
+            <label class="homey-form-checkbox">
+                <input class="homey-form-checkbox-input" id="txt_sslverify" type="checkbox">
+                <span class="homey-form-checkbox-checkmark"></span>
+                <span class="homey-form-checkbox-text"><span data-i18n="settings.sslverify"></span></span>
+            </label>
+            <p><small data-i18n="settings.sslverify_hint"></small></p>
+        </div>
+
+        <!-- API Key (optional, for v1 REST — UniFi OS 7+) -->
+        <div class="field row">
+            <label class="homey-form-label" for="txt_apikey" data-i18n="settings.apikey"></label>
+            <input class="homey-form-input" id="txt_apikey" type="password" value="" autocomplete="off"/>
+            <p><small data-i18n="settings.apikey_hint"></small></p>
+        </div>
     </fieldset>
 
     <!-- site -->
@@ -94,7 +111,7 @@
         </div>
         <div class="field row">
             <label class="homey-form-label" for="txt_interval" data-i18n="settings.interval"></label>
-            <input class="homey-form-input" id="txt_interval" type="text" value="15"/>
+            <input class="homey-form-input" id="txt_interval" type="number" value="15" min="10"/>
         </div>
         <div class="field row">
             <label class="homey-form-checkbox">
@@ -151,6 +168,8 @@
     const txtNvrPort = document.getElementById('txt_nvrport');
     const txtUsername = document.getElementById('txt_username');
     const txtPassword = document.getElementById('txt_password');
+    const txtSslVerify = document.getElementById('txt_sslverify');
+    const txtApiKey = document.getElementById('txt_apikey');
     const txtSite = document.getElementById('txt_site');
     const txtPullMethode = document.getElementById('txt_pullmethode');
     const txtInterval = document.getElementById('txt_interval');
@@ -174,6 +193,8 @@
                     txtNvrPort.value = (settings.port ? settings.port : 443);
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
+                    txtSslVerify.checked = (settings.sslverify === true);
+                    txtApiKey.value = settings.apiKey || '';
                     txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
                     txtApplicationFlows.checked = (settings.applicationFlows === "1");
@@ -191,6 +212,8 @@
                 'port': txtNvrPort.value,
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
+                'sslverify': txtSslVerify.checked,
+                'apiKey': txtApiKey.value.trim() || null,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
                 'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),

@@ -127,5 +127,8 @@
   },
   "2.5.5": {
     "en": "Add extra text on settings page and fix error when invalid credentials on settings page"
+  },
+  "2.6.0": {
+    "en": "Add extra functionality like wifi-6 and verify ssl"
   }
 }

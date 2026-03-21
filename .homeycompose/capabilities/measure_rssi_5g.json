@@ -1,0 +1,14 @@
+{
+  "title": { "en": "RSSI 5 GHz", "nl": "RSSI 5 GHz", "de": "RSSI 5 GHz", "fr": "RSSI 5 GHz", "it": "RSSI 5 GHz" },
+  "type": "number",
+  "units": "dBm",
+  "icon": "/assets/rssi.svg",
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "min": -120,
+  "max": 0,
+  "decimals": 0
+}
+

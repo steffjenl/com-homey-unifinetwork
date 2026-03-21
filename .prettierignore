@@ -1,0 +1,6 @@
+.homeybuild/
+node_modules/
+app.json
+specs/
+docs/
+

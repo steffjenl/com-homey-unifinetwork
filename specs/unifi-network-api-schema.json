@@ -1,0 +1,138 @@
+{
+  "unifi_api": {
+    "auth": {
+      "type": "http_bearer",
+      "header": "Authorization"
+    },
+    "filtering": {
+      "expression_types": [
+        "property",
+        "compound",
+        "negation"
+      ],
+      "data_types": [
+        "STRING",
+        "INTEGER",
+        "DECIMAL",
+        "TIMESTAMP",
+        "BOOLEAN",
+        "UUID",
+        "SET"
+      ]
+    },
+    "pagination": {
+      "fields": [
+        "offset",
+        "limit",
+        "count",
+        "totalCount",
+        "data"
+      ]
+    },
+    "error": {
+      "fields": [
+        "statusCode",
+        "statusName",
+        "code",
+        "message",
+        "timestamp",
+        "requestPath",
+        "requestId"
+      ]
+    },
+    "endpoints": {
+      "info": [
+        "GET /v1/info"
+      ],
+      "sites": [
+        "GET /v1/sites"
+      ],
+      "devices": [
+        "GET /v1/sites/{siteId}/devices",
+        "POST /v1/sites/{siteId}/devices",
+        "POST /v1/sites/{siteId}/devices/{deviceId}/actions",
+        "GET /v1/sites/{siteId}/devices/{deviceId}",
+        "DELETE /v1/sites/{siteId}/devices/{deviceId}",
+        "GET /v1/sites/{siteId}/devices/{deviceId}/statistics/latest"
+      ],
+      "pending_devices": [
+        "GET /v1/pending-devices"
+      ],
+      "clients": [
+        "GET /v1/sites/{siteId}/clients",
+        "POST /v1/sites/{siteId}/clients/{clientId}/actions"
+      ],
+      "networks": [
+        "GET /v1/sites/{siteId}/networks",
+        "POST /v1/sites/{siteId}/networks",
+        "GET /v1/sites/{siteId}/networks/{networkId}",
+        "PATCH /v1/sites/{siteId}/networks/{networkId}",
+        "DELETE /v1/sites/{siteId}/networks/{networkId}"
+      ],
+      "wifi": [
+        "GET /v1/sites/{siteId}/wifi/broadcasts",
+        "POST /v1/sites/{siteId}/wifi/broadcasts",
+        "GET /v1/sites/{siteId}/wifi/broadcasts/{wifiBroadcastId}",
+        "PATCH /v1/sites/{siteId}/wifi/broadcasts/{wifiBroadcastId}",
+        "DELETE /v1/sites/{siteId}/wifi/broadcasts/{wifiBroadcastId}"
+      ],
+      "hotspot": [
+        "GET /v1/sites/{siteId}/hotspot/vouchers",
+        "POST /v1/sites/{siteId}/hotspot/vouchers",
+        "GET /v1/sites/{siteId}/hotspot/vouchers/{voucherId}",
+        "DELETE /v1/sites/{siteId}/hotspot/vouchers/{voucherId}"
+      ],
+      "firewall": {
+        "zones": [
+          "GET /v1/sites/{siteId}/firewall/zones",
+          "POST /v1/sites/{siteId}/firewall/zones",
+          "GET /v1/sites/{siteId}/firewall/zones/{firewallZoneId}",
+          "PATCH /v1/sites/{siteId}/firewall/zones/{firewallZoneId}",
+          "DELETE /v1/sites/{siteId}/firewall/zones/{firewallZoneId}"
+        ],
+        "policies": [
+          "GET /v1/sites/{siteId}/firewall/policies",
+          "POST /v1/sites/{siteId}/firewall/policies",
+          "GET /v1/sites/{siteId}/firewall/policies/{firewallPolicyId}",
+          "PATCH /v1/sites/{siteId}/firewall/policies/{firewallPolicyId}",
+          "DELETE /v1/sites/{siteId}/firewall/policies/{firewallPolicyId}",
+          "GET /v1/sites/{siteId}/firewall/policies/ordering",
+          "POST /v1/sites/{siteId}/firewall/policies/ordering"
+        ]
+      },
+      "acl_rules": [
+        "GET /v1/sites/{siteId}/acl-rules",
+        "POST /v1/sites/{siteId}/acl-rules",
+        "GET /v1/sites/{siteId}/acl-rules/{aclRuleId}",
+        "PATCH /v1/sites/{siteId}/acl-rules/{aclRuleId}",
+        "DELETE /v1/sites/{siteId}/acl-rules/{aclRuleId}",
+        "GET /v1/sites/{siteId}/acl-rules/ordering",
+        "POST /v1/sites/{siteId}/acl-rules/ordering"
+      ],
+      "dns_policies": [
+        "GET /v1/sites/{siteId}/dns/policies",
+        "POST /v1/sites/{siteId}/dns/policies",
+        "GET /v1/sites/{siteId}/dns/policies/{dnsPolicyId}",
+        "PATCH /v1/sites/{siteId}/dns/policies/{dnsPolicyId}",
+        "DELETE /v1/sites/{siteId}/dns/policies/{dnsPolicyId}"
+      ],
+      "traffic_matching": [
+        "GET /v1/sites/{siteId}/traffic-matching-lists",
+        "POST /v1/sites/{siteId}/traffic-matching-lists",
+        "GET /v1/sites/{siteId}/traffic-matching-lists/{trafficMatchingListId}",
+        "PATCH /v1/sites/{siteId}/traffic-matching-lists/{trafficMatchingListId}",
+        "DELETE /v1/sites/{siteId}/traffic-matching-lists/{trafficMatchingListId}"
+      ],
+      "supporting": [
+        "GET /v1/sites/{siteId}/wans",
+        "GET /v1/sites/{siteId}/vpn/servers",
+        "GET /v1/sites/{siteId}/vpn/site-to-site-tunnels",
+        "GET /v1/sites/{siteId}/radius/profiles",
+        "GET /v1/sites/{siteId}/device-tags",
+        "GET /v1/dpi/categories",
+        "GET /v1/dpi/applications",
+        "GET /v1/countries"
+      ]
+    }
+  }
+}

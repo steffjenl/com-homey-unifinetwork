@@ -10,12 +10,13 @@ class WebsocketClient extends BaseClass {
         this.opts.username = (typeof (this.opts.username) === 'undefined' ? 'admin' : this.opts.username);
         this.opts.password = (typeof (this.opts.password) === 'undefined' ? 'ubnt' : this.opts.password);
         this.opts.site = (typeof (this.opts.site) === 'undefined' ? 'default' : this.opts.site);
-        this.opts.sslverify = (typeof (this.opts.sslverify) === 'undefined' ? true : this.opts.sslverify);
+        this.opts.sslverify = (typeof (this.opts.sslverify) === 'undefined' ? false : this.opts.sslverify);
 
         // Fix 3: use this.opts instead of raw options so defaults applied above are respected
         this._baseurl = new URL(`https://${this.opts.host}:${this.opts.port}`);
         this._pingPongInterval = 30 * 1000; // Ms — 30s gives a 90s timeout window before forcing reconnect
         this._autoReconnectInterval = 5 * 1000; // Ms
+        this._reconnectAttempt = 0;
 
         this.homey = homey;
         this.lastWebsocketMessage = null;
@@ -88,6 +89,7 @@ class WebsocketClient extends BaseClass {
             // Fix 1: register all handlers on currentWs (not this._ws) so they are permanently
             // bound to this specific socket instance and can detect staleness via the guard below
             currentWs.on('open', () => {
+                this._reconnectAttempt = 0; // reset backoff on successful connection
                 this._lastPong = Date.now(); // reset so timeout doesn't fire immediately on reconnect
                 this.homey.app.debug(`WebSocket: open`);
             });
@@ -106,6 +108,8 @@ class WebsocketClient extends BaseClass {
                 try {
                     const parsed = JSON.parse(message);
                     if ('meta' in parsed && Array.isArray(parsed.data)) {
+                        // Only process event messages — skip device:sync, sta:sync, etc.
+                        if (parsed.meta.message !== 'events') return;
                         for (const entry of parsed.data) {
                             //                       this.homey.app.debug(`${JSON.stringify(entry)}`);
                             // Pass meta so parseWebsocketMessage can identify device:sync events
@@ -171,6 +175,9 @@ class WebsocketClient extends BaseClass {
     _reconnect() {
         if (this._isReconnecting === false && this._closed === false) {
             this._isReconnecting = true;
+            const delay = Math.min(Math.pow(2, this._reconnectAttempt + 1) * 1000, 300000) + Math.random() * 1000;
+            this._reconnectAttempt++;
+            this.homey.app.debug(`WebSocket: reconnect attempt ${this._reconnectAttempt}, waiting ${Math.round(delay)}ms`);
             this.homey.setTimeout(async () => {
                 // Re-check _closed after the delay — client may have been replaced while waiting
                 if (this._closed) {
@@ -191,7 +198,7 @@ class WebsocketClient extends BaseClass {
                     this._isReconnecting = false; // reset before retry so the guard passes
                     this._reconnect();
                 }
-            }, this._autoReconnectInterval);
+            }, delay);
         }
     }
 

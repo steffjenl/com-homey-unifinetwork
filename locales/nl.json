@@ -1,64 +1,68 @@
 {
-  "title": "UniFi Network",
-  "pair": {
-    "validate": {
-      "title": "UniFi Cloud Key valideren",
-      "instruction": "Graag eerst bij Instellingen de Cloud Key instellen."
+    "title": "UniFi Network",
+    "pair": {
+        "validate": {
+            "title": "UniFi Cloud Key valideren",
+            "instruction": "Graag eerst bij Instellingen de Cloud Key instellen."
+        },
+        "login": {
+            "title": "Inloggen"
+        }
     },
-    "login": {
-      "title": "Inloggen"
-    }
-  },
-  "settings": {
-    "title": "UniFi Network instellingen",
-    "instruction": "Log in met de gegevens van de UniFi Network-gebruiker.",
-    "nvr": "Server gegevens",
-    "nvrText": "Gebruik poort 443 voor UniFiOS en poort 8443 voor Docker / Standalone.",
-    "nvrip": "IP-adres",
-    "nvrport": "Port",
-    "credentials": "Gebruikersgegevens",
-    "credentialsText": "MFA Uitgeschakeld en Local Admin User",
-    "username": "Gebruikersnaam (min 32 karakters)",
-    "password": "Wachtwoord",
-    "apply": "Toepassen",
-    "test": "Test gebruikersgegevens",
-    "test_status": {
-      "success": "Verbinding geslaagd.",
-      "failure": "Verbinding mislukt. Controleer de gegevens en probeer het opnieuw."
+    "settings": {
+        "title": "UniFi Network instellingen",
+        "instruction": "Log in met de gegevens van de UniFi Network-gebruiker.",
+        "nvr": "Server gegevens",
+        "nvrText": "Gebruik poort 443 voor UniFiOS en poort 8443 voor Docker / Standalone.",
+        "nvrip": "IP-adres",
+        "nvrport": "Port",
+        "credentials": "Gebruikersgegevens",
+        "credentialsText": "MFA Uitgeschakeld en Local Admin User",
+        "username": "Gebruikersnaam",
+        "password": "Wachtwoord (min 32 karakters)",
+        "apply": "Toepassen",
+        "test": "Test gebruikersgegevens",
+        "test_status": {
+            "success": "Verbinding geslaagd.",
+            "failure": "Verbinding mislukt. Controleer de gegevens en probeer het opnieuw."
+        },
+        "saved": "Instellingen opgeslagen.",
+        "tab": {
+            "settings": "Instellingen",
+            "event_log": "Logboek"
+        },
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
+        "apikey": "API Key (optional)",
+        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
     },
-    "saved": "Instellingen opgeslagen.",
-    "tab": {
-      "settings": "Instellingen",
-      "event_log": "Logboek"
-    }
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Start beweging",
-      "motion_ended": "Einde beweging",
-      "motion_inprogress": "Beweging",
-      "ftr_inprogress": "Continu",
-      "disabled": "Uitgeschakeld",
-      "failed": "Mislukt",
-      "done": "Klaar",
-      "always": "Altijd",
-      "motion": "Bij beweging",
-      "never": "Nooit",
-      "detections": "Bij beweging"
+    "events": {
+        "camera": {
+            "motion_started": "Start beweging",
+            "motion_ended": "Einde beweging",
+            "motion_inprogress": "Beweging",
+            "ftr_inprogress": "Continu",
+            "disabled": "Uitgeschakeld",
+            "failed": "Mislukt",
+            "done": "Klaar",
+            "always": "Altijd",
+            "motion": "Bij beweging",
+            "never": "Nooit",
+            "detections": "Bij beweging"
+        },
+        "health": {
+            "unknown": "Onbekend",
+            "green": "Gezond",
+            "orange": "Waarschuwing",
+            "red": "Kritiek"
+        }
     },
-    "health": {
-      "unknown": "Onbekend",
-      "green": "Gezond",
-      "orange": "Waarschuwing",
-      "red": "Kritiek"
+    "status": {
+        "connection": {
+            "Connected": "Verbonden",
+            "Connecting": "Bezig met verbinden...",
+            "Disconnected": "Verbinding verbroken",
+            "Initialized": "Bezig met starten"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Verbonden",
-      "Connecting": "Bezig met verbinden...",
-      "Disconnected": "Verbinding verbroken",
-      "Initialized": "Bezig met starten"
-    }
-  }
 }
