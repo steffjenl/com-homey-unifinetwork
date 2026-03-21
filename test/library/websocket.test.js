@@ -29,6 +29,9 @@ function makeHomeyMock() {
         },
         error: jest.fn(),
         log: jest.fn(),
+        setTimeout: (fn, delay) => global.setTimeout(fn, delay),
+        clearInterval: (id) => global.clearInterval(id),
+        setInterval: (fn, delay) => global.setInterval(fn, delay),
     };
 }
 

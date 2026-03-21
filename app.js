@@ -14,6 +14,7 @@ class UnifiNetwork extends Homey.App {
         this.homeyLog = new Log({homey: this.homey});
         this.api = new ApiClient({homey: this.homey});
         this.loggedIn = false;
+        this._loginInProgress = false;
         this.accessPointList = {};
         this.onlineClientList = {};
 
@@ -57,8 +58,10 @@ class UnifiNetwork extends Homey.App {
 
     /**
      * parseWebsocketMessage
+     * @param {object} payload - the data entry from the WebSocket message
+     * @param {object} [meta]  - the meta object from the WebSocket message (contains message type)
      */
-    parseWebsocketMessage(payload) {
+    parseWebsocketMessage(payload, meta) {
         let that = this;
 
         // Ignore non-event payloads (no key field) — these are stats syncs, not events
@@ -149,6 +152,49 @@ class UnifiNetwork extends Homey.App {
                 }
             }
         }
+
+        // device:sync is independent of subsystem — check separately so it is never
+        // accidentally swallowed by the wlan/lan branches above
+        if (meta && meta.message === 'device:sync' && payload.mac) {
+            // Real-time switch status update — debug only to avoid log flooding (~30s cadence per switch)
+            that.homey.app.debug(`[websocket] [device:sync]: mac=${payload.mac}`);
+
+            // Update port up/down and PoE on/off state on the switch device itself
+            let switchDriver;
+            try {
+                switchDriver = that.homey.drivers.getDriver('network-switch');
+            } catch (e) { /* driver not yet initialised */ }
+            if (switchDriver) {
+                const switchDevice = switchDriver.getUnifiDeviceById(payload.mac);
+                if (switchDevice) {
+                    switchDevice.onStatusChange(payload);
+                }
+            }
+
+            // Push live PoE wattage to any device powered by a port on this switch.
+            // Covers cable-clients, access-points, and PoE-powered downstream switches —
+            // all use PoePowerMixin and store _swMac/_swPort for exactly this lookup.
+            if (payload.port_table) {
+                for (const driverName of ['cable-client', 'access-point', 'network-switch']) {
+                    let driver;
+                    try {
+                        driver = that.homey.drivers.getDriver(driverName);
+                    } catch (e) { /* driver not yet initialised — skip */ continue; }
+                    driver.getDevices().forEach(async device => {
+                        if (device._swMac === payload.mac && device._swPort) {
+                            const port = payload.port_table[device._swPort - 1];
+                            if (port && port.port_poe && typeof port.poe_power !== 'undefined') {
+                                if (typeof device._ensurePoeCapabilities === 'function') {
+                                    await device._ensurePoeCapabilities(port);
+                                }
+                                device.onPoeUpdate(port);
+                            }
+                        }
+                    });
+                }
+            }
+
+        }
         that = null;
     }
 
@@ -157,12 +203,22 @@ class UnifiNetwork extends Homey.App {
      */
     async onUninit() {
         this.loggedIn = false;
-        this.checkDevicesStateInterval = null;
-        this.updateAccessPointListInterval = null;
-        await this.homey.api.unifi.logout();
-        this.homey.api.unifi._close();
-        delete this.homey.api;
-        delete this.homey.accessPointList;
+        if (this.checkDevicesStateInterval) {
+            this.homey.clearInterval(this.checkDevicesStateInterval);
+            this.checkDevicesStateInterval = null;
+        }
+        if (this.updateAccessPointListInterval) {
+            this.homey.clearInterval(this.updateAccessPointListInterval);
+            this.updateAccessPointListInterval = null;
+        }
+        if (this.api && this.api.websocket) {
+            this.api.websocket.destroy();
+        }
+        if (this.api && this.api.unifi) {
+            try { await this.api.unifi.logout(); } catch (e) {}
+        }
+        delete this.api;
+        delete this.accessPointList;
     }
 
     async _initActionCards() {
@@ -411,65 +467,78 @@ class UnifiNetwork extends Homey.App {
     }
 
     async _appLogin() {
-        this.debug('Logging in...');
-
-        // Get Settings object
-        const settings = this.homey.settings.get(UnifiConstants.SETTINGS_KEY);
-        if (!settings) {
-            this.debug('Settings are not set.');
+        if (this._loginInProgress) {
+            this.debug('Login already in progress, skipping concurrent call');
             return;
         }
+        this._loginInProgress = true;
+        try {
+            this.debug('Logging in...');
 
-        if (this.loggedIn) {
-            this.loggedIn = false;
-            await this.homey.app.api.unifi.logout();
-        }
-
-        this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
-                this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
-                this.api.setApiKey(settings.apiKey || null, settings.host, settings.port);
-
-        await (async () => {
-            try {
-                // LOGIN
-                await this.api.unifi.login(settings.user, settings.pass);
-                this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
-                await this.setLoggedIn(true);
-                this.debug('We are logged in!');
-
-                // install timers
-                await this._initTimers();
-
-                // get all accesspoints from controller
-                this.updateAccessPointList();
-
-                if ("pullmethode" in settings && settings.pullmethode === '1') {
-                    // LISTEN for WebSocket events
-                    this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
-                    this.api.websocket.listen().then((connected) => {
-                        if (connected) {
-                            this.debug('WebSocket is connected');
-                        }
-                    }).catch(
-                        (error) => {
-                            this.debug(`WebSocket error: ${JSON.stringify(error)}`);
-                        }
-                    );
-                }
-            } catch (error) {
-                await this.setLoggedIn(false);
-                this.error(`${JSON.stringify(sanitise(error))}`); // we want to see the error in the log
+            // Get Settings object
+            const settings = this.homey.settings.get(UnifiConstants.SETTINGS_KEY);
+            if (!settings) {
+                this.debug('Settings are not set.');
+                return;
             }
-        })();
+
+            if (this.loggedIn) {
+                this.loggedIn = false;
+                try {
+                    await this.api.unifi.logout();
+                } catch (e) {
+                    this.error(`[_appLogin] logout failed: ${e.message || e}`);
+                }
+            }
+
+            this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
+            this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
+            this.api.setApiKey(settings.apiKey || null, settings.host, settings.port);
+
+            await (async () => {
+                try {
+                    // LOGIN
+                    await this.api.unifi.login(settings.user, settings.pass);
+                    this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
+                    await this.setLoggedIn(true);
+                    this.debug('We are logged in!');
+
+                    // install timers
+                    await this._initTimers();
+
+                    // get all accesspoints from controller
+                    this.updateAccessPointList();
+
+                    if ("pullmethode" in settings && settings.pullmethode === '1') {
+                        // LISTEN for WebSocket events
+                        this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
+                        this.api.websocket.listen().then((connected) => {
+                            if (connected) {
+                                this.debug('WebSocket is connected');
+                            }
+                        }).catch(
+                            (error) => {
+                                this.debug(`WebSocket error: ${JSON.stringify(error)}`);
+                            }
+                        );
+                    }
+                } catch (error) {
+                    await this.setLoggedIn(false);
+                    this.error(`${JSON.stringify(sanitise(error))}`); // we want to see the error in the log
+                }
+            })();
+        } finally {
+            this._loginInProgress = false;
+        }
     }
 
     async refreshAuthTokens() {
-        const refreshAuthTokens = setInterval(() => {
+        const refreshAuthTokens = this.homey.setInterval(async () => {
             try {
                 this.debug('Refreshing auth tokens');
-                this._appLogin();
+                await this._appLogin();
             } catch (error) {
-                this.homey.error(`${JSON.stringify(error)}`);
+                this.homey.error(`[refreshAuthTokens] ${error.message || error}`);
             }
         }, this._refreshAuthTokensnterval);
     }

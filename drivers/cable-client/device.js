@@ -1,13 +1,15 @@
 'use strict';
 
 const {Device} = require('homey');
+const PoePowerMixin = require('../../library/poe-power-mixin');
 
-class CableDevice extends Device {
+class CableDevice extends PoePowerMixin(Device) {
 
     /**
      * onInit is called when the device is initialized.
      */
     async onInit() {
+        await this.initPoeMeter(); // restore kWh total from store (from PoePowerMixin)
         await this._createMissingCapabilities();
         this.getDeviceStatus();
 
@@ -55,6 +57,7 @@ class CableDevice extends Device {
      * onDeleted is called when the user deleted the device.
      */
     async onDeleted() {
+        this.destroyPoeMeter();
         this.log('CableDevice has been deleted');
     }
 
@@ -132,9 +135,17 @@ class CableDevice extends Device {
                 if (typeof device[0].blocked !== 'undefined') {
                     this.onBlockedChange(device[0]);
                 }
+
+                // Normalise uplink fields and seed initial PoE readings (from PoePowerMixin)
+                this.updatePoeUplink(device[0]);
+                if (this._swMac && this._swPort) {
+                    this._fetchPoeData(this._swMac, this._swPort);
+                }
             }).catch(error => this.homey.app.debug(error));
         }
     }
+
+    // _fetchPoeData, _ensurePoeCapabilities, onPoeUpdate all live in PoePowerMixin
 
     onBlockedChange(data) {
         if (this.hasCapability('blocked')) {
@@ -150,6 +161,9 @@ class CableDevice extends Device {
         if (typeof playloadMessage.blocked !== 'undefined') {
             this.onBlockedChange(playloadMessage);
         }
+
+        // Keep uplink info up to date — used by device:sync handler for real-time power pushes
+        this.updatePoeUplink(playloadMessage);
     }
 }
 
