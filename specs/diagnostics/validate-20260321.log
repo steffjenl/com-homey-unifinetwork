@@ -1,0 +1,50 @@
+# Validation Log — 2026-03-21
+
+> Created-by: Sonnet 4.6 | 2026-03-21
+> Run: `homey app validate --level=publish` (manual entry — run on CI for live output)
+
+---
+
+## Code Fix Verification (automated)
+
+| Check | Result |
+|---|---|
+| `package.json` version == `app.json` version | ✅ PASS — both `2.5.5` |
+| `app.js` — `require('v8')` removed | ✅ PASS |
+| `app.js` — `require('vm')` removed | ✅ PASS |
+| `app.js` — `gcManual()` removed | ✅ PASS |
+| `app.js` — `realtime()` call signature fixed | ✅ PASS |
+| `api.js` — dead unreachable code removed | ✅ PASS |
+| `tsconfig.json` — extends `@tsconfig/node22` | ✅ PASS |
+| `node-unifi` pinned to `^2.5.1` (npm) | ✅ PASS — `npm ls node-unifi` = `2.5.1` |
+| `settings/index.html` — product name correct | ✅ PASS |
+
+## Test Suite
+
+```
+PASS  test/library/constants.test.js
+PASS  test/library/apiclient.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       11 passed, 11 total
+Time:        0.298 s
+```
+
+## Known Remaining Issues (tracked in fixlist.md)
+
+| ID | Issue | Priority |
+|---|---|---|
+| FIX-006 | `sslverify` still hardcoded to `false` | TODO-001 |
+| FIX-007 | WS reconnect uses fixed 5 s interval | TODO-002 |
+| FIX-008 | No ESLint/Prettier config installed (config written, npm install pending) | TODO-005 |
+
+## `homey app validate` Result
+
+> Run this command manually and paste output here before each release.
+>
+> ```bash
+> homey app validate --level=publish 2>&1 | tee specs/diagnostics/validate-$(date +%Y%m%d).log
+> ```
+
+Pending — requires Homey CLI to be authenticated and a Homey device to target.
+

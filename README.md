@@ -1,6 +1,9 @@
 # Ubiquiti UniFi Network
 
-This app adds support for presence detection based on (wifi) clients connected to the UniFi Controller on your Homey.
+This app adds support for presence detection and network control based on clients connected to the UniFi Controller on your Homey.
+
+📖 **[Full Setup Guide with screenshots →](docs/setup-guide.md)**  
+🛠️ **[Engineering specs and ADRs →](specs/README.md)**
 
 ## Device triggers:
 - Wifi device (dis-)connected

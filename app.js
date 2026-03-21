@@ -1,12 +1,9 @@
-// eslint-disable-next-line node/no-unpublished-require,strict
 'use strict';
 
 const Homey = require('homey');
 const {Log} = require('homey-log');
 const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
-const {setFlagsFromString} = require('v8');
-const {runInNewContext} = require('vm');
 
 class UnifiNetwork extends Homey.App {
     /**
@@ -357,9 +354,6 @@ class UnifiNetwork extends Homey.App {
 
         // check for first and last connected devices on accesspoints
         this.checkAccessPoints();
-
-        // clean memory every time we collect some information
-        this.gcManual();
     }
 
     async _appLogin() {
@@ -469,7 +463,7 @@ class UnifiNetwork extends Homey.App {
                 //this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, args.join(' '));
                 //this.homey.log(args.join(' '));
                 const debugMessage = `[debug] ${message}`;
-                this.homey.api.realtime(debugMessage);
+                this.homey.api.realtime(UnifiConstants.REALTIME_DEBUG, debugMessage);
                 this.homey.log(debugMessage);
             }
         } catch (exception) {
@@ -549,12 +543,6 @@ class UnifiNetwork extends Homey.App {
         const tz = this.homey.clock.getTimezone();
         const localTime = new Date(homeyTime.toLocaleString('en-US', {timeZone: tz}));
         return localTime;
-    }
-
-    gcManual() {
-        setFlagsFromString('--expose_gc');
-        const gc = runInNewContext('gc'); // nocommit
-        gc();
     }
 }
 
