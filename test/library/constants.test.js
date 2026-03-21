@@ -4,7 +4,7 @@ const constants = require('../../library/constants');
 
 describe('constants', () => {
     it('all exported values are non-empty strings', () => {
-        Object.entries(constants).forEach(([key, value]) => {
+        Object.entries(constants).forEach(([_key, value]) => {
             expect(typeof value).toBe('string');
             expect(value.length).toBeGreaterThan(0);
         });

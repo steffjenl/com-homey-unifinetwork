@@ -263,7 +263,7 @@ class UnifiNetwork extends Homey.App {
                 .then(response => {
                     response.forEach(accessPoint => {
                         if (!accessPoint.adopted || accessPoint.type !== 'uap') return;
-                        if (this.accessPointList.hasOwnProperty(accessPoint.mac)) return;
+                        if (Object.prototype.hasOwnProperty.call(this.accessPointList, accessPoint.mac)) return;
                         this.accessPointList[accessPoint.mac] = {
                             name: accessPoint.name,
                             mac: accessPoint.mac,

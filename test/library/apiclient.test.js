@@ -112,6 +112,22 @@ describe('ApiClient', () => {
             expect(client.getDeviceName({})).toBe('unknown');
         });
     });
-});
 
+    describe('powerCycleDevice()', () => {
+        it('calls setDeviceSettingsBase twice for the target port', async () => {
+            const mac = 'dd:ee:ff:00:11:22';
+            client.unifi.getAccessDevices.mockResolvedValueOnce([
+                { mac, _id: 'device-id-1', type: 'usw', adopted: true, name: 'Switch', port_overrides: [{ port_idx: 1, poe_mode: 'auto' }] },
+            ]);
+            await client.powerCycleDevice(mac, 1);
+            // Allow the internal async chain (incl. 500 ms sleep) to complete
+            await new Promise((r) => setTimeout(r, 600));
+            // Should have called setDeviceSettingsBase exactly twice (off → auto)
+            expect(client.unifi.setDeviceSettingsBase).toHaveBeenCalledTimes(2);
+            // Both calls target the same device id
+            expect(client.unifi.setDeviceSettingsBase.mock.calls[0][0]).toBe('device-id-1');
+            expect(client.unifi.setDeviceSettingsBase.mock.calls[1][0]).toBe('device-id-1');
+        });
+    });
+});
 

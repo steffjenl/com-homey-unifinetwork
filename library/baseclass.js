@@ -6,6 +6,7 @@ const UfvConstants = require('./constants');
 class BaseClass extends Homey.SimpleClass {
     constructor(...props) {
         super(...props);
+        // base constructor — subclasses extend this
     }
 
 }
