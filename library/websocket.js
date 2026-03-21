@@ -14,7 +14,9 @@ class WebsocketClient extends BaseClass {
 
         this._baseurl = new URL(`https://${options.host}:${options.port}`);
         this._pingPongInterval = 3 * 1000; // Ms
-        this._autoReconnectInterval = 5 * 1000; // Ms
+
+        this._reconnectAttempt = 0;
+        this._isReconnecting = false;
 
         this.homey = homey;
         this.lastWebsocketMessage = null;
@@ -56,7 +58,8 @@ class WebsocketClient extends BaseClass {
             }, this._pingPongInterval);
 
             this._ws.on('open', () => {
-                this.homey.app.debug(`WebSocket: open`);
+                this._reconnectAttempt = 0; // reset backoff on successful connection
+                this.homey.app.debug('WebSocket: open');
             });
 
             this._ws.on('message', (data, isBinary) => {
@@ -105,6 +108,9 @@ class WebsocketClient extends BaseClass {
     _reconnect() {
         if (this._isReconnecting === false && this.homey.app.api.unifi._isClosed === false) {
             this._isReconnecting = true;
+            const delay = Math.min(Math.pow(2, this._reconnectAttempt + 1) * 1000, 300000) + Math.random() * 1000;
+            this._reconnectAttempt++;
+            this.homey.app.debug(`WebSocket: reconnect attempt ${this._reconnectAttempt}, waiting ${Math.round(delay)}ms`);
             setTimeout(async () => {
                 this._isReconnecting = false;
                 try {
@@ -112,7 +118,7 @@ class WebsocketClient extends BaseClass {
                 } catch (error) {
                     this.error('_reconnect() encountered an error: ' + error);
                 }
-            }, this._autoReconnectInterval);
+            }, delay);
         }
     }
 }
