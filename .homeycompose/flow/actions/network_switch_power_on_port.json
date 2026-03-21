@@ -32,11 +32,39 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "driver_id=network-switch"
+      "filter": "driver_id=network-switch",
+      "title": {
+        "en": "Network switch",
+        "nl": "Netwerk switch",
+        "de": "Netzwerk-Switch",
+        "fr": "Commutateur réseau",
+        "it": "Switch di rete",
+        "es": "Interruptor de red",
+        "da": "Netværk switch",
+        "sv": "Nätverksswitch",
+        "no": "Nettverkssvitsj",
+        "ko": "네트워크 스위치",
+        "ru": "Сетевой коммутатор",
+        "pt": "Switch de rede"
+      }
     },
     {
       "type": "number",
-      "name": "port"
+      "name": "port",
+      "title": {
+        "en": "Port number",
+        "nl": "Poortnummer",
+        "de": "Portnummer",
+        "fr": "Numéro de port",
+        "it": "Numero di porta",
+        "es": "Número de puerto",
+        "da": "Portnummer",
+        "sv": "Portnummer",
+        "no": "Portnummer",
+        "ko": "포트 번호",
+        "ru": "Номер порта",
+        "pt": "Número de porta"
+      }
     }
   ]
 }

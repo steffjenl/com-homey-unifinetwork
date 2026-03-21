@@ -433,7 +433,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=cable-client"
+            "filter": "driver_id=cable-client",
+            "title": {
+              "en": "Cable client",
+              "nl": "Bekabelde client",
+              "de": "Kabel-Client",
+              "fr": "Client câblé",
+              "it": "Client cablato",
+              "es": "Cliente por cable",
+              "da": "Kablet klient",
+              "sv": "Trådbunden klient",
+              "no": "Kablet klient",
+              "ko": "유선 클라이언트",
+              "ru": "Кабельный клиент",
+              "pt": "Cliente com fio"
+            }
           }
         ],
         "tokens": []
@@ -458,7 +472,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=cable-client"
+            "filter": "driver_id=cable-client",
+            "title": {
+              "en": "Cable client",
+              "nl": "Bekabelde client",
+              "de": "Kabel-Client",
+              "fr": "Client câblé",
+              "it": "Client cablato",
+              "es": "Cliente por cable",
+              "da": "Kablet klient",
+              "sv": "Trådbunden klient",
+              "no": "Kablet klient",
+              "ko": "유선 클라이언트",
+              "ru": "Кабельный клиент",
+              "pt": "Cliente com fio"
+            }
           }
         ]
       },
@@ -523,6 +551,20 @@
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
               "pt": "Nome do ponto de acesso"
+            },
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Zugangspunkt",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
             }
           }
         ]
@@ -636,6 +678,20 @@
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
               "pt": "Nome do ponto de acesso"
+            },
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Zugangspunkt",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
             }
           }
         ]
@@ -724,7 +780,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ],
         "tokens": [
@@ -839,7 +909,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ]
       },
@@ -863,7 +947,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ],
         "tokens": [
@@ -973,7 +1071,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ],
         "tokens": [
@@ -1082,7 +1194,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ],
         "tokens": [
@@ -1195,6 +1321,20 @@
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
               "pt": "Nome do ponto de acesso"
+            },
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Zugangspunkt",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
             }
           }
         ]
@@ -1233,7 +1373,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=cable-client"
+            "filter": "driver_id=cable-client",
+            "title": {
+              "en": "Cable client",
+              "nl": "Bekabelde client",
+              "de": "Kabel-Client",
+              "fr": "Client câblé",
+              "it": "Client cablato",
+              "es": "Cliente por cable",
+              "da": "Kablet klient",
+              "sv": "Trådbunden klient",
+              "no": "Kablet klient",
+              "ko": "유선 클라이언트",
+              "ru": "Кабельный клиент",
+              "pt": "Cliente com fio"
+            }
           }
         ]
       },
@@ -1320,7 +1474,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ]
       },
@@ -1358,7 +1526,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ]
       },
@@ -1396,7 +1578,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           },
           {
             "name": "accessPoint",
@@ -1414,6 +1610,20 @@
               "ko": "액세스 포인트 Mac 또는 이름",
               "ru": "Точка доступа Mac или имя",
               "pt": "Ponto de acesso Mac ou nome"
+            },
+            "title": {
+              "en": "Access point",
+              "nl": "Toegangspunt",
+              "de": "Zugangspunkt",
+              "fr": "Point d'accès",
+              "it": "Punto di accesso",
+              "es": "Punto de acceso",
+              "da": "Adgangspunkt",
+              "sv": "Åtkomstpunkt",
+              "no": "Tilgangspunkt",
+              "ko": "액세스 포인트",
+              "ru": "Точка доступа",
+              "pt": "Ponto de acesso"
             }
           }
         ]
@@ -1440,7 +1650,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=cable-client"
+            "filter": "driver_id=cable-client",
+            "title": {
+              "en": "Cable client",
+              "nl": "Bekabelde client",
+              "de": "Kabel-Client",
+              "fr": "Client câblé",
+              "it": "Client cablato",
+              "es": "Cliente por cable",
+              "da": "Kablet klient",
+              "sv": "Trådbunden klient",
+              "no": "Kablet klient",
+              "ko": "유선 클라이언트",
+              "ru": "Кабельный клиент",
+              "pt": "Cliente com fio"
+            }
           }
         ]
       },
@@ -1464,7 +1688,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=cable-client"
+            "filter": "driver_id=cable-client",
+            "title": {
+              "en": "Cable client",
+              "nl": "Bekabelde client",
+              "de": "Kabel-Client",
+              "fr": "Client câblé",
+              "it": "Client cablato",
+              "es": "Cliente por cable",
+              "da": "Kablet klient",
+              "sv": "Trådbunden klient",
+              "no": "Kablet klient",
+              "ko": "유선 클라이언트",
+              "ru": "Кабельный клиент",
+              "pt": "Cliente com fio"
+            }
           }
         ]
       },
@@ -1502,11 +1740,39 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=network-switch"
+            "filter": "driver_id=network-switch",
+            "title": {
+              "en": "Network switch",
+              "nl": "Netwerk switch",
+              "de": "Netzwerk-Switch",
+              "fr": "Commutateur réseau",
+              "it": "Switch di rete",
+              "es": "Interruptor de red",
+              "da": "Netværk switch",
+              "sv": "Nätverksswitch",
+              "no": "Nettverkssvitsj",
+              "ko": "네트워크 스위치",
+              "ru": "Сетевой коммутатор",
+              "pt": "Switch de rede"
+            }
           },
           {
             "type": "number",
-            "name": "port"
+            "name": "port",
+            "title": {
+              "en": "Port number",
+              "nl": "Poortnummer",
+              "de": "Portnummer",
+              "fr": "Numéro de port",
+              "it": "Numero di porta",
+              "es": "Número de puerto",
+              "da": "Portnummer",
+              "sv": "Portnummer",
+              "no": "Portnummer",
+              "ko": "포트 번호",
+              "ru": "Номер порта",
+              "pt": "Número de porta"
+            }
           }
         ]
       },
@@ -1544,11 +1810,39 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=network-switch"
+            "filter": "driver_id=network-switch",
+            "title": {
+              "en": "Network switch",
+              "nl": "Netwerk switch",
+              "de": "Netzwerk-Switch",
+              "fr": "Commutateur réseau",
+              "it": "Switch di rete",
+              "es": "Interruptor de red",
+              "da": "Netværk switch",
+              "sv": "Nätverksswitch",
+              "no": "Nettverkssvitsj",
+              "ko": "네트워크 스위치",
+              "ru": "Сетевой коммутатор",
+              "pt": "Switch de rede"
+            }
           },
           {
             "type": "number",
-            "name": "port"
+            "name": "port",
+            "title": {
+              "en": "Port number",
+              "nl": "Poortnummer",
+              "de": "Portnummer",
+              "fr": "Numéro de port",
+              "it": "Numero di porta",
+              "es": "Número de puerto",
+              "da": "Portnummer",
+              "sv": "Portnummer",
+              "no": "Portnummer",
+              "ko": "포트 번호",
+              "ru": "Номер порта",
+              "pt": "Número de porta"
+            }
           }
         ]
       },
@@ -1586,11 +1880,39 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=network-switch"
+            "filter": "driver_id=network-switch",
+            "title": {
+              "en": "Network switch",
+              "nl": "Netwerk switch",
+              "de": "Netzwerk-Switch",
+              "fr": "Commutateur réseau",
+              "it": "Switch di rete",
+              "es": "Interruptor de red",
+              "da": "Netværk switch",
+              "sv": "Nätverksswitch",
+              "no": "Nettverkssvitsj",
+              "ko": "네트워크 스위치",
+              "ru": "Сетевой коммутатор",
+              "pt": "Switch de rede"
+            }
           },
           {
             "type": "number",
-            "name": "port"
+            "name": "port",
+            "title": {
+              "en": "Port number",
+              "nl": "Poortnummer",
+              "de": "Portnummer",
+              "fr": "Numéro de port",
+              "it": "Numero di porta",
+              "es": "Número de puerto",
+              "da": "Portnummer",
+              "sv": "Portnummer",
+              "no": "Portnummer",
+              "ko": "포트 번호",
+              "ru": "Номер порта",
+              "pt": "Número de porta"
+            }
           }
         ]
       },
@@ -1686,7 +2008,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ]
       },
@@ -1710,7 +2046,21 @@
           {
             "type": "device",
             "name": "Device",
-            "filter": "driver_id=wifi-client"
+            "filter": "driver_id=wifi-client",
+            "title": {
+              "en": "Wi-Fi client",
+              "nl": "Wifi-client",
+              "de": "WLAN-Client",
+              "fr": "Client Wi-Fi",
+              "it": "Client Wi-Fi",
+              "es": "Cliente Wi-Fi",
+              "da": "Wifi-klient",
+              "sv": "Wifi-klient",
+              "no": "Wifi-klient",
+              "ko": "Wi-Fi 클라이언트",
+              "ru": "Wi-Fi клиент",
+              "pt": "Cliente Wi-Fi"
+            }
           }
         ]
       }

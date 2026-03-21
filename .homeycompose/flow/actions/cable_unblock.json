@@ -18,7 +18,21 @@
     {
       "type": "device",
       "name": "Device",
-      "filter": "driver_id=cable-client"
+      "filter": "driver_id=cable-client",
+      "title": {
+        "en": "Cable client",
+        "nl": "Bekabelde client",
+        "de": "Kabel-Client",
+        "fr": "Client câblé",
+        "it": "Client cablato",
+        "es": "Cliente por cable",
+        "da": "Kablet klient",
+        "sv": "Trådbunden klient",
+        "no": "Kablet klient",
+        "ko": "유선 클라이언트",
+        "ru": "Кабельный клиент",
+        "pt": "Cliente com fio"
+      }
     }
   ]
 }
