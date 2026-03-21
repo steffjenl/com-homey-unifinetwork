@@ -372,7 +372,7 @@ class UnifiNetwork extends Homey.App {
         }
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
-        this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+                this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
 
         await (async () => {
             try {
@@ -390,7 +390,7 @@ class UnifiNetwork extends Homey.App {
 
                 if ("pullmethode" in settings && settings.pullmethode === '1') {
                     // LISTEN for WebSocket events
-                    this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site);
+                    this.api.setWebSocketObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
                     this.api.websocket.listen().then((connected) => {
                         if (connected) {
                             this.debug('WebSocket is connected');

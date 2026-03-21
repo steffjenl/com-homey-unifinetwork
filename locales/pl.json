@@ -1,72 +1,74 @@
 {
-  "title": "UniFi Sieć",
-  "pair": {
-    "validate": {
-      "title": "Weryfikacja UniFi Cloud Key",
-      "instruction": "Najpierw ustaw Cloud Key w Ustawieniach."
+    "title": "UniFi Sieć",
+    "pair": {
+        "validate": {
+            "title": "Weryfikacja UniFi Cloud Key",
+            "instruction": "Najpierw ustaw Cloud Key w Ustawieniach."
+        },
+        "login": {
+            "title": "Zaloguj się"
+        }
     },
-    "login": {
-      "title": "Zaloguj się"
+    "status": {
+        "connection": {
+            "Connected": "Połączono",
+            "Connecting": "Łączenie...",
+            "Disconnected": "Rozłączono",
+            "Initialized": "Zainicjowano"
+        }
+    },
+    "settings": {
+        "title": "Ustawienia sieci UniFi",
+        "instruction": "Zaloguj się danymi użytkownika UniFi Network.",
+        "nvr": "Szczegóły serwera",
+        "nvrText": "Użyj portu 443 dla UniFiOS i portu 8443 dla Docker / Standalone.",
+        "nvrip": "Adres IP",
+        "nvrport": "Port",
+        "credentials": "Dane uwierzytelniające użytkownika",
+        "credentialsText": "MFA wyłączone i lokalny użytkownik administratora",
+        "username": "Nazwa użytkownika (min. 32 znaki)",
+        "password": "Hasło",
+        "apply": "Zastosuj",
+        "test": "Testuj dane uwierzytelniające",
+        "test_status": {
+            "success": "Dane uwierzytelniające są poprawne.",
+            "failure": "Dane uwierzytelniające są niepoprawne."
+        },
+        "saved": "Ustawienia zapisane.",
+        "site": "Strona",
+        "tab": {
+            "settings": "Ustawienia",
+            "sites": "Strony",
+            "event_log": "Dziennik zdarzeń"
+        },
+        "intro2": "",
+        "log_enabled": "Dziennik zdarzeń włączony",
+        "pullmethodeheader": "Metoda pobierania i interwał",
+        "pullmethode": "Metoda pobierania",
+        "interval": "Interwał",
+        "applicationFlows": "Włącz przepływy aplikacji",
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates."
+    },
+    "events": {
+        "camera": {
+            "motion_started": "Ruch rozpoczęty",
+            "motion_ended": "Ruch zakończony",
+            "motion_inprogress": "Ruch",
+            "ftr_inprogress": "Pełny czas",
+            "disabled": "Wyłączone",
+            "failed": "Niepowodzenie",
+            "done": "Zakończono",
+            "always": "Zawsze",
+            "motion": "Ruch",
+            "never": "Nigdy",
+            "detections": "Detekcje"
+        },
+        "health": {
+            "unknown": "Nieznany",
+            "green": "Zdrowy",
+            "orange": "Ostrzeżenie",
+            "red": "Krytyczny"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Połączono",
-      "Connecting": "Łączenie...",
-      "Disconnected": "Rozłączono",
-      "Initialized": "Zainicjowano"
-    }
-  },
-  "settings": {
-    "title": "Ustawienia sieci UniFi",
-    "instruction": "Zaloguj się danymi użytkownika UniFi Network.",
-    "nvr": "Szczegóły serwera",
-    "nvrText": "Użyj portu 443 dla UniFiOS i portu 8443 dla Docker / Standalone.",
-    "nvrip": "Adres IP",
-    "nvrport": "Port",
-    "credentials": "Dane uwierzytelniające użytkownika",
-    "credentialsText": "MFA wyłączone i lokalny użytkownik administratora",
-    "username": "Nazwa użytkownika (min. 32 znaki)",
-    "password": "Hasło",
-    "apply": "Zastosuj",
-    "test": "Testuj dane uwierzytelniające",
-    "test_status": {
-      "success": "Dane uwierzytelniające są poprawne.",
-      "failure": "Dane uwierzytelniające są niepoprawne."
-    },
-    "saved": "Ustawienia zapisane.",
-    "site": "Strona",
-    "tab": {
-      "settings": "Ustawienia",
-      "sites": "Strony",
-      "event_log": "Dziennik zdarzeń"
-    },
-    "intro2": "",
-    "log_enabled": "Dziennik zdarzeń włączony",
-    "pullmethodeheader": "Metoda pobierania i interwał",
-    "pullmethode": "Metoda pobierania",
-    "interval": "Interwał",
-    "applicationFlows": "Włącz przepływy aplikacji"
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Ruch rozpoczęty",
-      "motion_ended": "Ruch zakończony",
-      "motion_inprogress": "Ruch",
-      "ftr_inprogress": "Pełny czas",
-      "disabled": "Wyłączone",
-      "failed": "Niepowodzenie",
-      "done": "Zakończono",
-      "always": "Zawsze",
-      "motion": "Ruch",
-      "never": "Nigdy",
-      "detections": "Detekcje"
-    },
-    "health": {
-      "unknown": "Nieznany",
-      "green": "Zdrowy",
-      "orange": "Ostrzeżenie",
-      "red": "Krytyczny"
-    }
-  }
 }

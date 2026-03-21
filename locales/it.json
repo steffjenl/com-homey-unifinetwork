@@ -1,64 +1,66 @@
 {
-  "title": "UniFi Network",
-  "pair": {
-    "validate": {
-      "title": "Convalida UniFi Cloud Key",
-      "instruction": "Per favore, configura prima la Cloud Key nelle Impostazioni."
+    "title": "UniFi Network",
+    "pair": {
+        "validate": {
+            "title": "Convalida UniFi Cloud Key",
+            "instruction": "Per favore, configura prima la Cloud Key nelle Impostazioni."
+        },
+        "login": {
+            "title": "Accedi"
+        }
     },
-    "login": {
-      "title": "Accedi"
-    }
-  },
-  "settings": {
-    "title": "Impostazioni UniFi Network",
-    "instruction": "Accedi con le credenziali dell'utente UniFi Network.",
-    "nvr": "Dati del server",
-    "nvrText": "Usa la porta 443 per UniFiOS e la porta 8443 per Docker / Standalone.",
-    "nvrip": "Indirizzo IP",
-    "nvrport": "Porta",
-    "credentials": "Credenziali utente",
-    "credentialsText": "MFA disattivato e utente amministratore locale",
-    "username": "Nome utente (minimo 32 caratteri)",
-    "password": "Password",
-    "apply": "Applica",
-    "test": "Testa credenziali utente",
-    "test_status": {
-      "success": "Connessione riuscita.",
-      "failure": "Connessione fallita. Controlla i dati e riprova."
+    "settings": {
+        "title": "Impostazioni UniFi Network",
+        "instruction": "Accedi con le credenziali dell'utente UniFi Network.",
+        "nvr": "Dati del server",
+        "nvrText": "Usa la porta 443 per UniFiOS e la porta 8443 per Docker / Standalone.",
+        "nvrip": "Indirizzo IP",
+        "nvrport": "Porta",
+        "credentials": "Credenziali utente",
+        "credentialsText": "MFA disattivato e utente amministratore locale",
+        "username": "Nome utente (minimo 32 caratteri)",
+        "password": "Password",
+        "apply": "Applica",
+        "test": "Testa credenziali utente",
+        "test_status": {
+            "success": "Connessione riuscita.",
+            "failure": "Connessione fallita. Controlla i dati e riprova."
+        },
+        "saved": "Impostazioni salvate.",
+        "tab": {
+            "settings": "Impostazioni",
+            "event_log": "Registro eventi"
+        },
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates."
     },
-    "saved": "Impostazioni salvate.",
-    "tab": {
-      "settings": "Impostazioni",
-      "event_log": "Registro eventi"
-    }
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Inizio movimento",
-      "motion_ended": "Fine movimento",
-      "motion_inprogress": "Movimento",
-      "ftr_inprogress": "Continuo",
-      "disabled": "Disattivato",
-      "failed": "Fallito",
-      "done": "Fatto",
-      "always": "Sempre",
-      "motion": "Su movimento",
-      "never": "Mai",
-      "detections": "Su movimento"
+    "events": {
+        "camera": {
+            "motion_started": "Inizio movimento",
+            "motion_ended": "Fine movimento",
+            "motion_inprogress": "Movimento",
+            "ftr_inprogress": "Continuo",
+            "disabled": "Disattivato",
+            "failed": "Fallito",
+            "done": "Fatto",
+            "always": "Sempre",
+            "motion": "Su movimento",
+            "never": "Mai",
+            "detections": "Su movimento"
+        },
+        "health": {
+            "unknown": "Sconosciuto",
+            "green": "Salute",
+            "orange": "Avviso",
+            "red": "Critico"
+        }
     },
-    "health": {
-      "unknown": "Sconosciuto",
-      "green": "Salute",
-      "orange": "Avviso",
-      "red": "Critico"
+    "status": {
+        "connection": {
+            "Connected": "Connesso",
+            "Connecting": "Connessione in corso...",
+            "Disconnected": "Disconnesso",
+            "Initialized": "Inizializzazione"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Connesso",
-      "Connecting": "Connessione in corso...",
-      "Disconnected": "Disconnesso",
-      "Initialized": "Inizializzazione"
-    }
-  }
 }

@@ -69,6 +69,16 @@
             <label class="homey-form-label" for="txt_password" data-i18n="settings.password"></label>
             <input class="homey-form-input" id="txt_password" type="password" value=""/>
         </div>
+
+        <!-- SSL verify -->
+        <div class="field row">
+            <label class="homey-form-checkbox">
+                <input class="homey-form-checkbox-input" id="txt_sslverify" type="checkbox">
+                <span class="homey-form-checkbox-checkmark"></span>
+                <span class="homey-form-checkbox-text"><span data-i18n="settings.sslverify"></span></span>
+            </label>
+            <p><small data-i18n="settings.sslverify_hint"></small></p>
+        </div>
     </fieldset>
 
     <!-- site -->
@@ -151,6 +161,7 @@
     const txtNvrPort = document.getElementById('txt_nvrport');
     const txtUsername = document.getElementById('txt_username');
     const txtPassword = document.getElementById('txt_password');
+    const txtSslVerify = document.getElementById('txt_sslverify');
     const txtSite = document.getElementById('txt_site');
     const txtPullMethode = document.getElementById('txt_pullmethode');
     const txtInterval = document.getElementById('txt_interval');
@@ -174,6 +185,7 @@
                     txtNvrPort.value = (settings.port ? settings.port : 443);
                     txtUsername.value = settings.user;
                     txtPassword.value = settings.pass;
+                    txtSslVerify.checked = (settings.sslverify === true);
                     txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
                     txtApplicationFlows.checked = (settings.applicationFlows === "1");
@@ -191,6 +203,7 @@
                 'port': txtNvrPort.value,
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
+                'sslverify': txtSslVerify.checked,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
                 'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),

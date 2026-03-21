@@ -1,72 +1,74 @@
 {
-  "title": "UniFi Nätverk",
-  "pair": {
-    "validate": {
-      "title": "Validerar UniFi Cloud Key",
-      "instruction": "Ställ först in Cloud Key i Inställningar."
+    "title": "UniFi Nätverk",
+    "pair": {
+        "validate": {
+            "title": "Validerar UniFi Cloud Key",
+            "instruction": "Ställ först in Cloud Key i Inställningar."
+        },
+        "login": {
+            "title": "Logga in"
+        }
     },
-    "login": {
-      "title": "Logga in"
+    "status": {
+        "connection": {
+            "Connected": "Ansluten",
+            "Connecting": "Ansluter...",
+            "Disconnected": "Frånkopplad",
+            "Initialized": "Initierad"
+        }
+    },
+    "settings": {
+        "title": "UniFi Nätverksinställningar",
+        "instruction": "Logga in med UniFi Network-användarens inloggningsuppgifter.",
+        "nvr": "Serverdetaljer",
+        "nvrText": "Använd port 443 för UniFiOS och port 8443 för Docker / Standalone.",
+        "nvrip": "IP-adress",
+        "nvrport": "Port",
+        "credentials": "Användaruppgifter",
+        "credentialsText": "MFA inaktiverad och lokal administratörsanvändare",
+        "username": "Användarnamn (minst 32 tecken)",
+        "password": "Lösenord",
+        "apply": "Verkställ",
+        "test": "Testa inloggningsuppgifter",
+        "test_status": {
+            "success": "Inloggningsuppgifterna är giltiga.",
+            "failure": "Inloggningsuppgifterna är ogiltiga."
+        },
+        "saved": "Inställningar sparade.",
+        "site": "Site",
+        "tab": {
+            "settings": "Inställningar",
+            "sites": "Sites",
+            "event_log": "Händelselogg"
+        },
+        "intro2": "",
+        "log_enabled": "Händelselogg aktiverad",
+        "pullmethodeheader": "Pull-metod & intervall",
+        "pullmethode": "Pull-metod",
+        "interval": "Intervall",
+        "applicationFlows": "Aktivera applikationsflöden",
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates."
+    },
+    "events": {
+        "camera": {
+            "motion_started": "Rörelse startad",
+            "motion_ended": "Rörelse avslutad",
+            "motion_inprogress": "Rörelse",
+            "ftr_inprogress": "Full tid",
+            "disabled": "Inaktiverad",
+            "failed": "Misslyckades",
+            "done": "Klar",
+            "always": "Alltid",
+            "motion": "Rörelse",
+            "never": "Aldrig",
+            "detections": "Detektioner"
+        },
+        "health": {
+            "unknown": "Okänd",
+            "green": "Frisk",
+            "orange": "Varning",
+            "red": "Kritisk"
+        }
     }
-  },
-  "status": {
-    "connection": {
-      "Connected": "Ansluten",
-      "Connecting": "Ansluter...",
-      "Disconnected": "Frånkopplad",
-      "Initialized": "Initierad"
-    }
-  },
-  "settings": {
-    "title": "UniFi Nätverksinställningar",
-    "instruction": "Logga in med UniFi Network-användarens inloggningsuppgifter.",
-    "nvr": "Serverdetaljer",
-    "nvrText": "Använd port 443 för UniFiOS och port 8443 för Docker / Standalone.",
-    "nvrip": "IP-adress",
-    "nvrport": "Port",
-    "credentials": "Användaruppgifter",
-    "credentialsText": "MFA inaktiverad och lokal administratörsanvändare",
-    "username": "Användarnamn (minst 32 tecken)",
-    "password": "Lösenord",
-    "apply": "Verkställ",
-    "test": "Testa inloggningsuppgifter",
-    "test_status": {
-      "success": "Inloggningsuppgifterna är giltiga.",
-      "failure": "Inloggningsuppgifterna är ogiltiga."
-    },
-    "saved": "Inställningar sparade.",
-    "site": "Site",
-    "tab": {
-      "settings": "Inställningar",
-      "sites": "Sites",
-      "event_log": "Händelselogg"
-    },
-    "intro2": "",
-    "log_enabled": "Händelselogg aktiverad",
-    "pullmethodeheader": "Pull-metod & intervall",
-    "pullmethode": "Pull-metod",
-    "interval": "Intervall",
-    "applicationFlows": "Aktivera applikationsflöden"
-  },
-  "events": {
-    "camera": {
-      "motion_started": "Rörelse startad",
-      "motion_ended": "Rörelse avslutad",
-      "motion_inprogress": "Rörelse",
-      "ftr_inprogress": "Full tid",
-      "disabled": "Inaktiverad",
-      "failed": "Misslyckades",
-      "done": "Klar",
-      "always": "Alltid",
-      "motion": "Rörelse",
-      "never": "Aldrig",
-      "detections": "Detektioner"
-    },
-    "health": {
-      "unknown": "Okänd",
-      "green": "Frisk",
-      "orange": "Varning",
-      "red": "Kritisk"
-    }
-  }
 }

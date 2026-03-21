@@ -46,7 +46,9 @@
         "pullmethodeheader": "Pull Methode & Interval",
         "pullmethode": "Pull Methode",
         "interval": "Interval",
-        "applicationFlows": "Enable application flows"
+        "applicationFlows": "Enable application flows",
+        "sslverify": "Verify SSL certificate",
+        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates (Docker / Cloud Key Gen1)."
     },
     "events": {
         "camera": {

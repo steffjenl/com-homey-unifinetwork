@@ -15,14 +15,17 @@ class ApiClient extends BaseClass {
         this.loggedInStatus = 0;
     }
 
-    setUnifiObject(hostName, portNumber, userName, passWord, siteName) {
-        this.unifi = new Unifi.Controller({host: hostName, port: portNumber, sslverify: false, site: siteName});
+    setUnifiObject(hostName, portNumber, userName, passWord, siteName, sslVerify) {
+        // Migration shim: if sslVerify is undefined (existing installs) default to false
+        const sslverify = typeof sslVerify === 'boolean' ? sslVerify : false;
+        this.unifi = new Unifi.Controller({host: hostName, port: portNumber, sslverify, site: siteName});
 
         return this.unifi;
     }
 
-    setWebSocketObject(hostName, portNumber, userName, passWord, siteName) {
-        const options = {host: hostName, port: portNumber, sslverify: false, site: siteName};
+    setWebSocketObject(hostName, portNumber, userName, passWord, siteName, sslVerify) {
+        const sslverify = typeof sslVerify === 'boolean' ? sslVerify : false;
+        const options = {host: hostName, port: portNumber, sslverify, site: siteName};
         this.websocket = new WebsocketClient(options, this.homey);
     }
 
