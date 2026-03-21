@@ -19,6 +19,8 @@ class UnifiNetwork extends Homey.App {
         this.checkDevicesStateInterval = null;
         this.updateAccessPointListInterval = null;
 
+        this._recentEventIds = new Set();
+
         this._refreshAuthTokensnterval = 60 * 60 * 1000; // 1 hour
 
 
@@ -30,6 +32,11 @@ class UnifiNetwork extends Homey.App {
 
         await this._initFlowTriggers();
         await this._initActionCards();
+
+        // Clear dedup event Set every 60 s to avoid unbounded growth
+        this.homey.setInterval(() => {
+            this._recentEventIds.clear();
+        }, 60 * 1000);
 
         this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Initialized');
 
@@ -52,6 +59,15 @@ class UnifiNetwork extends Homey.App {
      */
     parseWebsocketMessage(payload) {
         let that = this;
+
+        // Deduplication guard — skip events already processed within the last 60 s
+        const dedupKey = `${payload.key}_${payload.user ?? payload.client ?? ''}_${payload.time ?? ''}`;
+        if (this._recentEventIds.has(dedupKey)) {
+            this.debug(`[dedup] Skipping duplicate event: ${dedupKey}`);
+            return;
+        }
+        this._recentEventIds.add(dedupKey);
+
         // start application flow cards
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
