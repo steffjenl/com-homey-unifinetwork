@@ -2259,6 +2259,177 @@
         "lan"
       ],
       "name": {
+        "en": "Access Point",
+        "nl": "Toegangspunt",
+        "es": "Punto de acceso",
+        "de": "Zugangspunkt",
+        "fr": "Point d'accès",
+        "it": "Punto di accesso",
+        "da": "Adgangspunkt",
+        "sv": "Åtkomstpunkt",
+        "no": "Tilgangspunkt",
+        "ko": "액세스 포인트",
+        "ru": "Точка доступа",
+        "pt": "Ponto de acesso"
+      },
+      "images": {
+        "xlarge": "drivers/access-point/assets/images/xlarge.png",
+        "large": "drivers/access-point/assets/images/large.png",
+        "small": "drivers/access-point/assets/images/small.png"
+      },
+      "class": "sensor",
+      "capabilities": [],
+      "capabilitiesOptions": {},
+      "pair": [
+        {
+          "id": "list_clients",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_clients"
+          }
+        },
+        {
+          "id": "add_clients",
+          "template": "add_devices"
+        }
+      ]
+    },
+    {
+      "id": "cable-client",
+      "name": {
+        "en": "Wired client",
+        "nl": "Bedrade cliënt",
+        "es": "Cliente cableado",
+        "de": "Verkabelter Client",
+        "fr": "Client câblé",
+        "it": "Client cablato",
+        "da": "Kablet klient",
+        "sv": "Kabelansluten klient",
+        "no": "Kablet klient",
+        "ko": "유선 클라이언트",
+        "ru": "Проводной клиент",
+        "pt": "Cliente com fio"
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon"
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "onoff",
+              "connected",
+              "blocked"
+            ],
+            "capabilitiesOptions": {
+              "onoff": {
+                "title": {
+                  "en": "Connection state",
+                  "nl": "Verbindingsstatus",
+                  "es": "Estado de Verbindings",
+                  "de": "Verbindungsstatus",
+                  "fr": "État de la connexion",
+                  "it": "Stato della connessione",
+                  "da": "Forbindelsesstatus",
+                  "sv": "Anslutningsstatus",
+                  "no": "Tilkoblingsstatus",
+                  "ko": "연결 상태",
+                  "ru": "Состояние подключения",
+                  "pt": "Estado da conexão"
+                }
+              },
+              "getable": true,
+              "setable": false
+            },
+            "options": {
+              "icons": {
+                "connected": "assets/connected.svg"
+              },
+              "connected": {
+                "noblink": false,
+                "invert": true,
+                "label": {
+                  "true": {
+                    "en": "Connected",
+                    "es": "Conectado",
+                    "de": "Verbunden",
+                    "fr": "Connecté",
+                    "it": "Connesso",
+                    "da": "Tilsluttet",
+                    "sv": "Ansluten",
+                    "no": "Tilkoblet",
+                    "ko": "연결됨",
+                    "ru": "Подключено",
+                    "pt": "Conectado"
+                  },
+                  "false": {
+                    "en": "Disconnected",
+                    "es": "Desconectado",
+                    "de": "Getrennt",
+                    "fr": "Déconnecté",
+                    "it": "Disconnesso",
+                    "da": "Frakoblet",
+                    "sv": "Frånkopplad",
+                    "no": "Frakoblet",
+                    "ko": "연결 끊김",
+                    "ru": "Отключено",
+                    "pt": "Desconectado"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "images": {
+        "xlarge": "drivers/cable-client/assets/images/xlarge.png",
+        "large": "drivers/cable-client/assets/images/large.png",
+        "small": "drivers/cable-client/assets/images/small.png"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "onoff",
+        "connected",
+        "blocked"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Connection state",
+            "nl": "Verbindingsstatus",
+            "es": "Estado de Verbindings",
+            "de": "Verbindungsstatus",
+            "fr": "État de la connexion",
+            "it": "Stato della connessione",
+            "da": "Forbindelsesstatus",
+            "sv": "Anslutningsstatus",
+            "no": "Tilkoblingsstatus",
+            "ko": "연결 상태",
+            "ru": "Состояние подключения",
+            "pt": "Estado da conexão"
+          },
+          "getable": true,
+          "setable": false
+        }
+      },
+      "pair": [
+        {
+          "id": "list_clients",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_clients"
+          }
+        },
+        {
+          "id": "add_clients",
+          "template": "add_devices"
+        }
+      ]
+    },
+    {
+      "id": "network-switch",
+      "name": {
         "en": "Network Switch",
         "nl": "Netwerk Switch",
         "es": "Interruptor de red",

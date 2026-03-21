@@ -1,13 +1,15 @@
 'use strict';
 
 const {Device} = require('homey');
+const PoePowerMixin = require('../../library/poe-power-mixin');
 
-class AccessPointDevice extends Device {
+class AccessPointDevice extends PoePowerMixin(Device) {
 
     /**
      * onInit is called when the device is initialized.
      */
     async onInit() {
+        await this.initPoeMeter(); // restore kWh total from store (from PoePowerMixin)
         await this.waitForBootstrap();
         this.log('Access-Point has been initialized');
     }
@@ -53,6 +55,7 @@ class AccessPointDevice extends Device {
      * onDeleted is called when the user deleted the device.
      */
     async onDeleted() {
+        this.destroyPoeMeter();
         this.log('Access-Point has been deleted');
     }
 
@@ -71,8 +74,15 @@ class AccessPointDevice extends Device {
                 device = device.filter(obj => obj.type === 'uap');
                 device = device.filter(obj => obj.mac === this.getData().id);
                 this.homey.log(JSON.stringify(device));
-                if (device.length > 0) {
+
+                if (device[0]) {
                     this._updatePerRadioStats(device[0]);
+                    // Store uplink switch info and seed initial PoE readings (from PoePowerMixin)
+                    // APs use uplink.uplink_mac / uplink.uplink_remote_port
+                    this.updatePoeUplink(device[0]);
+                    if (this._swMac && this._swPort) {
+                        this._fetchPoeData(this._swMac, this._swPort);
+                    }
                 }
             }).catch(error => this.homey.app.debug(error));
         }
@@ -136,6 +146,8 @@ class AccessPointDevice extends Device {
         }
         // Update per-radio stats when device stats come in via polling
         this._updatePerRadioStats(playloadMessage);
+        // Keep uplink info up to date for real-time device:sync power pushes
+        this.updatePoeUplink(playloadMessage);
     }
 
     onIPChange(data) {
