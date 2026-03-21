@@ -26,8 +26,8 @@
         "nvrport": "Port",
         "credentials": "Dane uwierzytelniające użytkownika",
         "credentialsText": "MFA wyłączone i lokalny użytkownik administratora",
-        "username": "Nazwa użytkownika (min. 32 znaki)",
-        "password": "Hasło",
+        "username": "Nazwa użytkownika",
+        "password": "Hasło (min. 32 znaki)",
         "apply": "Zastosuj",
         "test": "Testuj dane uwierzytelniające",
         "test_status": {

@@ -18,8 +18,8 @@
         "nvrport": "Puerto",
         "credentials": "Datos de usuario",
         "credentialsText": "MFA desactivado y usuario administrador local",
-        "username": "Nombre de usuario (mínimo 32 caracteres)",
-        "password": "Contraseña",
+        "username": "Nombre de usuario",
+        "password": "Contraseña (mínimo 32 caracteres)",
         "apply": "Aplicar",
         "test": "Probar datos de usuario",
         "test_status": {

@@ -26,8 +26,8 @@
         "nvrport": "Port",
         "credentials": "Användaruppgifter",
         "credentialsText": "MFA inaktiverad och lokal administratörsanvändare",
-        "username": "Användarnamn (minst 32 tecken)",
-        "password": "Lösenord",
+        "username": "Användarnamn",
+        "password": "Lösenord (minst 32 tecken)",
         "apply": "Verkställ",
         "test": "Testa inloggningsuppgifter",
         "test_status": {

@@ -18,8 +18,8 @@
         "nvrport": "Port",
         "credentials": "Gebruikersgegevens",
         "credentialsText": "MFA Uitgeschakeld en Local Admin User",
-        "username": "Gebruikersnaam (min 32 karakters)",
-        "password": "Wachtwoord",
+        "username": "Gebruikersnaam",
+        "password": "Wachtwoord (min 32 karakters)",
         "apply": "Toepassen",
         "test": "Test gebruikersgegevens",
         "test_status": {

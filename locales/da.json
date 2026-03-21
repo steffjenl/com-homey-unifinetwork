@@ -26,8 +26,8 @@
         "nvrport": "Port",
         "credentials": "Brugeroplysninger",
         "credentialsText": "MFA deaktiveret og lokal admin-bruger",
-        "username": "Brugernavn (min. 32 tegn)",
-        "password": "Adgangskode",
+        "username": "Brugernavn",
+        "password": "Adgangskode (min. 32 tegn)",
         "apply": "Anvend",
         "test": "Test legitimationsoplysninger",
         "test_status": {

@@ -18,8 +18,8 @@
         "nvrport": "Port",
         "credentials": "Informations utilisateur",
         "credentialsText": "MFA désactivé et utilisateur administrateur local",
-        "username": "Nom d'utilisateur (min 32 caractères)",
-        "password": "Mot de passe",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe (min 32 caractères)",
         "apply": "Appliquer",
         "test": "Tester les informations utilisateur",
         "test_status": {

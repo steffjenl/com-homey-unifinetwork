@@ -26,8 +26,8 @@
         "nvrport": "Port",
         "credentials": "User credentials",
         "credentialsText": "MFA Disabled and Local Admin User",
-        "username": "Username (min 32 chars)",
-        "password": "Password",
+        "username": "Username",
+        "password": "Password (min 32 chars)",
         "apply": "Apply",
         "test": "Test credentials",
         "test_status": {

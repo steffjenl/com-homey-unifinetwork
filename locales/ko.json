@@ -26,8 +26,8 @@
         "nvrport": "포트",
         "credentials": "사용자 자격 증명",
         "credentialsText": "MFA 비활성화 및 로컬 관리자 사용자",
-        "username": "사용자 이름 (최소 32자)",
-        "password": "비밀번호",
+        "username": "사용자 이름",
+        "password": "비밀번호 (최소 32자)",
         "apply": "적용",
         "test": "자격 증명 테스트",
         "test_status": {
