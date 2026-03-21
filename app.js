@@ -83,9 +83,20 @@ class UnifiNetwork extends Homey.App {
             }
         }
 
+        // WAN up/down events (subsystem: wan)
+        if (payload.subsystem === 'wan') {
+            if (payload.key === 'EVT_WAN_Up') {
+                that.homey.log(`EVT_WAN_Up: ${JSON.stringify(payload)}`);
+                that._wanUp.trigger({ wan_ip: payload.wan_ip || '' }).catch(that.homey.log);
+            } else if (payload.key === 'EVT_WAN_Down') {
+                that.homey.log(`EVT_WAN_Down: ${JSON.stringify(payload)}`);
+                that._wanDown.trigger({}).catch(that.homey.log);
+            }
+            return;
+        }
+
         // start device flow cards
-        if (payload.subsystem === 'wlan') {
-            that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
+        if (payload.subsystem === 'wlan') {            that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
             // get wifi-client driver
             const driver = that.homey.drivers.getDriver('wifi-client');
             const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
@@ -153,6 +164,30 @@ class UnifiNetwork extends Homey.App {
 
     async _initActionCards() {
         this.debug('UnifiNetwork init Action Cards');
+
+        // WLAN toggle action (v2.6) — requires API key + UniFi OS 7+
+        const toggleWlan = this.homey.flow.getActionCard(UnifiConstants.ACTION_TOGGLE_WLAN);
+
+        toggleWlan.registerAutocompleteListener('wlan_id', async (query) => {
+            try {
+                const site = this.settings && this.settings.site ? this.settings.site : 'default';
+                const response = await this.api._callV1('GET', `/sites/${site}/wifi/broadcasts`);
+                const broadcasts = Array.isArray(response.data) ? response.data : (Array.isArray(response) ? response : []);
+                return broadcasts
+                    .filter(w => !query || w.name.toLowerCase().includes(query.toLowerCase()))
+                    .map(w => ({ id: w.id, name: w.name, description: w.enabled ? 'Enabled' : 'Disabled' }));
+            } catch (err) {
+                this.error('toggle_wlan autocomplete error:', err.message);
+                return [];
+            }
+        });
+
+        toggleWlan.registerRunListener(async (args) => {
+            const site = this.settings && this.settings.site ? this.settings.site : 'default';
+            const enabled = args.enabled === 'true';
+            await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
+            this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
+        });
     }
 
     async _initFlowTriggers() {
@@ -201,6 +236,10 @@ class UnifiNetwork extends Homey.App {
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+
+        // WAN up/down triggers (v2.6)
+        this._wanUp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_UP);
+        this._wanDown = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_DOWN);
 
         const wifiBlock = this.homey.flow.getActionCard('wifi_block');
         wifiBlock.registerRunListener(async (args, state) => {

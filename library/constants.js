@@ -30,3 +30,8 @@ module.exports.EVENT_WIFI_CLIENT_BLOCKED = 'wifi_client_blocked';
 module.exports.EVENT_CABLE_CLIENT_BLOCKED = 'cable_client_blocked';
 //
 module.exports.EVENT_NETWORK_SWITCH_POWER_CYCLE_PORT = 'network_switch_power_cycle_port';
+// WAN events (v2.6)
+module.exports.EVENT_WAN_UP = 'wan_up';
+module.exports.EVENT_WAN_DOWN = 'wan_down';
+// WLAN toggle action (v2.6)
+module.exports.ACTION_TOGGLE_WLAN = 'toggle_wlan';

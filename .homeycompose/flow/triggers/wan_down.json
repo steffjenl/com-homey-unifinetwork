@@ -1,0 +1,19 @@
+{
+  "id": "wan_down",
+  "title": {
+    "en": "WAN connection lost",
+    "nl": "WAN verbinding verloren",
+    "de": "WAN-Verbindung verloren",
+    "fr": "Connexion WAN perdue",
+    "it": "Connessione WAN persa",
+    "es": "Conexión WAN perdida",
+    "da": "WAN-forbindelse mistet",
+    "sv": "WAN-anslutning förlorad",
+    "no": "WAN-tilkobling mistet",
+    "ko": "WAN 연결 끊김",
+    "ru": "WAN-соединение потеряно",
+    "pt": "Conexão WAN perdida"
+  },
+  "tokens": []
+}
+
