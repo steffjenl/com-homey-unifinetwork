@@ -1,5 +1,11 @@
 {
   "id": "access-point",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
   "name": {
     "en": "Access Point",
     "nl": "Toegangspunt",

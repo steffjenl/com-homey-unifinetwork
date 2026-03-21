@@ -1,5 +1,11 @@
 {
   "id": "network-switch",
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
   "name": {
     "en": "Network Switch",
     "nl": "Netwerk Switch",
