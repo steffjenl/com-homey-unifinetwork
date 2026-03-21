@@ -3,6 +3,7 @@
   "version": "2.5.5",
   "main": "app.js",
   "scripts": {
+    "build": "homey app build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
