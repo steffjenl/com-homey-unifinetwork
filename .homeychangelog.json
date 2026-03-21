@@ -130,5 +130,8 @@
   },
   "2.6.0": {
     "en": "Add extra functionality like wifi-6 and verify ssl"
+  },
+  "2.6.1": {
+    "en": "Merged two branched into one and updated packages"
   }
 }
