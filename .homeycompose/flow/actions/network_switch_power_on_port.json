@@ -15,7 +15,7 @@
     "pt": "Ligar PoE"
   },
   "titleFormatted": {
-    "en": "Cylce power on port [[port]]",
+    "en": "Power on port [[port]]",
     "nl": "Zet stroom aan op switch poort [[port]]",
     "es": "Encender puerto [[port]]",
     "de": "Strom an Port [[port]] einschalten",
