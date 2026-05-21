@@ -12,7 +12,8 @@
     "no": "Antall klienter endret",
     "ko": "클라이언트 수 변경됨",
     "ru": "Количество клиентов изменилось",
-    "pt": "Número de clientes alterado"
+    "pt": "Número de clientes alterado",
+    "pl": "Number of clients changed"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Access point"
       }
     }
   ],
@@ -51,10 +53,10 @@
         "no": "Antall klienter",
         "ko": "클라이언트 수",
         "ru": "Количество клиентов",
-        "pt": "Número de clientes"
+        "pt": "Número de clientes",
+        "pl": "Number of clients"
       },
       "example": 5
     }
   ]
 }
-

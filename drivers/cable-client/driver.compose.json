@@ -18,7 +18,8 @@
     "no": "Kablet klient",
     "ko": "유선 클라이언트",
     "ru": "Проводной клиент",
-    "pt": "Cliente com fio"
+    "pt": "Cliente com fio",
+    "pl": "Klient przewodowy"
   },
   "mobile": {
     "components": [
@@ -46,7 +47,8 @@
               "no": "Tilkoblingsstatus",
               "ko": "연결 상태",
               "ru": "Состояние подключения",
-              "pt": "Estado da conexão"
+              "pt": "Estado da conexão",
+              "pl": "Stan połączenia"
             }
           },
           "getable": true,
@@ -71,7 +73,8 @@
                 "no": "Tilkoblet",
                 "ko": "연결됨",
                 "ru": "Подключено",
-                "pt": "Conectado"
+                "pt": "Conectado",
+                "pl": "Connected"
               },
               "false": {
                 "en": "Disconnected",
@@ -84,7 +87,8 @@
                 "no": "Frakoblet",
                 "ko": "연결 끊김",
                 "ru": "Отключено",
-                "pt": "Desconectado"
+                "pt": "Desconectado",
+                "pl": "Disconnected"
               }
             }
           }
@@ -117,7 +121,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false

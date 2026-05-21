@@ -12,7 +12,8 @@
     "no": "Blokkert",
     "ko": "차단됨",
     "ru": "Заблокировано",
-    "pt": "Bloqueado"
+    "pt": "Bloqueado",
+    "pl": "Zablokowane"
   },
   "getable": true,
   "setable": true,

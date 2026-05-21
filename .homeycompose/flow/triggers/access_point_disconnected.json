@@ -12,7 +12,8 @@
     "no": "Tilgangspunkt er offline",
     "ko": "액세스 포인트 오프라인",
     "ru": "Точка доступа не в сети",
-    "pt": "Ponto de acesso offline"
+    "pt": "Ponto de acesso offline",
+    "pl": "Access point went offline"
   },
   "args": [
     {
@@ -31,9 +32,9 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Access point"
       }
     }
   ]
 }
-

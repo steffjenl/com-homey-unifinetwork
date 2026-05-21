@@ -3,12 +3,32 @@
   "sdk": 3,
   "brandColor": "#159EDA",
   "name": {
-    "en": "Ubiquiti UniFi Network"
+    "en": "Ubiquiti UniFi Network",
+    "da": "Ubiquiti UniFi Network",
+    "de": "Ubiquiti UniFi Network",
+    "es": "Ubiquiti UniFi Network",
+    "fr": "Ubiquiti UniFi Network",
+    "it": "Ubiquiti UniFi Network",
+    "ko": "Ubiquiti UniFi Network",
+    "nl": "Ubiquiti UniFi Network",
+    "no": "Ubiquiti UniFi Network",
+    "pl": "Ubiquiti UniFi Network",
+    "ru": "Ubiquiti UniFi Network",
+    "sv": "Ubiquiti UniFi Network"
   },
   "description": {
     "en": "Protect your home with presence detection based on (wifi) clients connected to the UniFi Controller",
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
-    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
+    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi",
+    "da": "Beskyt dit hjem med tilstedevaerelsesdetektion baseret paa (wifi)-klienter forbundet til UniFi Controlleren",
+    "de": "Schuetze dein Zuhause mit Praesenzerkennung auf Basis von (WLAN-)Clients, die mit dem UniFi Controller verbunden sind",
+    "fr": "Protegez votre maison avec une detection de presence basee sur des clients (wifi) connectes au controleur UniFi",
+    "it": "Proteggi la tua casa con il rilevamento di presenza basato sui client (wifi) connessi al controller UniFi",
+    "ko": "UniFi Controller에 연결된 (WiFi) 클라이언트를 기반으로 한 재실 감지로 집을 보호하세요",
+    "no": "Beskytt hjemmet ditt med tilstedevaerelsesdeteksjon basert paa (wifi)-klienter koblet til UniFi-kontrolleren",
+    "pl": "Chroń swój dom dzięki wykrywaniu obecności opartemu na klientach (WiFi) połączonych z kontrolerem UniFi",
+    "ru": "Защитите дом с помощью определения присутствия на основе (WiFi) клиентов, подключенных к контроллеру UniFi",
+    "sv": "Skydda ditt hem med naervarodetektering baserad paa (wifi)-klienter anslutna till UniFi Controller"
   },
   "version": "2.6.2",
   "compatibility": ">=5.0.0",

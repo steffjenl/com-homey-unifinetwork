@@ -12,7 +12,8 @@
     "no": "Tilgangspunkt er online",
     "ko": "액세스 포인트 온라인",
     "ru": "Точка доступа в сети",
-    "pt": "Ponto de acesso online"
+    "pt": "Ponto de acesso online",
+    "pl": "Access point came online"
   },
   "args": [
     {
@@ -31,9 +32,9 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Access point"
       }
     }
   ]
 }
-

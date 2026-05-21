@@ -1,5 +1,18 @@
 {
-  "title": { "en": "Utx bytes 5 GHz", "nl": "Utx bytes 5 GHz" },
+  "title": {
+    "en": "Utx bytes 5 GHz",
+    "nl": "Utx bytes 5 GHz",
+    "da": "TX-trafik 5 GHz (MB)",
+    "de": "TX-Datenverkehr 5 GHz (MB)",
+    "es": "Trafico TX 5 GHz (MB)",
+    "fr": "Trafic TX 5 GHz (Mo)",
+    "it": "Traffico TX 5 GHz (MB)",
+    "ko": "TX 트래픽 5GHz (MB)",
+    "no": "TX-trafikk 5 GHz (MB)",
+    "pl": "Ruch TX 5 GHz (MB)",
+    "ru": "TX-trafik 5 GHz (MB)",
+    "sv": "TX-trafik 5 GHz (MB)"
+  },
   "type": "number",
   "units": "MB",
   "uiComponent": "sensor",

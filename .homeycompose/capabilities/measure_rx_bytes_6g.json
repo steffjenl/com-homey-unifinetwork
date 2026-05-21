@@ -1,5 +1,18 @@
 {
-  "title": { "en": "Urx bytes 6 GHz", "nl": "Urx bytes 6 GHz" },
+  "title": {
+    "en": "Urx bytes 6 GHz",
+    "nl": "Urx bytes 6 GHz",
+    "da": "RX-trafik 6 GHz (MB)",
+    "de": "RX-Datenverkehr 6 GHz (MB)",
+    "es": "Trafico RX 6 GHz (MB)",
+    "fr": "Trafic RX 6 GHz (Mo)",
+    "it": "Traffico RX 6 GHz (MB)",
+    "ko": "RX 트래픽 6GHz (MB)",
+    "no": "RX-trafikk 6 GHz (MB)",
+    "pl": "Ruch RX 6 GHz (MB)",
+    "ru": "RX-trafik 6 GHz (MB)",
+    "sv": "RX-trafik 6 GHz (MB)"
+  },
   "type": "number",
   "units": "MB",
   "uiComponent": "sensor",

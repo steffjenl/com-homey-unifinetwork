@@ -12,12 +12,22 @@
     "no": "Signalstyrke",
     "ko": "신호 강도",
     "ru": "Уровень сигнала",
-    "pt": "Intensidade do Sinal"
+    "pt": "Intensidade do Sinal",
+    "pl": "Siła sygnału"
   },
   "units": {
     "en": "dBm",
     "nl": "dBm",
-    "es": "dBm"
+    "es": "dBm",
+    "da": "dBm",
+    "de": "dBm",
+    "fr": "dBm",
+    "it": "dBm",
+    "ko": "dBm",
+    "no": "dBm",
+    "pl": "dBm",
+    "ru": "dBm",
+    "sv": "dBm"
   },
   "getable": true,
   "setable": false,

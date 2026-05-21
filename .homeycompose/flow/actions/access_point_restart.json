@@ -12,11 +12,22 @@
     "no": "Start tilgangspunkt på nytt",
     "ko": "액세스 포인트 재시작",
     "ru": "Перезапустить точку доступа",
-    "pt": "Reiniciar ponto de acesso"
+    "pt": "Reiniciar ponto de acesso",
+    "pl": "Restart access point"
   },
   "hint": {
     "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
-    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen.",
+    "da": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "de": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "es": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "fr": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "it": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "ko": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "no": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "pl": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "ru": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "sv": "Requires UniFi OS 7+ with an API Key configured in the app settings."
   },
   "args": [
     {
@@ -35,9 +46,9 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Access point"
       }
     }
   ]
 }
-

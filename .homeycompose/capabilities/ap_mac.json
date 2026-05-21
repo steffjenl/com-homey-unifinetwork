@@ -12,7 +12,8 @@
     "no": "Accesspoint MAC",
     "ko": "액세스 포인트 MAC",
     "ru": "MAC точки доступа",
-    "pt": "Accesspoint MAC"
+    "pt": "Accesspoint MAC",
+    "pl": "MAC punktu dostępu"
   },
   "getable": true,
   "setable": false,

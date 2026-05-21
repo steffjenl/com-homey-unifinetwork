@@ -12,7 +12,8 @@
     "no": "Accesspoint",
     "ko": "액세스 포인트",
     "ru": "Точка доступа",
-    "pt": "Accesspoint"
+    "pt": "Accesspoint",
+    "pl": "Punkt dostępu"
   },
   "getable": true,
   "setable": false,

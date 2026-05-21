@@ -18,7 +18,8 @@
     "no": "Wifi-klient",
     "ko": "와이파이 클라이언트",
     "ru": "Wi-Fi клиент",
-    "pt": "Cliente Wifi"
+    "pt": "Cliente Wifi",
+    "pl": "Klient WiFi"
   },
   "mobile": {
     "components": [
@@ -53,7 +54,8 @@
               "no": "Tilkoblingsstatus",
               "ko": "연결 상태",
               "ru": "Состояние подключения",
-              "pt": "Estado da conexão"
+              "pt": "Estado da conexão",
+              "pl": "Stan połączenia"
             },
             "getable": true,
             "setable": false
@@ -80,7 +82,8 @@
                 "no": "Tilkoblet",
                 "ko": "연결됨",
                 "ru": "Подключено",
-                "pt": "Conectado"
+                "pt": "Conectado",
+                "pl": "Connected"
               },
               "false": {
                 "en": "Disconnected",
@@ -93,7 +96,8 @@
                 "no": "Frakoblet",
                 "ko": "연결 끊김",
                 "ru": "Отключено",
-                "pt": "Desconectado"
+                "pt": "Desconectado",
+                "pl": "Disconnected"
               }
             }
           }
@@ -133,7 +137,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false

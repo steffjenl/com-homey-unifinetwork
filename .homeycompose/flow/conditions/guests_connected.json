@@ -12,7 +12,8 @@
     "no": "Gjester !{{|ikke}} tilkoblet",
     "ko": "게스트 !{{|아님}} 연결됨",
     "ru": "Guests !{{|not}} connected",
-    "pt": "Guests !{{|not}} connected"
+    "pt": "Guests !{{|not}} connected",
+    "pl": "Guests !{{|not}} connected"
   },
   "titleFormatted": {
     "en": "Guests !{{|not}} connected",
@@ -26,6 +27,7 @@
     "no": "Gjester !{{|ikke}} tilkoblet",
     "ko": "게스트 !{{|아님}} 연결됨",
     "ru": "Guests !{{|not}} connected",
-    "pt": "Guests !{{|not}} connected"
+    "pt": "Guests !{{|not}} connected",
+    "pl": "Guests !{{|not}} connected"
   }
 }

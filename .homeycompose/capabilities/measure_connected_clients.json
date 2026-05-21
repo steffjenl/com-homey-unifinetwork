@@ -12,7 +12,8 @@
     "no": "Tilkoblede enheter",
     "ko": "연결된 클라이언트",
     "ru": "Подключённые клиенты",
-    "pt": "Clientes conectados"
+    "pt": "Clientes conectados",
+    "pl": "Podłączeni klienci"
   },
   "getable": true,
   "setable": false,
@@ -22,5 +23,3 @@
   "decimals": 0,
   "icon": "./assets/connected.svg"
 }
-
-

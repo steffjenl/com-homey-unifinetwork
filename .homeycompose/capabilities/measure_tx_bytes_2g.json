@@ -1,5 +1,18 @@
 {
-  "title": { "en": "Utx bytes 2.4 GHz", "nl": "Utx bytes 2.4 GHz" },
+  "title": {
+    "en": "Utx bytes 2.4 GHz",
+    "nl": "Utx bytes 2.4 GHz",
+    "da": "TX-trafik 2,4 GHz (MB)",
+    "de": "TX-Datenverkehr 2,4 GHz (MB)",
+    "es": "Trafico TX 2,4 GHz (MB)",
+    "fr": "Trafic TX 2,4 GHz (Mo)",
+    "it": "Traffico TX 2,4 GHz (MB)",
+    "ko": "TX 트래픽 2.4GHz (MB)",
+    "no": "TX-trafikk 2,4 GHz (MB)",
+    "pl": "Ruch TX 2,4 GHz (MB)",
+    "ru": "TX-trafik 2,4 GHz (MB)",
+    "sv": "TX-trafik 2,4 GHz (MB)"
+  },
   "type": "number",
   "units": "MB",
   "uiComponent": "sensor",

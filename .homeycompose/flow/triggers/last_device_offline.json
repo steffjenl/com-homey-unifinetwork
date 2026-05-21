@@ -12,6 +12,7 @@
     "no": "Siste enhet frakoblet",
     "ko": "마지막 장치 연결 해제됨",
     "ru": "Последнее устройство отключено",
-    "pt": "Último dispositivo desconectado"
+    "pt": "Último dispositivo desconectado",
+    "pl": "Last device disconnected"
   }
 }

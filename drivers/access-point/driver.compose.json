@@ -18,7 +18,8 @@
     "no": "Tilgangspunkt",
     "ko": "액세스 포인트",
     "ru": "Точка доступа",
-    "pt": "Ponto de acesso"
+    "pt": "Ponto de acesso",
+    "pl": "Punkt dostępu"
   },
   "images": {
     "xlarge": "drivers/access-point/assets/images/xlarge.png",
@@ -46,7 +47,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false

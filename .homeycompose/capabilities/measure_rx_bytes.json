@@ -6,12 +6,27 @@
     "es": "RX Bytes",
     "de": "RX Bytes",
     "fr": "RX Bytes",
-    "it": "RX Bytes"
+    "it": "RX Bytes",
+    "da": "RX-bytes",
+    "ko": "RX 바이트",
+    "no": "RX-bytes",
+    "pl": "Bajty RX",
+    "ru": "RX байты",
+    "sv": "RX-byte"
   },
   "units": {
     "en": "MB",
     "nl": "MB",
-    "es": "MB"
+    "es": "MB",
+    "da": "MB",
+    "de": "MB",
+    "fr": "MB",
+    "it": "MB",
+    "ko": "MB",
+    "no": "MB",
+    "pl": "MB",
+    "ru": "MB",
+    "sv": "MB"
   },
   "getable": true,
   "setable": false,

@@ -12,7 +12,8 @@
     "no": "Slå på PoE",
     "ko": "PoE 전원 켜기",
     "ru": "Включить питание PoE",
-    "pt": "Ligar PoE"
+    "pt": "Ligar PoE",
+    "pl": "PoE Power On"
   },
   "titleFormatted": {
     "en": "Power on port [[port]]",
@@ -26,7 +27,8 @@
     "no": "Slå på port [[port]]",
     "ko": "포트 [[port]] 전원 켜기",
     "ru": "Включить питание на порту [[port]]",
-    "pt": "Ligar porta [[port]]"
+    "pt": "Ligar porta [[port]]",
+    "pl": "Power on port [[port]]"
   },
   "args": [
     {
@@ -45,7 +47,8 @@
         "no": "Nettverkssvitsj",
         "ko": "네트워크 스위치",
         "ru": "Сетевой коммутатор",
-        "pt": "Switch de rede"
+        "pt": "Switch de rede",
+        "pl": "Network switch"
       }
     },
     {
@@ -63,7 +66,8 @@
         "no": "Portnummer",
         "ko": "포트 번호",
         "ru": "Номер порта",
-        "pt": "Número de porta"
+        "pt": "Número de porta",
+        "pl": "Port number"
       }
     }
   ]

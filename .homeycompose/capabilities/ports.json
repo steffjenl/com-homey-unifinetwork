@@ -12,7 +12,8 @@
     "no": "Antall porter",
     "ko": "포트 수",
     "ru": "Количество портов",
-    "pt": "Quantidade de portas"
+    "pt": "Quantidade de portas",
+    "pl": "Liczba portów"
   },
   "getable": true,
   "setable": false,

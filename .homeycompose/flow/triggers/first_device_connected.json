@@ -12,7 +12,8 @@
     "no": "Første enhet tilkoblet",
     "ko": "첫 번째 장치 연결됨",
     "ru": "Первое устройство подключено",
-    "pt": "Primeiro dispositivo conectado"
+    "pt": "Primeiro dispositivo conectado",
+    "pl": "First device connected"
   },
   "titleFormatted": {
     "en": "First device connected at [[accessPoint]]",
@@ -26,7 +27,8 @@
     "no": "Første enhet tilkoblet [[accessPoint]]",
     "ko": "[[accessPoint]]에 첫 번째 장치가 연결됨",
     "ru": "Первое устройство подключено к [[accessPoint]]",
-    "pt": "Primeiro dispositivo conectado a [[accessPoint]]"
+    "pt": "Primeiro dispositivo conectado a [[accessPoint]]",
+    "pl": "First device connected at [[accessPoint]]"
   },
   "hint": {
     "en": "Triggers when the first device connects to the accesspoint",
@@ -40,7 +42,8 @@
     "no": "Utøses når den første enheten kobles til tilgangspunktet",
     "ko": "첫 번째 장치가 액세스 포인트에 연결될 때 트리거됩니다",
     "ru": "Срабатывает, когда первое устройство подключается к точке доступа",
-    "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso"
+    "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso",
+    "pl": "Triggers when the first device connects to the accesspoint"
   },
   "args": [
     {
@@ -58,7 +61,8 @@
         "no": "Tilgangspunkt navn",
         "ko": "액세스 포인트 이름",
         "ru": "Имя точки доступа",
-        "pt": "Nome do ponto de acesso"
+        "pt": "Nome do ponto de acesso",
+        "pl": "Accesspoint name"
       },
       "title": {
         "en": "Access point",
@@ -72,7 +76,8 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Access point"
       }
     }
   ]

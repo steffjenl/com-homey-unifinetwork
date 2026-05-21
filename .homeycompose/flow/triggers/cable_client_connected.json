@@ -12,7 +12,8 @@
     "no": "Tilkoblet",
     "ko": "연결됨",
     "ru": "Подключено",
-    "pt": "Conectado"
+    "pt": "Conectado",
+    "pl": "Connected"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Kablet klient",
         "ko": "유선 클라이언트",
         "ru": "Кабельный клиент",
-        "pt": "Cliente com fio"
+        "pt": "Cliente com fio",
+        "pl": "Cable client"
       }
     }
   ],

@@ -12,7 +12,8 @@
     "no": "Radio protokoll",
     "ko": "무선 프로토콜",
     "ru": "Радиопротокол",
-    "pt": "Protocolo de rádio"
+    "pt": "Protocolo de rádio",
+    "pl": "Protokół radiowy"
   },
   "getable": true,
   "setable": false,

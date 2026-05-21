@@ -12,7 +12,8 @@
     "no": "Aktiver eller deaktiver et WiFi-nettverk",
     "ko": "WiFi 네트워크 활성화 또는 비활성화",
     "ru": "Включить или отключить сеть WiFi",
-    "pt": "Ativar ou desativar uma rede WiFi"
+    "pt": "Ativar ou desativar uma rede WiFi",
+    "pl": "Enable or disable a WiFi network"
   },
   "titleFormatted": {
     "en": "Set WiFi network [[wlan_id]] to [[enabled]]",
@@ -26,11 +27,22 @@
     "no": "Sett WiFi-nettverk [[wlan_id]] til [[enabled]]",
     "ko": "WiFi 네트워크 [[wlan_id]]를 [[enabled]]로 설정",
     "ru": "Установить сеть WiFi [[wlan_id]] в [[enabled]]",
-    "pt": "Definir rede WiFi [[wlan_id]] como [[enabled]]"
+    "pt": "Definir rede WiFi [[wlan_id]] como [[enabled]]",
+    "pl": "Set WiFi network [[wlan_id]] to [[enabled]]"
   },
   "hint": {
     "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
-    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+    "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen.",
+    "da": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "de": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "es": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "fr": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "it": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "ko": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "no": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "pl": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "ru": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+    "sv": "Requires UniFi OS 7+ with an API Key configured in the app settings."
   },
   "args": [
     {
@@ -38,10 +50,31 @@
       "name": "wlan_id",
       "title": {
         "en": "WiFi network",
-        "nl": "WiFi netwerk"
+        "nl": "WiFi netwerk",
+        "da": "WiFi network",
+        "de": "WiFi network",
+        "es": "WiFi network",
+        "fr": "WiFi network",
+        "it": "WiFi network",
+        "ko": "WiFi network",
+        "no": "WiFi network",
+        "pl": "WiFi network",
+        "ru": "WiFi network",
+        "sv": "WiFi network"
       },
       "placeholder": {
-        "en": "Select a WiFi network..."
+        "en": "Select a WiFi network...",
+        "da": "Select a WiFi network...",
+        "de": "Select a WiFi network...",
+        "es": "Select a WiFi network...",
+        "fr": "Select a WiFi network...",
+        "it": "Select a WiFi network...",
+        "ko": "Select a WiFi network...",
+        "nl": "Select a WiFi network...",
+        "no": "Select a WiFi network...",
+        "pl": "Select a WiFi network...",
+        "ru": "Select a WiFi network...",
+        "sv": "Select a WiFi network..."
       }
     },
     {
@@ -49,13 +82,54 @@
       "name": "enabled",
       "title": {
         "en": "State",
-        "nl": "Status"
+        "nl": "Status",
+        "da": "State",
+        "de": "State",
+        "es": "State",
+        "fr": "State",
+        "it": "State",
+        "ko": "State",
+        "no": "State",
+        "pl": "State",
+        "ru": "State",
+        "sv": "State"
       },
       "values": [
-        { "id": "true",  "label": { "en": "Enabled",  "nl": "Ingeschakeld" } },
-        { "id": "false", "label": { "en": "Disabled", "nl": "Uitgeschakeld" } }
+        {
+          "id": "true",
+          "label": {
+            "en": "Enabled",
+            "nl": "Ingeschakeld",
+            "da": "Enabled",
+            "de": "Enabled",
+            "es": "Enabled",
+            "fr": "Enabled",
+            "it": "Enabled",
+            "ko": "Enabled",
+            "no": "Enabled",
+            "pl": "Enabled",
+            "ru": "Enabled",
+            "sv": "Enabled"
+          }
+        },
+        {
+          "id": "false",
+          "label": {
+            "en": "Disabled",
+            "nl": "Uitgeschakeld",
+            "da": "Disabled",
+            "de": "Disabled",
+            "es": "Disabled",
+            "fr": "Disabled",
+            "it": "Disabled",
+            "ko": "Disabled",
+            "no": "Disabled",
+            "pl": "Disabled",
+            "ru": "Disabled",
+            "sv": "Disabled"
+          }
+        }
       ]
     }
   ]
 }
-

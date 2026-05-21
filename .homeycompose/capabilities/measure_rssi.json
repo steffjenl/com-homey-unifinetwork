@@ -12,7 +12,8 @@
     "no": "RSSI",
     "ko": "RSSI",
     "ru": "RSSI",
-    "pt": "RSSI"
+    "pt": "RSSI",
+    "pl": "RSSI"
   },
   "units": {
     "en": "%",
@@ -20,7 +21,13 @@
     "es": "%",
     "de": "%",
     "fr": "%",
-    "it": "%"
+    "it": "%",
+    "da": "%",
+    "ko": "%",
+    "no": "%",
+    "pl": "%",
+    "ru": "%",
+    "sv": "%"
   },
   "getable": true,
   "setable": false,

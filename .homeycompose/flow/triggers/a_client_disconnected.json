@@ -12,19 +12,40 @@
     "no": "WiFi-tilkobling mistet",
     "ko": "WiFi 연결 끊김",
     "ru": "Потеряно соединение Wi-Fi",
-    "pt": "Conexão Wi-Fi perdida"
+    "pt": "Conexão Wi-Fi perdida",
+    "pl": "Wifi connection lost"
   },
   "tokens": [
     {
       "name": "mac",
       "type": "string",
       "title": {
-        "en": "mac"
+        "en": "mac",
+        "da": "mac",
+        "de": "MAC",
+        "es": "MAC",
+        "fr": "mac",
+        "it": "MAC",
+        "ko": "mac",
+        "nl": "mac",
+        "no": "mac",
+        "pl": "mac",
+        "ru": "mac",
+        "sv": "mac"
       },
       "example": {
         "en": "00:00:00:00:00:00",
         "nl": "00:00:00:00:00:00",
-        "es": "00:00:00:00:00:00"
+        "es": "00:00:00:00:00:00",
+        "da": "00:00:00:00:00:00",
+        "de": "00:00:00:00:00:00",
+        "fr": "00:00:00:00:00:00",
+        "it": "00:00:00:00:00:00",
+        "ko": "00:00:00:00:00:00",
+        "no": "00:00:00:00:00:00",
+        "pl": "00:00:00:00:00:00",
+        "ru": "00:00:00:00:00:00",
+        "sv": "00:00:00:00:00:00"
       }
     },
     {
@@ -42,12 +63,22 @@
         "no": "Hvem",
         "ko": "누구",
         "ru": "Кто",
-        "pt": "Quem"
+        "pt": "Quem",
+        "pl": "Who"
       },
       "example": {
         "en": "wifi01",
         "nl": "wifi01",
-        "es": "wifi01"
+        "es": "wifi01",
+        "da": "wifi01",
+        "de": "wifi01",
+        "fr": "wifi01",
+        "it": "wifi01",
+        "ko": "wifi01",
+        "no": "wifi01",
+        "pl": "wifi01",
+        "ru": "wifi01",
+        "sv": "wifi01"
       }
     },
     {
@@ -56,10 +87,30 @@
       "title": {
         "en": "SSID",
         "nl": "SSID",
-        "es": "SSID"
+        "es": "SSID",
+        "da": "SSID",
+        "de": "SSID",
+        "fr": "SSID",
+        "it": "SSID",
+        "ko": "SSID",
+        "no": "SSID",
+        "pl": "SSID",
+        "ru": "SSID",
+        "sv": "SSID"
       },
       "example": {
-        "en": "MyWifiSSID"
+        "en": "MyWifiSSID",
+        "da": "MyWifiSSID",
+        "de": "MyWifiSSID",
+        "es": "MyWifiSSID",
+        "fr": "MyWifiSSID",
+        "it": "MyWifiSSID",
+        "ko": "MyWifiSSID",
+        "nl": "MyWifiSSID",
+        "no": "MyWifiSSID",
+        "pl": "MyWifiSSID",
+        "ru": "MyWifiSSID",
+        "sv": "MyWifiSSID"
       }
     },
     {
@@ -71,10 +122,27 @@
         "es": "Dirección IP",
         "fr": "Adresse IP",
         "de": "IP-Adresse",
-        "it": "Indirizzo IP"
+        "it": "Indirizzo IP",
+        "da": "IP Adresse",
+        "ko": "IP 주소",
+        "no": "IP Adresse",
+        "pl": "Adres IP",
+        "ru": "IP Адрес",
+        "sv": "IP Adress"
       },
       "example": {
-        "en": "192.168.0.1"
+        "en": "192.168.0.1",
+        "da": "192.168.0.1",
+        "de": "192.168.0.1",
+        "es": "192.168.0.1",
+        "fr": "192.168.0.1",
+        "it": "192.168.0.1",
+        "ko": "192.168.0.1",
+        "nl": "192.168.0.1",
+        "no": "192.168.0.1",
+        "pl": "192.168.0.1",
+        "ru": "192.168.0.1",
+        "sv": "192.168.0.1"
       }
     }
   ]

@@ -12,7 +12,8 @@
     "no": "PoE status",
     "ko": "PoE 상태",
     "ru": "Состояние PoE",
-    "pt": "Estado PoE"
+    "pt": "Estado PoE",
+    "pl": "Stan PoE"
   },
   "getable": true,
   "setable": false,

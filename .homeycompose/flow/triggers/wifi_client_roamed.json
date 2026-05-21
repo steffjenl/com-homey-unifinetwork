@@ -12,7 +12,8 @@
     "no": "Roamer mellom AP",
     "ko": "AP 간 로밍",
     "ru": "Роуминг между AP",
-    "pt": "Roaming entre AP"
+    "pt": "Roaming entre AP",
+    "pl": "Roams between AP"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Wifi-klient",
         "ko": "Wi-Fi 클라이언트",
         "ru": "Wi-Fi клиент",
-        "pt": "Cliente Wi-Fi"
+        "pt": "Cliente Wi-Fi",
+        "pl": "Wi-Fi client"
       }
     }
   ],
@@ -51,7 +53,8 @@
         "no": "AP",
         "ko": "AP",
         "ru": "AP",
-        "pt": "AP"
+        "pt": "AP",
+        "pl": "AP"
       },
       "example": {
         "en": "ap123",
@@ -65,7 +68,8 @@
         "no": "ap123",
         "ko": "ap123",
         "ru": "ap123",
-        "pt": "ap123"
+        "pt": "ap123",
+        "pl": "ap123"
       }
     },
     {
@@ -83,7 +87,8 @@
         "no": "AP MAC",
         "ko": "AP MAC",
         "ru": "AP MAC",
-        "pt": "AP MAC"
+        "pt": "AP MAC",
+        "pl": "AP MAC"
       },
       "example": {
         "en": "00:00:5e:00:53:af",
@@ -97,7 +102,8 @@
         "no": "00:00:5e:00:53:af",
         "ko": "00:00:5e:00:53:af",
         "ru": "00:00:5e:00:53:af",
-        "pt": "00:00:5e:00:53:af"
+        "pt": "00:00:5e:00:53:af",
+        "pl": "00:00:5e:00:53:af"
       }
     },
     {
@@ -115,7 +121,8 @@
         "no": "Proto",
         "ko": "Proto",
         "ru": "Proto",
-        "pt": "Proto"
+        "pt": "Proto",
+        "pl": "Proto"
       },
       "example": "ac"
     }

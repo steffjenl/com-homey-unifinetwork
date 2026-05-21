@@ -12,7 +12,8 @@
     "no": "Tilkoblingsstatus",
     "ko": "연결 상태",
     "ru": "Состояние подключения",
-    "pt": "Estado da conexão"
+    "pt": "Estado da conexão",
+    "pl": "Stan połączenia"
   },
   "getable": true,
   "setable": false,

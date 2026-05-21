@@ -12,19 +12,40 @@
     "no": "Gjestetilkobling mistet",
     "ko": "게스트 연결 끊김",
     "ru": "Потеряно соединение гостя",
-    "pt": "Conexão de convidado perdida"
+    "pt": "Conexão de convidado perdida",
+    "pl": "Guest connection lost"
   },
   "tokens": [
     {
       "name": "mac",
       "type": "string",
       "title": {
-        "en": "mac"
+        "en": "mac",
+        "da": "mac",
+        "de": "MAC",
+        "es": "MAC",
+        "fr": "mac",
+        "it": "MAC",
+        "ko": "mac",
+        "nl": "mac",
+        "no": "mac",
+        "pl": "mac",
+        "ru": "mac",
+        "sv": "mac"
       },
       "example": {
         "en": "00:00:00:00:00:00",
         "nl": "00:00:00:00:00:00",
-        "es": "00:00:00:00:00:00"
+        "es": "00:00:00:00:00:00",
+        "da": "00:00:00:00:00:00",
+        "de": "00:00:00:00:00:00",
+        "fr": "00:00:00:00:00:00",
+        "it": "00:00:00:00:00:00",
+        "ko": "00:00:00:00:00:00",
+        "no": "00:00:00:00:00:00",
+        "pl": "00:00:00:00:00:00",
+        "ru": "00:00:00:00:00:00",
+        "sv": "00:00:00:00:00:00"
       }
     },
     {
@@ -42,12 +63,22 @@
         "no": "Hvem",
         "ko": "누구",
         "ru": "Кто",
-        "pt": "Quem"
+        "pt": "Quem",
+        "pl": "Who"
       },
       "example": {
         "en": "wifi01",
         "nl": "wifi01",
-        "es": "wifi01"
+        "es": "wifi01",
+        "da": "wifi01",
+        "de": "wifi01",
+        "fr": "wifi01",
+        "it": "wifi01",
+        "ko": "wifi01",
+        "no": "wifi01",
+        "pl": "wifi01",
+        "ru": "wifi01",
+        "sv": "wifi01"
       }
     },
     {
@@ -56,10 +87,30 @@
       "title": {
         "en": "SSID",
         "nl": "SSID",
-        "es": "SSID"
+        "es": "SSID",
+        "da": "SSID",
+        "de": "SSID",
+        "fr": "SSID",
+        "it": "SSID",
+        "ko": "SSID",
+        "no": "SSID",
+        "pl": "SSID",
+        "ru": "SSID",
+        "sv": "SSID"
       },
       "example": {
-        "en": "MyWifiSSID"
+        "en": "MyWifiSSID",
+        "da": "MyWifiSSID",
+        "de": "MyWifiSSID",
+        "es": "MyWifiSSID",
+        "fr": "MyWifiSSID",
+        "it": "MyWifiSSID",
+        "ko": "MyWifiSSID",
+        "nl": "MyWifiSSID",
+        "no": "MyWifiSSID",
+        "pl": "MyWifiSSID",
+        "ru": "MyWifiSSID",
+        "sv": "MyWifiSSID"
       }
     },
     {
@@ -68,10 +119,30 @@
       "title": {
         "en": "Group",
         "nl": "UserGroup",
-        "es": "Grupo"
+        "es": "Grupo",
+        "da": "Group",
+        "de": "Group",
+        "fr": "Group",
+        "it": "Group",
+        "ko": "Group",
+        "no": "Group",
+        "pl": "Group",
+        "ru": "Group",
+        "sv": "Group"
       },
       "example": {
-        "en": "MyUserGroup"
+        "en": "MyUserGroup",
+        "da": "MyUserGroup",
+        "de": "MyUserGroup",
+        "es": "MyUserGroup",
+        "fr": "MyUserGroup",
+        "it": "MyUserGroup",
+        "ko": "MyUserGroup",
+        "nl": "MyUserGroup",
+        "no": "MyUserGroup",
+        "pl": "MyUserGroup",
+        "ru": "MyUserGroup",
+        "sv": "MyUserGroup"
       }
     }
   ],

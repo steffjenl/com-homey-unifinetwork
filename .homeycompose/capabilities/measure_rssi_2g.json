@@ -1,5 +1,18 @@
 {
-  "title": { "en": "RSSI 2.4 GHz", "nl": "RSSI 2,4 GHz", "de": "RSSI 2,4 GHz", "fr": "RSSI 2,4 GHz", "it": "RSSI 2,4 GHz" },
+  "title": {
+    "en": "RSSI 2.4 GHz",
+    "nl": "RSSI 2,4 GHz",
+    "de": "RSSI 2,4 GHz",
+    "fr": "RSSI 2,4 GHz",
+    "it": "RSSI 2,4 GHz",
+    "da": "RSSI 2,4 GHz",
+    "es": "RSSI 2,4 GHz",
+    "ko": "RSSI 2.4GHz",
+    "no": "RSSI 2,4 GHz",
+    "pl": "RSSI 2,4 GHz",
+    "ru": "RSSI 2,4 GHz",
+    "sv": "RSSI 2,4 GHz"
+  },
   "type": "number",
   "units": "dBm",
   "icon": "/assets/rssi.svg",
@@ -11,4 +24,3 @@
   "max": 0,
   "decimals": 0
 }
-

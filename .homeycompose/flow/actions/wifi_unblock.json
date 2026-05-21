@@ -12,7 +12,8 @@
     "no": "Lås opp klient",
     "ko": "클라이언트 차단 해제",
     "ru": "Разблокировать клиента",
-    "pt": "Desbloquear cliente"
+    "pt": "Desbloquear cliente",
+    "pl": "Unblock client"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Wifi-klient",
         "ko": "Wi-Fi 클라이언트",
         "ru": "Wi-Fi клиент",
-        "pt": "Cliente Wi-Fi"
+        "pt": "Cliente Wi-Fi",
+        "pl": "Wi-Fi client"
       }
     }
   ]

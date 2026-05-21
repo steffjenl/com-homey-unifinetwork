@@ -12,7 +12,8 @@
     "no": "!{{Blokkert|Opplåst}}",
     "ko": "!{{차단됨|차단 해제됨}}",
     "ru": "!{{Заблокирован|Разблокирован}}",
-    "pt": "!{{Bloqueado|Desbloqueado}}"
+    "pt": "!{{Bloqueado|Desbloqueado}}",
+    "pl": "!{{Blocked|Unblocked}}"
   },
   "titleFormatted": {
     "en": "!{{Blocked|Unblocked}}",
@@ -26,7 +27,8 @@
     "no": "!{{Blokkert|Opplåst}}",
     "ko": "!{{차단됨|차단 해제됨}}",
     "ru": "!{{Заблокирован|Разблокирован}}",
-    "pt": "!{{Bloqueado|Desbloqueado}}"
+    "pt": "!{{Bloqueado|Desbloqueado}}",
+    "pl": "!{{Blocked|Unblocked}}"
   },
   "args": [
     {
@@ -45,7 +47,8 @@
         "no": "Kablet klient",
         "ko": "유선 클라이언트",
         "ru": "Кабельный клиент",
-        "pt": "Cliente com fio"
+        "pt": "Cliente com fio",
+        "pl": "Cable client"
       }
     }
   ]

@@ -6,12 +6,27 @@
     "es": "TX Bytes",
     "de": "TX Bytes",
     "fr": "TX Bytes",
-    "it": "TX Bytes"
+    "it": "TX Bytes",
+    "da": "TX-bytes",
+    "ko": "TX 바이트",
+    "no": "TX-bytes",
+    "pl": "Bajty TX",
+    "ru": "TX байты",
+    "sv": "TX-byte"
   },
   "units": {
     "en": "MB",
     "nl": "MB",
-    "es": "MB"
+    "es": "MB",
+    "da": "MB",
+    "de": "MB",
+    "fr": "MB",
+    "it": "MB",
+    "ko": "MB",
+    "no": "MB",
+    "pl": "MB",
+    "ru": "MB",
+    "sv": "MB"
   },
   "getable": true,
   "setable": false,

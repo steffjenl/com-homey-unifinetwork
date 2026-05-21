@@ -12,7 +12,8 @@
     "no": "Første enhet tilkoblet",
     "ko": "첫 번째 장치 연결됨",
     "ru": "Первое устройство подключено",
-    "pt": "Primeiro dispositivo conectado"
+    "pt": "Primeiro dispositivo conectado",
+    "pl": "First device connected"
   },
   "tokens": [
     {
@@ -30,7 +31,8 @@
         "no": "Hvem",
         "ko": "누구",
         "ru": "Кто",
-        "pt": "Quem"
+        "pt": "Quem",
+        "pl": "Who"
       },
       "example": {
         "en": "wifi01",
@@ -41,7 +43,11 @@
         "no": "wifi01",
         "ko": "wifi01",
         "ru": "wifi01",
-        "pt": "wifi01"
+        "pt": "wifi01",
+        "de": "wifi01",
+        "fr": "wifi01",
+        "it": "wifi01",
+        "pl": "wifi01"
       }
     }
   ]

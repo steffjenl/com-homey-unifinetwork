@@ -4,12 +4,32 @@
   "sdk": 3,
   "brandColor": "#159EDA",
   "name": {
-    "en": "Ubiquiti UniFi Network"
+    "en": "Ubiquiti UniFi Network",
+    "da": "Ubiquiti UniFi Network",
+    "de": "Ubiquiti UniFi Network",
+    "es": "Ubiquiti UniFi Network",
+    "fr": "Ubiquiti UniFi Network",
+    "it": "Ubiquiti UniFi Network",
+    "ko": "Ubiquiti UniFi Network",
+    "nl": "Ubiquiti UniFi Network",
+    "no": "Ubiquiti UniFi Network",
+    "pl": "Ubiquiti UniFi Network",
+    "ru": "Ubiquiti UniFi Network",
+    "sv": "Ubiquiti UniFi Network"
   },
   "description": {
     "en": "Protect your home with presence detection based on (wifi) clients connected to the UniFi Controller",
     "nl": "Beveilig je huis met aanwezigheidsdetectie op basis van (wifi) clients aangesloten op de UniFi Controller",
-    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi"
+    "es": "Proteja su hogar con detección de presencia basada en clientes (wifi) conectados al controlador UniFi",
+    "da": "Beskyt dit hjem med tilstedevaerelsesdetektion baseret paa (wifi)-klienter forbundet til UniFi Controlleren",
+    "de": "Schuetze dein Zuhause mit Praesenzerkennung auf Basis von (WLAN-)Clients, die mit dem UniFi Controller verbunden sind",
+    "fr": "Protegez votre maison avec une detection de presence basee sur des clients (wifi) connectes au controleur UniFi",
+    "it": "Proteggi la tua casa con il rilevamento di presenza basato sui client (wifi) connessi al controller UniFi",
+    "ko": "UniFi Controller에 연결된 (WiFi) 클라이언트를 기반으로 한 재실 감지로 집을 보호하세요",
+    "no": "Beskytt hjemmet ditt med tilstedevaerelsesdeteksjon basert paa (wifi)-klienter koblet til UniFi-kontrolleren",
+    "pl": "Chroń swój dom dzięki wykrywaniu obecności opartemu na klientach (WiFi) połączonych z kontrolerem UniFi",
+    "ru": "Защитите дом с помощью определения присутствия на основе (WiFi) клиентов, подключенных к контроллеру UniFi",
+    "sv": "Skydda ditt hem med naervarodetektering baserad paa (wifi)-klienter anslutna till UniFi Controller"
   },
   "version": "2.6.2",
   "compatibility": ">=5.0.0",
@@ -4294,7 +4314,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false,
@@ -4316,7 +4337,8 @@
         "no": "Accesspoint",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Accesspoint"
+        "pt": "Accesspoint",
+        "pl": "Punkt dostępu"
       },
       "getable": true,
       "setable": false,
@@ -4336,7 +4358,8 @@
         "no": "Accesspoint MAC",
         "ko": "액세스 포인트 MAC",
         "ru": "MAC точки доступа",
-        "pt": "Accesspoint MAC"
+        "pt": "Accesspoint MAC",
+        "pl": "MAC punktu dostępu"
       },
       "getable": true,
       "setable": false,
@@ -4356,7 +4379,8 @@
         "no": "Blokkert",
         "ko": "차단됨",
         "ru": "Заблокировано",
-        "pt": "Bloqueado"
+        "pt": "Bloqueado",
+        "pl": "Zablokowane"
       },
       "getable": true,
       "setable": true,
@@ -4378,7 +4402,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false,
@@ -4400,7 +4425,8 @@
         "no": "IP Adresse",
         "ko": "IP 주소",
         "ru": "IP Адрес",
-        "pt": "Endereço IP"
+        "pt": "Endereço IP",
+        "pl": "Adres IP"
       },
       "getable": true,
       "setable": false,
@@ -4420,7 +4446,8 @@
         "no": "Tilkoblede enheter",
         "ko": "연결된 클라이언트",
         "ru": "Подключённые клиенты",
-        "pt": "Clientes conectados"
+        "pt": "Clientes conectados",
+        "pl": "Podłączeni klienci"
       },
       "getable": true,
       "setable": false,
@@ -4444,7 +4471,8 @@
         "no": "RSSI",
         "ko": "RSSI",
         "ru": "RSSI",
-        "pt": "RSSI"
+        "pt": "RSSI",
+        "pl": "RSSI"
       },
       "units": {
         "en": "%",
@@ -4452,7 +4480,13 @@
         "es": "%",
         "de": "%",
         "fr": "%",
-        "it": "%"
+        "it": "%",
+        "da": "%",
+        "ko": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "sv": "%"
       },
       "getable": true,
       "setable": false,
@@ -4467,7 +4501,14 @@
         "nl": "RSSI 2,4 GHz",
         "de": "RSSI 2,4 GHz",
         "fr": "RSSI 2,4 GHz",
-        "it": "RSSI 2,4 GHz"
+        "it": "RSSI 2,4 GHz",
+        "da": "RSSI 2,4 GHz",
+        "es": "RSSI 2,4 GHz",
+        "ko": "RSSI 2.4GHz",
+        "no": "RSSI 2,4 GHz",
+        "pl": "RSSI 2,4 GHz",
+        "ru": "RSSI 2,4 GHz",
+        "sv": "RSSI 2,4 GHz"
       },
       "type": "number",
       "units": "dBm",
@@ -4486,7 +4527,14 @@
         "nl": "RSSI 5 GHz",
         "de": "RSSI 5 GHz",
         "fr": "RSSI 5 GHz",
-        "it": "RSSI 5 GHz"
+        "it": "RSSI 5 GHz",
+        "da": "RSSI-band 5 GHz",
+        "es": "RSSI banda 5 GHz",
+        "ko": "RSSI 5GHz",
+        "no": "RSSI-band 5 GHz",
+        "pl": "RSSI pasmo 5 GHz",
+        "ru": "RSSI 5 ГГц",
+        "sv": "RSSI-band 5 GHz"
       },
       "type": "number",
       "units": "dBm",
@@ -4505,7 +4553,14 @@
         "nl": "RSSI 6 GHz",
         "de": "RSSI 6 GHz",
         "fr": "RSSI 6 GHz",
-        "it": "RSSI 6 GHz"
+        "it": "RSSI 6 GHz",
+        "da": "RSSI-band 6 GHz",
+        "es": "RSSI banda 6 GHz",
+        "ko": "RSSI 6GHz",
+        "no": "RSSI-band 6 GHz",
+        "pl": "RSSI pasmo 6 GHz",
+        "ru": "RSSI 6 ГГц",
+        "sv": "RSSI-band 6 GHz"
       },
       "type": "number",
       "units": "dBm",
@@ -4526,12 +4581,27 @@
         "es": "RX Bytes",
         "de": "RX Bytes",
         "fr": "RX Bytes",
-        "it": "RX Bytes"
+        "it": "RX Bytes",
+        "pl": "Bajty RX",
+        "da": "RX-bytes",
+        "ko": "RX 바이트",
+        "no": "RX-bytes",
+        "ru": "RX байты",
+        "sv": "RX-byte"
       },
       "units": {
         "en": "MB",
         "nl": "MB",
-        "es": "MB"
+        "es": "MB",
+        "da": "MB",
+        "de": "MB",
+        "fr": "MB",
+        "it": "MB",
+        "ko": "MB",
+        "no": "MB",
+        "pl": "MB",
+        "ru": "MB",
+        "sv": "MB"
       },
       "getable": true,
       "setable": false,
@@ -4540,7 +4610,17 @@
     "measure_rx_bytes_2g": {
       "title": {
         "en": "Urx bytes 2.4 GHz",
-        "nl": "Urx bytes 2.4 GHz"
+        "nl": "Urx bytes 2.4 GHz",
+        "da": "RX-trafik 2,4 GHz (MB)",
+        "de": "RX-Datenverkehr 2,4 GHz (MB)",
+        "es": "Trafico RX 2,4 GHz (MB)",
+        "fr": "Trafic RX 2,4 GHz (Mo)",
+        "it": "Traffico RX 2,4 GHz (MB)",
+        "ko": "RX 트래픽 2.4GHz (MB)",
+        "no": "RX-trafikk 2,4 GHz (MB)",
+        "pl": "Ruch RX 2,4 GHz (MB)",
+        "ru": "RX-trafik 2,4 GHz (MB)",
+        "sv": "RX-trafik 2,4 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4554,7 +4634,17 @@
     "measure_rx_bytes_5g": {
       "title": {
         "en": "Urx bytes 5 GHz",
-        "nl": "Urx bytes 5 GHz"
+        "nl": "Urx bytes 5 GHz",
+        "da": "RX-trafik 5 GHz (MB)",
+        "de": "RX-Datenverkehr 5 GHz (MB)",
+        "es": "Trafico RX 5 GHz (MB)",
+        "fr": "Trafic RX 5 GHz (Mo)",
+        "it": "Traffico RX 5 GHz (MB)",
+        "ko": "RX 트래픽 5GHz (MB)",
+        "no": "RX-trafikk 5 GHz (MB)",
+        "pl": "Ruch RX 5 GHz (MB)",
+        "ru": "RX-trafik 5 GHz (MB)",
+        "sv": "RX-trafik 5 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4568,7 +4658,17 @@
     "measure_rx_bytes_6g": {
       "title": {
         "en": "Urx bytes 6 GHz",
-        "nl": "Urx bytes 6 GHz"
+        "nl": "Urx bytes 6 GHz",
+        "da": "RX-trafik 6 GHz (MB)",
+        "de": "RX-Datenverkehr 6 GHz (MB)",
+        "es": "Trafico RX 6 GHz (MB)",
+        "fr": "Trafic RX 6 GHz (Mo)",
+        "it": "Traffico RX 6 GHz (MB)",
+        "ko": "RX 트래픽 6GHz (MB)",
+        "no": "RX-trafikk 6 GHz (MB)",
+        "pl": "Ruch RX 6 GHz (MB)",
+        "ru": "RX-trafik 6 GHz (MB)",
+        "sv": "RX-trafik 6 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4593,12 +4693,22 @@
         "no": "Signalstyrke",
         "ko": "신호 강도",
         "ru": "Уровень сигнала",
-        "pt": "Intensidade do Sinal"
+        "pt": "Intensidade do Sinal",
+        "pl": "Siła sygnału"
       },
       "units": {
         "en": "dBm",
         "nl": "dBm",
-        "es": "dBm"
+        "es": "dBm",
+        "da": "dBm",
+        "de": "dBm",
+        "fr": "dBm",
+        "it": "dBm",
+        "ko": "dBm",
+        "no": "dBm",
+        "pl": "dBm",
+        "ru": "dBm",
+        "sv": "dBm"
       },
       "getable": true,
       "setable": false,
@@ -4615,12 +4725,27 @@
         "es": "TX Bytes",
         "de": "TX Bytes",
         "fr": "TX Bytes",
-        "it": "TX Bytes"
+        "it": "TX Bytes",
+        "pl": "Bajty TX",
+        "da": "TX-bytes",
+        "ko": "TX 바이트",
+        "no": "TX-bytes",
+        "ru": "TX байты",
+        "sv": "TX-byte"
       },
       "units": {
         "en": "MB",
         "nl": "MB",
-        "es": "MB"
+        "es": "MB",
+        "da": "MB",
+        "de": "MB",
+        "fr": "MB",
+        "it": "MB",
+        "ko": "MB",
+        "no": "MB",
+        "pl": "MB",
+        "ru": "MB",
+        "sv": "MB"
       },
       "getable": true,
       "setable": false,
@@ -4629,7 +4754,17 @@
     "measure_tx_bytes_2g": {
       "title": {
         "en": "Utx bytes 2.4 GHz",
-        "nl": "Utx bytes 2.4 GHz"
+        "nl": "Utx bytes 2.4 GHz",
+        "da": "TX-trafik 2,4 GHz (MB)",
+        "de": "TX-Datenverkehr 2,4 GHz (MB)",
+        "es": "Trafico TX 2,4 GHz (MB)",
+        "fr": "Trafic TX 2,4 GHz (Mo)",
+        "it": "Traffico TX 2,4 GHz (MB)",
+        "ko": "TX 트래픽 2.4GHz (MB)",
+        "no": "TX-trafikk 2,4 GHz (MB)",
+        "pl": "Ruch TX 2,4 GHz (MB)",
+        "ru": "TX-trafik 2,4 GHz (MB)",
+        "sv": "TX-trafik 2,4 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4643,7 +4778,17 @@
     "measure_tx_bytes_5g": {
       "title": {
         "en": "Utx bytes 5 GHz",
-        "nl": "Utx bytes 5 GHz"
+        "nl": "Utx bytes 5 GHz",
+        "da": "TX-trafik 5 GHz (MB)",
+        "de": "TX-Datenverkehr 5 GHz (MB)",
+        "es": "Trafico TX 5 GHz (MB)",
+        "fr": "Trafic TX 5 GHz (Mo)",
+        "it": "Traffico TX 5 GHz (MB)",
+        "ko": "TX 트래픽 5GHz (MB)",
+        "no": "TX-trafikk 5 GHz (MB)",
+        "pl": "Ruch TX 5 GHz (MB)",
+        "ru": "TX-trafik 5 GHz (MB)",
+        "sv": "TX-trafik 5 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4657,7 +4802,17 @@
     "measure_tx_bytes_6g": {
       "title": {
         "en": "Utx bytes 6 GHz",
-        "nl": "Utx bytes 6 GHz"
+        "nl": "Utx bytes 6 GHz",
+        "da": "TX-trafik 6 GHz (MB)",
+        "de": "TX-Datenverkehr 6 GHz (MB)",
+        "es": "Trafico TX 6 GHz (MB)",
+        "fr": "Trafic TX 6 GHz (Mo)",
+        "it": "Traffico TX 6 GHz (MB)",
+        "ko": "TX 트래픽 6GHz (MB)",
+        "no": "TX-trafikk 6 GHz (MB)",
+        "pl": "Ruch TX 6 GHz (MB)",
+        "ru": "TX-trafik 6 GHz (MB)",
+        "sv": "TX-trafik 6 GHz (MB)"
       },
       "type": "number",
       "units": "MB",
@@ -4682,7 +4837,8 @@
         "no": "PoE status",
         "ko": "PoE 상태",
         "ru": "Состояние PoE",
-        "pt": "Estado PoE"
+        "pt": "Estado PoE",
+        "pl": "Stan PoE"
       },
       "getable": true,
       "setable": false,
@@ -4704,7 +4860,8 @@
         "no": "Port status",
         "ko": "포트 상태",
         "ru": "Состояние порта",
-        "pt": "Estado da porta"
+        "pt": "Estado da porta",
+        "pl": "Stan portu"
       },
       "getable": true,
       "setable": false,
@@ -4726,7 +4883,8 @@
         "no": "Antall porter",
         "ko": "포트 수",
         "ru": "Количество портов",
-        "pt": "Quantidade de portas"
+        "pt": "Quantidade de portas",
+        "pl": "Liczba portów"
       },
       "getable": true,
       "setable": false,
@@ -4746,7 +4904,8 @@
         "no": "Radio protokoll",
         "ko": "무선 프로토콜",
         "ru": "Радиопротокол",
-        "pt": "Protocolo de rádio"
+        "pt": "Protocolo de rádio",
+        "pl": "Protokół radiowy"
       },
       "getable": true,
       "setable": false,
@@ -4766,7 +4925,8 @@
         "no": "Driftstid",
         "ko": "가동 시간",
         "ru": "Время работы",
-        "pt": "Tempo de atividade"
+        "pt": "Tempo de atividade",
+        "pl": "Czas pracy"
       },
       "units": "s",
       "getable": true,
@@ -4791,7 +4951,8 @@
         "no": "WiFi Navn",
         "ko": "WiFi 이름",
         "ru": "Имя WiFi",
-        "pt": "Nome do WiFi"
+        "pt": "Nome do WiFi",
+        "pl": "Nazwa WiFi"
       },
       "getable": true,
       "setable": false,

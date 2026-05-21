@@ -12,7 +12,8 @@
     "no": "Port status",
     "ko": "포트 상태",
     "ru": "Состояние порта",
-    "pt": "Estado da porta"
+    "pt": "Estado da porta",
+    "pl": "Stan portu"
   },
   "getable": true,
   "setable": false,

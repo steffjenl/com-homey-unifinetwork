@@ -12,7 +12,8 @@
     "no": "Tilkoblet",
     "ko": "연결됨",
     "ru": "Подключено",
-    "pt": "Conectado"
+    "pt": "Conectado",
+    "pl": "Connected"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Wifi-klient",
         "ko": "Wi-Fi 클라이언트",
         "ru": "Wi-Fi клиент",
-        "pt": "Cliente Wi-Fi"
+        "pt": "Cliente Wi-Fi",
+        "pl": "Wi-Fi client"
       }
     }
   ],
@@ -51,7 +53,8 @@
         "no": "Signalstyrke",
         "ko": "신호 강도",
         "ru": "Уровень сигнала",
-        "pt": "Intensidade do Sinal"
+        "pt": "Intensidade do Sinal",
+        "pl": "Siła sygnału"
       },
       "example": -75
     },
@@ -70,7 +73,8 @@
         "no": "RSSI",
         "ko": "RSSI",
         "ru": "RSSI",
-        "pt": "RSSI"
+        "pt": "RSSI",
+        "pl": "RSSI"
       },
       "example": 75
     },
@@ -89,7 +93,8 @@
         "no": "Proto",
         "ko": "Proto",
         "ru": "Proto",
-        "pt": "Proto"
+        "pt": "Proto",
+        "pl": "Proto"
       },
       "example": "ac"
     },
@@ -108,7 +113,8 @@
         "no": "SSID",
         "ko": "SSID",
         "ru": "SSID",
-        "pt": "SSID"
+        "pt": "SSID",
+        "pl": "SSID"
       },
       "example": {
         "en": "MyWifiSSID",
@@ -122,7 +128,8 @@
         "no": "MyWifiSSID",
         "ko": "MyWifiSSID",
         "ru": "MyWifiSSID",
-        "pt": "MyWifiSSID"
+        "pt": "MyWifiSSID",
+        "pl": "MyWifiSSID"
       }
     }
   ]

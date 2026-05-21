@@ -18,7 +18,8 @@
     "no": "Nettverk Switch",
     "ko": "네트워크 스위치",
     "ru": "Сетевой коммутатор",
-    "pt": "Switch de rede"
+    "pt": "Switch de rede",
+    "pl": "Przełącznik sieciowy"
   },
   "mobile": {
     "components": [
@@ -45,7 +46,8 @@
               "no": "Tilkoblingsstatus",
               "ko": "연결 상태",
               "ru": "Состояние подключения",
-              "pt": "Estado da conexão"
+              "pt": "Estado da conexão",
+              "pl": "Stan połączenia"
             }
           },
           "getable": true,
@@ -70,7 +72,8 @@
                 "no": "Tilkoblet",
                 "ko": "연결됨",
                 "ru": "Подключено",
-                "pt": "Conectado"
+                "pt": "Conectado",
+                "pl": "Connected"
               },
               "false": {
                 "en": "Disconnected",
@@ -83,7 +86,8 @@
                 "no": "Frakoblet",
                 "ko": "연결 끊김",
                 "ru": "Отключено",
-                "pt": "Desconectado"
+                "pt": "Desconectado",
+                "pl": "Disconnected"
               }
             }
           }
@@ -114,7 +118,8 @@
         "no": "Tilkoblingsstatus",
         "ko": "연결 상태",
         "ru": "Состояние подключения",
-        "pt": "Estado da conexão"
+        "pt": "Estado da conexão",
+        "pl": "Stan połączenia"
       },
       "getable": true,
       "setable": false
@@ -132,7 +137,8 @@
         "no": "Nettverksport 1",
         "ko": "네트워크 포트 1",
         "ru": "Сетевой порт 1",
-        "pt": "Porta de rede 1"
+        "pt": "Porta de rede 1",
+        "pl": "Port sieciowy 1"
       }
     },
     "port.port_2": {
@@ -148,7 +154,8 @@
         "no": "Nettverksport 2",
         "ko": "네트워크 포트 2",
         "ru": "Сетевой порт 2",
-        "pt": "Porta de rede 2"
+        "pt": "Porta de rede 2",
+        "pl": "Port sieciowy 2"
       }
     },
     "port.port_3": {
@@ -164,7 +171,8 @@
         "no": "Nettverksport 3",
         "ko": "네트워크 포트 3",
         "ru": "Сетевой порт 3",
-        "pt": "Porta de rede 3"
+        "pt": "Porta de rede 3",
+        "pl": "Port sieciowy 3"
       }
     },
     "port.port_4": {
@@ -180,7 +188,8 @@
         "no": "Nettverksport 4",
         "ko": "네트워크 포트 4",
         "ru": "Сетевой порт 4",
-        "pt": "Porta de rede 4"
+        "pt": "Porta de rede 4",
+        "pl": "Port sieciowy 4"
       }
     },
     "port.port_5": {
@@ -196,7 +205,8 @@
         "no": "Nettverksport 5",
         "ko": "네트워크 포트 5",
         "ru": "Сетевой порт 5",
-        "pt": "Porta de rede 5"
+        "pt": "Porta de rede 5",
+        "pl": "Port sieciowy 5"
       }
     },
     "port.port_6": {
@@ -212,7 +222,8 @@
         "no": "Nettverksport 6",
         "ko": "네트워크 포트 6",
         "ru": "Сетевой порт 6",
-        "pt": "Porta de rede 6"
+        "pt": "Porta de rede 6",
+        "pl": "Port sieciowy 6"
       }
     },
     "port.port_7": {
@@ -228,7 +239,8 @@
         "no": "Nettverksport 7",
         "ko": "네트워크 포트 7",
         "ru": "Сетевой порт 7",
-        "pt": "Porta de rede 7"
+        "pt": "Porta de rede 7",
+        "pl": "Port sieciowy 7"
       }
     },
     "port.port_8": {
@@ -244,7 +256,8 @@
         "no": "Nettverksport 8",
         "ko": "네트워크 포트 8",
         "ru": "Сетевой порт 8",
-        "pt": "Porta de rede 8"
+        "pt": "Porta de rede 8",
+        "pl": "Port sieciowy 8"
       }
     },
     "port.port_9": {
@@ -260,7 +273,8 @@
         "no": "Nettverksport 9",
         "ko": "네트워크 포트 9",
         "ru": "Сетевой порт 9",
-        "pt": "Porta de rede 9"
+        "pt": "Porta de rede 9",
+        "pl": "Port sieciowy 9"
       }
     },
     "port.port_10": {
@@ -276,7 +290,8 @@
         "no": "Nettverksport 10",
         "ko": "네트워크 포트 10",
         "ru": "Сетевой порт 10",
-        "pt": "Porta de rede 10"
+        "pt": "Porta de rede 10",
+        "pl": "Port sieciowy 10"
       }
     },
     "port.port_11": {
@@ -292,7 +307,8 @@
         "no": "Nettverksport 11",
         "ko": "네트워크 포트 11",
         "ru": "Сетевой порт 11",
-        "pt": "Porta de rede 11"
+        "pt": "Porta de rede 11",
+        "pl": "Port sieciowy 11"
       }
     },
     "port.port_12": {
@@ -308,7 +324,8 @@
         "no": "Nettverksport 12",
         "ko": "네트워크 포트 12",
         "ru": "Сетевой порт 12",
-        "pt": "Porta de rede 12"
+        "pt": "Porta de rede 12",
+        "pl": "Port sieciowy 12"
       }
     },
     "port.port_13": {
@@ -324,7 +341,8 @@
         "no": "Nettverksport 13",
         "ko": "네트워크 포트 13",
         "ru": "Сетевой порт 13",
-        "pt": "Porta de rede 13"
+        "pt": "Porta de rede 13",
+        "pl": "Port sieciowy 13"
       }
     },
     "port.port_14": {
@@ -340,7 +358,8 @@
         "no": "Nettverksport 14",
         "ko": "네트워크 포트 14",
         "ru": "Сетевой порт 14",
-        "pt": "Porta de rede 14"
+        "pt": "Porta de rede 14",
+        "pl": "Port sieciowy 14"
       }
     },
     "port.port_15": {
@@ -356,7 +375,8 @@
         "no": "Nettverksport 15",
         "ko": "네트워크 포트 15",
         "ru": "Сетевой порт 15",
-        "pt": "Porta de rede 15"
+        "pt": "Porta de rede 15",
+        "pl": "Port sieciowy 15"
       }
     },
     "port.port_16": {
@@ -372,7 +392,8 @@
         "no": "Nettverksport 16",
         "ko": "네트워크 포트 16",
         "ru": "Сетевой порт 16",
-        "pt": "Porta de rede 16"
+        "pt": "Porta de rede 16",
+        "pl": "Port sieciowy 16"
       }
     },
     "port.port_17": {
@@ -388,7 +409,8 @@
         "no": "Nettverksport 17",
         "ko": "네트워크 포트 17",
         "ru": "Сетевой порт 17",
-        "pt": "Porta de rede 17"
+        "pt": "Porta de rede 17",
+        "pl": "Port sieciowy 17"
       }
     },
     "port.port_18": {
@@ -404,7 +426,8 @@
         "no": "Nettverksport 18",
         "ko": "네트워크 포트 18",
         "ru": "Сетевой порт 18",
-        "pt": "Porta de rede 18"
+        "pt": "Porta de rede 18",
+        "pl": "Port sieciowy 18"
       }
     },
     "port.port_19": {
@@ -420,7 +443,8 @@
         "no": "Nettverksport 19",
         "ko": "네트워크 포트 19",
         "ru": "Сетевой порт 19",
-        "pt": "Porta de rede 19"
+        "pt": "Porta de rede 19",
+        "pl": "Port sieciowy 19"
       }
     },
     "port.port_20": {
@@ -436,7 +460,8 @@
         "no": "Nettverksport 20",
         "ko": "네트워크 포트 20",
         "ru": "Сетевой порт 20",
-        "pt": "Porta de rede 20"
+        "pt": "Porta de rede 20",
+        "pl": "Port sieciowy 20"
       }
     },
     "port.port_21": {
@@ -452,7 +477,8 @@
         "no": "Nettverksport 21",
         "ko": "네트워크 포트 21",
         "ru": "Сетевой порт 21",
-        "pt": "Porta de rede 21"
+        "pt": "Porta de rede 21",
+        "pl": "Port sieciowy 21"
       }
     },
     "port.port_22": {
@@ -468,7 +494,8 @@
         "no": "Nettverksport 22",
         "ko": "네트워크 포트 22",
         "ru": "Сетевой порт 22",
-        "pt": "Porta de rede 22"
+        "pt": "Porta de rede 22",
+        "pl": "Port sieciowy 22"
       }
     },
     "port.port_23": {
@@ -484,7 +511,8 @@
         "no": "Nettverksport 23",
         "ko": "네트워크 포트 23",
         "ru": "Сетевой порт 23",
-        "pt": "Porta de rede 23"
+        "pt": "Porta de rede 23",
+        "pl": "Port sieciowy 23"
       }
     },
     "port.port_24": {
@@ -500,7 +528,8 @@
         "no": "Nettverksport 24",
         "ko": "네트워크 포트 24",
         "ru": "Сетевой порт 24",
-        "pt": "Porta de rede 24"
+        "pt": "Porta de rede 24",
+        "pl": "Port sieciowy 24"
       }
     },
     "port.port_25": {
@@ -516,7 +545,8 @@
         "no": "Nettverksport 25",
         "ko": "네트워크 포트 25",
         "ru": "Сетевой порт 25",
-        "pt": "Porta de rede 25"
+        "pt": "Porta de rede 25",
+        "pl": "Port sieciowy 25"
       }
     },
     "port.port_26": {
@@ -532,7 +562,8 @@
         "no": "Nettverksport 26",
         "ko": "네트워크 포트 26",
         "ru": "Сетевой порт 26",
-        "pt": "Porta de rede 26"
+        "pt": "Porta de rede 26",
+        "pl": "Port sieciowy 26"
       }
     },
     "port.port_27": {
@@ -548,7 +579,8 @@
         "no": "Nettverksport 27",
         "ko": "네트워크 포트 27",
         "ru": "Сетевой порт 27",
-        "pt": "Porta de rede 27"
+        "pt": "Porta de rede 27",
+        "pl": "Port sieciowy 27"
       }
     },
     "port.port_28": {
@@ -564,7 +596,8 @@
         "no": "Nettverksport 28",
         "ko": "네트워크 포트 28",
         "ru": "Сетевой порт 28",
-        "pt": "Porta de rede 28"
+        "pt": "Porta de rede 28",
+        "pl": "Port sieciowy 28"
       }
     },
     "port.port_29": {
@@ -580,7 +613,8 @@
         "no": "Nettverksport 29",
         "ko": "네트워크 포트 29",
         "ru": "Сетевой порт 29",
-        "pt": "Porta de rede 29"
+        "pt": "Porta de rede 29",
+        "pl": "Port sieciowy 29"
       }
     },
     "port.port_30": {
@@ -596,7 +630,8 @@
         "no": "Nettverksport 30",
         "ko": "네트워크 포트 30",
         "ru": "Сетевой порт 30",
-        "pt": "Porta de rede 30"
+        "pt": "Porta de rede 30",
+        "pl": "Port sieciowy 30"
       }
     },
     "port.port_31": {
@@ -612,7 +647,8 @@
         "no": "Nettverksport 31",
         "ko": "네트워크 포트 31",
         "ru": "Сетевой порт 31",
-        "pt": "Porta de rede 31"
+        "pt": "Porta de rede 31",
+        "pl": "Port sieciowy 31"
       }
     },
     "port.port_32": {
@@ -628,7 +664,8 @@
         "no": "Nettverksport 32",
         "ko": "네트워크 포트 32",
         "ru": "Сетевой порт 32",
-        "pt": "Porta de rede 32"
+        "pt": "Porta de rede 32",
+        "pl": "Port sieciowy 32"
       }
     },
     "port.port_33": {
@@ -644,7 +681,8 @@
         "no": "Nettverksport 33",
         "ko": "네트워크 포트 33",
         "ru": "Сетевой порт 33",
-        "pt": "Porta de rede 33"
+        "pt": "Porta de rede 33",
+        "pl": "Port sieciowy 33"
       }
     },
     "port.port_34": {
@@ -660,7 +698,8 @@
         "no": "Nettverksport 34",
         "ko": "네트워크 포트 34",
         "ru": "Сетевой порт 34",
-        "pt": "Porta de rede 34"
+        "pt": "Porta de rede 34",
+        "pl": "Port sieciowy 34"
       }
     },
     "port.port_35": {
@@ -676,7 +715,8 @@
         "no": "Nettverksport 35",
         "ko": "네트워크 포트 35",
         "ru": "Сетевой порт 35",
-        "pt": "Porta de rede 35"
+        "pt": "Porta de rede 35",
+        "pl": "Port sieciowy 35"
       }
     },
     "port.port_36": {
@@ -692,7 +732,8 @@
         "no": "Nettverksport 36",
         "ko": "네트워크 포트 36",
         "ru": "Сетевой порт 36",
-        "pt": "Porta de rede 36"
+        "pt": "Porta de rede 36",
+        "pl": "Port sieciowy 36"
       }
     },
     "port.port_37": {
@@ -708,7 +749,8 @@
         "no": "Nettverksport 37",
         "ko": "네트워크 포트 37",
         "ru": "Сетевой порт 37",
-        "pt": "Porta de rede 37"
+        "pt": "Porta de rede 37",
+        "pl": "Port sieciowy 37"
       }
     },
     "port.port_38": {
@@ -724,7 +766,8 @@
         "no": "Nettverksport 38",
         "ko": "네트워크 포트 38",
         "ru": "Сетевой порт 38",
-        "pt": "Porta de rede 38"
+        "pt": "Porta de rede 38",
+        "pl": "Port sieciowy 38"
       }
     },
     "port.port_39": {
@@ -740,7 +783,8 @@
         "no": "Nettverksport 39",
         "ko": "네트워크 포트 39",
         "ru": "Сетевой порт 39",
-        "pt": "Porta de rede 39"
+        "pt": "Porta de rede 39",
+        "pl": "Port sieciowy 39"
       }
     },
     "port.port_40": {
@@ -756,7 +800,8 @@
         "no": "Nettverksport 40",
         "ko": "네트워크 포트 40",
         "ru": "Сетевой порт 40",
-        "pt": "Porta de rede 40"
+        "pt": "Porta de rede 40",
+        "pl": "Port sieciowy 40"
       }
     },
     "port.port_41": {
@@ -772,7 +817,8 @@
         "no": "Nettverksport 41",
         "ko": "네트워크 포트 41",
         "ru": "Сетевой порт 41",
-        "pt": "Porta de rede 41"
+        "pt": "Porta de rede 41",
+        "pl": "Port sieciowy 41"
       }
     },
     "port.port_42": {
@@ -788,7 +834,8 @@
         "no": "Nettverksport 42",
         "ko": "네트워크 포트 42",
         "ru": "Сетевой порт 42",
-        "pt": "Porta de rede 42"
+        "pt": "Porta de rede 42",
+        "pl": "Port sieciowy 42"
       }
     },
     "port.port_43": {
@@ -804,7 +851,8 @@
         "no": "Nettverksport 43",
         "ko": "네트워크 포트 43",
         "ru": "Сетевой порт 43",
-        "pt": "Porta de rede 43"
+        "pt": "Porta de rede 43",
+        "pl": "Port sieciowy 43"
       }
     },
     "port.port_44": {
@@ -820,7 +868,8 @@
         "no": "Nettverksport 44",
         "ko": "네트워크 포트 44",
         "ru": "Сетевой порт 44",
-        "pt": "Porta de rede 44"
+        "pt": "Porta de rede 44",
+        "pl": "Port sieciowy 44"
       }
     },
     "port.port_45": {
@@ -836,7 +885,8 @@
         "no": "Nettverksport 45",
         "ko": "네트워크 포트 45",
         "ru": "Сетевой порт 45",
-        "pt": "Porta de rede 45"
+        "pt": "Porta de rede 45",
+        "pl": "Port sieciowy 45"
       }
     },
     "port.port_46": {
@@ -852,7 +902,8 @@
         "no": "Nettverksport 46",
         "ko": "네트워크 포트 46",
         "ru": "Сетевой порт 46",
-        "pt": "Porta de rede 46"
+        "pt": "Porta de rede 46",
+        "pl": "Port sieciowy 46"
       }
     },
     "port.port_47": {
@@ -868,7 +919,8 @@
         "no": "Nettverksport 47",
         "ko": "네트워크 포트 47",
         "ru": "Сетевой порт 47",
-        "pt": "Porta de rede 47"
+        "pt": "Porta de rede 47",
+        "pl": "Port sieciowy 47"
       }
     },
     "port.port_48": {
@@ -884,7 +936,8 @@
         "no": "Nettverksport 48",
         "ko": "네트워크 포트 48",
         "ru": "Сетевой порт 48",
-        "pt": "Porta de rede 48"
+        "pt": "Porta de rede 48",
+        "pl": "Port sieciowy 48"
       }
     },
     "poe.port_1": {
@@ -900,7 +953,8 @@
         "no": "PoE-port 1",
         "ko": "PoE 포트 1",
         "ru": "PoE порт 1",
-        "pt": "Porta PoE 1"
+        "pt": "Porta PoE 1",
+        "pl": "Port PoE 1"
       }
     },
     "poe.port_2": {
@@ -916,7 +970,8 @@
         "no": "PoE-port 2",
         "ko": "PoE 포트 2",
         "ru": "PoE порт 2",
-        "pt": "Porta PoE 2"
+        "pt": "Porta PoE 2",
+        "pl": "Port PoE 2"
       }
     },
     "poe.port_3": {
@@ -932,7 +987,8 @@
         "no": "PoE-port 3",
         "ko": "PoE 포트 3",
         "ru": "PoE порт 3",
-        "pt": "Porta PoE 3"
+        "pt": "Porta PoE 3",
+        "pl": "Port PoE 3"
       }
     },
     "poe.port_4": {
@@ -948,7 +1004,8 @@
         "no": "PoE-port 4",
         "ko": "PoE 포트 4",
         "ru": "PoE порт 4",
-        "pt": "Porta PoE 4"
+        "pt": "Porta PoE 4",
+        "pl": "Port PoE 4"
       }
     },
     "poe.port_5": {
@@ -964,7 +1021,8 @@
         "no": "PoE-port 5",
         "ko": "PoE 포트 5",
         "ru": "PoE порт 5",
-        "pt": "Porta PoE 5"
+        "pt": "Porta PoE 5",
+        "pl": "Port PoE 5"
       }
     },
     "poe.port_6": {
@@ -980,7 +1038,8 @@
         "no": "PoE-port 6",
         "ko": "PoE 포트 6",
         "ru": "PoE порт 6",
-        "pt": "Porta PoE 6"
+        "pt": "Porta PoE 6",
+        "pl": "Port PoE 6"
       }
     },
     "poe.port_7": {
@@ -996,7 +1055,8 @@
         "no": "PoE-port 7",
         "ko": "PoE 포트 7",
         "ru": "PoE порт 7",
-        "pt": "Porta PoE 7"
+        "pt": "Porta PoE 7",
+        "pl": "Port PoE 7"
       }
     },
     "poe.port_8": {
@@ -1012,7 +1072,8 @@
         "no": "PoE-port 8",
         "ko": "PoE 포트 8",
         "ru": "PoE порт 8",
-        "pt": "Porta PoE 8"
+        "pt": "Porta PoE 8",
+        "pl": "Port PoE 8"
       }
     },
     "poe.port_9": {
@@ -1028,7 +1089,8 @@
         "no": "PoE-port 9",
         "ko": "PoE 포트 9",
         "ru": "PoE порт 9",
-        "pt": "Porta PoE 9"
+        "pt": "Porta PoE 9",
+        "pl": "Port PoE 9"
       }
     },
     "poe.port_10": {
@@ -1044,7 +1106,8 @@
         "no": "PoE-port 10",
         "ko": "PoE 포트 10",
         "ru": "PoE порт 10",
-        "pt": "Porta PoE 10"
+        "pt": "Porta PoE 10",
+        "pl": "Port PoE 10"
       }
     },
     "poe.port_11": {
@@ -1060,7 +1123,8 @@
         "no": "PoE-port 11",
         "ko": "PoE 포트 11",
         "ru": "PoE порт 11",
-        "pt": "Porta PoE 11"
+        "pt": "Porta PoE 11",
+        "pl": "Port PoE 11"
       }
     },
     "poe.port_12": {
@@ -1076,7 +1140,8 @@
         "no": "PoE-port 12",
         "ko": "PoE 포트 12",
         "ru": "PoE порт 12",
-        "pt": "Porta PoE 12"
+        "pt": "Porta PoE 12",
+        "pl": "Port PoE 12"
       }
     },
     "poe.port_13": {
@@ -1092,7 +1157,8 @@
         "no": "PoE-port 13",
         "ko": "PoE 포트 13",
         "ru": "PoE порт 13",
-        "pt": "Porta PoE 13"
+        "pt": "Porta PoE 13",
+        "pl": "Port PoE 13"
       }
     },
     "poe.port_14": {
@@ -1108,7 +1174,8 @@
         "no": "PoE-port 14",
         "ko": "PoE 포트 14",
         "ru": "PoE порт 14",
-        "pt": "Porta PoE 14"
+        "pt": "Porta PoE 14",
+        "pl": "Port PoE 14"
       }
     },
     "poe.port_15": {
@@ -1124,7 +1191,8 @@
         "no": "PoE-port 15",
         "ko": "PoE 포트 15",
         "ru": "PoE порт 15",
-        "pt": "Porta PoE 15"
+        "pt": "Porta PoE 15",
+        "pl": "Port PoE 15"
       }
     },
     "poe.port_16": {
@@ -1140,7 +1208,8 @@
         "no": "PoE-port 16",
         "ko": "PoE 포트 16",
         "ru": "PoE порт 16",
-        "pt": "Porta PoE 16"
+        "pt": "Porta PoE 16",
+        "pl": "Port PoE 16"
       }
     },
     "poe.port_17": {
@@ -1156,7 +1225,8 @@
         "no": "PoE-port 17",
         "ko": "PoE 포트 17",
         "ru": "PoE порт 17",
-        "pt": "Porta PoE 17"
+        "pt": "Porta PoE 17",
+        "pl": "Port PoE 17"
       }
     },
     "poe.port_18": {
@@ -1172,7 +1242,8 @@
         "no": "PoE-port 18",
         "ko": "PoE 포트 18",
         "ru": "PoE порт 18",
-        "pt": "Porta PoE 18"
+        "pt": "Porta PoE 18",
+        "pl": "Port PoE 18"
       }
     },
     "poe.port_19": {
@@ -1188,7 +1259,8 @@
         "no": "PoE-port 19",
         "ko": "PoE 포트 19",
         "ru": "PoE порт 19",
-        "pt": "Porta PoE 19"
+        "pt": "Porta PoE 19",
+        "pl": "Port PoE 19"
       }
     },
     "poe.port_20": {
@@ -1204,7 +1276,8 @@
         "no": "PoE-port 20",
         "ko": "PoE 포트 20",
         "ru": "PoE порт 20",
-        "pt": "Porta PoE 20"
+        "pt": "Porta PoE 20",
+        "pl": "Port PoE 20"
       }
     },
     "poe.port_21": {
@@ -1220,7 +1293,8 @@
         "no": "PoE-port 21",
         "ko": "PoE 포트 21",
         "ru": "PoE порт 21",
-        "pt": "Porta PoE 21"
+        "pt": "Porta PoE 21",
+        "pl": "Port PoE 21"
       }
     },
     "poe.port_22": {
@@ -1236,7 +1310,8 @@
         "no": "PoE-port 22",
         "ko": "PoE 포트 22",
         "ru": "PoE порт 22",
-        "pt": "Porta PoE 22"
+        "pt": "Porta PoE 22",
+        "pl": "Port PoE 22"
       }
     },
     "poe.port_23": {
@@ -1252,7 +1327,8 @@
         "no": "PoE-port 23",
         "ko": "PoE 포트 23",
         "ru": "PoE порт 23",
-        "pt": "Porta PoE 23"
+        "pt": "Porta PoE 23",
+        "pl": "Port PoE 23"
       }
     },
     "poe.port_24": {
@@ -1268,7 +1344,8 @@
         "no": "PoE-port 24",
         "ko": "PoE 포트 24",
         "ru": "PoE порт 24",
-        "pt": "Porta PoE 24"
+        "pt": "Porta PoE 24",
+        "pl": "Port PoE 24"
       }
     },
     "poe.port_25": {
@@ -1284,7 +1361,8 @@
         "no": "PoE-port 25",
         "ko": "PoE 포트 25",
         "ru": "PoE порт 25",
-        "pt": "Porta PoE 25"
+        "pt": "Porta PoE 25",
+        "pl": "Port PoE 25"
       }
     },
     "poe.port_26": {
@@ -1300,7 +1378,8 @@
         "no": "PoE-port 26",
         "ko": "PoE 포트 26",
         "ru": "PoE порт 26",
-        "pt": "Porta PoE 26"
+        "pt": "Porta PoE 26",
+        "pl": "Port PoE 26"
       }
     },
     "poe.port_27": {
@@ -1316,7 +1395,8 @@
         "no": "PoE-port 27",
         "ko": "PoE 포트 27",
         "ru": "PoE порт 27",
-        "pt": "Porta PoE 27"
+        "pt": "Porta PoE 27",
+        "pl": "Port PoE 27"
       }
     },
     "poe.port_28": {
@@ -1332,7 +1412,8 @@
         "no": "PoE-port 28",
         "ko": "PoE 포트 28",
         "ru": "PoE порт 28",
-        "pt": "Porta PoE 28"
+        "pt": "Porta PoE 28",
+        "pl": "Port PoE 28"
       }
     },
     "poe.port_29": {
@@ -1348,7 +1429,8 @@
         "no": "PoE-port 29",
         "ko": "PoE 포트 29",
         "ru": "PoE порт 29",
-        "pt": "Porta PoE 29"
+        "pt": "Porta PoE 29",
+        "pl": "Port PoE 29"
       }
     },
     "poe.port_30": {
@@ -1364,7 +1446,8 @@
         "no": "PoE-port 30",
         "ko": "PoE 포트 30",
         "ru": "PoE порт 30",
-        "pt": "Porta PoE 30"
+        "pt": "Porta PoE 30",
+        "pl": "Port PoE 30"
       }
     },
     "poe.port_31": {
@@ -1380,7 +1463,8 @@
         "no": "PoE-port 31",
         "ko": "PoE 포트 31",
         "ru": "PoE порт 31",
-        "pt": "Porta PoE 31"
+        "pt": "Porta PoE 31",
+        "pl": "Port PoE 31"
       }
     },
     "poe.port_32": {
@@ -1396,7 +1480,8 @@
         "no": "PoE-port 32",
         "ko": "PoE 포트 32",
         "ru": "PoE порт 32",
-        "pt": "Porta PoE 32"
+        "pt": "Porta PoE 32",
+        "pl": "Port PoE 32"
       }
     },
     "poe.port_33": {
@@ -1412,7 +1497,8 @@
         "no": "PoE-port 33",
         "ko": "PoE 포트 33",
         "ru": "PoE порт 33",
-        "pt": "Porta PoE 33"
+        "pt": "Porta PoE 33",
+        "pl": "Port PoE 33"
       }
     },
     "poe.port_34": {
@@ -1428,7 +1514,8 @@
         "no": "PoE-port 34",
         "ko": "PoE 포트 34",
         "ru": "PoE порт 34",
-        "pt": "Porta PoE 34"
+        "pt": "Porta PoE 34",
+        "pl": "Port PoE 34"
       }
     },
     "poe.port_35": {
@@ -1444,7 +1531,8 @@
         "no": "PoE-port 35",
         "ko": "PoE 포트 35",
         "ru": "PoE порт 35",
-        "pt": "Porta PoE 35"
+        "pt": "Porta PoE 35",
+        "pl": "Port PoE 35"
       }
     },
     "poe.port_36": {
@@ -1460,7 +1548,8 @@
         "no": "PoE-port 36",
         "ko": "PoE 포트 36",
         "ru": "PoE порт 36",
-        "pt": "Porta PoE 36"
+        "pt": "Porta PoE 36",
+        "pl": "Port PoE 36"
       }
     },
     "poe.port_37": {
@@ -1476,7 +1565,8 @@
         "no": "PoE-port 37",
         "ko": "PoE 포트 37",
         "ru": "PoE порт 37",
-        "pt": "Porta PoE 37"
+        "pt": "Porta PoE 37",
+        "pl": "Port PoE 37"
       }
     },
     "poe.port_38": {
@@ -1492,7 +1582,8 @@
         "no": "PoE-port 38",
         "ko": "PoE 포트 38",
         "ru": "PoE порт 38",
-        "pt": "Porta PoE 38"
+        "pt": "Porta PoE 38",
+        "pl": "Port PoE 38"
       }
     },
     "poe.port_39": {
@@ -1508,7 +1599,8 @@
         "no": "PoE-port 39",
         "ko": "PoE 포트 39",
         "ru": "PoE порт 39",
-        "pt": "Porta PoE 39"
+        "pt": "Porta PoE 39",
+        "pl": "Port PoE 39"
       }
     },
     "poe.port_40": {
@@ -1524,7 +1616,8 @@
         "no": "PoE-port 40",
         "ko": "PoE 포트 40",
         "ru": "PoE порт 40",
-        "pt": "Porta PoE 40"
+        "pt": "Porta PoE 40",
+        "pl": "Port PoE 40"
       }
     },
     "poe.port_41": {
@@ -1540,7 +1633,8 @@
         "no": "PoE-port 41",
         "ko": "PoE 포트 41",
         "ru": "PoE порт 41",
-        "pt": "Porta PoE 41"
+        "pt": "Porta PoE 41",
+        "pl": "Port PoE 41"
       }
     },
     "poe.port_42": {
@@ -1556,7 +1650,8 @@
         "no": "PoE-port 42",
         "ko": "PoE 포트 42",
         "ru": "PoE порт 42",
-        "pt": "Porta PoE 42"
+        "pt": "Porta PoE 42",
+        "pl": "Port PoE 42"
       }
     },
     "poe.port_43": {
@@ -1572,7 +1667,8 @@
         "no": "PoE-port 43",
         "ko": "PoE 포트 43",
         "ru": "PoE порт 43",
-        "pt": "Porta PoE 43"
+        "pt": "Porta PoE 43",
+        "pl": "Port PoE 43"
       }
     },
     "poe.port_44": {
@@ -1588,7 +1684,8 @@
         "no": "PoE-port 44",
         "ko": "PoE 포트 44",
         "ru": "PoE порт 44",
-        "pt": "Porta PoE 44"
+        "pt": "Porta PoE 44",
+        "pl": "Port PoE 44"
       }
     },
     "poe.port_45": {
@@ -1604,7 +1701,8 @@
         "no": "PoE-port 45",
         "ko": "PoE 포트 45",
         "ru": "PoE порт 45",
-        "pt": "Porta PoE 45"
+        "pt": "Porta PoE 45",
+        "pl": "Port PoE 45"
       }
     },
     "poe.port_46": {
@@ -1620,7 +1718,8 @@
         "no": "PoE-port 46",
         "ko": "PoE 포트 46",
         "ru": "PoE порт 46",
-        "pt": "Porta PoE 46"
+        "pt": "Porta PoE 46",
+        "pl": "Port PoE 46"
       }
     },
     "poe.port_47": {
@@ -1636,7 +1735,8 @@
         "no": "PoE-port 47",
         "ko": "PoE 포트 47",
         "ru": "PoE порт 47",
-        "pt": "Porta PoE 47"
+        "pt": "Porta PoE 47",
+        "pl": "Port PoE 47"
       }
     },
     "poe.port_48": {
@@ -1652,7 +1752,8 @@
         "no": "PoE-port 48",
         "ko": "PoE 포트 48",
         "ru": "PoE порт 48",
-        "pt": "Porta PoE 48"
+        "pt": "Porta PoE 48",
+        "pl": "Port PoE 48"
       }
     }
   },

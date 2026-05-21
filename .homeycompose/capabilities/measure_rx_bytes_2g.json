@@ -1,5 +1,18 @@
 {
-  "title": { "en": "Urx bytes 2.4 GHz", "nl": "Urx bytes 2.4 GHz" },
+  "title": {
+    "en": "Urx bytes 2.4 GHz",
+    "nl": "Urx bytes 2.4 GHz",
+    "da": "RX-trafik 2,4 GHz (MB)",
+    "de": "RX-Datenverkehr 2,4 GHz (MB)",
+    "es": "Trafico RX 2,4 GHz (MB)",
+    "fr": "Trafic RX 2,4 GHz (Mo)",
+    "it": "Traffico RX 2,4 GHz (MB)",
+    "ko": "RX 트래픽 2.4GHz (MB)",
+    "no": "RX-trafikk 2,4 GHz (MB)",
+    "pl": "Ruch RX 2,4 GHz (MB)",
+    "ru": "RX-trafik 2,4 GHz (MB)",
+    "sv": "RX-trafik 2,4 GHz (MB)"
+  },
   "type": "number",
   "units": "MB",
   "uiComponent": "sensor",

@@ -12,7 +12,8 @@
     "no": "!{{Tilkoblet|Frakoblet}}",
     "ko": "!{{연결됨|연결 끊김}}",
     "ru": "!{{Подключено|Отключено}}",
-    "pt": "!{{Conectado|Desconectado}}"
+    "pt": "!{{Conectado|Desconectado}}",
+    "pl": "!{{Connected|Disconnected}}"
   },
   "titleFormatted": {
     "en": "!{{Connected|Disconnected}}",
@@ -26,7 +27,8 @@
     "no": "!{{Tilkoblet|Frakoblet}}",
     "ko": "!{{연결됨|연결 끊김}}",
     "ru": "!{{Подключено|Отключено}}",
-    "pt": "!{{Conectado|Desconectado}}"
+    "pt": "!{{Conectado|Desconectado}}",
+    "pl": "!{{Connected|Disconnected}}"
   },
   "args": [
     {
@@ -45,7 +47,8 @@
         "no": "Wifi-klient",
         "ko": "Wi-Fi 클라이언트",
         "ru": "Wi-Fi клиент",
-        "pt": "Cliente Wi-Fi"
+        "pt": "Cliente Wi-Fi",
+        "pl": "Wi-Fi client"
       }
     }
   ]

@@ -12,7 +12,8 @@
     "no": "IP Adresse",
     "ko": "IP 주소",
     "ru": "IP Адрес",
-    "pt": "Endereço IP"
+    "pt": "Endereço IP",
+    "pl": "Adres IP"
   },
   "getable": true,
   "setable": false,

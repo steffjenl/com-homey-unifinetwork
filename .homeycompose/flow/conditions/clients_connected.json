@@ -13,6 +13,7 @@
     "no": "!{{I|In}}gen enheter tilkoblet",
     "ko": "!{{없|없}}음 클라이언트",
     "ru": "!{{C|Disc}}onnected Clients",
-    "pt": "!{{C|Disc}}onnected Clients"
+    "pt": "!{{C|Disc}}onnected Clients",
+    "pl": "!{{C|Disc}}onnected Clients"
   }
 }

@@ -12,7 +12,8 @@
     "no": "Lås opp klient",
     "ko": "클라이언트 차단 해제",
     "ru": "Разблокировать клиента",
-    "pt": "Desbloquear cliente"
+    "pt": "Desbloquear cliente",
+    "pl": "Unblock client"
   },
   "args": [
     {
@@ -31,7 +32,8 @@
         "no": "Kablet klient",
         "ko": "유선 클라이언트",
         "ru": "Кабельный клиент",
-        "pt": "Cliente com fio"
+        "pt": "Cliente com fio",
+        "pl": "Cable client"
       }
     }
   ]

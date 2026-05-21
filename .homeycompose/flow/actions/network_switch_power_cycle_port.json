@@ -12,7 +12,8 @@
     "no": "PoE Strømssyklus",
     "ko": "PoE 전원 주기",
     "ru": "Цикл питания PoE",
-    "pt": "Ciclo de energia PoE"
+    "pt": "Ciclo de energia PoE",
+    "pl": "PoE Power Cycle"
   },
   "titleFormatted": {
     "en": "Cycle power on port [[port]]",
@@ -26,7 +27,8 @@
     "no": "Syklus strøm på port [[port]]",
     "ko": "포트 [[port]]에서 전원 주기",
     "ru": "Цикл питания на порту [[port]]",
-    "pt": "Ciclo de energia na porta [[port]]"
+    "pt": "Ciclo de energia na porta [[port]]",
+    "pl": "Cycle power on port [[port]]"
   },
   "args": [
     {
@@ -45,7 +47,8 @@
         "no": "Nettverkssvitsj",
         "ko": "네트워크 스위치",
         "ru": "Сетевой коммутатор",
-        "pt": "Switch de rede"
+        "pt": "Switch de rede",
+        "pl": "Network switch"
       }
     },
     {
@@ -63,7 +66,8 @@
         "no": "Portnummer",
         "ko": "포트 번호",
         "ru": "Номер порта",
-        "pt": "Número de porta"
+        "pt": "Número de porta",
+        "pl": "Port number"
       }
     }
   ]

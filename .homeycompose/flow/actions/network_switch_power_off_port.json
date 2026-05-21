@@ -12,7 +12,8 @@
     "no": "Slå av PoE",
     "ko": "PoE 전원 끄기",
     "ru": "Отключить питание PoE",
-    "pt": "Desligar PoE"
+    "pt": "Desligar PoE",
+    "pl": "PoE Power Off"
   },
   "titleFormatted": {
     "en": "Power off port [[port]]",
@@ -26,7 +27,8 @@
     "no": "Slå av port [[port]]",
     "ko": "포트 [[port]] 전원 끄기",
     "ru": "Отключить питание на порту [[port]]",
-    "pt": "Desligar porta [[port]]"
+    "pt": "Desligar porta [[port]]",
+    "pl": "Power off port [[port]]"
   },
   "args": [
     {
@@ -45,7 +47,8 @@
         "no": "Nettverkssvitsj",
         "ko": "네트워크 스위치",
         "ru": "Сетевой коммутатор",
-        "pt": "Switch de rede"
+        "pt": "Switch de rede",
+        "pl": "Network switch"
       }
     },
     {
@@ -63,7 +66,8 @@
         "no": "Portnummer",
         "ko": "포트 번호",
         "ru": "Номер порта",
-        "pt": "Número de porta"
+        "pt": "Número de porta",
+        "pl": "Port number"
       }
     }
   ]

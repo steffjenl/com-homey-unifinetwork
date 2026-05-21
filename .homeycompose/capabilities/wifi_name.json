@@ -12,7 +12,8 @@
     "no": "WiFi Navn",
     "ko": "WiFi 이름",
     "ru": "Имя WiFi",
-    "pt": "Nome do WiFi"
+    "pt": "Nome do WiFi",
+    "pl": "Nazwa WiFi"
   },
   "getable": true,
   "setable": false,

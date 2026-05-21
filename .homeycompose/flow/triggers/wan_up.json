@@ -12,15 +12,41 @@
     "no": "WAN-tilkobling gjenopprettet",
     "ko": "WAN 연결 복구됨",
     "ru": "WAN-соединение восстановлено",
-    "pt": "Conexão WAN restaurada"
+    "pt": "Conexão WAN restaurada",
+    "pl": "WAN connection restored"
   },
   "tokens": [
     {
       "name": "wan_ip",
       "type": "string",
-      "title": { "en": "WAN IP" },
-      "example": { "en": "1.2.3.4" }
+      "title": {
+        "en": "WAN IP",
+        "da": "WAN IP",
+        "de": "WAN IP",
+        "es": "WAN IP",
+        "fr": "WAN IP",
+        "it": "WAN IP",
+        "ko": "WAN IP",
+        "nl": "WAN IP",
+        "no": "WAN IP",
+        "pl": "WAN IP",
+        "ru": "WAN IP",
+        "sv": "WAN IP"
+      },
+      "example": {
+        "en": "1.2.3.4",
+        "da": "1.2.3.4",
+        "de": "1.2.3.4",
+        "es": "1.2.3.4",
+        "fr": "1.2.3.4",
+        "it": "1.2.3.4",
+        "ko": "1.2.3.4",
+        "nl": "1.2.3.4",
+        "no": "1.2.3.4",
+        "pl": "1.2.3.4",
+        "ru": "1.2.3.4",
+        "sv": "1.2.3.4"
+      }
     }
   ]
 }
-

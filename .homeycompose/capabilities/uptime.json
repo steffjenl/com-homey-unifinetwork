@@ -12,7 +12,8 @@
     "no": "Driftstid",
     "ko": "가동 시간",
     "ru": "Время работы",
-    "pt": "Tempo de atividade"
+    "pt": "Tempo de atividade",
+    "pl": "Czas pracy"
   },
   "units": "s",
   "getable": true,
@@ -23,4 +24,3 @@
   "decimals": 0,
   "icon": "./assets/cpu.svg"
 }
-
