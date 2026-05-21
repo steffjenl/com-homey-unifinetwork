@@ -23,7 +23,7 @@
         "nvr": "Serverdetaljer",
         "nvrText": "Använd port 443 för UniFiOS och port 8443 för Docker / Standalone.",
         "nvrip": "IP-adress",
-        "nvrport": "Port",
+        "nvrport": "Portnummer",
         "credentials": "Användaruppgifter",
         "credentialsText": "MFA inaktiverad och lokal administratörsanvändare",
         "username": "Användarnamn",
@@ -35,10 +35,10 @@
             "failure": "Inloggningsuppgifterna är ogiltiga."
         },
         "saved": "Inställningar sparade.",
-        "site": "Site",
+        "site": "Plats",
         "tab": {
             "settings": "Inställningar",
-            "sites": "Sites",
+            "sites": "Platser",
             "event_log": "Händelselogg"
         },
         "intro2": "",
@@ -47,10 +47,10 @@
         "pullmethode": "Pull-metod",
         "interval": "Intervall",
         "applicationFlows": "Aktivera applikationsflöden",
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Verifiera SSL-certifikat",
+        "sslverify_hint": "Standard: avmarkerad (rekommenderas foer de flesta installationer). Aktivera endast detta om din controller har ett giltigt betrott TLS-certifikat (inte sjaelvsignerat).",
+        "apikey": "API-nyckel (valfritt)",
+        "apikey_hint": "Endast UniFi OS 7+. Skapa en API-nyckel i UniFi OS -> Inställningar -> API. Naer den aer satt anvaender v1 REST-anrop Bearer-autentisering i staellet foer sessionscookie."
     },
     "events": {
         "camera": {
@@ -72,5 +72,16 @@
             "orange": "Varning",
             "red": "Kritisk"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI-band 5 GHz",
+        "measure_rssi_6g": "RSSI-band 6 GHz",
+        "measure_rx_bytes_2g": "RX-trafik 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "TX-trafik 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "RX-trafik 5 GHz (MB)",
+        "measure_tx_bytes_5g": "TX-trafik 5 GHz (MB)",
+        "measure_rx_bytes_6g": "RX-trafik 6 GHz (MB)",
+        "measure_tx_bytes_6g": "TX-trafik 6 GHz (MB)"
     }
 }

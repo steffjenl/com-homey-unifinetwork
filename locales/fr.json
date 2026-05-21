@@ -15,7 +15,7 @@
         "nvr": "Informations du serveur",
         "nvrText": "Utilisez le port 443 pour UniFiOS et le port 8443 pour Docker / Autonome.",
         "nvrip": "Adresse IP",
-        "nvrport": "Port",
+        "nvrport": "Numero de port",
         "credentials": "Informations utilisateur",
         "credentialsText": "MFA désactivé et utilisateur administrateur local",
         "username": "Nom d'utilisateur",
@@ -29,12 +29,20 @@
         "saved": "Paramètres enregistrés.",
         "tab": {
             "settings": "Paramètres",
-            "event_log": "Journal des événements"
+            "event_log": "Journal des événements",
+            "sites": "Emplacements"
         },
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Verifier le certificat SSL",
+        "sslverify_hint": "Par defaut : decoche (recommande pour la plupart des installations). Activez ceci uniquement si votre controleur dispose d'un certificat TLS valide et approuve (non auto-signe).",
+        "apikey": "Cle API (optionnel)",
+        "apikey_hint": "UniFi OS 7+ uniquement. Creez une cle API dans UniFi OS -> Parametres -> API. Lorsqu'elle est definie, les appels REST v1 utilisent l'authentification Bearer au lieu d'un cookie de session.",
+        "site": "Emplacement",
+        "intro2": "",
+        "log_enabled": "Journal des evenements active",
+        "pullmethodeheader": "Methode de recuperation et intervalle",
+        "pullmethode": "Methode de recuperation",
+        "interval": "Intervalle (secondes, minimum 10)",
+        "applicationFlows": "Activer les flux applicatifs"
     },
     "events": {
         "camera": {
@@ -64,5 +72,16 @@
             "Disconnected": "Déconnecté",
             "Initialized": "Initialisation"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI bande 5 GHz",
+        "measure_rssi_6g": "RSSI bande 6 GHz",
+        "measure_rx_bytes_2g": "Trafic RX 2,4 GHz (Mo)",
+        "measure_tx_bytes_2g": "Trafic TX 2,4 GHz (Mo)",
+        "measure_rx_bytes_5g": "Trafic RX 5 GHz (Mo)",
+        "measure_tx_bytes_5g": "Trafic TX 5 GHz (Mo)",
+        "measure_rx_bytes_6g": "Trafic RX 6 GHz (Mo)",
+        "measure_tx_bytes_6g": "Trafic TX 6 GHz (Mo)"
     }
 }

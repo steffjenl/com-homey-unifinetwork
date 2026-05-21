@@ -23,7 +23,7 @@
         "nvr": "Szczegóły serwera",
         "nvrText": "Użyj portu 443 dla UniFiOS i portu 8443 dla Docker / Standalone.",
         "nvrip": "Adres IP",
-        "nvrport": "Port",
+        "nvrport": "Numer portu",
         "credentials": "Dane uwierzytelniające użytkownika",
         "credentialsText": "MFA wyłączone i lokalny użytkownik administratora",
         "username": "Nazwa użytkownika",
@@ -47,10 +47,10 @@
         "pullmethode": "Metoda pobierania",
         "interval": "Interwał",
         "applicationFlows": "Włącz przepływy aplikacji",
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Weryfikuj certyfikat SSL",
+        "sslverify_hint": "Domyslnie: odznaczone (zalecane dla wiekszosci konfiguracji). Wlacz to tylko, jesli kontroler ma prawidlowy zaufany certyfikat TLS (nie samopodpisany).",
+        "apikey": "Klucz API (opcjonalnie)",
+        "apikey_hint": "Tylko UniFi OS 7+. Utworz klucz API w UniFi OS -> Ustawienia -> API. Po ustawieniu wywolania REST v1 uzywaja uwierzytelniania Bearer zamiast ciasteczka sesji."
     },
     "events": {
         "camera": {
@@ -72,5 +72,16 @@
             "orange": "Ostrzeżenie",
             "red": "Krytyczny"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI pasmo 5 GHz",
+        "measure_rssi_6g": "RSSI pasmo 6 GHz",
+        "measure_rx_bytes_2g": "Ruch RX 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "Ruch TX 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "Ruch RX 5 GHz (MB)",
+        "measure_tx_bytes_5g": "Ruch TX 5 GHz (MB)",
+        "measure_rx_bytes_6g": "Ruch RX 6 GHz (MB)",
+        "measure_tx_bytes_6g": "Ruch TX 6 GHz (MB)"
     }
 }

@@ -47,10 +47,10 @@
         "pullmethode": "풀 방법",
         "interval": "간격",
         "applicationFlows": "애플리케이션 플로우 활성화",
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "SSL 인증서 확인",
+        "sslverify_hint": "기본값: 해제됨(대부분의 환경에서 권장). 컨트롤러에 유효하고 신뢰되는 TLS 인증서(자체 서명 아님)가 있는 경우에만 활성화하세요.",
+        "apikey": "API 키(선택 사항)",
+        "apikey_hint": "UniFi OS 7+ 전용. UniFi OS -> 설정 -> API에서 API 키를 생성하세요. 설정하면 v1 REST 호출은 세션 쿠키 대신 Bearer 인증을 사용합니다."
     },
     "events": {
         "camera": {
@@ -72,5 +72,16 @@
             "orange": "경고",
             "red": "치명적"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2.4GHz",
+        "measure_rssi_5g": "RSSI 5GHz",
+        "measure_rssi_6g": "RSSI 6GHz",
+        "measure_rx_bytes_2g": "RX 트래픽 2.4GHz (MB)",
+        "measure_tx_bytes_2g": "TX 트래픽 2.4GHz (MB)",
+        "measure_rx_bytes_5g": "RX 트래픽 5GHz (MB)",
+        "measure_tx_bytes_5g": "TX 트래픽 5GHz (MB)",
+        "measure_rx_bytes_6g": "RX 트래픽 6GHz (MB)",
+        "measure_tx_bytes_6g": "TX 트래픽 6GHz (MB)"
     }
 }

@@ -47,10 +47,10 @@
         "pullmethode": "Метод получения",
         "interval": "Интервал",
         "applicationFlows": "Включить потоки приложений",
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Proveryat SSL-sertifikat",
+        "sslverify_hint": "Po umolchaniyu: ne otmecheno (rekomenduetsya dlya bolshinstva nastroyek). Vklyuchayte tolko esli u kontrollera est deystvitelnyy doverennyy TLS-sertifikat (ne samopodpisannyy).",
+        "apikey": "API-klyuch (neobyazatelno)",
+        "apikey_hint": "Tolko dlya UniFi OS 7+. Sozdajte API-klyuch v UniFi OS -> Nastroyki -> API. Pri ukazanii vyzovy REST v1 ispolzuyut Bearer-avtorizatsiyu vmesto cookie sessii."
     },
     "events": {
         "camera": {
@@ -72,5 +72,16 @@
             "orange": "Предупреждение",
             "red": "Критично"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI 5 ГГц",
+        "measure_rssi_6g": "RSSI 6 ГГц",
+        "measure_rx_bytes_2g": "RX-trafik 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "TX-trafik 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "RX-trafik 5 GHz (MB)",
+        "measure_tx_bytes_5g": "TX-trafik 5 GHz (MB)",
+        "measure_rx_bytes_6g": "RX-trafik 6 GHz (MB)",
+        "measure_tx_bytes_6g": "TX-trafik 6 GHz (MB)"
     }
 }

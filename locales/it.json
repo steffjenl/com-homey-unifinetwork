@@ -29,12 +29,20 @@
         "saved": "Impostazioni salvate.",
         "tab": {
             "settings": "Impostazioni",
-            "event_log": "Registro eventi"
+            "event_log": "Registro eventi",
+            "sites": "Siti"
         },
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Verifica certificato SSL",
+        "sslverify_hint": "Predefinito: disattivato (consigliato per la maggior parte delle configurazioni). Attivalo solo se il controller ha un certificato TLS valido e attendibile (non autofirmato).",
+        "apikey": "Chiave API (opzionale)",
+        "apikey_hint": "Solo UniFi OS 7+. Crea una chiave API in UniFi OS -> Impostazioni -> API. Quando impostata, le chiamate REST v1 usano autenticazione Bearer invece del cookie di sessione.",
+        "site": "Sito",
+        "intro2": "",
+        "log_enabled": "Registro eventi abilitato",
+        "pullmethodeheader": "Metodo di polling e intervallo",
+        "pullmethode": "Metodo di polling",
+        "interval": "Intervallo (secondi, minimo 10)",
+        "applicationFlows": "Abilita flussi applicativi"
     },
     "events": {
         "camera": {
@@ -64,5 +72,16 @@
             "Disconnected": "Disconnesso",
             "Initialized": "Inizializzazione"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI banda 5 GHz",
+        "measure_rssi_6g": "RSSI banda 6 GHz",
+        "measure_rx_bytes_2g": "Traffico RX 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "Traffico TX 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "Traffico RX 5 GHz (MB)",
+        "measure_tx_bytes_5g": "Traffico TX 5 GHz (MB)",
+        "measure_rx_bytes_6g": "Traffico RX 6 GHz (MB)",
+        "measure_tx_bytes_6g": "Traffico TX 6 GHz (MB)"
     }
 }

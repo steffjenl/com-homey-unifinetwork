@@ -23,7 +23,7 @@
         "nvr": "Serverdetaljer",
         "nvrText": "Bruk port 443 for UniFiOS og port 8443 for Docker / Standalone.",
         "nvrip": "IP-adresse",
-        "nvrport": "Port",
+        "nvrport": "Portnummer",
         "credentials": "Brukerlegitimasjon",
         "credentialsText": "MFA deaktivert og lokal admin-bruker",
         "username": "Brukernavn",
@@ -35,10 +35,10 @@
             "failure": "Legitimasjonen er ugyldig."
         },
         "saved": "Innstillinger lagret.",
-        "site": "Site",
+        "site": "Sted",
         "tab": {
             "settings": "Innstillinger",
-            "sites": "Sites",
+            "sites": "Steder",
             "event_log": "Hendelseslogg"
         },
         "intro2": "",
@@ -47,10 +47,10 @@
         "pullmethode": "Pull-metode",
         "interval": "Intervall",
         "applicationFlows": "Aktiver applikasjonsflyt",
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "Verifiser SSL-sertifikat",
+        "sslverify_hint": "Standard: ikke avkrysset (anbefalt for de fleste oppsett). Aktiver dette kun hvis kontrolleren har et gyldig klarert TLS-sertifikat (ikke selvsignert).",
+        "apikey": "API-noekkel (valgfritt)",
+        "apikey_hint": "Kun for UniFi OS 7+. Opprett en API-noekkel i UniFi OS -> Innstillinger -> API. Naar satt bruker v1 REST-kall Bearer-autentisering i stedet for sesjonskapsel."
     },
     "events": {
         "camera": {
@@ -72,5 +72,16 @@
             "orange": "Advarsel",
             "red": "Kritisk"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI-band 5 GHz",
+        "measure_rssi_6g": "RSSI-band 6 GHz",
+        "measure_rx_bytes_2g": "RX-trafikk 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "TX-trafikk 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "RX-trafikk 5 GHz (MB)",
+        "measure_tx_bytes_5g": "TX-trafikk 5 GHz (MB)",
+        "measure_rx_bytes_6g": "RX-trafikk 6 GHz (MB)",
+        "measure_tx_bytes_6g": "TX-trafikk 6 GHz (MB)"
     }
 }

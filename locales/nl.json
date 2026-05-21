@@ -15,7 +15,7 @@
         "nvr": "Server gegevens",
         "nvrText": "Gebruik poort 443 voor UniFiOS en poort 8443 voor Docker / Standalone.",
         "nvrip": "IP-adres",
-        "nvrport": "Port",
+        "nvrport": "Poort",
         "credentials": "Gebruikersgegevens",
         "credentialsText": "MFA Uitgeschakeld en Local Admin User",
         "username": "Gebruikersnaam",
@@ -29,12 +29,20 @@
         "saved": "Instellingen opgeslagen.",
         "tab": {
             "settings": "Instellingen",
-            "event_log": "Logboek"
+            "event_log": "Logboek",
+            "sites": "Locaties"
         },
-        "sslverify": "Verify SSL certificate",
-        "sslverify_hint": "Enable for controllers with a valid TLS certificate. Leave unchecked for self-signed certificates.",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS settings. Enables Bearer auth for v1 REST calls."
+        "sslverify": "SSL-certificaat verifiëren",
+        "sslverify_hint": "Standaard: uitgeschakeld (aanbevolen voor de meeste installaties). Schakel dit alleen in als je controller een geldig vertrouwd TLS-certificaat heeft (niet zelfondertekend).",
+        "apikey": "API-sleutel (optioneel)",
+        "apikey_hint": "Alleen voor UniFi OS 7+. Maak een API-sleutel aan in UniFi OS -> Instellingen -> API. Als dit is ingesteld, gebruiken v1 REST-calls Bearer-authenticatie in plaats van een sessiecookie.",
+        "site": "Locatie",
+        "intro2": "",
+        "log_enabled": "Logboek ingeschakeld",
+        "pullmethodeheader": "Ophaalmethode en interval",
+        "pullmethode": "Ophaalmethode",
+        "interval": "Interval (seconden, minimum 10)",
+        "applicationFlows": "Applicatiestromen inschakelen"
     },
     "events": {
         "camera": {
@@ -64,5 +72,16 @@
             "Disconnected": "Verbinding verbroken",
             "Initialized": "Bezig met starten"
         }
+    },
+    "capabilities": {
+        "measure_rssi_2g": "RSSI 2,4 GHz",
+        "measure_rssi_5g": "RSSI-band 5 GHz",
+        "measure_rssi_6g": "RSSI-band 6 GHz",
+        "measure_rx_bytes_2g": "RX-verkeer 2,4 GHz (MB)",
+        "measure_tx_bytes_2g": "TX-verkeer 2,4 GHz (MB)",
+        "measure_rx_bytes_5g": "RX-verkeer 5 GHz (MB)",
+        "measure_tx_bytes_5g": "TX-verkeer 5 GHz (MB)",
+        "measure_rx_bytes_6g": "RX-verkeer 6 GHz (MB)",
+        "measure_tx_bytes_6g": "TX-verkeer 6 GHz (MB)"
     }
 }
