@@ -106,7 +106,8 @@
           "no": "Enhet tilkoblet",
           "ko": "장치 연결됨",
           "ru": "Устройство подключено",
-          "pt": "Dispositivo conectado"
+          "pt": "Dispositivo conectado",
+          "pl": "Device just connected"
         },
         "tokens": [
           {
@@ -118,7 +119,13 @@
               "es": "MAC",
               "fr": "mac",
               "de": "MAC",
-              "it": "MAC"
+              "it": "MAC",
+              "da": "mac",
+              "ko": "mac",
+              "no": "mac",
+              "pl": "mac",
+              "ru": "mac",
+              "sv": "mac"
             },
             "example": {
               "en": "00:00:00:00:00:00",
@@ -126,7 +133,13 @@
               "es": "00:00:00:00:00:00",
               "fr": "00:00:00:00:00:00",
               "de": "00:00:00:00:00:00",
-              "it": "00:00:00:00:00:00"
+              "it": "00:00:00:00:00:00",
+              "da": "00:00:00:00:00:00",
+              "ko": "00:00:00:00:00:00",
+              "no": "00:00:00:00:00:00",
+              "pl": "00:00:00:00:00:00",
+              "ru": "00:00:00:00:00:00",
+              "sv": "00:00:00:00:00:00"
             }
           },
           {
@@ -144,7 +157,8 @@
               "no": "Hvem",
               "ko": "누구",
               "ru": "Кто",
-              "pt": "Quem"
+              "pt": "Quem",
+              "pl": "Who"
             },
             "example": {
               "en": "wifi01",
@@ -152,7 +166,13 @@
               "es": "wifi01",
               "fr": "wifi01",
               "de": "wifi01",
-              "it": "wifi01"
+              "it": "wifi01",
+              "da": "wifi01",
+              "ko": "wifi01",
+              "no": "wifi01",
+              "pl": "wifi01",
+              "ru": "wifi01",
+              "sv": "wifi01"
             }
           },
           {
@@ -164,7 +184,13 @@
               "es": "SSID",
               "fr": "SSID",
               "de": "SSID",
-              "it": "SSID"
+              "it": "SSID",
+              "da": "SSID",
+              "ko": "SSID",
+              "no": "SSID",
+              "pl": "SSID",
+              "ru": "SSID",
+              "sv": "SSID"
             },
             "example": {
               "en": "MyWifiSSID",
@@ -172,7 +198,13 @@
               "es": "MyWifiSSID",
               "fr": "MyWifiSSID",
               "de": "MyWifiSSID",
-              "it": "MyWifiSSID"
+              "it": "MyWifiSSID",
+              "da": "MyWifiSSID",
+              "ko": "MyWifiSSID",
+              "no": "MyWifiSSID",
+              "pl": "MyWifiSSID",
+              "ru": "MyWifiSSID",
+              "sv": "MyWifiSSID"
             }
           },
           {
@@ -184,10 +216,27 @@
               "es": "Dirección IP",
               "fr": "Adresse IP",
               "de": "IP-Adresse",
-              "it": "Indirizzo IP"
+              "it": "Indirizzo IP",
+              "da": "IP Adresse",
+              "ko": "IP 주소",
+              "no": "IP Adresse",
+              "pl": "Adres IP",
+              "ru": "IP Адрес",
+              "sv": "IP Adress"
             },
             "example": {
-              "en": "192.168.0.1"
+              "en": "192.168.0.1",
+              "da": "192.168.0.1",
+              "de": "192.168.0.1",
+              "es": "192.168.0.1",
+              "fr": "192.168.0.1",
+              "it": "192.168.0.1",
+              "ko": "192.168.0.1",
+              "nl": "192.168.0.1",
+              "no": "192.168.0.1",
+              "pl": "192.168.0.1",
+              "ru": "192.168.0.1",
+              "sv": "192.168.0.1"
             }
           }
         ]
@@ -206,19 +255,40 @@
           "no": "WiFi-tilkobling mistet",
           "ko": "WiFi 연결 끊김",
           "ru": "Потеряно соединение Wi-Fi",
-          "pt": "Conexão Wi-Fi perdida"
+          "pt": "Conexão Wi-Fi perdida",
+          "pl": "Wifi connection lost"
         },
         "tokens": [
           {
             "name": "mac",
             "type": "string",
             "title": {
-              "en": "mac"
+              "en": "mac",
+              "da": "mac",
+              "de": "MAC",
+              "es": "MAC",
+              "fr": "mac",
+              "it": "MAC",
+              "ko": "mac",
+              "nl": "mac",
+              "no": "mac",
+              "pl": "mac",
+              "ru": "mac",
+              "sv": "mac"
             },
             "example": {
               "en": "00:00:00:00:00:00",
               "nl": "00:00:00:00:00:00",
-              "es": "00:00:00:00:00:00"
+              "es": "00:00:00:00:00:00",
+              "da": "00:00:00:00:00:00",
+              "de": "00:00:00:00:00:00",
+              "fr": "00:00:00:00:00:00",
+              "it": "00:00:00:00:00:00",
+              "ko": "00:00:00:00:00:00",
+              "no": "00:00:00:00:00:00",
+              "pl": "00:00:00:00:00:00",
+              "ru": "00:00:00:00:00:00",
+              "sv": "00:00:00:00:00:00"
             }
           },
           {
@@ -236,12 +306,22 @@
               "no": "Hvem",
               "ko": "누구",
               "ru": "Кто",
-              "pt": "Quem"
+              "pt": "Quem",
+              "pl": "Who"
             },
             "example": {
               "en": "wifi01",
               "nl": "wifi01",
-              "es": "wifi01"
+              "es": "wifi01",
+              "da": "wifi01",
+              "de": "wifi01",
+              "fr": "wifi01",
+              "it": "wifi01",
+              "ko": "wifi01",
+              "no": "wifi01",
+              "pl": "wifi01",
+              "ru": "wifi01",
+              "sv": "wifi01"
             }
           },
           {
@@ -250,10 +330,30 @@
             "title": {
               "en": "SSID",
               "nl": "SSID",
-              "es": "SSID"
+              "es": "SSID",
+              "da": "SSID",
+              "de": "SSID",
+              "fr": "SSID",
+              "it": "SSID",
+              "ko": "SSID",
+              "no": "SSID",
+              "pl": "SSID",
+              "ru": "SSID",
+              "sv": "SSID"
             },
             "example": {
-              "en": "MyWifiSSID"
+              "en": "MyWifiSSID",
+              "da": "MyWifiSSID",
+              "de": "MyWifiSSID",
+              "es": "MyWifiSSID",
+              "fr": "MyWifiSSID",
+              "it": "MyWifiSSID",
+              "ko": "MyWifiSSID",
+              "nl": "MyWifiSSID",
+              "no": "MyWifiSSID",
+              "pl": "MyWifiSSID",
+              "ru": "MyWifiSSID",
+              "sv": "MyWifiSSID"
             }
           },
           {
@@ -265,10 +365,27 @@
               "es": "Dirección IP",
               "fr": "Adresse IP",
               "de": "IP-Adresse",
-              "it": "Indirizzo IP"
+              "it": "Indirizzo IP",
+              "da": "IP Adresse",
+              "ko": "IP 주소",
+              "no": "IP Adresse",
+              "pl": "Adres IP",
+              "ru": "IP Адрес",
+              "sv": "IP Adress"
             },
             "example": {
-              "en": "192.168.0.1"
+              "en": "192.168.0.1",
+              "da": "192.168.0.1",
+              "de": "192.168.0.1",
+              "es": "192.168.0.1",
+              "fr": "192.168.0.1",
+              "it": "192.168.0.1",
+              "ko": "192.168.0.1",
+              "nl": "192.168.0.1",
+              "no": "192.168.0.1",
+              "pl": "192.168.0.1",
+              "ru": "192.168.0.1",
+              "sv": "192.168.0.1"
             }
           }
         ]
@@ -287,7 +404,8 @@
           "no": "Gjest tilkoblet",
           "ko": "게스트 연결됨",
           "ru": "Гость подключен",
-          "pt": "Convidado conectado"
+          "pt": "Convidado conectado",
+          "pl": "Guest just connected"
         },
         "tokens": [
           {
@@ -296,12 +414,30 @@
             "title": {
               "en": "mac",
               "nl": "mac",
-              "es": "MAC"
+              "es": "MAC",
+              "da": "mac",
+              "de": "MAC",
+              "fr": "mac",
+              "it": "MAC",
+              "ko": "mac",
+              "no": "mac",
+              "pl": "mac",
+              "ru": "mac",
+              "sv": "mac"
             },
             "example": {
               "en": "00:00:00:00:00:00",
               "nl": "00:00:00:00:00:00",
-              "es": "00:00:00:00:00:00"
+              "es": "00:00:00:00:00:00",
+              "da": "00:00:00:00:00:00",
+              "de": "00:00:00:00:00:00",
+              "fr": "00:00:00:00:00:00",
+              "it": "00:00:00:00:00:00",
+              "ko": "00:00:00:00:00:00",
+              "no": "00:00:00:00:00:00",
+              "pl": "00:00:00:00:00:00",
+              "ru": "00:00:00:00:00:00",
+              "sv": "00:00:00:00:00:00"
             }
           },
           {
@@ -319,12 +455,22 @@
               "no": "Hvem",
               "ko": "누구",
               "ru": "Кто",
-              "pt": "Quem"
+              "pt": "Quem",
+              "pl": "Who"
             },
             "example": {
               "en": "wifi01",
               "nl": "wifi01",
-              "es": "wifi01"
+              "es": "wifi01",
+              "da": "wifi01",
+              "de": "wifi01",
+              "fr": "wifi01",
+              "it": "wifi01",
+              "ko": "wifi01",
+              "no": "wifi01",
+              "pl": "wifi01",
+              "ru": "wifi01",
+              "sv": "wifi01"
             }
           },
           {
@@ -333,10 +479,30 @@
             "title": {
               "en": "SSID",
               "nl": "SSID",
-              "es": "SSID"
+              "es": "SSID",
+              "da": "SSID",
+              "de": "SSID",
+              "fr": "SSID",
+              "it": "SSID",
+              "ko": "SSID",
+              "no": "SSID",
+              "pl": "SSID",
+              "ru": "SSID",
+              "sv": "SSID"
             },
             "example": {
-              "en": "MyWifiSSID"
+              "en": "MyWifiSSID",
+              "da": "MyWifiSSID",
+              "de": "MyWifiSSID",
+              "es": "MyWifiSSID",
+              "fr": "MyWifiSSID",
+              "it": "MyWifiSSID",
+              "ko": "MyWifiSSID",
+              "nl": "MyWifiSSID",
+              "no": "MyWifiSSID",
+              "pl": "MyWifiSSID",
+              "ru": "MyWifiSSID",
+              "sv": "MyWifiSSID"
             }
           },
           {
@@ -345,10 +511,30 @@
             "title": {
               "en": "Group",
               "nl": "Groep",
-              "es": "Grupo"
+              "es": "Grupo",
+              "da": "Group",
+              "de": "Group",
+              "fr": "Group",
+              "it": "Group",
+              "ko": "Group",
+              "no": "Group",
+              "pl": "Group",
+              "ru": "Group",
+              "sv": "Group"
             },
             "example": {
-              "en": "MyUserGroup"
+              "en": "MyUserGroup",
+              "da": "MyUserGroup",
+              "de": "MyUserGroup",
+              "es": "MyUserGroup",
+              "fr": "MyUserGroup",
+              "it": "MyUserGroup",
+              "ko": "MyUserGroup",
+              "nl": "MyUserGroup",
+              "no": "MyUserGroup",
+              "pl": "MyUserGroup",
+              "ru": "MyUserGroup",
+              "sv": "MyUserGroup"
             }
           }
         ],
@@ -368,19 +554,40 @@
           "no": "Gjestetilkobling mistet",
           "ko": "게스트 연결 끊김",
           "ru": "Потеряно соединение гостя",
-          "pt": "Conexão de convidado perdida"
+          "pt": "Conexão de convidado perdida",
+          "pl": "Guest connection lost"
         },
         "tokens": [
           {
             "name": "mac",
             "type": "string",
             "title": {
-              "en": "mac"
+              "en": "mac",
+              "da": "mac",
+              "de": "MAC",
+              "es": "MAC",
+              "fr": "mac",
+              "it": "MAC",
+              "ko": "mac",
+              "nl": "mac",
+              "no": "mac",
+              "pl": "mac",
+              "ru": "mac",
+              "sv": "mac"
             },
             "example": {
               "en": "00:00:00:00:00:00",
               "nl": "00:00:00:00:00:00",
-              "es": "00:00:00:00:00:00"
+              "es": "00:00:00:00:00:00",
+              "da": "00:00:00:00:00:00",
+              "de": "00:00:00:00:00:00",
+              "fr": "00:00:00:00:00:00",
+              "it": "00:00:00:00:00:00",
+              "ko": "00:00:00:00:00:00",
+              "no": "00:00:00:00:00:00",
+              "pl": "00:00:00:00:00:00",
+              "ru": "00:00:00:00:00:00",
+              "sv": "00:00:00:00:00:00"
             }
           },
           {
@@ -398,12 +605,22 @@
               "no": "Hvem",
               "ko": "누구",
               "ru": "Кто",
-              "pt": "Quem"
+              "pt": "Quem",
+              "pl": "Who"
             },
             "example": {
               "en": "wifi01",
               "nl": "wifi01",
-              "es": "wifi01"
+              "es": "wifi01",
+              "da": "wifi01",
+              "de": "wifi01",
+              "fr": "wifi01",
+              "it": "wifi01",
+              "ko": "wifi01",
+              "no": "wifi01",
+              "pl": "wifi01",
+              "ru": "wifi01",
+              "sv": "wifi01"
             }
           },
           {
@@ -412,10 +629,30 @@
             "title": {
               "en": "SSID",
               "nl": "SSID",
-              "es": "SSID"
+              "es": "SSID",
+              "da": "SSID",
+              "de": "SSID",
+              "fr": "SSID",
+              "it": "SSID",
+              "ko": "SSID",
+              "no": "SSID",
+              "pl": "SSID",
+              "ru": "SSID",
+              "sv": "SSID"
             },
             "example": {
-              "en": "MyWifiSSID"
+              "en": "MyWifiSSID",
+              "da": "MyWifiSSID",
+              "de": "MyWifiSSID",
+              "es": "MyWifiSSID",
+              "fr": "MyWifiSSID",
+              "it": "MyWifiSSID",
+              "ko": "MyWifiSSID",
+              "nl": "MyWifiSSID",
+              "no": "MyWifiSSID",
+              "pl": "MyWifiSSID",
+              "ru": "MyWifiSSID",
+              "sv": "MyWifiSSID"
             }
           },
           {
@@ -424,10 +661,30 @@
             "title": {
               "en": "Group",
               "nl": "UserGroup",
-              "es": "Grupo"
+              "es": "Grupo",
+              "da": "Group",
+              "de": "Group",
+              "fr": "Group",
+              "it": "Group",
+              "ko": "Group",
+              "no": "Group",
+              "pl": "Group",
+              "ru": "Group",
+              "sv": "Group"
             },
             "example": {
-              "en": "MyUserGroup"
+              "en": "MyUserGroup",
+              "da": "MyUserGroup",
+              "de": "MyUserGroup",
+              "es": "MyUserGroup",
+              "fr": "MyUserGroup",
+              "it": "MyUserGroup",
+              "ko": "MyUserGroup",
+              "nl": "MyUserGroup",
+              "no": "MyUserGroup",
+              "pl": "MyUserGroup",
+              "ru": "MyUserGroup",
+              "sv": "MyUserGroup"
             }
           }
         ],
@@ -447,7 +704,8 @@
           "no": "Antall klienter endret",
           "ko": "클라이언트 수 변경됨",
           "ru": "Количество клиентов изменилось",
-          "pt": "Número de clientes alterado"
+          "pt": "Número de clientes alterado",
+          "pl": "Number of clients changed"
         },
         "args": [
           {
@@ -466,7 +724,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ],
@@ -486,7 +745,8 @@
               "no": "Antall klienter",
               "ko": "클라이언트 수",
               "ru": "Количество клиентов",
-              "pt": "Número de clientes"
+              "pt": "Número de clientes",
+              "pl": "Number of clients"
             },
             "example": 5
           }
@@ -506,7 +766,8 @@
           "no": "Tilgangspunkt er online",
           "ko": "액세스 포인트 온라인",
           "ru": "Точка доступа в сети",
-          "pt": "Ponto de acesso online"
+          "pt": "Ponto de acesso online",
+          "pl": "Access point came online"
         },
         "args": [
           {
@@ -525,7 +786,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -544,7 +806,8 @@
           "no": "Tilgangspunkt er offline",
           "ko": "액세스 포인트 오프라인",
           "ru": "Точка доступа не в сети",
-          "pt": "Ponto de acesso offline"
+          "pt": "Ponto de acesso offline",
+          "pl": "Access point went offline"
         },
         "args": [
           {
@@ -563,7 +826,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -582,7 +846,8 @@
           "no": "Tilkoblet",
           "ko": "연결됨",
           "ru": "Подключено",
-          "pt": "Conectado"
+          "pt": "Conectado",
+          "pl": "Connected"
         },
         "args": [
           {
@@ -601,7 +866,8 @@
               "no": "Kablet klient",
               "ko": "유선 클라이언트",
               "ru": "Кабельный клиент",
-              "pt": "Cliente com fio"
+              "pt": "Cliente com fio",
+              "pl": "Cable client"
             }
           }
         ],
@@ -621,7 +887,8 @@
           "no": "Frakoblet",
           "ko": "연결 끊김",
           "ru": "Отключено",
-          "pt": "Desconectado"
+          "pt": "Desconectado",
+          "pl": "Disconnected"
         },
         "args": [
           {
@@ -640,7 +907,8 @@
               "no": "Kablet klient",
               "ko": "유선 클라이언트",
               "ru": "Кабельный клиент",
-              "pt": "Cliente com fio"
+              "pt": "Cliente com fio",
+              "pl": "Cable client"
             }
           }
         ]
@@ -659,7 +927,8 @@
           "no": "Første enhet tilkoblet",
           "ko": "첫 번째 장치 연결됨",
           "ru": "Первое устройство подключено",
-          "pt": "Primeiro dispositivo conectado"
+          "pt": "Primeiro dispositivo conectado",
+          "pl": "First device connected"
         },
         "titleFormatted": {
           "en": "First device connected at [[accessPoint]]",
@@ -673,7 +942,8 @@
           "no": "Første enhet tilkoblet [[accessPoint]]",
           "ko": "[[accessPoint]]에 첫 번째 장치가 연결됨",
           "ru": "Первое устройство подключено к [[accessPoint]]",
-          "pt": "Primeiro dispositivo conectado a [[accessPoint]]"
+          "pt": "Primeiro dispositivo conectado a [[accessPoint]]",
+          "pl": "First device connected at [[accessPoint]]"
         },
         "hint": {
           "en": "Triggers when the first device connects to the accesspoint",
@@ -687,7 +957,8 @@
           "no": "Utøses når den første enheten kobles til tilgangspunktet",
           "ko": "첫 번째 장치가 액세스 포인트에 연결될 때 트리거됩니다",
           "ru": "Срабатывает, когда первое устройство подключается к точке доступа",
-          "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso"
+          "pt": "Dispara quando o primeiro dispositivo se conecta ao ponto de acesso",
+          "pl": "Triggers when the first device connects to the accesspoint"
         },
         "args": [
           {
@@ -705,7 +976,8 @@
               "no": "Tilgangspunkt navn",
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
-              "pt": "Nome do ponto de acesso"
+              "pt": "Nome do ponto de acesso",
+              "pl": "Accesspoint name"
             },
             "title": {
               "en": "Access point",
@@ -719,7 +991,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -738,7 +1011,8 @@
           "no": "Første enhet tilkoblet",
           "ko": "첫 번째 장치 연결됨",
           "ru": "Первое устройство подключено",
-          "pt": "Primeiro dispositivo conectado"
+          "pt": "Primeiro dispositivo conectado",
+          "pl": "First device connected"
         },
         "tokens": [
           {
@@ -756,7 +1030,8 @@
               "no": "Hvem",
               "ko": "누구",
               "ru": "Кто",
-              "pt": "Quem"
+              "pt": "Quem",
+              "pl": "Who"
             },
             "example": {
               "en": "wifi01",
@@ -767,7 +1042,11 @@
               "no": "wifi01",
               "ko": "wifi01",
               "ru": "wifi01",
-              "pt": "wifi01"
+              "pt": "wifi01",
+              "de": "wifi01",
+              "fr": "wifi01",
+              "it": "wifi01",
+              "pl": "wifi01"
             }
           }
         ]
@@ -786,7 +1065,8 @@
           "no": "Siste enhet frakoblet",
           "ko": "마지막 장치 연결 해제됨",
           "ru": "Последнее устройство отключено",
-          "pt": "Último dispositivo desconectado"
+          "pt": "Último dispositivo desconectado",
+          "pl": "Last device disconnected"
         },
         "titleFormatted": {
           "en": "Last device disconnected at [[accessPoint]]",
@@ -800,7 +1080,8 @@
           "no": "Siste enhet frakoblet fra [[accessPoint]]",
           "ko": "[[accessPoint]]에서 마지막 장치가 연결 해제됨",
           "ru": "Последнее устройство отключено от [[accessPoint]]",
-          "pt": "Último dispositivo desconectado de [[accessPoint]]"
+          "pt": "Último dispositivo desconectado de [[accessPoint]]",
+          "pl": "Last device disconnected at [[accessPoint]]"
         },
         "hint": {
           "en": "Triggers when the last device disconnects from the accesspoint",
@@ -814,7 +1095,8 @@
           "no": "Utøses når den siste enheten kobles fra tilgangspunktet",
           "ko": "마지막 장치가 액세스 포인트에서 연결 해제될 때 트리거됩니다",
           "ru": "Срабатывает, когда последнее устройство отключается от точки доступа",
-          "pt": "Dispara quando o último dispositivo se desconecta do ponto de acesso"
+          "pt": "Dispara quando o último dispositivo se desconecta do ponto de acesso",
+          "pl": "Triggers when the last device disconnects from the accesspoint"
         },
         "args": [
           {
@@ -832,7 +1114,8 @@
               "no": "Tilgangspunkt navn",
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
-              "pt": "Nome do ponto de acesso"
+              "pt": "Nome do ponto de acesso",
+              "pl": "Accesspoint name"
             },
             "title": {
               "en": "Access point",
@@ -846,7 +1129,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -865,7 +1149,8 @@
           "no": "Siste enhet frakoblet",
           "ko": "마지막 장치 연결 해제됨",
           "ru": "Последнее устройство отключено",
-          "pt": "Último dispositivo desconectado"
+          "pt": "Último dispositivo desconectado",
+          "pl": "Last device disconnected"
         }
       },
       {
@@ -882,7 +1167,8 @@
           "no": "WAN-tilkobling mistet",
           "ko": "WAN 연결 끊김",
           "ru": "WAN-соединение потеряно",
-          "pt": "Conexão WAN perdida"
+          "pt": "Conexão WAN perdida",
+          "pl": "WAN connection lost"
         },
         "tokens": []
       },
@@ -900,17 +1186,40 @@
           "no": "WAN-tilkobling gjenopprettet",
           "ko": "WAN 연결 복구됨",
           "ru": "WAN-соединение восстановлено",
-          "pt": "Conexão WAN restaurada"
+          "pt": "Conexão WAN restaurada",
+          "pl": "WAN connection restored"
         },
         "tokens": [
           {
             "name": "wan_ip",
             "type": "string",
             "title": {
-              "en": "WAN IP"
+              "en": "WAN IP",
+              "da": "WAN IP",
+              "de": "WAN IP",
+              "es": "WAN IP",
+              "fr": "WAN IP",
+              "it": "WAN IP",
+              "ko": "WAN IP",
+              "nl": "WAN IP",
+              "no": "WAN IP",
+              "pl": "WAN IP",
+              "ru": "WAN IP",
+              "sv": "WAN IP"
             },
             "example": {
-              "en": "1.2.3.4"
+              "en": "1.2.3.4",
+              "da": "1.2.3.4",
+              "de": "1.2.3.4",
+              "es": "1.2.3.4",
+              "fr": "1.2.3.4",
+              "it": "1.2.3.4",
+              "ko": "1.2.3.4",
+              "nl": "1.2.3.4",
+              "no": "1.2.3.4",
+              "pl": "1.2.3.4",
+              "ru": "1.2.3.4",
+              "sv": "1.2.3.4"
             }
           }
         ]
@@ -929,7 +1238,8 @@
           "no": "Tilkoblet",
           "ko": "연결됨",
           "ru": "Подключено",
-          "pt": "Conectado"
+          "pt": "Conectado",
+          "pl": "Connected"
         },
         "args": [
           {
@@ -948,7 +1258,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ],
@@ -968,7 +1279,8 @@
               "no": "Signalstyrke",
               "ko": "신호 강도",
               "ru": "Уровень сигнала",
-              "pt": "Intensidade do Sinal"
+              "pt": "Intensidade do Sinal",
+              "pl": "Siła sygnału"
             },
             "example": -75
           },
@@ -987,7 +1299,8 @@
               "no": "RSSI",
               "ko": "RSSI",
               "ru": "RSSI",
-              "pt": "RSSI"
+              "pt": "RSSI",
+              "pl": "RSSI"
             },
             "example": 75
           },
@@ -1006,7 +1319,8 @@
               "no": "Proto",
               "ko": "Proto",
               "ru": "Proto",
-              "pt": "Proto"
+              "pt": "Proto",
+              "pl": "Proto"
             },
             "example": "ac"
           },
@@ -1025,7 +1339,8 @@
               "no": "SSID",
               "ko": "SSID",
               "ru": "SSID",
-              "pt": "SSID"
+              "pt": "SSID",
+              "pl": "SSID"
             },
             "example": {
               "en": "MyWifiSSID",
@@ -1039,7 +1354,8 @@
               "no": "MyWifiSSID",
               "ko": "MyWifiSSID",
               "ru": "MyWifiSSID",
-              "pt": "MyWifiSSID"
+              "pt": "MyWifiSSID",
+              "pl": "MyWifiSSID"
             }
           }
         ]
@@ -1058,7 +1374,8 @@
           "no": "Frakoblet",
           "ko": "연결 해제됨",
           "ru": "Отключено",
-          "pt": "Desconectado"
+          "pt": "Desconectado",
+          "pl": "Disconnected"
         },
         "args": [
           {
@@ -1077,7 +1394,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ]
@@ -1096,7 +1414,8 @@
           "no": "Roamer mellom AP",
           "ko": "AP 간 로밍",
           "ru": "Роуминг между AP",
-          "pt": "Roaming entre AP"
+          "pt": "Roaming entre AP",
+          "pl": "Roams between AP"
         },
         "args": [
           {
@@ -1115,7 +1434,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ],
@@ -1135,7 +1455,8 @@
               "no": "AP",
               "ko": "AP",
               "ru": "AP",
-              "pt": "AP"
+              "pt": "AP",
+              "pl": "AP"
             },
             "example": {
               "en": "ap123",
@@ -1149,7 +1470,8 @@
               "no": "ap123",
               "ko": "ap123",
               "ru": "ap123",
-              "pt": "ap123"
+              "pt": "ap123",
+              "pl": "ap123"
             }
           },
           {
@@ -1167,7 +1489,8 @@
               "no": "AP MAC",
               "ko": "AP MAC",
               "ru": "AP MAC",
-              "pt": "AP MAC"
+              "pt": "AP MAC",
+              "pl": "AP MAC"
             },
             "example": {
               "en": "00:00:5e:00:53:af",
@@ -1181,7 +1504,8 @@
               "no": "00:00:5e:00:53:af",
               "ko": "00:00:5e:00:53:af",
               "ru": "00:00:5e:00:53:af",
-              "pt": "00:00:5e:00:53:af"
+              "pt": "00:00:5e:00:53:af",
+              "pl": "00:00:5e:00:53:af"
             }
           },
           {
@@ -1199,7 +1523,8 @@
               "no": "Proto",
               "ko": "Proto",
               "ru": "Proto",
-              "pt": "Proto"
+              "pt": "Proto",
+              "pl": "Proto"
             },
             "example": "ac"
           }
@@ -1220,7 +1545,8 @@
           "no": "Roamer til AP",
           "ko": "AP로 로밍",
           "ru": "Роуминг к AP",
-          "pt": "Roaming para AP"
+          "pt": "Roaming para AP",
+          "pl": "Roams to AP"
         },
         "args": [
           {
@@ -1239,7 +1565,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ],
@@ -1259,7 +1586,8 @@
               "no": "AP",
               "ko": "AP",
               "ru": "AP",
-              "pt": "AP"
+              "pt": "AP",
+              "pl": "AP"
             },
             "example": {
               "en": "ap123",
@@ -1273,7 +1601,8 @@
               "no": "ap123",
               "ko": "ap123",
               "ru": "ap123",
-              "pt": "ap123"
+              "pt": "ap123",
+              "pl": "ap123"
             }
           },
           {
@@ -1291,7 +1620,8 @@
               "no": "AP MAC",
               "ko": "AP MAC",
               "ru": "AP MAC",
-              "pt": "AP MAC"
+              "pt": "AP MAC",
+              "pl": "AP MAC"
             },
             "example": {
               "en": "00:00:5e:00:53:af",
@@ -1305,7 +1635,8 @@
               "no": "00:00:5e:00:53:af",
               "ko": "00:00:5e:00:53:af",
               "ru": "00:00:5e:00:53:af",
-              "pt": "00:00:5e:00:53:af"
+              "pt": "00:00:5e:00:53:af",
+              "pl": "00:00:5e:00:53:af"
             }
           },
           {
@@ -1323,7 +1654,8 @@
               "no": "Proto",
               "ko": "Proto",
               "ru": "Proto",
-              "pt": "Proto"
+              "pt": "Proto",
+              "pl": "Proto"
             },
             "example": "ac"
           }
@@ -1343,7 +1675,8 @@
           "no": "Signal endret",
           "ko": "신호 변경됨",
           "ru": "Сигнал изменён",
-          "pt": "Sinal alterado"
+          "pt": "Sinal alterado",
+          "pl": "Signal changed"
         },
         "args": [
           {
@@ -1362,7 +1695,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ],
@@ -1382,7 +1716,8 @@
               "no": "Signalstyrke",
               "ko": "신호 강도",
               "ru": "Уровень сигнала",
-              "pt": "Intensidade do Sinal"
+              "pt": "Intensidade do Sinal",
+              "pl": "Siła sygnału"
             },
             "example": -75
           },
@@ -1401,7 +1736,8 @@
               "no": "RSSI",
               "ko": "RSSI",
               "ru": "RSSI",
-              "pt": "RSSI"
+              "pt": "RSSI",
+              "pl": "RSSI"
             },
             "example": 75
           },
@@ -1420,7 +1756,8 @@
               "no": "Proto",
               "ko": "Proto",
               "ru": "Proto",
-              "pt": "Proto"
+              "pt": "Proto",
+              "pl": "Proto"
             },
             "example": "ac"
           }
@@ -1443,7 +1780,8 @@
           "no": "AP har !{{|ingen}} enheter",
           "ko": "AP에 !{{|없음}} 클라이언트",
           "ru": "AP has !{{|no}} clients",
-          "pt": "AP has !{{|no}} clients"
+          "pt": "AP has !{{|no}} clients",
+          "pl": "AP has !{{|no}} clients"
         },
         "titleFormatted": {
           "en": "[[accessPoint]] has !{{|no}} clients",
@@ -1457,7 +1795,8 @@
           "no": "[[accessPoint]] har !{{|ingen}} enheter",
           "ko": "[[accessPoint]]에 !{{|없음}} 클라이언트",
           "ru": "[[accessPoint]] has !{{|no}} clients",
-          "pt": "[[accessPoint]] has !{{|no}} clients"
+          "pt": "[[accessPoint]] has !{{|no}} clients",
+          "pl": "[[accessPoint]] has !{{|no}} clients"
         },
         "args": [
           {
@@ -1475,7 +1814,8 @@
               "no": "Accesspunkt navn",
               "ko": "액세스 포인트 이름",
               "ru": "Имя точки доступа",
-              "pt": "Nome do ponto de acesso"
+              "pt": "Nome do ponto de acesso",
+              "pl": "Accesspoint name"
             },
             "title": {
               "en": "Access point",
@@ -1489,7 +1829,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -1508,7 +1849,8 @@
           "no": "!{{Blokkert|Opplåst}}",
           "ko": "!{{차단됨|차단 해제됨}}",
           "ru": "!{{Заблокирован|Разблокирован}}",
-          "pt": "!{{Bloqueado|Desbloqueado}}"
+          "pt": "!{{Bloqueado|Desbloqueado}}",
+          "pl": "!{{Blocked|Unblocked}}"
         },
         "titleFormatted": {
           "en": "!{{Blocked|Unblocked}}",
@@ -1522,7 +1864,8 @@
           "no": "!{{Blokkert|Opplåst}}",
           "ko": "!{{차단됨|차단 해제됨}}",
           "ru": "!{{Заблокирован|Разблокирован}}",
-          "pt": "!{{Bloqueado|Desbloqueado}}"
+          "pt": "!{{Bloqueado|Desbloqueado}}",
+          "pl": "!{{Blocked|Unblocked}}"
         },
         "args": [
           {
@@ -1541,7 +1884,8 @@
               "no": "Kablet klient",
               "ko": "유선 클라이언트",
               "ru": "Кабельный клиент",
-              "pt": "Cliente com fio"
+              "pt": "Cliente com fio",
+              "pl": "Cable client"
             }
           }
         ]
@@ -1561,7 +1905,8 @@
           "no": "!{{I|In}}gen enheter tilkoblet",
           "ko": "!{{없|없}}음 클라이언트",
           "ru": "!{{C|Disc}}onnected Clients",
-          "pt": "!{{C|Disc}}onnected Clients"
+          "pt": "!{{C|Disc}}onnected Clients",
+          "pl": "!{{C|Disc}}onnected Clients"
         }
       },
       {
@@ -1578,7 +1923,8 @@
           "no": "Gjester !{{|ikke}} tilkoblet",
           "ko": "게스트 !{{|아님}} 연결됨",
           "ru": "Guests !{{|not}} connected",
-          "pt": "Guests !{{|not}} connected"
+          "pt": "Guests !{{|not}} connected",
+          "pl": "Guests !{{|not}} connected"
         },
         "titleFormatted": {
           "en": "Guests !{{|not}} connected",
@@ -1592,7 +1938,8 @@
           "no": "Gjester !{{|ikke}} tilkoblet",
           "ko": "게스트 !{{|아님}} 연결됨",
           "ru": "Guests !{{|not}} connected",
-          "pt": "Guests !{{|not}} connected"
+          "pt": "Guests !{{|not}} connected",
+          "pl": "Guests !{{|not}} connected"
         }
       },
       {
@@ -1609,7 +1956,8 @@
           "no": "!{{Blokkert|Opplåst}}",
           "ko": "!{{차단됨|차단 해제됨}}",
           "ru": "!{{Заблокирован|Разблокирован}}",
-          "pt": "!{{Bloqueado|Desbloqueado}}"
+          "pt": "!{{Bloqueado|Desbloqueado}}",
+          "pl": "!{{Blocked|Unblocked}}"
         },
         "titleFormatted": {
           "en": "!{{Blocked|Unblocked}}",
@@ -1623,7 +1971,8 @@
           "no": "!{{Blokkert|Opplåst}}",
           "ko": "!{{차단됨|차단 해제됨}}",
           "ru": "!{{Заблокирован|Разблокирован}}",
-          "pt": "!{{Bloqueado|Desbloqueado}}"
+          "pt": "!{{Bloqueado|Desbloqueado}}",
+          "pl": "!{{Blocked|Unblocked}}"
         },
         "args": [
           {
@@ -1642,7 +1991,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ]
@@ -1661,7 +2011,8 @@
           "no": "!{{Tilkoblet|Frakoblet}}",
           "ko": "!{{연결됨|연결 끊김}}",
           "ru": "!{{Подключено|Отключено}}",
-          "pt": "!{{Conectado|Desconectado}}"
+          "pt": "!{{Conectado|Desconectado}}",
+          "pl": "!{{Connected|Disconnected}}"
         },
         "titleFormatted": {
           "en": "!{{Connected|Disconnected}}",
@@ -1675,7 +2026,8 @@
           "no": "!{{Tilkoblet|Frakoblet}}",
           "ko": "!{{연결됨|연결 끊김}}",
           "ru": "!{{Подключено|Отключено}}",
-          "pt": "!{{Conectado|Desconectado}}"
+          "pt": "!{{Conectado|Desconectado}}",
+          "pl": "!{{Connected|Disconnected}}"
         },
         "args": [
           {
@@ -1694,7 +2046,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ]
@@ -1713,7 +2066,8 @@
           "no": "!{{I|In}}gen enheter tilkoblet accesspoint",
           "ko": "!{{없|없}}음 클라이언트가 액세스 포인트에 연결됨",
           "ru": "!{{C|Disc}}onnected with accesspoint",
-          "pt": "!{{C|Disc}}onnected with accesspoint"
+          "pt": "!{{C|Disc}}onnected with accesspoint",
+          "pl": "!{{C|Disc}}onnected with accesspoint"
         },
         "titleFormatted": {
           "en": "!{{C|Disc}}onnected with [[accessPoint]]",
@@ -1727,7 +2081,8 @@
           "no": "!{{I|In}}gen enheter tilkoblet [[accessPoint]]",
           "ko": "!{{없|없}}음 클라이언트가 [[accessPoint]]에 연결됨",
           "ru": "!{{C|Disc}}onnected with [[accessPoint]]",
-          "pt": "!{{C|Disc}}onnected with [[accessPoint]]"
+          "pt": "!{{C|Disc}}onnected with [[accessPoint]]",
+          "pl": "!{{C|Disc}}onnected with [[accessPoint]]"
         },
         "args": [
           {
@@ -1746,7 +2101,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           },
           {
@@ -1764,7 +2120,8 @@
               "no": "Accesspunkt Mac eller navn",
               "ko": "액세스 포인트 Mac 또는 이름",
               "ru": "Точка доступа Mac или имя",
-              "pt": "Ponto de acesso Mac ou nome"
+              "pt": "Ponto de acesso Mac ou nome",
+              "pl": "Accesspoint mac or name"
             },
             "title": {
               "en": "Access point",
@@ -1778,7 +2135,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -1799,11 +2157,22 @@
           "no": "Start tilgangspunkt på nytt",
           "ko": "액세스 포인트 재시작",
           "ru": "Перезапустить точку доступа",
-          "pt": "Reiniciar ponto de acesso"
+          "pt": "Reiniciar ponto de acesso",
+          "pl": "Restart access point"
         },
         "hint": {
           "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
-          "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+          "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen.",
+          "da": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "de": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "es": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "fr": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "it": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "ko": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "no": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "pl": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "ru": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "sv": "Requires UniFi OS 7+ with an API Key configured in the app settings."
         },
         "args": [
           {
@@ -1822,7 +2191,8 @@
               "no": "Tilgangspunkt",
               "ko": "액세스 포인트",
               "ru": "Точка доступа",
-              "pt": "Ponto de acesso"
+              "pt": "Ponto de acesso",
+              "pl": "Access point"
             }
           }
         ]
@@ -1841,7 +2211,8 @@
           "no": "Blokker klient",
           "ko": "클라이언트 차단",
           "ru": "Заблокировать клиента",
-          "pt": "Bloquear cliente"
+          "pt": "Bloquear cliente",
+          "pl": "Block client"
         },
         "args": [
           {
@@ -1860,7 +2231,8 @@
               "no": "Kablet klient",
               "ko": "유선 클라이언트",
               "ru": "Кабельный клиент",
-              "pt": "Cliente com fio"
+              "pt": "Cliente com fio",
+              "pl": "Cable client"
             }
           }
         ]
@@ -1879,7 +2251,8 @@
           "no": "Lås opp klient",
           "ko": "클라이언트 차단 해제",
           "ru": "Разблокировать клиента",
-          "pt": "Desbloquear cliente"
+          "pt": "Desbloquear cliente",
+          "pl": "Unblock client"
         },
         "args": [
           {
@@ -1898,7 +2271,8 @@
               "no": "Kablet klient",
               "ko": "유선 클라이언트",
               "ru": "Кабельный клиент",
-              "pt": "Cliente com fio"
+              "pt": "Cliente com fio",
+              "pl": "Cable client"
             }
           }
         ]
@@ -1917,10 +2291,11 @@
           "no": "PoE Strømssyklus",
           "ko": "PoE 전원 주기",
           "ru": "Цикл питания PoE",
-          "pt": "Ciclo de energia PoE"
+          "pt": "Ciclo de energia PoE",
+          "pl": "PoE Power Cycle"
         },
         "titleFormatted": {
-          "en": "Cylce power on port [[port]]",
+          "en": "Cycle power on port [[port]]",
           "nl": "Zet stroom uit en aan op switch poort [[port]]",
           "es": "Ciclo de energía en puerto [[port]]",
           "de": "Stromzyklus an Port [[port]]",
@@ -1931,7 +2306,8 @@
           "no": "Syklus strøm på port [[port]]",
           "ko": "포트 [[port]]에서 전원 주기",
           "ru": "Цикл питания на порту [[port]]",
-          "pt": "Ciclo de energia na porta [[port]]"
+          "pt": "Ciclo de energia na porta [[port]]",
+          "pl": "Cycle power on port [[port]]"
         },
         "args": [
           {
@@ -1950,7 +2326,8 @@
               "no": "Nettverkssvitsj",
               "ko": "네트워크 스위치",
               "ru": "Сетевой коммутатор",
-              "pt": "Switch de rede"
+              "pt": "Switch de rede",
+              "pl": "Network switch"
             }
           },
           {
@@ -1968,7 +2345,8 @@
               "no": "Portnummer",
               "ko": "포트 번호",
               "ru": "Номер порта",
-              "pt": "Número de porta"
+              "pt": "Número de porta",
+              "pl": "Port number"
             }
           }
         ]
@@ -1987,7 +2365,8 @@
           "no": "Slå av PoE",
           "ko": "PoE 전원 끄기",
           "ru": "Отключить питание PoE",
-          "pt": "Desligar PoE"
+          "pt": "Desligar PoE",
+          "pl": "PoE Power Off"
         },
         "titleFormatted": {
           "en": "Power off port [[port]]",
@@ -2001,7 +2380,8 @@
           "no": "Slå av port [[port]]",
           "ko": "포트 [[port]] 전원 끄기",
           "ru": "Отключить питание на порту [[port]]",
-          "pt": "Desligar porta [[port]]"
+          "pt": "Desligar porta [[port]]",
+          "pl": "Power off port [[port]]"
         },
         "args": [
           {
@@ -2020,7 +2400,8 @@
               "no": "Nettverkssvitsj",
               "ko": "네트워크 스위치",
               "ru": "Сетевой коммутатор",
-              "pt": "Switch de rede"
+              "pt": "Switch de rede",
+              "pl": "Network switch"
             }
           },
           {
@@ -2038,7 +2419,8 @@
               "no": "Portnummer",
               "ko": "포트 번호",
               "ru": "Номер порта",
-              "pt": "Número de porta"
+              "pt": "Número de porta",
+              "pl": "Port number"
             }
           }
         ]
@@ -2057,10 +2439,11 @@
           "no": "Slå på PoE",
           "ko": "PoE 전원 켜기",
           "ru": "Включить питание PoE",
-          "pt": "Ligar PoE"
+          "pt": "Ligar PoE",
+          "pl": "PoE Power On"
         },
         "titleFormatted": {
-          "en": "Cylce power on port [[port]]",
+          "en": "Power on port [[port]]",
           "nl": "Zet stroom aan op switch poort [[port]]",
           "es": "Encender puerto [[port]]",
           "de": "Strom an Port [[port]] einschalten",
@@ -2071,7 +2454,8 @@
           "no": "Slå på port [[port]]",
           "ko": "포트 [[port]] 전원 켜기",
           "ru": "Включить питание на порту [[port]]",
-          "pt": "Ligar porta [[port]]"
+          "pt": "Ligar porta [[port]]",
+          "pl": "Power on port [[port]]"
         },
         "args": [
           {
@@ -2090,7 +2474,8 @@
               "no": "Nettverkssvitsj",
               "ko": "네트워크 스위치",
               "ru": "Сетевой коммутатор",
-              "pt": "Switch de rede"
+              "pt": "Switch de rede",
+              "pl": "Network switch"
             }
           },
           {
@@ -2108,7 +2493,8 @@
               "no": "Portnummer",
               "ko": "포트 번호",
               "ru": "Номер порта",
-              "pt": "Número de porta"
+              "pt": "Número de porta",
+              "pl": "Port number"
             }
           }
         ]
@@ -2127,7 +2513,8 @@
           "no": "Aktiver eller deaktiver et WiFi-nettverk",
           "ko": "WiFi 네트워크 활성화 또는 비활성화",
           "ru": "Включить или отключить сеть WiFi",
-          "pt": "Ativar ou desativar uma rede WiFi"
+          "pt": "Ativar ou desativar uma rede WiFi",
+          "pl": "Enable or disable a WiFi network"
         },
         "titleFormatted": {
           "en": "Set WiFi network [[wlan_id]] to [[enabled]]",
@@ -2141,11 +2528,22 @@
           "no": "Sett WiFi-nettverk [[wlan_id]] til [[enabled]]",
           "ko": "WiFi 네트워크 [[wlan_id]]를 [[enabled]]로 설정",
           "ru": "Установить сеть WiFi [[wlan_id]] в [[enabled]]",
-          "pt": "Definir rede WiFi [[wlan_id]] como [[enabled]]"
+          "pt": "Definir rede WiFi [[wlan_id]] como [[enabled]]",
+          "pl": "Set WiFi network [[wlan_id]] to [[enabled]]"
         },
         "hint": {
           "en": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
-          "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen."
+          "nl": "Vereist UniFi OS 7+ met een API-sleutel geconfigureerd in de app-instellingen.",
+          "da": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "de": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "es": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "fr": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "it": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "ko": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "no": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "pl": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "ru": "Requires UniFi OS 7+ with an API Key configured in the app settings.",
+          "sv": "Requires UniFi OS 7+ with an API Key configured in the app settings."
         },
         "args": [
           {
@@ -2153,10 +2551,31 @@
             "name": "wlan_id",
             "title": {
               "en": "WiFi network",
-              "nl": "WiFi netwerk"
+              "nl": "WiFi netwerk",
+              "da": "WiFi network",
+              "de": "WiFi network",
+              "es": "WiFi network",
+              "fr": "WiFi network",
+              "it": "WiFi network",
+              "ko": "WiFi network",
+              "no": "WiFi network",
+              "pl": "WiFi network",
+              "ru": "WiFi network",
+              "sv": "WiFi network"
             },
             "placeholder": {
-              "en": "Select a WiFi network..."
+              "en": "Select a WiFi network...",
+              "da": "Select a WiFi network...",
+              "de": "Select a WiFi network...",
+              "es": "Select a WiFi network...",
+              "fr": "Select a WiFi network...",
+              "it": "Select a WiFi network...",
+              "ko": "Select a WiFi network...",
+              "nl": "Select a WiFi network...",
+              "no": "Select a WiFi network...",
+              "pl": "Select a WiFi network...",
+              "ru": "Select a WiFi network...",
+              "sv": "Select a WiFi network..."
             }
           },
           {
@@ -2164,21 +2583,51 @@
             "name": "enabled",
             "title": {
               "en": "State",
-              "nl": "Status"
+              "nl": "Status",
+              "da": "State",
+              "de": "State",
+              "es": "State",
+              "fr": "State",
+              "it": "State",
+              "ko": "State",
+              "no": "State",
+              "pl": "State",
+              "ru": "State",
+              "sv": "State"
             },
             "values": [
               {
                 "id": "true",
                 "label": {
                   "en": "Enabled",
-                  "nl": "Ingeschakeld"
+                  "nl": "Ingeschakeld",
+                  "da": "Enabled",
+                  "de": "Enabled",
+                  "es": "Enabled",
+                  "fr": "Enabled",
+                  "it": "Enabled",
+                  "ko": "Enabled",
+                  "no": "Enabled",
+                  "pl": "Enabled",
+                  "ru": "Enabled",
+                  "sv": "Enabled"
                 }
               },
               {
                 "id": "false",
                 "label": {
                   "en": "Disabled",
-                  "nl": "Uitgeschakeld"
+                  "nl": "Uitgeschakeld",
+                  "da": "Disabled",
+                  "de": "Disabled",
+                  "es": "Disabled",
+                  "fr": "Disabled",
+                  "it": "Disabled",
+                  "ko": "Disabled",
+                  "no": "Disabled",
+                  "pl": "Disabled",
+                  "ru": "Disabled",
+                  "sv": "Disabled"
                 }
               }
             ]
@@ -2199,7 +2648,8 @@
           "no": "Blokker klient",
           "ko": "클라이언트 차단",
           "ru": "Заблокировать клиента",
-          "pt": "Bloquear cliente"
+          "pt": "Bloquear cliente",
+          "pl": "Block client"
         },
         "args": [
           {
@@ -2218,7 +2668,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ]
@@ -2237,7 +2688,8 @@
           "no": "Lås opp klient",
           "ko": "클라이언트 차단 해제",
           "ru": "Разблокировать клиента",
-          "pt": "Desbloquear cliente"
+          "pt": "Desbloquear cliente",
+          "pl": "Unblock client"
         },
         "args": [
           {
@@ -2256,7 +2708,8 @@
               "no": "Wifi-klient",
               "ko": "Wi-Fi 클라이언트",
               "ru": "Wi-Fi клиент",
-              "pt": "Cliente Wi-Fi"
+              "pt": "Cliente Wi-Fi",
+              "pl": "Wi-Fi client"
             }
           }
         ]
@@ -2284,7 +2737,8 @@
         "no": "Tilgangspunkt",
         "ko": "액세스 포인트",
         "ru": "Точка доступа",
-        "pt": "Ponto de acesso"
+        "pt": "Ponto de acesso",
+        "pl": "Punkt dostępu"
       },
       "images": {
         "xlarge": "drivers/access-point/assets/images/xlarge.png",
@@ -2312,7 +2766,8 @@
             "no": "Tilkoblingsstatus",
             "ko": "연결 상태",
             "ru": "Состояние подключения",
-            "pt": "Estado da conexão"
+            "pt": "Estado da conexão",
+            "pl": "Stan połączenia"
           },
           "getable": true,
           "setable": false
@@ -2352,7 +2807,8 @@
         "no": "Kablet klient",
         "ko": "유선 클라이언트",
         "ru": "Проводной клиент",
-        "pt": "Cliente com fio"
+        "pt": "Cliente com fio",
+        "pl": "Klient przewodowy"
       },
       "mobile": {
         "components": [
@@ -2380,7 +2836,8 @@
                   "no": "Tilkoblingsstatus",
                   "ko": "연결 상태",
                   "ru": "Состояние подключения",
-                  "pt": "Estado da conexão"
+                  "pt": "Estado da conexão",
+                  "pl": "Stan połączenia"
                 }
               },
               "getable": true,
@@ -2405,7 +2862,8 @@
                     "no": "Tilkoblet",
                     "ko": "연결됨",
                     "ru": "Подключено",
-                    "pt": "Conectado"
+                    "pt": "Conectado",
+                    "pl": "Connected"
                   },
                   "false": {
                     "en": "Disconnected",
@@ -2418,7 +2876,8 @@
                     "no": "Frakoblet",
                     "ko": "연결 끊김",
                     "ru": "Отключено",
-                    "pt": "Desconectado"
+                    "pt": "Desconectado",
+                    "pl": "Disconnected"
                   }
                 }
               }
@@ -2451,7 +2910,8 @@
             "no": "Tilkoblingsstatus",
             "ko": "연결 상태",
             "ru": "Состояние подключения",
-            "pt": "Estado da conexão"
+            "pt": "Estado da conexão",
+            "pl": "Stan połączenia"
           },
           "getable": true,
           "setable": false
@@ -2491,7 +2951,8 @@
         "no": "Nettverk Switch",
         "ko": "네트워크 스위치",
         "ru": "Сетевой коммутатор",
-        "pt": "Switch de rede"
+        "pt": "Switch de rede",
+        "pl": "Przełącznik sieciowy"
       },
       "mobile": {
         "components": [
@@ -2518,7 +2979,8 @@
                   "no": "Tilkoblingsstatus",
                   "ko": "연결 상태",
                   "ru": "Состояние подключения",
-                  "pt": "Estado da conexão"
+                  "pt": "Estado da conexão",
+                  "pl": "Stan połączenia"
                 }
               },
               "getable": true,
@@ -2543,7 +3005,8 @@
                     "no": "Tilkoblet",
                     "ko": "연결됨",
                     "ru": "Подключено",
-                    "pt": "Conectado"
+                    "pt": "Conectado",
+                    "pl": "Connected"
                   },
                   "false": {
                     "en": "Disconnected",
@@ -2556,7 +3019,8 @@
                     "no": "Frakoblet",
                     "ko": "연결 끊김",
                     "ru": "Отключено",
-                    "pt": "Desconectado"
+                    "pt": "Desconectado",
+                    "pl": "Disconnected"
                   }
                 }
               }
@@ -2587,7 +3051,8 @@
             "no": "Tilkoblingsstatus",
             "ko": "연결 상태",
             "ru": "Состояние подключения",
-            "pt": "Estado da conexão"
+            "pt": "Estado da conexão",
+            "pl": "Stan połączenia"
           },
           "getable": true,
           "setable": false
@@ -2605,7 +3070,8 @@
             "no": "Nettverksport 1",
             "ko": "네트워크 포트 1",
             "ru": "Сетевой порт 1",
-            "pt": "Porta de rede 1"
+            "pt": "Porta de rede 1",
+            "pl": "Port sieciowy 1"
           }
         },
         "port.port_2": {
@@ -2621,7 +3087,8 @@
             "no": "Nettverksport 2",
             "ko": "네트워크 포트 2",
             "ru": "Сетевой порт 2",
-            "pt": "Porta de rede 2"
+            "pt": "Porta de rede 2",
+            "pl": "Port sieciowy 2"
           }
         },
         "port.port_3": {
@@ -2637,7 +3104,8 @@
             "no": "Nettverksport 3",
             "ko": "네트워크 포트 3",
             "ru": "Сетевой порт 3",
-            "pt": "Porta de rede 3"
+            "pt": "Porta de rede 3",
+            "pl": "Port sieciowy 3"
           }
         },
         "port.port_4": {
@@ -2653,7 +3121,8 @@
             "no": "Nettverksport 4",
             "ko": "네트워크 포트 4",
             "ru": "Сетевой порт 4",
-            "pt": "Porta de rede 4"
+            "pt": "Porta de rede 4",
+            "pl": "Port sieciowy 4"
           }
         },
         "port.port_5": {
@@ -2669,7 +3138,8 @@
             "no": "Nettverksport 5",
             "ko": "네트워크 포트 5",
             "ru": "Сетевой порт 5",
-            "pt": "Porta de rede 5"
+            "pt": "Porta de rede 5",
+            "pl": "Port sieciowy 5"
           }
         },
         "port.port_6": {
@@ -2685,7 +3155,8 @@
             "no": "Nettverksport 6",
             "ko": "네트워크 포트 6",
             "ru": "Сетевой порт 6",
-            "pt": "Porta de rede 6"
+            "pt": "Porta de rede 6",
+            "pl": "Port sieciowy 6"
           }
         },
         "port.port_7": {
@@ -2701,7 +3172,8 @@
             "no": "Nettverksport 7",
             "ko": "네트워크 포트 7",
             "ru": "Сетевой порт 7",
-            "pt": "Porta de rede 7"
+            "pt": "Porta de rede 7",
+            "pl": "Port sieciowy 7"
           }
         },
         "port.port_8": {
@@ -2717,7 +3189,8 @@
             "no": "Nettverksport 8",
             "ko": "네트워크 포트 8",
             "ru": "Сетевой порт 8",
-            "pt": "Porta de rede 8"
+            "pt": "Porta de rede 8",
+            "pl": "Port sieciowy 8"
           }
         },
         "port.port_9": {
@@ -2733,7 +3206,8 @@
             "no": "Nettverksport 9",
             "ko": "네트워크 포트 9",
             "ru": "Сетевой порт 9",
-            "pt": "Porta de rede 9"
+            "pt": "Porta de rede 9",
+            "pl": "Port sieciowy 9"
           }
         },
         "port.port_10": {
@@ -2749,7 +3223,8 @@
             "no": "Nettverksport 10",
             "ko": "네트워크 포트 10",
             "ru": "Сетевой порт 10",
-            "pt": "Porta de rede 10"
+            "pt": "Porta de rede 10",
+            "pl": "Port sieciowy 10"
           }
         },
         "port.port_11": {
@@ -2765,7 +3240,8 @@
             "no": "Nettverksport 11",
             "ko": "네트워크 포트 11",
             "ru": "Сетевой порт 11",
-            "pt": "Porta de rede 11"
+            "pt": "Porta de rede 11",
+            "pl": "Port sieciowy 11"
           }
         },
         "port.port_12": {
@@ -2781,7 +3257,8 @@
             "no": "Nettverksport 12",
             "ko": "네트워크 포트 12",
             "ru": "Сетевой порт 12",
-            "pt": "Porta de rede 12"
+            "pt": "Porta de rede 12",
+            "pl": "Port sieciowy 12"
           }
         },
         "port.port_13": {
@@ -2797,7 +3274,8 @@
             "no": "Nettverksport 13",
             "ko": "네트워크 포트 13",
             "ru": "Сетевой порт 13",
-            "pt": "Porta de rede 13"
+            "pt": "Porta de rede 13",
+            "pl": "Port sieciowy 13"
           }
         },
         "port.port_14": {
@@ -2813,7 +3291,8 @@
             "no": "Nettverksport 14",
             "ko": "네트워크 포트 14",
             "ru": "Сетевой порт 14",
-            "pt": "Porta de rede 14"
+            "pt": "Porta de rede 14",
+            "pl": "Port sieciowy 14"
           }
         },
         "port.port_15": {
@@ -2829,7 +3308,8 @@
             "no": "Nettverksport 15",
             "ko": "네트워크 포트 15",
             "ru": "Сетевой порт 15",
-            "pt": "Porta de rede 15"
+            "pt": "Porta de rede 15",
+            "pl": "Port sieciowy 15"
           }
         },
         "port.port_16": {
@@ -2845,7 +3325,8 @@
             "no": "Nettverksport 16",
             "ko": "네트워크 포트 16",
             "ru": "Сетевой порт 16",
-            "pt": "Porta de rede 16"
+            "pt": "Porta de rede 16",
+            "pl": "Port sieciowy 16"
           }
         },
         "port.port_17": {
@@ -2861,7 +3342,8 @@
             "no": "Nettverksport 17",
             "ko": "네트워크 포트 17",
             "ru": "Сетевой порт 17",
-            "pt": "Porta de rede 17"
+            "pt": "Porta de rede 17",
+            "pl": "Port sieciowy 17"
           }
         },
         "port.port_18": {
@@ -2877,7 +3359,8 @@
             "no": "Nettverksport 18",
             "ko": "네트워크 포트 18",
             "ru": "Сетевой порт 18",
-            "pt": "Porta de rede 18"
+            "pt": "Porta de rede 18",
+            "pl": "Port sieciowy 18"
           }
         },
         "port.port_19": {
@@ -2893,7 +3376,8 @@
             "no": "Nettverksport 19",
             "ko": "네트워크 포트 19",
             "ru": "Сетевой порт 19",
-            "pt": "Porta de rede 19"
+            "pt": "Porta de rede 19",
+            "pl": "Port sieciowy 19"
           }
         },
         "port.port_20": {
@@ -2909,7 +3393,8 @@
             "no": "Nettverksport 20",
             "ko": "네트워크 포트 20",
             "ru": "Сетевой порт 20",
-            "pt": "Porta de rede 20"
+            "pt": "Porta de rede 20",
+            "pl": "Port sieciowy 20"
           }
         },
         "port.port_21": {
@@ -2925,7 +3410,8 @@
             "no": "Nettverksport 21",
             "ko": "네트워크 포트 21",
             "ru": "Сетевой порт 21",
-            "pt": "Porta de rede 21"
+            "pt": "Porta de rede 21",
+            "pl": "Port sieciowy 21"
           }
         },
         "port.port_22": {
@@ -2941,7 +3427,8 @@
             "no": "Nettverksport 22",
             "ko": "네트워크 포트 22",
             "ru": "Сетевой порт 22",
-            "pt": "Porta de rede 22"
+            "pt": "Porta de rede 22",
+            "pl": "Port sieciowy 22"
           }
         },
         "port.port_23": {
@@ -2957,7 +3444,8 @@
             "no": "Nettverksport 23",
             "ko": "네트워크 포트 23",
             "ru": "Сетевой порт 23",
-            "pt": "Porta de rede 23"
+            "pt": "Porta de rede 23",
+            "pl": "Port sieciowy 23"
           }
         },
         "port.port_24": {
@@ -2973,7 +3461,8 @@
             "no": "Nettverksport 24",
             "ko": "네트워크 포트 24",
             "ru": "Сетевой порт 24",
-            "pt": "Porta de rede 24"
+            "pt": "Porta de rede 24",
+            "pl": "Port sieciowy 24"
           }
         },
         "port.port_25": {
@@ -2989,7 +3478,8 @@
             "no": "Nettverksport 25",
             "ko": "네트워크 포트 25",
             "ru": "Сетевой порт 25",
-            "pt": "Porta de rede 25"
+            "pt": "Porta de rede 25",
+            "pl": "Port sieciowy 25"
           }
         },
         "port.port_26": {
@@ -3005,7 +3495,8 @@
             "no": "Nettverksport 26",
             "ko": "네트워크 포트 26",
             "ru": "Сетевой порт 26",
-            "pt": "Porta de rede 26"
+            "pt": "Porta de rede 26",
+            "pl": "Port sieciowy 26"
           }
         },
         "port.port_27": {
@@ -3021,7 +3512,8 @@
             "no": "Nettverksport 27",
             "ko": "네트워크 포트 27",
             "ru": "Сетевой порт 27",
-            "pt": "Porta de rede 27"
+            "pt": "Porta de rede 27",
+            "pl": "Port sieciowy 27"
           }
         },
         "port.port_28": {
@@ -3037,7 +3529,8 @@
             "no": "Nettverksport 28",
             "ko": "네트워크 포트 28",
             "ru": "Сетевой порт 28",
-            "pt": "Porta de rede 28"
+            "pt": "Porta de rede 28",
+            "pl": "Port sieciowy 28"
           }
         },
         "port.port_29": {
@@ -3053,7 +3546,8 @@
             "no": "Nettverksport 29",
             "ko": "네트워크 포트 29",
             "ru": "Сетевой порт 29",
-            "pt": "Porta de rede 29"
+            "pt": "Porta de rede 29",
+            "pl": "Port sieciowy 29"
           }
         },
         "port.port_30": {
@@ -3069,7 +3563,8 @@
             "no": "Nettverksport 30",
             "ko": "네트워크 포트 30",
             "ru": "Сетевой порт 30",
-            "pt": "Porta de rede 30"
+            "pt": "Porta de rede 30",
+            "pl": "Port sieciowy 30"
           }
         },
         "port.port_31": {
@@ -3085,7 +3580,8 @@
             "no": "Nettverksport 31",
             "ko": "네트워크 포트 31",
             "ru": "Сетевой порт 31",
-            "pt": "Porta de rede 31"
+            "pt": "Porta de rede 31",
+            "pl": "Port sieciowy 31"
           }
         },
         "port.port_32": {
@@ -3101,7 +3597,8 @@
             "no": "Nettverksport 32",
             "ko": "네트워크 포트 32",
             "ru": "Сетевой порт 32",
-            "pt": "Porta de rede 32"
+            "pt": "Porta de rede 32",
+            "pl": "Port sieciowy 32"
           }
         },
         "port.port_33": {
@@ -3117,7 +3614,8 @@
             "no": "Nettverksport 33",
             "ko": "네트워크 포트 33",
             "ru": "Сетевой порт 33",
-            "pt": "Porta de rede 33"
+            "pt": "Porta de rede 33",
+            "pl": "Port sieciowy 33"
           }
         },
         "port.port_34": {
@@ -3133,7 +3631,8 @@
             "no": "Nettverksport 34",
             "ko": "네트워크 포트 34",
             "ru": "Сетевой порт 34",
-            "pt": "Porta de rede 34"
+            "pt": "Porta de rede 34",
+            "pl": "Port sieciowy 34"
           }
         },
         "port.port_35": {
@@ -3149,7 +3648,8 @@
             "no": "Nettverksport 35",
             "ko": "네트워크 포트 35",
             "ru": "Сетевой порт 35",
-            "pt": "Porta de rede 35"
+            "pt": "Porta de rede 35",
+            "pl": "Port sieciowy 35"
           }
         },
         "port.port_36": {
@@ -3165,7 +3665,8 @@
             "no": "Nettverksport 36",
             "ko": "네트워크 포트 36",
             "ru": "Сетевой порт 36",
-            "pt": "Porta de rede 36"
+            "pt": "Porta de rede 36",
+            "pl": "Port sieciowy 36"
           }
         },
         "port.port_37": {
@@ -3181,7 +3682,8 @@
             "no": "Nettverksport 37",
             "ko": "네트워크 포트 37",
             "ru": "Сетевой порт 37",
-            "pt": "Porta de rede 37"
+            "pt": "Porta de rede 37",
+            "pl": "Port sieciowy 37"
           }
         },
         "port.port_38": {
@@ -3197,7 +3699,8 @@
             "no": "Nettverksport 38",
             "ko": "네트워크 포트 38",
             "ru": "Сетевой порт 38",
-            "pt": "Porta de rede 38"
+            "pt": "Porta de rede 38",
+            "pl": "Port sieciowy 38"
           }
         },
         "port.port_39": {
@@ -3213,7 +3716,8 @@
             "no": "Nettverksport 39",
             "ko": "네트워크 포트 39",
             "ru": "Сетевой порт 39",
-            "pt": "Porta de rede 39"
+            "pt": "Porta de rede 39",
+            "pl": "Port sieciowy 39"
           }
         },
         "port.port_40": {
@@ -3229,7 +3733,8 @@
             "no": "Nettverksport 40",
             "ko": "네트워크 포트 40",
             "ru": "Сетевой порт 40",
-            "pt": "Porta de rede 40"
+            "pt": "Porta de rede 40",
+            "pl": "Port sieciowy 40"
           }
         },
         "port.port_41": {
@@ -3245,7 +3750,8 @@
             "no": "Nettverksport 41",
             "ko": "네트워크 포트 41",
             "ru": "Сетевой порт 41",
-            "pt": "Porta de rede 41"
+            "pt": "Porta de rede 41",
+            "pl": "Port sieciowy 41"
           }
         },
         "port.port_42": {
@@ -3261,7 +3767,8 @@
             "no": "Nettverksport 42",
             "ko": "네트워크 포트 42",
             "ru": "Сетевой порт 42",
-            "pt": "Porta de rede 42"
+            "pt": "Porta de rede 42",
+            "pl": "Port sieciowy 42"
           }
         },
         "port.port_43": {
@@ -3277,7 +3784,8 @@
             "no": "Nettverksport 43",
             "ko": "네트워크 포트 43",
             "ru": "Сетевой порт 43",
-            "pt": "Porta de rede 43"
+            "pt": "Porta de rede 43",
+            "pl": "Port sieciowy 43"
           }
         },
         "port.port_44": {
@@ -3293,7 +3801,8 @@
             "no": "Nettverksport 44",
             "ko": "네트워크 포트 44",
             "ru": "Сетевой порт 44",
-            "pt": "Porta de rede 44"
+            "pt": "Porta de rede 44",
+            "pl": "Port sieciowy 44"
           }
         },
         "port.port_45": {
@@ -3309,7 +3818,8 @@
             "no": "Nettverksport 45",
             "ko": "네트워크 포트 45",
             "ru": "Сетевой порт 45",
-            "pt": "Porta de rede 45"
+            "pt": "Porta de rede 45",
+            "pl": "Port sieciowy 45"
           }
         },
         "port.port_46": {
@@ -3325,7 +3835,8 @@
             "no": "Nettverksport 46",
             "ko": "네트워크 포트 46",
             "ru": "Сетевой порт 46",
-            "pt": "Porta de rede 46"
+            "pt": "Porta de rede 46",
+            "pl": "Port sieciowy 46"
           }
         },
         "port.port_47": {
@@ -3341,7 +3852,8 @@
             "no": "Nettverksport 47",
             "ko": "네트워크 포트 47",
             "ru": "Сетевой порт 47",
-            "pt": "Porta de rede 47"
+            "pt": "Porta de rede 47",
+            "pl": "Port sieciowy 47"
           }
         },
         "port.port_48": {
@@ -3357,7 +3869,8 @@
             "no": "Nettverksport 48",
             "ko": "네트워크 포트 48",
             "ru": "Сетевой порт 48",
-            "pt": "Porta de rede 48"
+            "pt": "Porta de rede 48",
+            "pl": "Port sieciowy 48"
           }
         },
         "poe.port_1": {
@@ -3373,7 +3886,8 @@
             "no": "PoE-port 1",
             "ko": "PoE 포트 1",
             "ru": "PoE порт 1",
-            "pt": "Porta PoE 1"
+            "pt": "Porta PoE 1",
+            "pl": "Port PoE 1"
           }
         },
         "poe.port_2": {
@@ -3389,7 +3903,8 @@
             "no": "PoE-port 2",
             "ko": "PoE 포트 2",
             "ru": "PoE порт 2",
-            "pt": "Porta PoE 2"
+            "pt": "Porta PoE 2",
+            "pl": "Port PoE 2"
           }
         },
         "poe.port_3": {
@@ -3405,7 +3920,8 @@
             "no": "PoE-port 3",
             "ko": "PoE 포트 3",
             "ru": "PoE порт 3",
-            "pt": "Porta PoE 3"
+            "pt": "Porta PoE 3",
+            "pl": "Port PoE 3"
           }
         },
         "poe.port_4": {
@@ -3421,7 +3937,8 @@
             "no": "PoE-port 4",
             "ko": "PoE 포트 4",
             "ru": "PoE порт 4",
-            "pt": "Porta PoE 4"
+            "pt": "Porta PoE 4",
+            "pl": "Port PoE 4"
           }
         },
         "poe.port_5": {
@@ -3437,7 +3954,8 @@
             "no": "PoE-port 5",
             "ko": "PoE 포트 5",
             "ru": "PoE порт 5",
-            "pt": "Porta PoE 5"
+            "pt": "Porta PoE 5",
+            "pl": "Port PoE 5"
           }
         },
         "poe.port_6": {
@@ -3453,7 +3971,8 @@
             "no": "PoE-port 6",
             "ko": "PoE 포트 6",
             "ru": "PoE порт 6",
-            "pt": "Porta PoE 6"
+            "pt": "Porta PoE 6",
+            "pl": "Port PoE 6"
           }
         },
         "poe.port_7": {
@@ -3469,7 +3988,8 @@
             "no": "PoE-port 7",
             "ko": "PoE 포트 7",
             "ru": "PoE порт 7",
-            "pt": "Porta PoE 7"
+            "pt": "Porta PoE 7",
+            "pl": "Port PoE 7"
           }
         },
         "poe.port_8": {
@@ -3485,7 +4005,8 @@
             "no": "PoE-port 8",
             "ko": "PoE 포트 8",
             "ru": "PoE порт 8",
-            "pt": "Porta PoE 8"
+            "pt": "Porta PoE 8",
+            "pl": "Port PoE 8"
           }
         },
         "poe.port_9": {
@@ -3501,7 +4022,8 @@
             "no": "PoE-port 9",
             "ko": "PoE 포트 9",
             "ru": "PoE порт 9",
-            "pt": "Porta PoE 9"
+            "pt": "Porta PoE 9",
+            "pl": "Port PoE 9"
           }
         },
         "poe.port_10": {
@@ -3517,7 +4039,8 @@
             "no": "PoE-port 10",
             "ko": "PoE 포트 10",
             "ru": "PoE порт 10",
-            "pt": "Porta PoE 10"
+            "pt": "Porta PoE 10",
+            "pl": "Port PoE 10"
           }
         },
         "poe.port_11": {
@@ -3533,7 +4056,8 @@
             "no": "PoE-port 11",
             "ko": "PoE 포트 11",
             "ru": "PoE порт 11",
-            "pt": "Porta PoE 11"
+            "pt": "Porta PoE 11",
+            "pl": "Port PoE 11"
           }
         },
         "poe.port_12": {
@@ -3549,7 +4073,8 @@
             "no": "PoE-port 12",
             "ko": "PoE 포트 12",
             "ru": "PoE порт 12",
-            "pt": "Porta PoE 12"
+            "pt": "Porta PoE 12",
+            "pl": "Port PoE 12"
           }
         },
         "poe.port_13": {
@@ -3565,7 +4090,8 @@
             "no": "PoE-port 13",
             "ko": "PoE 포트 13",
             "ru": "PoE порт 13",
-            "pt": "Porta PoE 13"
+            "pt": "Porta PoE 13",
+            "pl": "Port PoE 13"
           }
         },
         "poe.port_14": {
@@ -3581,7 +4107,8 @@
             "no": "PoE-port 14",
             "ko": "PoE 포트 14",
             "ru": "PoE порт 14",
-            "pt": "Porta PoE 14"
+            "pt": "Porta PoE 14",
+            "pl": "Port PoE 14"
           }
         },
         "poe.port_15": {
@@ -3597,7 +4124,8 @@
             "no": "PoE-port 15",
             "ko": "PoE 포트 15",
             "ru": "PoE порт 15",
-            "pt": "Porta PoE 15"
+            "pt": "Porta PoE 15",
+            "pl": "Port PoE 15"
           }
         },
         "poe.port_16": {
@@ -3613,7 +4141,8 @@
             "no": "PoE-port 16",
             "ko": "PoE 포트 16",
             "ru": "PoE порт 16",
-            "pt": "Porta PoE 16"
+            "pt": "Porta PoE 16",
+            "pl": "Port PoE 16"
           }
         },
         "poe.port_17": {
@@ -3629,7 +4158,8 @@
             "no": "PoE-port 17",
             "ko": "PoE 포트 17",
             "ru": "PoE порт 17",
-            "pt": "Porta PoE 17"
+            "pt": "Porta PoE 17",
+            "pl": "Port PoE 17"
           }
         },
         "poe.port_18": {
@@ -3645,7 +4175,8 @@
             "no": "PoE-port 18",
             "ko": "PoE 포트 18",
             "ru": "PoE порт 18",
-            "pt": "Porta PoE 18"
+            "pt": "Porta PoE 18",
+            "pl": "Port PoE 18"
           }
         },
         "poe.port_19": {
@@ -3661,7 +4192,8 @@
             "no": "PoE-port 19",
             "ko": "PoE 포트 19",
             "ru": "PoE порт 19",
-            "pt": "Porta PoE 19"
+            "pt": "Porta PoE 19",
+            "pl": "Port PoE 19"
           }
         },
         "poe.port_20": {
@@ -3677,7 +4209,8 @@
             "no": "PoE-port 20",
             "ko": "PoE 포트 20",
             "ru": "PoE порт 20",
-            "pt": "Porta PoE 20"
+            "pt": "Porta PoE 20",
+            "pl": "Port PoE 20"
           }
         },
         "poe.port_21": {
@@ -3693,7 +4226,8 @@
             "no": "PoE-port 21",
             "ko": "PoE 포트 21",
             "ru": "PoE порт 21",
-            "pt": "Porta PoE 21"
+            "pt": "Porta PoE 21",
+            "pl": "Port PoE 21"
           }
         },
         "poe.port_22": {
@@ -3709,7 +4243,8 @@
             "no": "PoE-port 22",
             "ko": "PoE 포트 22",
             "ru": "PoE порт 22",
-            "pt": "Porta PoE 22"
+            "pt": "Porta PoE 22",
+            "pl": "Port PoE 22"
           }
         },
         "poe.port_23": {
@@ -3725,7 +4260,8 @@
             "no": "PoE-port 23",
             "ko": "PoE 포트 23",
             "ru": "PoE порт 23",
-            "pt": "Porta PoE 23"
+            "pt": "Porta PoE 23",
+            "pl": "Port PoE 23"
           }
         },
         "poe.port_24": {
@@ -3741,7 +4277,8 @@
             "no": "PoE-port 24",
             "ko": "PoE 포트 24",
             "ru": "PoE порт 24",
-            "pt": "Porta PoE 24"
+            "pt": "Porta PoE 24",
+            "pl": "Port PoE 24"
           }
         },
         "poe.port_25": {
@@ -3757,7 +4294,8 @@
             "no": "PoE-port 25",
             "ko": "PoE 포트 25",
             "ru": "PoE порт 25",
-            "pt": "Porta PoE 25"
+            "pt": "Porta PoE 25",
+            "pl": "Port PoE 25"
           }
         },
         "poe.port_26": {
@@ -3773,7 +4311,8 @@
             "no": "PoE-port 26",
             "ko": "PoE 포트 26",
             "ru": "PoE порт 26",
-            "pt": "Porta PoE 26"
+            "pt": "Porta PoE 26",
+            "pl": "Port PoE 26"
           }
         },
         "poe.port_27": {
@@ -3789,7 +4328,8 @@
             "no": "PoE-port 27",
             "ko": "PoE 포트 27",
             "ru": "PoE порт 27",
-            "pt": "Porta PoE 27"
+            "pt": "Porta PoE 27",
+            "pl": "Port PoE 27"
           }
         },
         "poe.port_28": {
@@ -3805,7 +4345,8 @@
             "no": "PoE-port 28",
             "ko": "PoE 포트 28",
             "ru": "PoE порт 28",
-            "pt": "Porta PoE 28"
+            "pt": "Porta PoE 28",
+            "pl": "Port PoE 28"
           }
         },
         "poe.port_29": {
@@ -3821,7 +4362,8 @@
             "no": "PoE-port 29",
             "ko": "PoE 포트 29",
             "ru": "PoE порт 29",
-            "pt": "Porta PoE 29"
+            "pt": "Porta PoE 29",
+            "pl": "Port PoE 29"
           }
         },
         "poe.port_30": {
@@ -3837,7 +4379,8 @@
             "no": "PoE-port 30",
             "ko": "PoE 포트 30",
             "ru": "PoE порт 30",
-            "pt": "Porta PoE 30"
+            "pt": "Porta PoE 30",
+            "pl": "Port PoE 30"
           }
         },
         "poe.port_31": {
@@ -3853,7 +4396,8 @@
             "no": "PoE-port 31",
             "ko": "PoE 포트 31",
             "ru": "PoE порт 31",
-            "pt": "Porta PoE 31"
+            "pt": "Porta PoE 31",
+            "pl": "Port PoE 31"
           }
         },
         "poe.port_32": {
@@ -3869,7 +4413,8 @@
             "no": "PoE-port 32",
             "ko": "PoE 포트 32",
             "ru": "PoE порт 32",
-            "pt": "Porta PoE 32"
+            "pt": "Porta PoE 32",
+            "pl": "Port PoE 32"
           }
         },
         "poe.port_33": {
@@ -3885,7 +4430,8 @@
             "no": "PoE-port 33",
             "ko": "PoE 포트 33",
             "ru": "PoE порт 33",
-            "pt": "Porta PoE 33"
+            "pt": "Porta PoE 33",
+            "pl": "Port PoE 33"
           }
         },
         "poe.port_34": {
@@ -3901,7 +4447,8 @@
             "no": "PoE-port 34",
             "ko": "PoE 포트 34",
             "ru": "PoE порт 34",
-            "pt": "Porta PoE 34"
+            "pt": "Porta PoE 34",
+            "pl": "Port PoE 34"
           }
         },
         "poe.port_35": {
@@ -3917,7 +4464,8 @@
             "no": "PoE-port 35",
             "ko": "PoE 포트 35",
             "ru": "PoE порт 35",
-            "pt": "Porta PoE 35"
+            "pt": "Porta PoE 35",
+            "pl": "Port PoE 35"
           }
         },
         "poe.port_36": {
@@ -3933,7 +4481,8 @@
             "no": "PoE-port 36",
             "ko": "PoE 포트 36",
             "ru": "PoE порт 36",
-            "pt": "Porta PoE 36"
+            "pt": "Porta PoE 36",
+            "pl": "Port PoE 36"
           }
         },
         "poe.port_37": {
@@ -3949,7 +4498,8 @@
             "no": "PoE-port 37",
             "ko": "PoE 포트 37",
             "ru": "PoE порт 37",
-            "pt": "Porta PoE 37"
+            "pt": "Porta PoE 37",
+            "pl": "Port PoE 37"
           }
         },
         "poe.port_38": {
@@ -3965,7 +4515,8 @@
             "no": "PoE-port 38",
             "ko": "PoE 포트 38",
             "ru": "PoE порт 38",
-            "pt": "Porta PoE 38"
+            "pt": "Porta PoE 38",
+            "pl": "Port PoE 38"
           }
         },
         "poe.port_39": {
@@ -3981,7 +4532,8 @@
             "no": "PoE-port 39",
             "ko": "PoE 포트 39",
             "ru": "PoE порт 39",
-            "pt": "Porta PoE 39"
+            "pt": "Porta PoE 39",
+            "pl": "Port PoE 39"
           }
         },
         "poe.port_40": {
@@ -3997,7 +4549,8 @@
             "no": "PoE-port 40",
             "ko": "PoE 포트 40",
             "ru": "PoE порт 40",
-            "pt": "Porta PoE 40"
+            "pt": "Porta PoE 40",
+            "pl": "Port PoE 40"
           }
         },
         "poe.port_41": {
@@ -4013,7 +4566,8 @@
             "no": "PoE-port 41",
             "ko": "PoE 포트 41",
             "ru": "PoE порт 41",
-            "pt": "Porta PoE 41"
+            "pt": "Porta PoE 41",
+            "pl": "Port PoE 41"
           }
         },
         "poe.port_42": {
@@ -4029,7 +4583,8 @@
             "no": "PoE-port 42",
             "ko": "PoE 포트 42",
             "ru": "PoE порт 42",
-            "pt": "Porta PoE 42"
+            "pt": "Porta PoE 42",
+            "pl": "Port PoE 42"
           }
         },
         "poe.port_43": {
@@ -4045,7 +4600,8 @@
             "no": "PoE-port 43",
             "ko": "PoE 포트 43",
             "ru": "PoE порт 43",
-            "pt": "Porta PoE 43"
+            "pt": "Porta PoE 43",
+            "pl": "Port PoE 43"
           }
         },
         "poe.port_44": {
@@ -4061,7 +4617,8 @@
             "no": "PoE-port 44",
             "ko": "PoE 포트 44",
             "ru": "PoE порт 44",
-            "pt": "Porta PoE 44"
+            "pt": "Porta PoE 44",
+            "pl": "Port PoE 44"
           }
         },
         "poe.port_45": {
@@ -4077,7 +4634,8 @@
             "no": "PoE-port 45",
             "ko": "PoE 포트 45",
             "ru": "PoE порт 45",
-            "pt": "Porta PoE 45"
+            "pt": "Porta PoE 45",
+            "pl": "Port PoE 45"
           }
         },
         "poe.port_46": {
@@ -4093,7 +4651,8 @@
             "no": "PoE-port 46",
             "ko": "PoE 포트 46",
             "ru": "PoE порт 46",
-            "pt": "Porta PoE 46"
+            "pt": "Porta PoE 46",
+            "pl": "Port PoE 46"
           }
         },
         "poe.port_47": {
@@ -4109,7 +4668,8 @@
             "no": "PoE-port 47",
             "ko": "PoE 포트 47",
             "ru": "PoE порт 47",
-            "pt": "Porta PoE 47"
+            "pt": "Porta PoE 47",
+            "pl": "Port PoE 47"
           }
         },
         "poe.port_48": {
@@ -4125,7 +4685,8 @@
             "no": "PoE-port 48",
             "ko": "PoE 포트 48",
             "ru": "PoE порт 48",
-            "pt": "Porta PoE 48"
+            "pt": "Porta PoE 48",
+            "pl": "Port PoE 48"
           }
         }
       },
@@ -4163,7 +4724,8 @@
         "no": "Wifi-klient",
         "ko": "와이파이 클라이언트",
         "ru": "Wi-Fi клиент",
-        "pt": "Cliente Wifi"
+        "pt": "Cliente Wifi",
+        "pl": "Klient WiFi"
       },
       "mobile": {
         "components": [
@@ -4198,7 +4760,8 @@
                   "no": "Tilkoblingsstatus",
                   "ko": "연결 상태",
                   "ru": "Состояние подключения",
-                  "pt": "Estado da conexão"
+                  "pt": "Estado da conexão",
+                  "pl": "Stan połączenia"
                 },
                 "getable": true,
                 "setable": false
@@ -4225,7 +4788,8 @@
                     "no": "Tilkoblet",
                     "ko": "연결됨",
                     "ru": "Подключено",
-                    "pt": "Conectado"
+                    "pt": "Conectado",
+                    "pl": "Connected"
                   },
                   "false": {
                     "en": "Disconnected",
@@ -4238,7 +4802,8 @@
                     "no": "Frakoblet",
                     "ko": "연결 끊김",
                     "ru": "Отключено",
-                    "pt": "Desconectado"
+                    "pt": "Desconectado",
+                    "pl": "Disconnected"
                   }
                 }
               }
@@ -4278,7 +4843,8 @@
             "no": "Tilkoblingsstatus",
             "ko": "연결 상태",
             "ru": "Состояние подключения",
-            "pt": "Estado da conexão"
+            "pt": "Estado da conexão",
+            "pl": "Stan połączenia"
           },
           "getable": true,
           "setable": false
@@ -4582,10 +5148,10 @@
         "de": "RX Bytes",
         "fr": "RX Bytes",
         "it": "RX Bytes",
-        "pl": "Bajty RX",
         "da": "RX-bytes",
         "ko": "RX 바이트",
         "no": "RX-bytes",
+        "pl": "Bajty RX",
         "ru": "RX байты",
         "sv": "RX-byte"
       },
@@ -4726,10 +5292,10 @@
         "de": "TX Bytes",
         "fr": "TX Bytes",
         "it": "TX Bytes",
-        "pl": "Bajty TX",
         "da": "TX-bytes",
         "ko": "TX 바이트",
         "no": "TX-bytes",
+        "pl": "Bajty TX",
         "ru": "TX байты",
         "sv": "TX-byte"
       },
