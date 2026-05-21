@@ -30,7 +30,7 @@
     "ru": "Защитите дом с помощью определения присутствия на основе (WiFi) клиентов, подключенных к контроллеру UniFi",
     "sv": "Skydda ditt hem med naervarodetektering baserad paa (wifi)-klienter anslutna till UniFi Controller"
   },
-  "version": "2.6.2",
+  "version": "2.6.3",
   "compatibility": ">=5.0.0",
   "author": {
     "name": "Stèphan Eizinga",

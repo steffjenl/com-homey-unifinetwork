@@ -136,5 +136,8 @@
   },
   "2.6.2": {
     "en": "Add functions for access-point"
+  },
+  "2.6.3": {
+    "en": "Add more translations"
   }
 }
