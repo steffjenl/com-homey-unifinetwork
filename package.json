@@ -25,7 +25,7 @@
     "homey-log": "^2.1.0",
     "node-unifi": "^2.5.1",
     "tough-cookie": "^4.1.4",
-    "ws": "^8.18.0"
+    "ws": "^8.21.0"
   },
   "jest": {
     "testEnvironment": "node",
