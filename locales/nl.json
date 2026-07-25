@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "Inloggen"
+        },
+        "errors": {
+            "no_controller_connection": "Er is momenteel geen verbinding met de UniFi-controller. Controleer de controllergegevens in de app-instellingen en probeer het opnieuw."
         }
     },
     "settings": {
