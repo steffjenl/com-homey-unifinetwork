@@ -1,6 +1,6 @@
 'use strict';
 
-const { sanitise } = require('../../library/sanitise');
+const { sanitise, formatForLog } = require('../../library/sanitise');
 
 describe('sanitise()', () => {
     it('redacts top-level sensitive keys', () => {
@@ -48,6 +48,22 @@ describe('sanitise()', () => {
         const original = { pass: 'secret', name: 'test' };
         sanitise(original);
         expect(original.pass).toBe('secret');
+    });
+
+    it('handles circular references without overflowing the stack', () => {
+        const original = { name: 'loop' };
+        original.self = original;
+
+        const result = sanitise(original);
+
+        expect(result.name).toBe('loop');
+        expect(result.self).toBe('[Circular]');
+    });
+
+    it('formats log output safely for BigInt values', () => {
+        const result = formatForLog({ count: 1n, nested: { pass: 'secret' } });
+
+        expect(result).toBe('{"count":"1","nested":{"pass":"[REDACTED]"}}');
     });
 });
 

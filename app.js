@@ -4,7 +4,7 @@ const Homey = require('homey');
 const {Log} = require('homey-log');
 const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
-const {sanitise} = require('./library/sanitise');
+const {formatForLog} = require('./library/sanitise');
 
 class UnifiNetwork extends Homey.App {
     /**
@@ -578,13 +578,13 @@ class UnifiNetwork extends Homey.App {
                             }
                         }).catch(
                             (error) => {
-                                this.debug(`WebSocket error: ${JSON.stringify(error)}`);
+                                this.debug(`WebSocket error: ${formatForLog(error)}`);
                             }
                         );
                     }
                 } catch (error) {
                     await this.setLoggedIn(false);
-                    this.error(`${JSON.stringify(sanitise(error))}`); // we want to see the error in the log
+                    this.error(formatForLog(error)); // we want to see the error in the log
                 }
             })();
         } finally {
@@ -677,7 +677,7 @@ class UnifiNetwork extends Homey.App {
                 this.homey.app._lastDeviceOffline.trigger(tokens);
             }
         } catch (error) {
-            this.homey.error(`[checkNumClientsConnectedTrigger]: ${JSON.stringify(error)}`);
+            this.homey.error(`[checkNumClientsConnectedTrigger]: ${formatForLog(error)}`);
         }
     }
 
