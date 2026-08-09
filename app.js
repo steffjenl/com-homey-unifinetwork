@@ -343,6 +343,10 @@ class UnifiNetwork extends Homey.App {
                 return result.name.toLowerCase().includes(query.toLowerCase());
             });
         });
+        this._firstDeviceConnected.registerRunListener(async (args, state) => {
+            if (!args.accessPoint) return true;
+            return args.accessPoint.id === state.ap_mac;
+        });
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
@@ -360,6 +364,10 @@ class UnifiNetwork extends Homey.App {
             return results.filter((result) => {
                 return result.name.toLowerCase().includes(query.toLowerCase());
             });
+        });
+        this._lastDeviceDisconnected.registerRunListener(async (args, state) => {
+            if (!args.accessPoint) return true;
+            return args.accessPoint.id === state.ap_mac;
         });
         //this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
         //this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
@@ -724,29 +732,28 @@ class UnifiNetwork extends Homey.App {
     // {"user":"ea:5b:28:b2:00:b5","ssid":"Ziggo6322902","ap":"d0:21:f9:89:df:f9","radio":"na","channel":"40","channelWidth":"80","hostname":"iPhone","ap_model":"UAP6MP","ap_name":"BenedenAP","ap_displayName":"BenedenAP","key":"EVT_WU_Connected","subsystem":"wlan","is_negative":false,"site_id":"6550cbaad28ec670541702d5","time":1761598567827,"datetime":"2025-10-27T20:56:07Z","msg":"User[ea:5b:28:b2:00:b5] has connected to AP[d0:21:f9:89:df:f9] with SSID \"Ziggo6322902\" on \"channel 40(na)\""
 
     onIsConnected(isConnected, payload) {
-        const deviceName = this.homey.app.api.getDeviceName(payload);
-        this.debug(`Device ${deviceName} (${payload.user}) is ${isConnected ? 'connected' : 'disconnected'}`);
-        if (isConnected) {
-            const device = this.api.getDeviceByMac(payload.user);
-            const tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
-                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
-            };
+        const devicePayload = payload || {};
+        const deviceMac = devicePayload.user || devicePayload.client || devicePayload.mac || '';
+        const deviceName = this.homey.app.api.getDeviceName({
+            ...devicePayload,
+            user: deviceMac,
+            mac: devicePayload.mac || deviceMac,
+        });
+        const tokens = {
+            mac: deviceMac,
+            name: (deviceName === null || typeof deviceName === 'undefined') ? '' : deviceName,
+            essid: (devicePayload.ssid === null || typeof devicePayload.ssid === 'undefined') ? '' : devicePayload.ssid,
+            ipAddress: (devicePayload.last_ip === null || typeof devicePayload.last_ip === 'undefined')
+                ? ((devicePayload.ip === null || typeof devicePayload.ip === 'undefined') ? '' : devicePayload.ip)
+                : devicePayload.last_ip,
+        };
+        const trigger = isConnected ? this._clientConnected : this._clientDisconnected;
 
-            this.homey.app._clientConnected.trigger(tokens);
+        this.debug(`Device ${deviceName} (${deviceMac}) is ${isConnected ? 'connected' : 'disconnected'}`);
 
-        } else {
-            const device = this.api.getDeviceByMac(payload.user);
-            const tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
-                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
-            };
-            this.homey.app._clientDisconnected.trigger(tokens);
-        }
+        trigger.trigger(tokens).catch(error => {
+            this.homey.error(`[onIsConnected] ${error.message || error}`);
+        });
     }
 
     async setLoggedIn(loggedIn) {
@@ -829,11 +836,15 @@ class UnifiNetwork extends Homey.App {
 
                 if (tokens.last_num === 0 && tokens.curr_num > 0) {
                     that.homey.app.debug('Triggering first_device_connected with state', tokens);
-                    that._firstDeviceConnected.trigger(tokens);
+                    that._firstDeviceConnected.trigger({}, {ap_mac}).catch(error => {
+                        that.homey.error(`[first_device_connected] ${error.message || error}`);
+                    });
                 }
                 if (tokens.last_num > 0 && tokens.curr_num === 0) {
                     that.homey.app.debug('Triggering last_device_disconnected with state', tokens);
-                    that._lastDeviceDisconnected.trigger(tokens);
+                    that._lastDeviceDisconnected.trigger({}, {ap_mac}).catch(error => {
+                        that.homey.error(`[last_device_disconnected] ${error.message || error}`);
+                    });
                 }
             }
 
