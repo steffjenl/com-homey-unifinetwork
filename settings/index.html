@@ -252,13 +252,13 @@
 
 <!--EVENT LOG PAGE -->
 <div id="eventLog" class="tabcontent">
-    <fieldset>
+    <fieldset class="eventlog-fieldset">
         <p data-i18n="settings.intro2"></p>
         <div class="field row">
             <label for="eventLogEnabled" data-i18n="settings.log_enabled"></label>
             <input id="eventLogEnabled" type="checkbox" value="logEnabled"/>
         </div>
-        <div class="field row">
+        <div class="field row eventlog-row">
             <textarea class="homey-form-input" id="eventLogData"></textarea>
         </div>
     </fieldset>
@@ -605,7 +605,7 @@
         }
 
         // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabPage).style.display = "block";
+        document.getElementById(tabPage).style.display = (tabPage === 'eventLog') ? "flex" : "block";
         evt.currentTarget.className += " active";
 
         if (tabPage == 'sites') {
@@ -631,10 +631,6 @@
             Homey.on('com.ubnt.unifi.debug', function (eventLogData) {
                 eventLogElement.value = eventLogData + "\r\n" + eventLogElement.value;
             });
-
-            // Make the simulator text box fill the page
-            eventLogElement.setAttribute('cols', eventLogElement.parentElement.clientWidth / 8);
-            eventLogElement.style.height = (window.innerHeight - eventLogElement.offsetTop - 40) + 'px';
         }
     }
 </script>

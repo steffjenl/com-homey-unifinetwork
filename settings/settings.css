@@ -1,6 +1,7 @@
 /* Style the tab */
 .tab {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     padding: 4px;
     border: 1px solid #d8e4ea;
@@ -12,8 +13,8 @@
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 1 1 140px;
+    min-width: 110px;
     position: relative;
     background-color: transparent;
     border: 1px solid transparent;
@@ -27,7 +28,6 @@
     text-align: center;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     white-space: normal;
-    word-break: break-word;
 }
 
 /* Change background color of buttons on hover */
@@ -76,6 +76,50 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+/* eventLog tab fills the remaining viewport height via flex-grow, so
+   eventLogData can stretch to fill it instead of using a fixed vh cap */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#eventLog.tabcontent {
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.eventlog-fieldset {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.eventlog-row {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+#eventLogData {
+    width: 100%;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    min-height: 200px;
+    overflow-y: auto;
+    resize: vertical;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 input[type=select],
