@@ -168,5 +168,10 @@
         "measure_tx_bytes_5g": "Trafic TX 5 GHz (Mo)",
         "measure_rx_bytes_6g": "Trafic RX 6 GHz (Mo)",
         "measure_tx_bytes_6g": "Trafic TX 6 GHz (Mo)"
+    },
+    "repair": {
+        "validate": {
+            "title": "Reparer la connexion"
+        }
     }
 }

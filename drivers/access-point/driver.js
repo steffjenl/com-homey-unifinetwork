@@ -3,6 +3,7 @@
 const {Driver} = require('homey');
 const UnifiConstants = require("../../library/constants");
 const Homey = require("homey");
+const RepairMixin = require("../../library/repair-mixin");
 
 class AccessPoint extends Driver {
 
@@ -48,6 +49,10 @@ class AccessPoint extends Driver {
         } catch (Error) {
             return false;
         }
+    }
+
+    async onRepair(session, device) {
+        return RepairMixin.onRepair(this.homey, session, device);
     }
 }
 

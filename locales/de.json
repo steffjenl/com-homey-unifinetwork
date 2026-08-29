@@ -168,5 +168,10 @@
         "measure_tx_bytes_5g": "TX-Datenverkehr 5 GHz (MB)",
         "measure_rx_bytes_6g": "RX-Datenverkehr 6 GHz (MB)",
         "measure_tx_bytes_6g": "TX-Datenverkehr 6 GHz (MB)"
+    },
+    "repair": {
+        "validate": {
+            "title": "Verbindung reparieren"
+        }
     }
 }

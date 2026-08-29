@@ -2,6 +2,7 @@
 
 const {Driver} = require('homey');
 const UnifiConstants = require("../../library/constants");
+const RepairMixin = require("../../library/repair-mixin");
 
 class WifiClient extends Driver {
 
@@ -67,6 +68,10 @@ class WifiClient extends Driver {
         } catch (Error) {
             return false;
         }
+    }
+
+    async onRepair(session, device) {
+        return RepairMixin.onRepair(this.homey, session, device);
     }
 
 }

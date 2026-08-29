@@ -168,5 +168,10 @@
             "orange": "Warning",
             "red": "Critical"
         }
+    },
+    "repair": {
+        "validate": {
+            "title": "Repair connection"
+        }
     }
 }

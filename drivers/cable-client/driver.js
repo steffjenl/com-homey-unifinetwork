@@ -2,6 +2,7 @@
 
 const {Driver} = require('homey');
 const UnifiConstants = require("../../library/constants");
+const RepairMixin = require("../../library/repair-mixin");
 
 class CableClient extends Driver {
 
@@ -53,6 +54,10 @@ class CableClient extends Driver {
         } catch (Error) {
             return false;
         }
+    }
+
+    async onRepair(session, device) {
+        return RepairMixin.onRepair(this.homey, session, device);
     }
 }
 

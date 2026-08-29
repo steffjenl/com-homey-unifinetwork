@@ -168,5 +168,10 @@
         "measure_tx_bytes_5g": "Ruch TX 5 GHz (MB)",
         "measure_rx_bytes_6g": "Ruch RX 6 GHz (MB)",
         "measure_tx_bytes_6g": "Ruch TX 6 GHz (MB)"
+    },
+    "repair": {
+        "validate": {
+            "title": "Napraw polaczenie"
+        }
     }
 }

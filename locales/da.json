@@ -168,5 +168,10 @@
         "measure_tx_bytes_5g": "TX-trafik 5 GHz (MB)",
         "measure_rx_bytes_6g": "RX-trafik 6 GHz (MB)",
         "measure_tx_bytes_6g": "TX-trafik 6 GHz (MB)"
+    },
+    "repair": {
+        "validate": {
+            "title": "Reparer forbindelse"
+        }
     }
 }

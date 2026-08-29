@@ -2793,6 +2793,11 @@
           "id": "add_clients",
           "template": "add_devices"
         }
+      ],
+      "repair": [
+        {
+          "id": "validate"
+        }
       ]
     },
     {
@@ -2936,6 +2941,11 @@
         {
           "id": "add_clients",
           "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "validate"
         }
       ]
     },
@@ -4710,6 +4720,11 @@
           "id": "add_clients",
           "template": "add_devices"
         }
+      ],
+      "repair": [
+        {
+          "id": "validate"
+        }
       ]
     },
     {
@@ -4869,6 +4884,11 @@
         {
           "id": "add_clients",
           "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "validate"
         }
       ]
     }

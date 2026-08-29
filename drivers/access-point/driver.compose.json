@@ -66,5 +66,11 @@
       "id": "add_clients",
       "template": "add_devices"
     }
+  ],
+  "repair": [
+    {
+      "id": "validate",
+      "$template": "validate"
+    }
   ]
 }

@@ -168,5 +168,10 @@
         "measure_tx_bytes_5g": "TX 트래픽 5GHz (MB)",
         "measure_rx_bytes_6g": "RX 트래픽 6GHz (MB)",
         "measure_tx_bytes_6g": "TX 트래픽 6GHz (MB)"
+    },
+    "repair": {
+        "validate": {
+            "title": "연결 복구"
+        }
     }
 }
