@@ -142,5 +142,8 @@
   },
   "2.6.4": {
     "en": "Fix: Fixed a crash that could occur when an error was encountered."
+  },
+  "2.7.0": {
+    "en": "Added new setup wizard en beter error handling on wrong IP address"
   }
 }
