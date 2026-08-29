@@ -61,6 +61,27 @@ module.exports = [
             'n/hashbang': 'off',
         },
     },
+    // Browser environment for settings-page scripts (run in the Homey settings webview, not Node)
+    {
+        files: ['settings/**/*.js'],
+        languageOptions: {
+            sourceType: 'script',
+            globals: {
+                window: 'readonly',
+                document: 'readonly',
+                navigator: 'readonly',
+                Homey: 'readonly',
+                console: 'readonly',
+                setTimeout: 'readonly',
+                clearTimeout: 'readonly',
+                URL: 'readonly',
+            },
+        },
+        rules: {
+            'n/no-missing-require': 'off',
+            'n/no-unsupported-features/node-builtins': 'off',
+        },
+    },
     // Jest environment for test files
     {
         files: ['test/**/*.js'],

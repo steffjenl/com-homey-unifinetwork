@@ -61,10 +61,73 @@
             "networkV1": "Network V1",
             "networkV2": "Network V2",
             "websocket": "Status realtime updates",
-            "lastUpdate": "Laatst bijgewerkt op"
+            "lastUpdate": "Laatst bijgewerkt op",
+            "wizardRestart": "Installatiewizard herstarten",
+            "wizardHint": "Wil je de verbinding opnieuw instellen met de stapsgewijze wizard?"
         },
         "site_shared_hint": "Gedeeld met Network V1 - wordt door beide verbindingen gebruikt.",
-        "apikey_required": "API-sleutel is verplicht voor Network V2."
+        "apikey_required": "API-sleutel is verplicht voor Network V2.",
+        "wizard": {
+            "title": "UniFi Network installatiewizard",
+            "progress": "Stap",
+            "start": "Start",
+            "back": "Terug",
+            "next": "Volgende",
+            "skip": "Overslaan",
+            "cancel": "Sluiten",
+            "guide": "Open de volledige installatiehandleiding",
+            "welcome": {
+                "title": "Verbind je UniFi-controller",
+                "body": "Deze wizard helpt je Homey te verbinden met je UniFi Network-controller. Network V1 (gebruikersnaam & wachtwoord) is verplicht om apparaten te koppelen. Network V2 (API-sleutel) is optioneel en ontgrendelt alleen een paar extra flow-acties."
+            },
+            "choose": {
+                "title": "Extra: Network V2",
+                "body": "Network V1 wordt hierna ingesteld — dit is verplicht om wifi-clients, kabelclients, access points en switches te koppelen. Optioneel kun je ook Network V2 inschakelen met een API-sleutel voor een paar extra flow-acties (WLAN aan/uit zetten, access point herstarten).",
+                "v2": "Ook Network V2 inschakelen (API-sleutel)",
+                "v2desc": "Optioneel. Ontgrendelt de flow-acties 'WLAN aan/uit zetten' en 'Access point herstarten'. Vervangt Network V1 niet."
+            },
+            "server": {
+                "title": "Controller-adres",
+                "body": "Vul het IP-adres of de hostnaam van je UniFi-controller in.",
+                "ip": "IP-adres",
+                "advanced": "Andere poort dan 443 gebruiken",
+                "v1port": "Network V1-poort",
+                "v2port": "Network V2-poort",
+                "error": "Vul een IP-adres of hostnaam in."
+            },
+            "v1": {
+                "title": "Network V1 — gebruikersnaam & wachtwoord",
+                "intro": "Maak een dedicated lokale beheerder aan in UniFi voor gebruik door Homey.",
+                "s1": "Open je UniFi-controller en ga naar Instellingen → Beheerders & gebruikers.",
+                "s2": "Klik op Beheerder toevoegen, schakel MFA uit en stel een sterk, uniek wachtwoord in.",
+                "s3": "Wijs de rol Netwerkbeheerder toe.",
+                "s4": "Vul die gebruikersnaam en dat wachtwoord hieronder in.",
+                "error": "Vul zowel gebruikersnaam als wachtwoord in."
+            },
+            "v2": {
+                "title": "Network V2 — API-sleutel",
+                "intro": "Maak een API-sleutel aan in UniFi OS voor extra flow-acties.",
+                "s1": "Open UniFi OS → Instellingen → API.",
+                "s2": "Klik op Nieuwe API-sleutel aanmaken en geef deze een naam (bijv. homey-integration-key).",
+                "s3": "Kopieer de sleutel — deze wordt maar één keer getoond.",
+                "s4": "Plak deze hieronder. Network V2 ontgrendelt alleen extra acties — apparaten koppelen blijft Network V1 vereisen.",
+                "error": "Vul een API-sleutel in."
+            },
+            "test": {
+                "run": "Verbinding testen",
+                "ok": "Verbinding geslaagd.",
+                "fail": "Verbinding mislukt. Controleer de gegevens en probeer het opnieuw.",
+                "busy": "Bezig met testen…"
+            },
+            "summary": {
+                "title": "Klaar om op te slaan",
+                "body": "Controleer je verbindingen hieronder en rond de installatie af.",
+                "tested": "getest",
+                "untested": "niet getest",
+                "finish": "Installatie afronden",
+                "saved": "Instellingen opgeslagen."
+            }
+        }
     },
     "events": {
         "camera": {

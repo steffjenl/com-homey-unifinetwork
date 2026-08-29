@@ -69,10 +69,73 @@
             "networkV1": "Network V1",
             "networkV2": "Network V2",
             "websocket": "Realtime updates status",
-            "lastUpdate": "Last update at"
+            "lastUpdate": "Last update at",
+            "wizardRestart": "Restart setup wizard",
+            "wizardHint": "Want to reconfigure the connection using the step-by-step wizard?"
         },
         "site_shared_hint": "Network V1과 공유됩니다 - 두 연결 모두에서 사용됩니다.",
-        "apikey_required": "Network V2에는 API 키가 필수입니다."
+        "apikey_required": "Network V2에는 API 키가 필수입니다.",
+        "wizard": {
+            "title": "UniFi Network setup wizard",
+            "progress": "Step",
+            "start": "Start",
+            "back": "Back",
+            "next": "Next",
+            "skip": "Skip",
+            "cancel": "Close",
+            "guide": "Open the full setup guide",
+            "welcome": {
+                "title": "Let's connect your UniFi controller",
+                "body": "This wizard walks you through connecting Homey to your UniFi Network controller. Network V1 (username & password) is required for pairing devices. Network V2 (API key) is optional and only unlocks a few extra flow actions."
+            },
+            "choose": {
+                "title": "Extra: Network V2",
+                "body": "Network V1 will be set up next — it is required to pair Wi-Fi clients, cable clients, access points and switches. You can optionally also enable Network V2 with an API key for a couple of extra flow actions (toggle a WLAN, restart an access point).",
+                "v2": "Also enable Network V2 (API key)",
+                "v2desc": "Optional. Unlocks the 'Toggle WLAN' and 'Restart access point' flow actions. Does not replace Network V1."
+            },
+            "server": {
+                "title": "Controller address",
+                "body": "Enter the IP address or hostname of your UniFi controller.",
+                "ip": "IP address",
+                "advanced": "Use a different port than 443",
+                "v1port": "Network V1 port",
+                "v2port": "Network V2 port",
+                "error": "Please enter an IP address or hostname."
+            },
+            "v1": {
+                "title": "Network V1 — username & password",
+                "intro": "Create a dedicated local admin user in UniFi for Homey to use.",
+                "s1": "Open your UniFi controller and go to Settings → Admins & Users.",
+                "s2": "Click Add Admin, disable MFA, and set a strong, unique password.",
+                "s3": "Assign the Network Admin role.",
+                "s4": "Enter that username and password below.",
+                "error": "Please fill in both username and password."
+            },
+            "v2": {
+                "title": "Network V2 — API key",
+                "intro": "Create an API key in UniFi OS for extra flow actions.",
+                "s1": "Open UniFi OS → Settings → API.",
+                "s2": "Click Create New API Key and give it a name (e.g. homey-integration-key).",
+                "s3": "Copy the key — it is only shown once.",
+                "s4": "Paste it below. Network V2 only enables extra actions — device pairing still requires Network V1.",
+                "error": "Please enter an API key."
+            },
+            "test": {
+                "run": "Test connection",
+                "ok": "Connection successful.",
+                "fail": "Connection failed. Check the details and try again.",
+                "busy": "Testing…"
+            },
+            "summary": {
+                "title": "Ready to save",
+                "body": "Review your connections below and finish setup.",
+                "tested": "tested",
+                "untested": "not tested",
+                "finish": "Finish setup",
+                "saved": "Settings saved."
+            }
+        }
     },
     "events": {
         "camera": {

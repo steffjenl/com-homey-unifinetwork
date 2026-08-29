@@ -287,9 +287,9 @@ The app connects successfully because certificate verification is disabled by de
 ## Generating an API Key (for future v2.6 dual-path auth)
 
 Newer UniFi OS controllers (Network ≥ 7.x) support a stable API Key that does not expire.  
-While the app currently uses username/password auth, future version 2.6 will add optional API Key support.
+The app now has a **Network V2** settings tab for this. It is optional and only unlocks a couple of extra flow actions (toggle a WLAN, restart an access point) — device pairing still requires Network V1 (username/password).
 
-**Create an API Key now** (future-proof your setup):
+**Create an API Key**:
 
 1. Open UniFi OS → **Settings** → **API** → **Create New API Key**.
 2. Name it `homey-integration-key`.
@@ -299,7 +299,7 @@ While the app currently uses username/password auth, future version 2.6 will add
 ![UniFi OS — Create API Key](screenshots/15-unifios-create-api-key.png)
 *Figure 15: Create an API Key in UniFi OS Settings → API Keys.*
 
-When v2.6 is released, paste this key into the new "API Key" field in the Homey app settings.
+Paste this key into the **Network V2** tab in the Homey app settings (or the setup wizard's optional Network V2 step).
 
 ---
 

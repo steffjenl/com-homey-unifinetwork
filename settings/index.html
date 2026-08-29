@@ -5,9 +5,20 @@
     <link rel="stylesheet" type="text/css" href="settings.css">
     <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
     <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+    <script type="text/javascript" src="wizard.js"></script>
 </head>
 
 <body>
+<!-- Setup wizard, shown automatically when nothing is configured yet -->
+<div id="wizard" class="wizard" style="display: none;">
+    <div class="wizard-header">
+        <h2 id="wizard_title"></h2>
+        <span class="wizard-progress" id="wizard_progress"></span>
+    </div>
+    <div class="wizard-body" id="wizard_body"></div>
+    <div class="wizard-nav" id="wizard_nav"></div>
+</div>
+
 <!-- Tab links -->
 <div class="tab">
     <button class="tablinks" onclick="setPage(event, 'networkv1')" id="defaultOpen"><span
@@ -212,6 +223,11 @@
         <legend class="homey-form-legend" data-i18n="settings.status.networkV2"></legend>
         <p><span data-i18n="settings.status.networkV2"></span>: <span id="unifi_v2_status" style="font-weight: bold;">Unknown</span></p>
     </fieldset>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.wizard.title"></legend>
+        <p><em data-i18n="settings.status.wizardHint"></em></p>
+        <button id="btn_restart_wizard" class="homey-button-primary-full" data-i18n="settings.status.wizardRestart"></button>
+    </fieldset>
 </div>
 
 <!--EVENT LOG PAGE -->
@@ -250,6 +266,9 @@
     const txtV2Site = document.getElementById('txt_v2site');
     const btnApplyV2 = document.getElementById('btn_apply_v2');
     const btnTestV2 = document.getElementById('btn_test_v2');
+
+    // Status tab
+    const btnRestartWizard = document.getElementById('btn_restart_wizard');
 
     // Event log tab
     var eventLogElement = document.getElementById('eventLogData');
@@ -390,6 +409,10 @@
             testV2Settings();
         });
 
+        btnRestartWizard.addEventListener('click', e => {
+            window.UnifiWizard.restart();
+        });
+
         readSettings();
 
         eventLogEnabledElement.addEventListener('click', function (e) {
@@ -414,6 +437,8 @@
         document.getElementById("defaultOpen").click();
 
         Homey.ready();
+
+        window.UnifiWizard.init(Homey, {onClose: readSettings});
 
         const updateStatusField = (err, data) => {
             if (err) {
