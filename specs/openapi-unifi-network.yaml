@@ -6,16 +6,16 @@ info:
   description: >-
     Subset of the UniFi Network API based on the local controller documentation.
 servers:
-  - url: https://unifi.local
+  - url: https://unifi.local/proxy/network/integration
     description: Local UniFi Network application
 security:
-  - BearerAuth: []
+  - ApiKeyAuth: []
 components:
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: API-Key
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
   schemas:
     ErrorResponse:
       type: object

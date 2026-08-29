@@ -51,8 +51,8 @@ class ApiClient extends BaseClass {
         this._v1Host = host;
         this._v1Port = port;
         this._v1BaseUrl = this._cloudEnabled
-            ? `https://api.ui.com/v1/connector/consoles/${encodeURIComponent(this._consoleId)}/proxy/network/v1`
-            : `https://${host}:${port}/proxy/network/v1`;
+            ? `https://api.ui.com/v1/connector/consoles/${encodeURIComponent(this._consoleId)}/proxy/network/integration/v1`
+            : `https://${host}:${port}/proxy/network/integration/v1`;
     }
 
     /**
@@ -72,12 +72,12 @@ class ApiClient extends BaseClass {
     }
 
     /**
-     * Make an authenticated call to the UniFi v1 REST API.
-     * Uses Bearer token if an API key is configured, otherwise falls back to
+     * Make an authenticated call to the official UniFi Network Integration API.
+     * Uses the X-API-KEY header if an API key is configured, otherwise falls back to
      * the session cookie maintained by node-unifi.
      *
      * @param {string} method  HTTP method (GET, POST, PATCH, DELETE)
-     * @param {string} path    Path relative to /proxy/network/v1 (e.g. '/sites')
+     * @param {string} path    Path relative to /proxy/network/integration/v1 (e.g. '/sites')
      * @param {object|null} body  Optional request body
      * @returns {Promise<object>}
      */
@@ -91,7 +91,7 @@ class ApiClient extends BaseClass {
         };
 
         if (this._apiKey) {
-            headers['Authorization'] = `Bearer ${this._apiKey}`;
+            headers['X-API-KEY'] = this._apiKey;
         } else {
             // Fallback: use session cookie from node-unifi cookie jar
             try {

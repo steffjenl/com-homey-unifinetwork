@@ -1,6 +1,8 @@
 
 # UniFi Network API – Endpoints Cheat Sheet
 
+Base path: `/proxy/network/integration/v1/...` — endpoints below are relative to that base, shown as `/v1/...`. Auth via `X-API-KEY` header.
+
 ## Info
 - GET `/v1/info`
 

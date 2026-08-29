@@ -13,7 +13,7 @@ The app must communicate with a UniFi Network controller to detect client events
 Ubiquiti provides two distinct API surfaces:
 
 1. **Legacy "Classic" API** — session-cookie auth, `/api/s/<site>/...`, available since controller v4; supported by `node-unifi`.
-2. **Official REST API v1** — Bearer API-key auth, `/v1/...`, available from UniFi OS / Network ≥ 7.x; documented in `specs/unifi-network-api-cheatsheet.md`.
+2. **Official Network Integration API** — API-key auth via `X-API-KEY` header, base path `/proxy/network/integration/v1/...`, available from UniFi OS / Network ≥ 7.x; documented in `specs/unifi-network-api-cheatsheet.md`.
 
 Both must be supported (dual-path), with legacy as primary for backwards compatibility.
 
@@ -59,18 +59,18 @@ Body: { username, password, rememberMe: true }
 - CSRF token automatically managed by `node-unifi` via `X-Csrf-Token` header.
 - Session expires; app re-logins every hour via `refreshAuthTokens()`.
 
-### Path B — Bearer API Key (v2.6, UniFi OS ≥ 7.x)
+### Path B — API Key (v2.6, UniFi OS ≥ 7.x)
 
 ```
-GET https://<host>/proxy/network/v1/sites
-Authorization: Bearer <api_key>
+GET https://<host>/proxy/network/integration/v1/sites
+X-API-KEY: <api_key>
 ```
 
 - API key created in UniFi OS Settings → API Keys.
 - No session management; no CSRF required.
 - More stable for long-lived connections.
 - Requires optional `apiKey` field in app settings.
-- When `apiKey` is set, `/v1/` calls use Bearer; WS still uses session-cookie (no WS on `/v1/` yet).
+- When `apiKey` is set, Integration API calls use `X-API-KEY`; WS still uses session-cookie (no WS on the Integration API yet).
 
 ---
 

@@ -1,12 +1,12 @@
 
 # UniFi Network API – Technical Summary
 
-**What it is**: A versioned REST API (`/v1/...`) for managing UniFi Network resources on your controller.
+**What it is**: A versioned REST API (base path `/proxy/network/integration/v1/...`, shown below relative to that base as `/v1/...`) for managing UniFi Network resources on your controller.
 
 **Why it matters**: Enables full automation for provisioning, monitoring, and policy management across sites and devices; ideal for Homey apps, middleware (IntegrationsMonkey), and DevOps workflows.
 
 **Key Concepts**
-- **Auth**: API Key via HTTP Bearer.
+- **Auth**: API Key via the `X-API-KEY` header.
 - **Filtering**: Powerful, URL-safe expressions for server-side filtering.
 - **Pagination**: `offset`, `limit`, `count`, `totalCount`, `data`.
 - **Error Model**: Machine-parsable fields (`statusCode`, `statusName`, `code`, `message`, `requestId`, ...).

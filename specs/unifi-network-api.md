@@ -2,13 +2,13 @@
 # UniFi Network API – Developer Documentation
 
 ## Overview
-The UniFi Network API exposes endpoints for sites, devices, clients, networks, WiFi broadcasts (SSIDs), hotspot vouchers, firewall zones and policies, DNS policies, ACL rules, traffic matching lists, and various supporting resources (WAN, VPN, RADIUS, DPI, countries). All endpoints run locally on the UniFi Network application (UDM/UDR/UDM-SE/etc.) and share a consistent design (`/v1/...`).
+The UniFi Network API exposes endpoints for sites, devices, clients, networks, WiFi broadcasts (SSIDs), hotspot vouchers, firewall zones and policies, DNS policies, ACL rules, traffic matching lists, and various supporting resources (WAN, VPN, RADIUS, DPI, countries). All endpoints run locally on the UniFi Network application (UDM/UDR/UDM-SE/etc.) at base path `/proxy/network/integration/v1/...` and share a consistent design (endpoints below are shown relative to that base, as `/v1/...`).
 
 ## Authentication
-Authentication is performed with an **API key** configured in the UniFi Network application (Integrations). Use a standard **HTTP Bearer** token header.
+Authentication is performed with an **API key** configured in the UniFi Network application (Integrations). Send it in the **`X-API-KEY`** header.
 
 ```
-Authorization: Bearer <API_KEY>
+X-API-KEY: <API_KEY>
 ```
 
 ## Filtering

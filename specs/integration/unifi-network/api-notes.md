@@ -28,12 +28,12 @@ https://<host>:443/proxy/network/api/s/<site>/stat/sta
 https://<host>:443/proxy/network/api/s/<site>/stat/device
 ```
 
-### Surface B — Official REST API v1
+### Surface B — Official Network Integration API
 
-Available on **UniFi OS ≥ 7.x**. Auth via Bearer API Key.
+Available on **UniFi OS ≥ 7.x** (UniFi Network 9.x+ / UniFi OS 9.3.43+ recommended). Auth via API key in the `X-API-KEY` header.
 
 ```
-Base URL:  https://<host>/proxy/network/
+Base URL:  https://<host>/proxy/network/integration/
 Endpoints: /v1/sites
            /v1/sites/{siteId}/devices
            /v1/sites/{siteId}/clients
@@ -80,11 +80,11 @@ Response sets `TOKEN` cookie. Also returns `X-CSRF-Token` header.
 Sessions expire after approximately 24 hours (or less, depending on controller config).  
 Current app re-authenticates every 1 hour via `refreshAuthTokens()` — this is safe.
 
-### Bearer API Key (v1 REST — Path B)
+### API Key (Integration API — Path B)
 
 ```http
-GET https://<host>/proxy/network/v1/sites
-Authorization: Bearer <api_key>
+GET https://<host>/proxy/network/integration/v1/sites
+X-API-KEY: <api_key>
 ```
 
 - API keys are created in UniFi OS: **Settings → API Keys → Create API Key**.

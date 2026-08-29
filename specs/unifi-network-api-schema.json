@@ -1,8 +1,9 @@
 {
   "unifi_api": {
+    "base_path": "/proxy/network/integration/v1",
     "auth": {
-      "type": "http_bearer",
-      "header": "Authorization"
+      "type": "api_key",
+      "header": "X-API-KEY"
     },
     "filtering": {
       "expression_types": [
