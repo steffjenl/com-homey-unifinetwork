@@ -40,10 +40,19 @@ class ApiClient extends BaseClass {
      * @param {string|null} apiKey
      * @param {string} host
      * @param {string|number} port
+     * @param {object} [options]
+     * @param {boolean} [options.cloudEnabled]  Route calls via the UniFi Site Manager (api.ui.com) instead of the local host
+     * @param {string} [options.consoleId]      Console ID, required when cloudEnabled is true
      */
-    setApiKey(apiKey, host, port) {
+    setApiKey(apiKey, host, port, options = {}) {
         this._apiKey = apiKey || null;
-        this._v1BaseUrl = `https://${host}:${port}/proxy/network/v1`;
+        this._cloudEnabled = !!options.cloudEnabled;
+        this._consoleId = options.consoleId || '';
+        this._v1Host = host;
+        this._v1Port = port;
+        this._v1BaseUrl = this._cloudEnabled
+            ? `https://api.ui.com/v1/connector/consoles/${encodeURIComponent(this._consoleId)}/proxy/network/v1`
+            : `https://${host}:${port}/proxy/network/v1`;
     }
 
     /**
@@ -52,6 +61,14 @@ class ApiClient extends BaseClass {
      */
     hasApiKey() {
         return !!this._apiKey;
+    }
+
+    /**
+     * Whether Network V2 calls are currently routed via the UniFi Cloud (Site Manager) proxy.
+     * @returns {boolean}
+     */
+    isCloudEnabled() {
+        return !!this._cloudEnabled;
     }
 
     /**
@@ -86,7 +103,9 @@ class ApiClient extends BaseClass {
             }
         }
 
-        const sslVerify = this.unifi ? this.unifi._sslverify !== false : false;
+        // api.ui.com carries a valid public certificate — always verify it, regardless
+        // of the local sslverify setting (which only applies to the controller itself).
+        const sslVerify = this._cloudEnabled ? true : (this.unifi ? this.unifi._sslverify !== false : false);
 
         return new Promise((resolve, reject) => {
             const reqUrl = new URL(url);

@@ -111,7 +111,10 @@
                 "s2": "Klik op Nieuwe API-sleutel aanmaken en geef deze een naam (bijv. homey-integration-key).",
                 "s3": "Kopieer de sleutel — deze wordt maar één keer getoond.",
                 "s4": "Plak deze hieronder. Network V2 ontgrendelt alleen extra acties — apparaten koppelen blijft Network V1 vereisen.",
-                "error": "Vul een API-sleutel in."
+                "error": "Vul een API-sleutel in.",
+                "cloud": "Verbinden via UniFi Cloud in plaats van het lokale netwerk",
+                "consoleId": "Console-ID",
+                "cloudError": "Vul de Console-ID in, of schakel UniFi Cloud uit."
             },
             "test": {
                 "run": "Verbinding testen",
@@ -127,6 +130,14 @@
                 "finish": "Installatie afronden",
                 "saved": "Instellingen opgeslagen."
             }
+        },
+        "cloud": {
+            "title": "Cloud-API (UniFi Site Manager)",
+            "enabled": "Verbinden via UniFi Cloud in plaats van het lokale netwerk",
+            "warning": "Stuurt Network V2-aanroepen via Ubiquiti's cloud (api.ui.com) in plaats van rechtstreeks naar je controller. Alleen inschakelen als Homey de controller niet op het lokale netwerk kan bereiken.",
+            "consoleId": "Console-ID",
+            "consoleId_hint": "Te vinden in het UniFi Site Manager-portaal (unifi.ui.com) bij de gegevens van je console.",
+            "consoleId_required": "Console-ID is verplicht als UniFi Cloud is ingeschakeld."
         }
     },
     "events": {

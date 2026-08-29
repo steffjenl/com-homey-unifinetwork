@@ -177,6 +177,7 @@
         }
         return callApi('POST', '/testApiKey', {
             host: state.ip, port: state.v2port, apiKey: state.apiKey,
+            cloudEnabled: !!state.cloudEnabled, consoleId: state.cloudConsoleId,
         }).then((response) => !!response && response.status === 'success');
     }
 
@@ -268,6 +269,30 @@
                 state.tested.v2 = null;
                 clearTestResult();
             }));
+
+            const cloudToggleRow = node('label', 'homey-form-checkbox wizard-advanced');
+            const cloudToggle = node('input', 'homey-form-checkbox-input');
+            cloudToggle.type = 'checkbox';
+            cloudToggle.checked = !!state.cloudEnabled;
+            cloudToggleRow.appendChild(cloudToggle);
+            cloudToggleRow.appendChild(node('span', 'homey-form-checkbox-checkmark'));
+            cloudToggleRow.appendChild(node('span', 'homey-form-checkbox-text', t('v2.cloud')));
+            fields.appendChild(cloudToggleRow);
+
+            const cloudConsoleIdField = textField(t('v2.consoleId'), state.cloudConsoleId, 'text', (value) => {
+                state.cloudConsoleId = value.trim();
+                state.tested.v2 = null;
+                clearTestResult();
+            });
+            cloudConsoleIdField.style.display = state.cloudEnabled ? '' : 'none';
+            fields.appendChild(cloudConsoleIdField);
+
+            cloudToggle.addEventListener('change', () => {
+                state.cloudEnabled = cloudToggle.checked;
+                state.tested.v2 = null;
+                clearTestResult();
+                cloudConsoleIdField.style.display = cloudToggle.checked ? '' : 'none';
+            });
         }
         body.appendChild(fields);
         body.appendChild(testBlock(connection));
@@ -295,7 +320,9 @@
             return (state.username && state.password) ? null : t('v1.error');
         }
         if (step === 'v2') {
-            return state.apiKey ? null : t('v2.error');
+            if (!state.apiKey) return t('v2.error');
+            if (state.cloudEnabled && !state.cloudConsoleId) return t('v2.cloudError');
+            return null;
         }
         return null;
     }
@@ -402,6 +429,7 @@
                 settings.v2host = state.ip;
                 settings.v2port = state.v2port || DEFAULT_PORT.v2;
                 settings.apiKey = state.apiKey;
+                settings.v2cloud = {enabled: !!state.cloudEnabled, consoleId: state.cloudConsoleId || ''};
             }
 
             settings.migrations = Object.assign({}, settings.migrations, {v2HostSplit: true});
@@ -425,6 +453,8 @@
                 username: settings.user || '',
                 password: settings.pass || '',
                 apiKey: settings.apiKey || '',
+                cloudEnabled: !!(settings.v2cloud && settings.v2cloud.enabled),
+                cloudConsoleId: (settings.v2cloud && settings.v2cloud.consoleId) || '',
                 advanced: false,
                 selected: {v2: !!settings.apiKey},
                 tested: {v1: null, v2: null},

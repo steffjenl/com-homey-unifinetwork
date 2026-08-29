@@ -682,6 +682,14 @@ class UnifiNetwork extends Homey.App {
         return !!(this.api && this.api.hasApiKey());
     }
 
+    /**
+     * Network V2 calls are routed via the UniFi Cloud (Site Manager) proxy instead of the local host.
+     * @returns {boolean}
+     */
+    isCloudApiEnabled() {
+        return !!(this.api && this.api.isCloudEnabled());
+    }
+
     async _appLogin() {
         if (this._loginInProgress) {
             this.debug('Login already in progress, skipping concurrent call');
@@ -709,7 +717,11 @@ class UnifiNetwork extends Homey.App {
 
             this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
             this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
-            this.api.setApiKey(settings.apiKey || null, settings.v2host || settings.host, settings.v2port || settings.port);
+            const v2cloud = settings.v2cloud || {};
+            this.api.setApiKey(settings.apiKey || null, settings.v2host || settings.host, settings.v2port || settings.port, {
+                cloudEnabled: v2cloud.enabled === true,
+                consoleId: v2cloud.consoleId || '',
+            });
 
             await (async () => {
                 try {

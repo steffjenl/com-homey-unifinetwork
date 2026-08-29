@@ -119,7 +119,10 @@
                 "s2": "Click Create New API Key and give it a name (e.g. homey-integration-key).",
                 "s3": "Copy the key — it is only shown once.",
                 "s4": "Paste it below. Network V2 only enables extra actions — device pairing still requires Network V1.",
-                "error": "Please enter an API key."
+                "error": "Please enter an API key.",
+                "cloud": "Connect via UniFi Cloud instead of the local network",
+                "consoleId": "Console ID",
+                "cloudError": "Please enter the Console ID, or disable UniFi Cloud."
             },
             "test": {
                 "run": "Test connection",
@@ -135,6 +138,14 @@
                 "finish": "Finish setup",
                 "saved": "Settings saved."
             }
+        },
+        "cloud": {
+            "title": "Cloud API (UniFi Site Manager)",
+            "enabled": "Connect via UniFi Cloud instead of the local network",
+            "warning": "Routes Network V2 calls through Ubiquiti's cloud (api.ui.com) instead of directly to your controller. Only enable this if Homey cannot reach the controller on your local network.",
+            "consoleId": "Console ID",
+            "consoleId_hint": "Find this in the UniFi Site Manager portal (unifi.ui.com) under your console's details.",
+            "consoleId_required": "Console ID is required when UniFi Cloud is enabled."
         }
     },
     "events": {

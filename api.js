@@ -45,8 +45,14 @@ module.exports = {
             if (!body.apiKey) {
                 throw new Error('API key is required for Network V2');
             }
+            if (body.cloudEnabled && !body.consoleId) {
+                throw new Error('Console ID is required when UniFi Cloud is enabled');
+            }
             const api = new ApiClient({homey});
-            api.setApiKey(body.apiKey, body.host, body.port);
+            api.setApiKey(body.apiKey, body.host, body.port, {
+                cloudEnabled: !!body.cloudEnabled,
+                consoleId: body.consoleId || '',
+            });
             const result = await api._callV1('GET', '/sites');
             const sites = Array.isArray(result) ? result : (Array.isArray(result && result.data) ? result.data : null);
             if (!sites) {
@@ -65,6 +71,7 @@ module.exports = {
         }
     },
     async getApiKeyStatus({homey, query}) {
-        return (homey.app.isV2Available() ? 'Connected' : 'Disconnected');
+        if (!homey.app.isV2Available()) return 'Disconnected';
+        return homey.app.isCloudApiEnabled() ? 'Connected (Cloud)' : 'Connected';
     }
 };

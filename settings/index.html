@@ -176,6 +176,26 @@
         </div>
     </fieldset>
 
+    <!-- Cloud API (UniFi Site Manager) -->
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.cloud.title"></legend>
+
+        <div class="field row">
+            <label class="homey-form-checkbox">
+                <input class="homey-form-checkbox-input" id="txt_cloudEnabled" type="checkbox">
+                <span class="homey-form-checkbox-checkmark"></span>
+                <span class="homey-form-checkbox-text"><span data-i18n="settings.cloud.enabled"></span></span>
+            </label>
+            <p class="warning-box" data-i18n="settings.cloud.warning"></p>
+        </div>
+
+        <div class="field row" id="group_cloud_console_id" style="display: none;">
+            <label class="homey-form-label" for="txt_cloudConsoleId" data-i18n="settings.cloud.consoleId"></label>
+            <input class="homey-form-input" id="txt_cloudConsoleId" type="text" value=""/>
+            <p><small data-i18n="settings.cloud.consoleId_hint"></small></p>
+        </div>
+    </fieldset>
+
     <!-- site (shared with Network V1) -->
     <fieldset class="homey-form-fieldset">
         <legend class="homey-form-legend" data-i18n="settings.site"></legend>
@@ -263,6 +283,9 @@
     const txtV2NvrIp = document.getElementById('txt_v2nvrip');
     const txtV2NvrPort = document.getElementById('txt_v2nvrport');
     const txtApiKey = document.getElementById('txt_apikey');
+    const txtCloudEnabled = document.getElementById('txt_cloudEnabled');
+    const txtCloudConsoleId = document.getElementById('txt_cloudConsoleId');
+    const groupCloudConsoleId = document.getElementById('group_cloud_console_id');
     const txtV2Site = document.getElementById('txt_v2site');
     const btnApplyV2 = document.getElementById('btn_apply_v2');
     const btnTestV2 = document.getElementById('btn_test_v2');
@@ -304,6 +327,11 @@
                     txtV2NvrPort.value = settings.v2port || settings.port || 443;
                     txtApiKey.value = settings.apiKey || '';
                     txtV2Site.value = (settings.site ? settings.site : 'default');
+
+                    const v2cloud = settings.v2cloud || {};
+                    txtCloudEnabled.checked = (v2cloud.enabled === true);
+                    txtCloudConsoleId.value = v2cloud.consoleId || '';
+                    groupCloudConsoleId.style.display = txtCloudEnabled.checked ? '' : 'none';
                 } else {
                     console.warn('[SETTINGS] Could not read UniFi settings object.');
                 }
@@ -334,12 +362,19 @@
             if (!txtApiKey.value.trim()) {
                 return Homey.alert(Homey.__('settings.apikey_required'), 'error');
             }
+            if (txtCloudEnabled.checked && !txtCloudConsoleId.value.trim()) {
+                return Homey.alert(Homey.__('settings.cloud.consoleId_required'), 'error');
+            }
 
             currentSettings = Object.assign({}, currentSettings, {
                 'v2host': txtV2NvrIp.value,
                 'v2port': txtV2NvrPort.value,
                 'apiKey': txtApiKey.value.trim(),
                 'site': txtV2Site.value,
+                'v2cloud': {
+                    'enabled': txtCloudEnabled.checked,
+                    'consoleId': txtCloudConsoleId.value.trim(),
+                },
             });
 
             Homey.set('com.ubnt.unifi.settings', currentSettings, (error, result) => {
@@ -374,11 +409,16 @@
             if (!txtApiKey.value.trim()) {
                 return Homey.alert(Homey.__('settings.apikey_required'), 'error');
             }
+            if (txtCloudEnabled.checked && !txtCloudConsoleId.value.trim()) {
+                return Homey.alert(Homey.__('settings.cloud.consoleId_required'), 'error');
+            }
 
             const body = {
                 'host': txtV2NvrIp.value,
                 'port': txtV2NvrPort.value,
                 'apiKey': txtApiKey.value.trim(),
+                'cloudEnabled': txtCloudEnabled.checked,
+                'consoleId': txtCloudConsoleId.value.trim(),
             };
 
             Homey.api("POST", "/testApiKey", body, function (err, response) {
@@ -425,6 +465,10 @@
         // and the v1 REST API key calls) — keep the two tab fields in sync live.
         txtSite.addEventListener('input', () => { txtV2Site.value = txtSite.value; });
         txtV2Site.addEventListener('input', () => { txtSite.value = txtV2Site.value; });
+
+        txtCloudEnabled.addEventListener('change', () => {
+            groupCloudConsoleId.style.display = txtCloudEnabled.checked ? '' : 'none';
+        });
 
         document.querySelectorAll('.toggle-password').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -495,7 +539,7 @@
                 return err;
             }
             var color = 'darkred';
-            if (data === 'Connected') color = 'darkgreen';
+            if (data && data.indexOf('Connected') === 0) color = 'darkgreen';
 
             var statusField = document.getElementById('unifi_v2_status');
             statusField.style.color = color;
