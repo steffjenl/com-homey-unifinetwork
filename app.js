@@ -31,6 +31,8 @@ class UnifiNetwork extends Homey.App {
             this.debug('Settings are not set.');
         }
 
+        this._migrateSettings();
+
         await this._initFlowTriggers();
         await this._initActionCards();
 
@@ -642,6 +644,44 @@ class UnifiNetwork extends Homey.App {
         }
     }
 
+    /**
+     * One-shot migration: split the Network V2 (API key) host/port out from the
+     * Network V1 (username/password) host/port, which it previously reused implicitly.
+     * Existing installs get v2host/v2port defaulted from the legacy host/port so the
+     * API key keeps working against the same controller until changed independently.
+     */
+    _migrateSettings() {
+        if (!this.settings) return;
+        if (this.settings.migrations && this.settings.migrations.v2HostSplit) return;
+
+        if (!this.settings.v2host && this.settings.host) {
+            this.settings.v2host = this.settings.host;
+        }
+        if (!this.settings.v2port && this.settings.port) {
+            this.settings.v2port = this.settings.port;
+        }
+        this.settings.migrations = Object.assign({}, this.settings.migrations, {v2HostSplit: true});
+
+        this.homey.settings.set(UnifiConstants.SETTINGS_KEY, this.settings);
+        this.debug('Migrated settings: v2HostSplit');
+    }
+
+    /**
+     * Network V1 (username/password) stack is logged in and usable.
+     * @returns {boolean}
+     */
+    isV1Available() {
+        return this.loggedIn === true && !!(this.api && this.api.unifi);
+    }
+
+    /**
+     * Network V2 (API key) stack has a key configured.
+     * @returns {boolean}
+     */
+    isV2Available() {
+        return !!(this.api && this.api.hasApiKey());
+    }
+
     async _appLogin() {
         if (this._loginInProgress) {
             this.debug('Login already in progress, skipping concurrent call');
@@ -669,7 +709,7 @@ class UnifiNetwork extends Homey.App {
 
             this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
             this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
-            this.api.setApiKey(settings.apiKey || null, settings.host, settings.port);
+            this.api.setApiKey(settings.apiKey || null, settings.v2host || settings.host, settings.v2port || settings.port);
 
             await (async () => {
                 try {

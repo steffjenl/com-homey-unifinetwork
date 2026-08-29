@@ -39,7 +39,7 @@ class WifiClient extends Driver {
      */
     async onPairListDevices() {
         const noControllerConnectionError = this.homey.__('pair.errors.no_controller_connection');
-        if (!this.homey.app.loggedIn || !this.homey.app.api || !this.homey.app.api.unifi) {
+        if (!this.homey.app.isV1Available()) {
             throw new Error(noControllerConnectionError);
         }
 

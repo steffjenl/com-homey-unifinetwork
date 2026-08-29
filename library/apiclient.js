@@ -47,6 +47,14 @@ class ApiClient extends BaseClass {
     }
 
     /**
+     * Whether a Network V2 (API key) credential is currently configured.
+     * @returns {boolean}
+     */
+    hasApiKey() {
+        return !!this._apiKey;
+    }
+
+    /**
      * Make an authenticated call to the UniFi v1 REST API.
      * Uses Bearer token if an API key is configured, otherwise falls back to
      * the session cookie maintained by node-unifi.
