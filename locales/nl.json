@@ -33,19 +33,38 @@
         "tab": {
             "settings": "Instellingen",
             "event_log": "Logboek",
-            "sites": "Locaties"
+            "sites": "Locaties",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "sslverify": "SSL-certificaat verifiëren",
         "sslverify_hint": "Standaard: uitgeschakeld (aanbevolen voor de meeste installaties). Schakel dit alleen in als je controller een geldig vertrouwd TLS-certificaat heeft (niet zelfondertekend).",
-        "apikey": "API-sleutel (optioneel)",
-        "apikey_hint": "Alleen voor UniFi OS 7+. Maak een API-sleutel aan in UniFi OS -> Instellingen -> API. Als dit is ingesteld, gebruiken v1 REST-calls Bearer-authenticatie in plaats van een sessiecookie.",
+        "apikey": "API-sleutel",
+        "apikey_hint": "Verplicht. Alleen voor UniFi OS 7+. Maak een API-sleutel aan in UniFi OS -> Instellingen -> API. Als dit is ingesteld, gebruiken v1 REST-calls Bearer-authenticatie in plaats van een sessiecookie.",
         "site": "Locatie",
         "intro2": "",
         "log_enabled": "Logboek ingeschakeld",
         "pullmethodeheader": "Ophaalmethode en interval",
         "pullmethode": "Ophaalmethode",
         "interval": "Interval (seconden, minimum 10)",
-        "applicationFlows": "Applicatiestromen inschakelen"
+        "applicationFlows": "Applicatiestromen inschakelen",
+        "networkV1": {
+            "instruction": "Log in met de gegevens van de UniFi Network-gebruiker (gebruikersnaam & wachtwoord)."
+        },
+        "networkV2": {
+            "instruction": "Verbind met een API-sleutel (UniFi OS 7+). Maak er een aan in UniFi OS → Instellingen → API.",
+            "nvr": "Server gegevens",
+            "nvrText": "Gebruik poort 443 voor UniFiOS en poort 8443 voor Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Status realtime updates",
+            "lastUpdate": "Laatst bijgewerkt op"
+        },
+        "site_shared_hint": "Gedeeld met Network V1 - wordt door beide verbindingen gebruikt.",
+        "apikey_required": "API-sleutel is verplicht voor Network V2."
     },
     "events": {
         "camera": {

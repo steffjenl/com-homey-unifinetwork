@@ -33,19 +33,38 @@
         "tab": {
             "settings": "Impostazioni",
             "event_log": "Registro eventi",
-            "sites": "Siti"
+            "sites": "Siti",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "sslverify": "Verifica certificato SSL",
         "sslverify_hint": "Predefinito: disattivato (consigliato per la maggior parte delle configurazioni). Attivalo solo se il controller ha un certificato TLS valido e attendibile (non autofirmato).",
-        "apikey": "Chiave API (opzionale)",
-        "apikey_hint": "Solo UniFi OS 7+. Crea una chiave API in UniFi OS -> Impostazioni -> API. Quando impostata, le chiamate REST v1 usano autenticazione Bearer invece del cookie di sessione.",
+        "apikey": "Chiave API",
+        "apikey_hint": "Obbligatorio. Solo UniFi OS 7+. Crea una chiave API in UniFi OS -> Impostazioni -> API. Quando impostata, le chiamate REST v1 usano autenticazione Bearer invece del cookie di sessione.",
         "site": "Sito",
         "intro2": "",
         "log_enabled": "Registro eventi abilitato",
         "pullmethodeheader": "Metodo di polling e intervallo",
         "pullmethode": "Metodo di polling",
         "interval": "Intervallo (secondi, minimo 10)",
-        "applicationFlows": "Abilita flussi applicativi"
+        "applicationFlows": "Abilita flussi applicativi",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Condiviso con Network V1: usato da entrambe le connessioni.",
+        "apikey_required": "La chiave API e obbligatoria per Network V2."
     },
     "events": {
         "camera": {

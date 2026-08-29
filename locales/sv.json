@@ -42,7 +42,10 @@
         "tab": {
             "settings": "Inställningar",
             "sites": "Platser",
-            "event_log": "Händelselogg"
+            "event_log": "Händelselogg",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "Händelselogg aktiverad",
@@ -52,8 +55,24 @@
         "applicationFlows": "Aktivera applikationsflöden",
         "sslverify": "Verifiera SSL-certifikat",
         "sslverify_hint": "Standard: avmarkerad (rekommenderas foer de flesta installationer). Aktivera endast detta om din controller har ett giltigt betrott TLS-certifikat (inte sjaelvsignerat).",
-        "apikey": "API-nyckel (valfritt)",
-        "apikey_hint": "Endast UniFi OS 7+. Skapa en API-nyckel i UniFi OS -> Inställningar -> API. Naer den aer satt anvaender v1 REST-anrop Bearer-autentisering i staellet foer sessionscookie."
+        "apikey": "API-nyckel",
+        "apikey_hint": "Obligatoriskt. Endast UniFi OS 7+. Skapa en API-nyckel i UniFi OS -> Inställningar -> API. Naer den aer satt anvaender v1 REST-anrop Bearer-autentisering i staellet foer sessionscookie.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Delas med Network V1 - anvaends av baada anslutningarna.",
+        "apikey_required": "API-nyckel kraevs foer Network V2."
     },
     "events": {
         "camera": {

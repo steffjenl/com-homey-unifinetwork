@@ -42,7 +42,10 @@
         "tab": {
             "settings": "Ustawienia",
             "sites": "Strony",
-            "event_log": "Dziennik zdarzeń"
+            "event_log": "Dziennik zdarzeń",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "Dziennik zdarzeń włączony",
@@ -52,8 +55,24 @@
         "applicationFlows": "Włącz przepływy aplikacji",
         "sslverify": "Weryfikuj certyfikat SSL",
         "sslverify_hint": "Domyslnie: odznaczone (zalecane dla wiekszosci konfiguracji). Wlacz to tylko, jesli kontroler ma prawidlowy zaufany certyfikat TLS (nie samopodpisany).",
-        "apikey": "Klucz API (opcjonalnie)",
-        "apikey_hint": "Tylko UniFi OS 7+. Utworz klucz API w UniFi OS -> Ustawienia -> API. Po ustawieniu wywolania REST v1 uzywaja uwierzytelniania Bearer zamiast ciasteczka sesji."
+        "apikey": "Klucz API",
+        "apikey_hint": "Wymagane. Tylko UniFi OS 7+. Utworz klucz API w UniFi OS -> Ustawienia -> API. Po ustawieniu wywolania REST v1 uzywaja uwierzytelniania Bearer zamiast ciasteczka sesji.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Wspoldzielone z Network V1 - uzywane przez oba polaczenia.",
+        "apikey_required": "Klucz API jest wymagany dla Network V2."
     },
     "events": {
         "camera": {

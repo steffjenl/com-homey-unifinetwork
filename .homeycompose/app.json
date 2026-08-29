@@ -76,6 +76,14 @@
       "method": "POST",
       "path": "/test"
     },
+    "testApiKey": {
+      "method": "POST",
+      "path": "/testApiKey"
+    },
+    "getApiKeyStatus": {
+      "method": "GET",
+      "path": "/apikeystatus"
+    },
     "getStatus": {
       "method": "GET",
       "path": "/status"

@@ -33,19 +33,38 @@
         "tab": {
             "settings": "Einstellungen",
             "event_log": "Ereignisprotokoll",
-            "sites": "Standorte"
+            "sites": "Standorte",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "sslverify": "SSL-Zertifikat verifizieren",
         "sslverify_hint": "Standard: deaktiviert (empfohlen für die meisten Setups). Aktivieren Sie dies nur, wenn Ihr Controller ein gueltiges vertrauenswuerdiges TLS-Zertifikat hat (nicht selbstsigniert).",
-        "apikey": "API-Schluessel (optional)",
-        "apikey_hint": "Nur fuer UniFi OS 7+. Erstellen Sie einen API-Schluessel in UniFi OS -> Einstellungen -> API. Wenn gesetzt, verwenden v1-REST-Aufrufe Bearer-Authentifizierung statt Session-Cookie.",
+        "apikey": "API-Schluessel",
+        "apikey_hint": "Erforderlich. Nur fuer UniFi OS 7+. Erstellen Sie einen API-Schluessel in UniFi OS -> Einstellungen -> API. Wenn gesetzt, verwenden v1-REST-Aufrufe Bearer-Authentifizierung statt Session-Cookie.",
         "site": "Standort",
         "intro2": "",
         "log_enabled": "Ereignisprotokoll aktiviert",
         "pullmethodeheader": "Abrufmethode und Intervall",
         "pullmethode": "Abrufmethode",
         "interval": "Intervall (Sekunden, mindestens 10)",
-        "applicationFlows": "Anwendungsfluesse aktivieren"
+        "applicationFlows": "Anwendungsfluesse aktivieren",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Wird mit Network V1 geteilt - von beiden Verbindungen verwendet.",
+        "apikey_required": "API-Schluessel ist fuer Network V2 erforderlich."
     },
     "events": {
         "camera": {

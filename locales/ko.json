@@ -42,7 +42,10 @@
         "tab": {
             "settings": "설정",
             "sites": "사이트",
-            "event_log": "이벤트 로그"
+            "event_log": "이벤트 로그",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "이벤트 로그 활성화됨",
@@ -52,8 +55,24 @@
         "applicationFlows": "애플리케이션 플로우 활성화",
         "sslverify": "SSL 인증서 확인",
         "sslverify_hint": "기본값: 해제됨(대부분의 환경에서 권장). 컨트롤러에 유효하고 신뢰되는 TLS 인증서(자체 서명 아님)가 있는 경우에만 활성화하세요.",
-        "apikey": "API 키(선택 사항)",
-        "apikey_hint": "UniFi OS 7+ 전용. UniFi OS -> 설정 -> API에서 API 키를 생성하세요. 설정하면 v1 REST 호출은 세션 쿠키 대신 Bearer 인증을 사용합니다."
+        "apikey": "API 키",
+        "apikey_hint": "필수. UniFi OS 7+ 전용. UniFi OS -> 설정 -> API에서 API 키를 생성하세요. 설정하면 v1 REST 호출은 세션 쿠키 대신 Bearer 인증을 사용합니다.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Network V1과 공유됩니다 - 두 연결 모두에서 사용됩니다.",
+        "apikey_required": "Network V2에는 API 키가 필수입니다."
     },
     "events": {
         "camera": {

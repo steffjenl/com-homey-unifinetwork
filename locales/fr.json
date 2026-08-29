@@ -33,19 +33,38 @@
         "tab": {
             "settings": "Paramètres",
             "event_log": "Journal des événements",
-            "sites": "Emplacements"
+            "sites": "Emplacements",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "sslverify": "Verifier le certificat SSL",
         "sslverify_hint": "Par defaut : decoche (recommande pour la plupart des installations). Activez ceci uniquement si votre controleur dispose d'un certificat TLS valide et approuve (non auto-signe).",
-        "apikey": "Cle API (optionnel)",
-        "apikey_hint": "UniFi OS 7+ uniquement. Creez une cle API dans UniFi OS -> Parametres -> API. Lorsqu'elle est definie, les appels REST v1 utilisent l'authentification Bearer au lieu d'un cookie de session.",
+        "apikey": "Cle API",
+        "apikey_hint": "Obligatoire. UniFi OS 7+ uniquement. Creez une cle API dans UniFi OS -> Parametres -> API. Lorsqu'elle est definie, les appels REST v1 utilisent l'authentification Bearer au lieu d'un cookie de session.",
         "site": "Emplacement",
         "intro2": "",
         "log_enabled": "Journal des evenements active",
         "pullmethodeheader": "Methode de recuperation et intervalle",
         "pullmethode": "Methode de recuperation",
         "interval": "Intervalle (secondes, minimum 10)",
-        "applicationFlows": "Activer les flux applicatifs"
+        "applicationFlows": "Activer les flux applicatifs",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Partage avec Network V1 - utilise par les deux connexions.",
+        "apikey_required": "La cle API est obligatoire pour Network V2."
     },
     "events": {
         "camera": {

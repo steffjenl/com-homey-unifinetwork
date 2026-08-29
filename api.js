@@ -39,5 +39,32 @@ module.exports = {
                 error: error.message,
             };
         }
+    },
+    async testApiKey({homey, body}) {
+        try {
+            if (!body.apiKey) {
+                throw new Error('API key is required for Network V2');
+            }
+            const api = new ApiClient({homey});
+            api.setApiKey(body.apiKey, body.host, body.port);
+            const result = await api._callV1('GET', '/sites');
+            const sites = Array.isArray(result) ? result : (Array.isArray(result && result.data) ? result.data : null);
+            if (!sites) {
+                throw new Error(result && result.message ? result.message : 'Unexpected response from controller');
+            }
+
+            return {
+                status: 'success',
+            };
+        } catch (error) {
+            homey.app.error('testApiKey error', error.message);
+            return {
+                status: 'failure',
+                error: error.message,
+            };
+        }
+    },
+    async getApiKeyStatus({homey, query}) {
+        return (homey.app.isV2Available() ? 'Connected' : 'Disconnected');
     }
 };

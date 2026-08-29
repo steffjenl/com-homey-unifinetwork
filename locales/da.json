@@ -42,7 +42,10 @@
         "tab": {
             "settings": "Indstillinger",
             "sites": "Steder",
-            "event_log": "Hændelseslog"
+            "event_log": "Hændelseslog",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "Hændelseslog aktiveret",
@@ -52,8 +55,24 @@
         "applicationFlows": "Aktivér applikationsflows",
         "sslverify": "Bekraeft SSL-certifikat",
         "sslverify_hint": "Standard: ikke markeret (anbefales til de fleste opsaetninger). Aktivér kun dette, hvis din controller har et gyldigt tillidsfuldt TLS-certifikat (ikke selvsigneret).",
-        "apikey": "API-noegle (valgfri)",
-        "apikey_hint": "Kun UniFi OS 7+. Opret en API-noegle i UniFi OS -> Indstillinger -> API. Naar den er sat, bruger v1 REST-kald Bearer-godkendelse i stedet for sessionscookie."
+        "apikey": "API-noegle",
+        "apikey_hint": "Paakraevet. Kun UniFi OS 7+. Opret en API-noegle i UniFi OS -> Indstillinger -> API. Naar den er sat, bruger v1 REST-kald Bearer-godkendelse i stedet for sessionscookie.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Deles med Network V1 - bruges af begge forbindelser.",
+        "apikey_required": "API-noegle er paakraevet for Network V2."
     },
     "events": {
         "camera": {

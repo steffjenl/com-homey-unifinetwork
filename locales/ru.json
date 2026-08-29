@@ -42,7 +42,10 @@
         "tab": {
             "settings": "Настройки",
             "sites": "Сайты",
-            "event_log": "Журнал событий"
+            "event_log": "Журнал событий",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "Журнал событий включен",
@@ -52,8 +55,24 @@
         "applicationFlows": "Включить потоки приложений",
         "sslverify": "Proveryat SSL-sertifikat",
         "sslverify_hint": "Po umolchaniyu: ne otmecheno (rekomenduetsya dlya bolshinstva nastroyek). Vklyuchayte tolko esli u kontrollera est deystvitelnyy doverennyy TLS-sertifikat (ne samopodpisannyy).",
-        "apikey": "API-klyuch (neobyazatelno)",
-        "apikey_hint": "Tolko dlya UniFi OS 7+. Sozdajte API-klyuch v UniFi OS -> Nastroyki -> API. Pri ukazanii vyzovy REST v1 ispolzuyut Bearer-avtorizatsiyu vmesto cookie sessii."
+        "apikey": "API-klyuch",
+        "apikey_hint": "Objazatelno. Tolko dlya UniFi OS 7+. Sozdajte API-klyuch v UniFi OS -> Nastroyki -> API. Pri ukazanii vyzovy REST v1 ispolzuyut Bearer-avtorizatsiyu vmesto cookie sessii.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Obshchiy s Network V1 - ispolzuetsya oboimi soedineniyami.",
+        "apikey_required": "API-klyuch obyazatelen dlya Network V2."
     },
     "events": {
         "camera": {

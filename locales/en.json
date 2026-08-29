@@ -42,7 +42,10 @@
         "tab": {
             "settings": "Settings",
             "sites": "Sites",
-            "event_log": "Event log"
+            "event_log": "Event log",
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "status": "Status"
         },
         "intro2": "",
         "log_enabled": "Event log enabled",
@@ -52,8 +55,24 @@
         "applicationFlows": "Enable application flows",
         "sslverify": "Verify SSL certificate",
         "sslverify_hint": "Default: unchecked (recommended for most setups). Only enable this if your controller has a valid trusted TLS certificate (not self-signed).",
-        "apikey": "API Key (optional)",
-        "apikey_hint": "UniFi OS 7+ only. Create an API key in UniFi OS → Settings → API. When set, v1 REST calls use Bearer auth instead of session cookie."
+        "apikey": "API Key",
+        "apikey_hint": "Required. UniFi OS 7+ only. Create an API key in UniFi OS → Settings → API. When set, v1 REST calls use Bearer auth instead of session cookie.",
+        "networkV1": {
+            "instruction": "Log in with the credentials of the UniFi Network user (username & password)."
+        },
+        "networkV2": {
+            "instruction": "Connect using an API key (UniFi OS 7+). Create one in UniFi OS → Settings → API.",
+            "nvr": "Server details",
+            "nvrText": "Use port 443 for UniFiOS and port 8443 for Docker / Standalone."
+        },
+        "status": {
+            "networkV1": "Network V1",
+            "networkV2": "Network V2",
+            "websocket": "Realtime updates status",
+            "lastUpdate": "Last update at"
+        },
+        "site_shared_hint": "Shared with Network V1 - used by both connections.",
+        "apikey_required": "API Key is required for Network V2."
     },
     "capabilities": {
         "measure_rssi_2g": "RSSI 2.4 GHz",

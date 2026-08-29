@@ -10,28 +10,22 @@
 <body>
 <!-- Tab links -->
 <div class="tab">
-    <button class="tablinks" onclick="setPage(event, 'settings')" id="defaultOpen"><span
-            data-i18n="settings.tab.settings"></span></button>
+    <button class="tablinks" onclick="setPage(event, 'networkv1')" id="defaultOpen"><span
+            data-i18n="settings.tab.networkV1"></span></button>
+    <button class="tablinks" onclick="setPage(event, 'networkv2')"><span data-i18n="settings.tab.networkV2"></span></button>
     <button class="tablinks" onclick="setPage(event, 'sites')"><span data-i18n="settings.tab.sites"></span></button>
+    <button class="tablinks" onclick="setPage(event, 'status')"><span data-i18n="settings.tab.status"></span></button>
     <button class="tablinks" onclick="setPage(event, 'eventLog')"><span data-i18n="settings.tab.event_log"></span>
     </button>
 </div>
 
-<!-- SETTINGS PAGE -->
-<div id="settings" class="tabcontent">
+<!-- NETWORK V1 PAGE (username + password) -->
+<div id="networkv1" class="tabcontent">
 
     <!-- Instruction -->
-    <p data-i18n="settings.instruction"></p>
+    <p data-i18n="settings.networkV1.instruction"></p>
     <p>Please read the setup guide first and create a dedicated local admin user for UniFi Network.</p>
 
-    <p><span data-i18n="settings.status">Status</span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span>
-    </p>
-    <p><span data-i18n="settings.websocket.status">Realtime updates Status</span>: <span id="unifi_websocket_status"
-                                                                                         style="font-weight: bold;">Unknown</span>
-    </p>
-    <p><span data-i18n="settings.websocket.at">Last update at</span>: <span id="unifi_websocket_at"
-                                                                            style="font-weight: bold;">Unknown</span>
-    </p>
     <!-- NVR -->
     <fieldset class="homey-form-fieldset">
         <legend class="homey-form-legend" data-i18n="settings.nvr"></legend>
@@ -67,7 +61,12 @@
         <!-- Password -->
         <div class="field row">
             <label class="homey-form-label" for="txt_password" data-i18n="settings.password"></label>
-            <input class="homey-form-input" id="txt_password" type="password" value=""/>
+            <div class="password-wrapper">
+                <input class="homey-form-input" id="txt_password" type="password" value="" autocomplete="off"/>
+                <button type="button" class="toggle-password" data-target="txt_password" aria-label="Show password">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+            </div>
         </div>
 
         <!-- SSL verify -->
@@ -78,13 +77,6 @@
                 <span class="homey-form-checkbox-text"><span data-i18n="settings.sslverify"></span></span>
             </label>
             <p><small data-i18n="settings.sslverify_hint"></small></p>
-        </div>
-
-        <!-- API Key (optional, for v1 REST — UniFi OS 7+) -->
-        <div class="field row">
-            <label class="homey-form-label" for="txt_apikey" data-i18n="settings.apikey"></label>
-            <input class="homey-form-input" id="txt_apikey" type="password" value="" autocomplete="off"/>
-            <p><small data-i18n="settings.apikey_hint"></small></p>
         </div>
     </fieldset>
 
@@ -125,9 +117,70 @@
     <!-- Apply button -->
     <fieldset>
         <div class="field row">
-            <button id="btn_test" class="homey-button-primary-full" data-i18n="settings.test"></button>
+            <button id="btn_test_v1" class="homey-button-primary-full" data-i18n="settings.test"></button>
             <br/>
-            <button id="btn_apply" class="homey-button-primary-full" data-i18n="settings.apply"></button>
+            <button id="btn_apply_v1" class="homey-button-primary-full" data-i18n="settings.apply"></button>
+        </div>
+    </fieldset>
+</div>
+
+<!-- NETWORK V2 PAGE (API key) -->
+<div id="networkv2" class="tabcontent">
+
+    <!-- Instruction -->
+    <p data-i18n="settings.networkV2.instruction"></p>
+
+    <!-- NVR -->
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.networkV2.nvr"></legend>
+
+        <p><small data-i18n="settings.networkV2.nvrText"></small></p>
+
+        <!-- IP address -->
+        <div class="field row">
+            <label class="homey-form-label" for="txt_v2nvrip" data-i18n="settings.nvrip"></label>
+            <input class="homey-form-input" id="txt_v2nvrip" type="text" value=""/>
+        </div>
+
+        <!-- Port -->
+        <div class="field row">
+            <label class="homey-form-label" for="txt_v2nvrport" data-i18n="settings.nvrport"></label>
+            <input class="homey-form-input" id="txt_v2nvrport" type="text" value="443"/>
+        </div>
+    </fieldset>
+
+    <!-- API Key -->
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.apikey"></legend>
+
+        <div class="field row">
+            <label class="homey-form-label" for="txt_apikey" data-i18n="settings.apikey"></label>
+            <div class="password-wrapper">
+                <input class="homey-form-input" id="txt_apikey" type="password" value="" autocomplete="off" required/>
+                <button type="button" class="toggle-password" data-target="txt_apikey" aria-label="Show API key">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+            </div>
+            <p><small data-i18n="settings.apikey_hint"></small></p>
+        </div>
+    </fieldset>
+
+    <!-- site (shared with Network V1) -->
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.site"></legend>
+        <div class="field row">
+            <label class="homey-form-label" for="txt_v2site" data-i18n="settings.site"></label>
+            <input class="homey-form-input" id="txt_v2site" type="text" value=""/>
+            <p><small data-i18n="settings.site_shared_hint"></small></p>
+        </div>
+    </fieldset>
+
+    <!-- Apply button -->
+    <fieldset>
+        <div class="field row">
+            <button id="btn_test_v2" class="homey-button-primary-full" data-i18n="settings.test"></button>
+            <br/>
+            <button id="btn_apply_v2" class="homey-button-primary-full" data-i18n="settings.apply"></button>
         </div>
     </fieldset>
 </div>
@@ -137,7 +190,7 @@
     <!-- Instruction -->
     <p data-i18n="settings.instruction"></p>
     <p><small data-i18n="settings.notice.restart">* If you just want to restart the connection, then click &quot;Apply&quot;
-        again on the Settings page.</small></p>
+        again on the Network V1 page.</small></p>
     <p>
         <small data-i18n="settings.siteid.pre_msg">This is a list of possible Site ID's:</small>
         <small data-i18n="settings.siteid.post_msg">(if possible, this list is a discovered list)</small>
@@ -145,6 +198,20 @@
         <small><span id="unifi_sites"></span></small>
     </p>
 
+</div>
+
+<!-- STATUS PAGE -->
+<div id="status" class="tabcontent">
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.status.networkV1"></legend>
+        <p><span data-i18n="settings.status.networkV1"></span>: <span id="unifi_status" style="font-weight: bold;">Unknown</span></p>
+        <p><span data-i18n="settings.status.websocket"></span>: <span id="unifi_websocket_status" style="font-weight: bold;">Unknown</span></p>
+        <p><span data-i18n="settings.status.lastUpdate"></span>: <span id="unifi_websocket_at" style="font-weight: bold;">Unknown</span></p>
+    </fieldset>
+    <fieldset class="homey-form-fieldset">
+        <legend class="homey-form-legend" data-i18n="settings.status.networkV2"></legend>
+        <p><span data-i18n="settings.status.networkV2"></span>: <span id="unifi_v2_status" style="font-weight: bold;">Unknown</span></p>
+    </fieldset>
 </div>
 
 <!--EVENT LOG PAGE -->
@@ -163,19 +230,26 @@
 
 
 <script type="text/javascript">
-    // Settings log tab
+    // Network V1 tab
     const txtNvrIp = document.getElementById('txt_nvrip');
     const txtNvrPort = document.getElementById('txt_nvrport');
     const txtUsername = document.getElementById('txt_username');
     const txtPassword = document.getElementById('txt_password');
     const txtSslVerify = document.getElementById('txt_sslverify');
-    const txtApiKey = document.getElementById('txt_apikey');
     const txtSite = document.getElementById('txt_site');
     const txtPullMethode = document.getElementById('txt_pullmethode');
     const txtInterval = document.getElementById('txt_interval');
     const txtApplicationFlows = document.getElementById('txt_applicationFlows');
-    const btnApply = document.getElementById('btn_apply');
-    const btnTest = document.getElementById('btn_test');
+    const btnApplyV1 = document.getElementById('btn_apply_v1');
+    const btnTestV1 = document.getElementById('btn_test_v1');
+
+    // Network V2 tab
+    const txtV2NvrIp = document.getElementById('txt_v2nvrip');
+    const txtV2NvrPort = document.getElementById('txt_v2nvrport');
+    const txtApiKey = document.getElementById('txt_apikey');
+    const txtV2Site = document.getElementById('txt_v2site');
+    const btnApplyV2 = document.getElementById('btn_apply_v2');
+    const btnTestV2 = document.getElementById('btn_test_v2');
 
     // Event log tab
     var eventLogElement = document.getElementById('eventLogData');
@@ -184,59 +258,85 @@
     var sendEventLogElement = document.getElementById('sendEventLog');
 
     function onHomeyReady(Homey) {
+        // Full settings object as last read from / written to the store — both
+        // Network V1 and V2 tabs share this single object, so each Apply only
+        // patches its own fields and preserves whatever the other tab holds.
+        let currentSettings = {};
+
         const readSettings = () => {
             Homey.get('com.ubnt.unifi.settings', (error, settings) => {
                 if (error) return Homey.alert(error);
 
                 if (settings) {
-                    txtNvrIp.value = settings.host;
+                    currentSettings = settings;
+
+                    txtNvrIp.value = settings.host || '';
                     txtNvrPort.value = (settings.port ? settings.port : 443);
-                    txtUsername.value = settings.user;
-                    txtPassword.value = settings.pass;
+                    txtUsername.value = settings.user || '';
+                    txtPassword.value = settings.pass || '';
                     txtSslVerify.checked = (settings.sslverify === true);
-                    txtApiKey.value = settings.apiKey || '';
                     txtSite.value = (settings.site ? settings.site : 'default');
                     txtInterval.value = (settings.interval ? settings.interval : '15');
                     txtApplicationFlows.checked = (settings.applicationFlows === "1");
                     const $select = document.querySelector('#txt_pullmethode');
                     $select.value = (settings.pullmethode ? settings.pullmethode : '1');
+
+                    txtV2NvrIp.value = settings.v2host || settings.host || '';
+                    txtV2NvrPort.value = settings.v2port || settings.port || 443;
+                    txtApiKey.value = settings.apiKey || '';
+                    txtV2Site.value = (settings.site ? settings.site : 'default');
                 } else {
                     console.warn('[SETTINGS] Could not read UniFi settings object.');
                 }
             });
         };
 
-        const saveSettings = () => {
-            const settings = {
+        const saveV1Settings = () => {
+            currentSettings = Object.assign({}, currentSettings, {
                 'host': txtNvrIp.value,
                 'port': txtNvrPort.value,
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
                 'sslverify': txtSslVerify.checked,
-                'apiKey': txtApiKey.value.trim() || null,
                 'site': txtSite.value,
                 'interval': txtInterval.value,
                 'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),
                 'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].value,
-            };
+            });
 
-            Homey.set('com.ubnt.unifi.settings', settings, (error, result) => {
+            Homey.set('com.ubnt.unifi.settings', currentSettings, (error, result) => {
                 if (error) return Homey.alert(error);
-                console.log('[SETTINGS] Settings object saved.');
+                console.log('[SETTINGS] Network V1 settings saved.');
             });
             Homey.alert(Homey.__('settings.saved'), 'info');
         };
 
-        const testSettings = () => {
+        const saveV2Settings = () => {
+            if (!txtApiKey.value.trim()) {
+                return Homey.alert(Homey.__('settings.apikey_required'), 'error');
+            }
+
+            currentSettings = Object.assign({}, currentSettings, {
+                'v2host': txtV2NvrIp.value,
+                'v2port': txtV2NvrPort.value,
+                'apiKey': txtApiKey.value.trim(),
+                'site': txtV2Site.value,
+            });
+
+            Homey.set('com.ubnt.unifi.settings', currentSettings, (error, result) => {
+                if (error) return Homey.alert(error);
+                console.log('[SETTINGS] Network V2 settings saved.');
+            });
+            Homey.alert(Homey.__('settings.saved'), 'info');
+        };
+
+        const testV1Settings = () => {
             const settings = {
                 'host': txtNvrIp.value,
                 'port': txtNvrPort.value,
                 'user': txtUsername.value,
                 'pass': txtPassword.value,
                 'site': txtSite.value,
-                'interval': txtInterval.value,
-                'applicationFlows': (txtApplicationFlows.checked ? "1" : "0"),
-                'pullmethode': txtPullMethode.options[txtPullMethode.selectedIndex].value,
             };
 
             Homey.api("POST", "/test", settings, function (err, response) {
@@ -251,12 +351,43 @@
             });
         };
 
-        btnApply.addEventListener('click', e => {
-            saveSettings();
+        const testV2Settings = () => {
+            if (!txtApiKey.value.trim()) {
+                return Homey.alert(Homey.__('settings.apikey_required'), 'error');
+            }
+
+            const body = {
+                'host': txtV2NvrIp.value,
+                'port': txtV2NvrPort.value,
+                'apiKey': txtApiKey.value.trim(),
+            };
+
+            Homey.api("POST", "/testApiKey", body, function (err, response) {
+                if (err) return Homey.alert(err);
+                if (response) {
+                    if (response.status === 'success') {
+                        Homey.alert(Homey.__('settings.test_status.success'), 'info');
+                    } else {
+                        Homey.alert(Homey.__('settings.test_status.failure'), 'error');
+                    }
+                }
+            });
+        };
+
+        btnApplyV1.addEventListener('click', e => {
+            saveV1Settings();
         });
 
-        btnTest.addEventListener('click', e => {
-            testSettings();
+        btnTestV1.addEventListener('click', e => {
+            testV1Settings();
+        });
+
+        btnApplyV2.addEventListener('click', e => {
+            saveV2Settings();
+        });
+
+        btnTestV2.addEventListener('click', e => {
+            testV2Settings();
         });
 
         readSettings();
@@ -264,6 +395,19 @@
         eventLogEnabledElement.addEventListener('click', function (e) {
             Homey.set('com.ubnt.unifi.settings.debug', eventLogEnabledElement.checked, function (err) {
                 if (err) return Homey.alert(err);
+            });
+        });
+
+        // Site is shared between Network V1 and V2 (used by both the session API
+        // and the v1 REST API key calls) — keep the two tab fields in sync live.
+        txtSite.addEventListener('input', () => { txtV2Site.value = txtSite.value; });
+        txtV2Site.addEventListener('input', () => { txtSite.value = txtV2Site.value; });
+
+        document.querySelectorAll('.toggle-password').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.getAttribute('data-target'));
+                if (!target) return;
+                target.type = (target.type === 'password') ? 'text' : 'password';
             });
         });
 
@@ -321,6 +465,25 @@
             document.getElementById('unifi_websocket_at').innerHTML = data;
         }
 
+        const updateV2StatusField = (err, data) => {
+            if (err) {
+                return err;
+            }
+            var color = 'darkred';
+            if (data === 'Connected') color = 'darkgreen';
+
+            var statusField = document.getElementById('unifi_v2_status');
+            statusField.style.color = color;
+
+            var translationKey = 'status.connection.' + data;
+            var translation = Homey.__(translationKey);
+
+            if (translation === translationKey || translation === '' || typeof translation === 'undefined') {
+                statusField.innerHTML = data;
+            } else {
+                statusField.innerHTML = translation;
+            }
+        }
 
         Homey.on('com.ubnt.unifi.status', (data) => {
             updateStatusField(null, data);
@@ -348,6 +511,11 @@
 
         Homey.api("GET", "/getLastWebsocketMessageTime", null, function (err, result) {
             updateWebsocketAtField(null, result);
+            if (err) return Homey.alert(err);
+        });
+
+        Homey.api("GET", "/apikeystatus", null, function (err, result) {
+            updateV2StatusField(null, result);
             if (err) return Homey.alert(err);
         });
     }
