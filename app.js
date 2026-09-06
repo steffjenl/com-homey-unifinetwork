@@ -15,6 +15,8 @@ class UnifiNetwork extends Homey.App {
         this.loggedIn = false;
         this._loginInProgress = false;
         this.accessPointList = {};
+        this.networkList = {};
+        this.userGroupList = {};
 
         this.checkDevicesStateInterval = null;
         this.updateAccessPointListInterval = null;
@@ -81,11 +83,11 @@ class UnifiNetwork extends Homey.App {
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
             if (payload.key === 'EVT_WU_Disconnected') {
                 that.homey.log(`EVT_WU_Disconnected : ${formatForLog(payload)}`);
-                that.onIsConnected(false, payload);
+                that.onIsConnected(false, payload).catch(that.homey.error);
                 return;
             } else if (payload.key === 'EVT_WU_Connected') {
                 that.homey.log(`EVT_WU_Connected : ${formatForLog(payload)}`);
-                that.onIsConnected(true, payload);
+                that.onIsConnected(true, payload).catch(that.homey.error);
                 return;
             }
         }
@@ -381,13 +383,16 @@ class UnifiNetwork extends Homey.App {
                 return result.name.toLowerCase().includes(query.toLowerCase());
             });
         });
-        //this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
-        //this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
+        this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
+        this._guestConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_CONNECTED);
         this._wifiClientRoamed = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED);
         this._wifiClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_DISCONNECTED);
         this._wifiClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_CONNECTED);
         this._wifiClientRoamedToAp = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_ROAMED_TO_AP);
         this._wifiClientSignalChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_SIGNAL_CHANGED);
+        this._wifiClientVlanChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_WIFI_CLIENT_VLAN_CHANGED);
+        this._cableClientVlanChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_VLAN_CHANGED);
+        this._clientVlanChanged = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_CLIENT_VLAN_CHANGED);
 
         // WAN up/down triggers (v2.6)
         this._wanUp = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_WAN_UP);
@@ -543,8 +548,12 @@ class UnifiNetwork extends Homey.App {
         const rawInterval = this.settings && 'interval' in this.settings ? parseInt(this.settings.interval, 10) : 15;
         const intervalMs = Math.max(10, rawInterval) * 1000;
         this.checkDevicesStateInterval = this.homey.setInterval(this.checkDevicesState.bind(this), intervalMs);
-        // update every 12 hours all accessPoints
-        this.updateAccessPointListInterval = this.homey.setInterval(this.updateAccessPointList.bind(this), 43200000);
+        // update every 12 hours all accessPoints, networks (VLANs) and user groups
+        this.updateAccessPointListInterval = this.homey.setInterval(() => {
+            this.updateAccessPointList();
+            this.updateNetworkList();
+            this.updateUserGroupList();
+        }, 43200000);
         //
         this.debug('UnifiNetwork init Timers');
     }
@@ -576,6 +585,58 @@ class UnifiNetwork extends Homey.App {
     getAccessPointName(accessPointId) {
         if (typeof this.accessPointList[accessPointId] === 'undefined') return null;
         return this.accessPointList[accessPointId].name;
+    }
+
+    updateNetworkList() {
+        if (this.loggedIn) {
+            this.debug('Execute updateNetworkList() for updating VLAN/network names.');
+            this.api.unifi.getNetworkConf()
+                .then(response => {
+                    this.networkList = {};
+                    response.forEach(network => {
+                        this.networkList[network._id] = {
+                            name: network.name,
+                            id: network._id,
+                        };
+                    });
+                })
+                .catch(err => {
+                    this.debug('Error while fetching network list');
+                    this.debug(err);
+                    this._notifyError(err);
+                });
+        }
+    }
+
+    getNetworkName(networkId) {
+        if (typeof this.networkList[networkId] === 'undefined') return null;
+        return this.networkList[networkId].name;
+    }
+
+    updateUserGroupList() {
+        if (this.loggedIn) {
+            this.debug('Execute updateUserGroupList() for updating user-group names.');
+            this.api.unifi.getUserGroups()
+                .then(response => {
+                    this.userGroupList = {};
+                    response.forEach(group => {
+                        this.userGroupList[group._id] = {
+                            name: group.name,
+                            id: group._id,
+                        };
+                    });
+                })
+                .catch(err => {
+                    this.debug('Error while fetching user-group list');
+                    this.debug(err);
+                    this._notifyError(err);
+                });
+        }
+    }
+
+    getUserGroupName(userGroupId) {
+        if (typeof this.userGroupList[userGroupId] === 'undefined') return null;
+        return this.userGroupList[userGroupId].name;
     }
 
     isDeviceInArray(deviceMac, deviceList) {
@@ -767,8 +828,10 @@ class UnifiNetwork extends Homey.App {
                     // install timers
                     await this._initTimers();
 
-                    // get all accesspoints from controller
+                    // get all accesspoints, networks (VLANs) and user groups from controller
                     this.updateAccessPointList();
+                    this.updateNetworkList();
+                    this.updateUserGroupList();
 
                     if ("pullmethode" in settings && settings.pullmethode === '1') {
                         // LISTEN for WebSocket events
@@ -811,29 +874,43 @@ class UnifiNetwork extends Homey.App {
 
     // {"user":"ea:5b:28:b2:00:b5","ssid":"Ziggo6322902","ap":"d0:21:f9:89:df:f9","radio":"na","channel":"40","channelWidth":"80","hostname":"iPhone","ap_model":"UAP6MP","ap_name":"BenedenAP","ap_displayName":"BenedenAP","key":"EVT_WU_Connected","subsystem":"wlan","is_negative":false,"site_id":"6550cbaad28ec670541702d5","time":1761598567827,"datetime":"2025-10-27T20:56:07Z","msg":"User[ea:5b:28:b2:00:b5] has connected to AP[d0:21:f9:89:df:f9] with SSID \"Ziggo6322902\" on \"channel 40(na)\""
 
-    onIsConnected(isConnected, payload) {
+    async onIsConnected(isConnected, payload) {
         const deviceName = this.homey.app.api.getDeviceName(payload);
         this.debug(`Device ${deviceName} (${payload.user}) is ${isConnected ? 'connected' : 'disconnected'}`);
+
+        let userRecord = null;
+        try {
+            const users = await this.api.getDeviceByMac(payload.user);
+            userRecord = users && users[0] ? users[0] : null;
+        } catch (error) {
+            this.debug(`[onIsConnected] getDeviceByMac failed: ${error.message || error}`);
+        }
+
+        const tokens = {
+            mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
+            name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
+            essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
+            ipAddress: (userRecord && userRecord.last_ip) ? userRecord.last_ip : "",
+        };
+
         if (isConnected) {
-            const device = this.api.getDeviceByMac(payload.user);
-            const tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
-                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
-            };
-
-            this.homey.app._clientConnected.trigger(tokens);
-
+            this.homey.app._clientConnected.trigger(tokens).catch(this.homey.error);
         } else {
-            const device = this.api.getDeviceByMac(payload.user);
-            const tokens = {
-                mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
-                name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
-                essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
-                ipAddress: (device.last_ip === null || typeof device.last_ip === 'undefined') ? "" : device.last_ip,
+            this.homey.app._clientDisconnected.trigger(tokens).catch(this.homey.error);
+        }
+
+        if (userRecord && userRecord.is_guest === true) {
+            const guestTokens = {
+                mac: tokens.mac,
+                name: tokens.name,
+                essid: tokens.essid,
+                group: this.getUserGroupName(userRecord.usergroup_id) || "",
             };
-            this.homey.app._clientDisconnected.trigger(tokens);
+            if (isConnected) {
+                this.homey.app._guestConnected.trigger(guestTokens).catch(this.homey.error);
+            } else {
+                this.homey.app._guestDisconnected.trigger(guestTokens).catch(this.homey.error);
+            }
         }
     }
 

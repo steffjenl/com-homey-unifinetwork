@@ -147,6 +147,10 @@ class CableDevice extends PoePowerMixin(Device) {
                     this.onBlockedChange(device[0]);
                 }
 
+                if (typeof device[0].network_id !== 'undefined') {
+                    this.onVlanChange(device[0]);
+                }
+
                 // Normalise uplink fields and seed initial PoE readings (from PoePowerMixin)
                 this.updatePoeUplink(device[0]);
                 if (this._swMac && this._swPort) {
@@ -164,6 +168,33 @@ class CableDevice extends PoePowerMixin(Device) {
         }
     }
 
+    async onVlanChange(data) {
+        if (typeof data.network_id === 'undefined') return;
+        const previousNetworkId = this.getStoreValue('network_id');
+        if (typeof previousNetworkId === 'undefined' || previousNetworkId === null) {
+            // first observation (pairing / first poll) — seed store, do not fire
+            await this.setStoreValue('network_id', data.network_id);
+            return;
+        }
+        if (previousNetworkId !== data.network_id) {
+            const oldName = this.homey.app.getNetworkName(previousNetworkId);
+            const newName = this.homey.app.getNetworkName(data.network_id);
+            const tokens = {
+                old_vlan_name: oldName ? oldName : '-',
+                old_vlan_id: previousNetworkId,
+                new_vlan_name: newName ? newName : '-',
+                new_vlan_id: data.network_id,
+            };
+            this.homey.app._cableClientVlanChanged.trigger(this, tokens, {}).catch(this.homey.log);
+            this.homey.app._clientVlanChanged.trigger({
+                mac: this.getData().id,
+                name: this.getName(),
+                ...tokens,
+            }).catch(this.homey.log);
+            await this.setStoreValue('network_id', data.network_id);
+        }
+    }
+
     onUpdateMessagePayload(playloadMessage) {
         if (typeof playloadMessage.ip !== 'undefined') {
             this.onIPChange(playloadMessage);
@@ -171,6 +202,10 @@ class CableDevice extends PoePowerMixin(Device) {
 
         if (typeof playloadMessage.blocked !== 'undefined') {
             this.onBlockedChange(playloadMessage);
+        }
+
+        if (typeof playloadMessage.network_id !== 'undefined') {
+            this.onVlanChange(playloadMessage);
         }
 
         // Keep uplink info up to date — used by device:sync handler for real-time power pushes

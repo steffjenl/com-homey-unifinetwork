@@ -26,6 +26,9 @@ module.exports.EVENT_WIFI_CLIENT_DISCONNECTED = 'wifi_client_disconnected';
 module.exports.EVENT_WIFI_CLIENT_ROAMED = 'wifi_client_roamed';
 module.exports.EVENT_WIFI_CLIENT_ROAMED_TO_AP = 'wifi_client_roamed_to_ap';
 module.exports.EVENT_WIFI_CLIENT_SIGNAL_CHANGED = 'wifi_client_signal_changed';
+module.exports.EVENT_WIFI_CLIENT_VLAN_CHANGED = 'wifi_client_vlan_changed';
+module.exports.EVENT_CABLE_CLIENT_VLAN_CHANGED = 'cable_client_vlan_changed';
+module.exports.EVENT_CLIENT_VLAN_CHANGED = 'a_client_vlan_changed';
 //
 module.exports.EVENT_WIFI_CLIENT_BLOCKED = 'wifi_client_blocked';
 module.exports.EVENT_CABLE_CLIENT_BLOCKED = 'cable_client_blocked';

@@ -1,0 +1,63 @@
+{
+  "id": "a_client_vlan_changed",
+  "title": {
+    "en": "Device changed VLAN",
+    "nl": "Apparaat wisselde van VLAN"
+  },
+  "tokens": [
+    {
+      "name": "mac",
+      "type": "string",
+      "title": {
+        "en": "mac",
+        "nl": "mac"
+      },
+      "example": "00:00:00:00:00:00"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "title": {
+        "en": "Who",
+        "nl": "Wie"
+      },
+      "example": "wifi01"
+    },
+    {
+      "name": "old_vlan_name",
+      "type": "string",
+      "title": {
+        "en": "Previous VLAN",
+        "nl": "Vorige VLAN"
+      },
+      "example": "Default"
+    },
+    {
+      "name": "old_vlan_id",
+      "type": "string",
+      "title": {
+        "en": "Previous VLAN ID",
+        "nl": "Vorig VLAN ID"
+      },
+      "example": "1"
+    },
+    {
+      "name": "new_vlan_name",
+      "type": "string",
+      "title": {
+        "en": "New VLAN",
+        "nl": "Nieuwe VLAN"
+      },
+      "example": "Guest"
+    },
+    {
+      "name": "new_vlan_id",
+      "type": "string",
+      "title": {
+        "en": "New VLAN ID",
+        "nl": "Nieuw VLAN ID"
+      },
+      "example": "20"
+    }
+  ]
+}

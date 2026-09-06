@@ -1,0 +1,56 @@
+{
+  "id": "wifi_client_vlan_changed",
+  "title": {
+    "en": "VLAN changed",
+    "nl": "VLAN gewijzigd"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "Device",
+      "filter": "driver_id=wifi-client",
+      "title": {
+        "en": "Wi-Fi client",
+        "nl": "Wifi-client"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "old_vlan_name",
+      "type": "string",
+      "title": {
+        "en": "Previous VLAN",
+        "nl": "Vorige VLAN"
+      },
+      "example": "Default"
+    },
+    {
+      "name": "old_vlan_id",
+      "type": "string",
+      "title": {
+        "en": "Previous VLAN ID",
+        "nl": "Vorig VLAN ID"
+      },
+      "example": "1"
+    },
+    {
+      "name": "new_vlan_name",
+      "type": "string",
+      "title": {
+        "en": "New VLAN",
+        "nl": "Nieuwe VLAN"
+      },
+      "example": "Guest"
+    },
+    {
+      "name": "new_vlan_id",
+      "type": "string",
+      "title": {
+        "en": "New VLAN ID",
+        "nl": "Nieuw VLAN ID"
+      },
+      "example": "20"
+    }
+  ]
+}
