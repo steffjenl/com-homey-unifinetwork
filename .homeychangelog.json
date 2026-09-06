@@ -148,5 +148,8 @@
   },
   "2.7.1": {
     "en": "Add better error messages"
+  },
+  "2.7.2": {
+    "en": "Add vlan triggers"
   }
 }
