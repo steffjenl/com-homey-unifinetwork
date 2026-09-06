@@ -1,5 +1,18 @@
 {
     "title": "UniFi Network",
+    "errors": {
+        "api": {
+            "unauthorized": "No autorizado: comprueba tus credenciales de UniFi en los ajustes de la app.",
+            "forbidden": "Acceso denegado: este usuario de UniFi no tiene permiso para esta acción. Comprueba su rol en el controlador.",
+            "methodNotAllowed": "El controlador UniFi rechazó esta solicitud. Esto puede indicar una versión de controlador o firmware no compatible.",
+            "rateLimited": "Demasiadas solicitudes: el controlador UniFi está limitando esta conexión. Si usas varias integraciones (por ejemplo, Homey y Home Assistant) con el mismo usuario del controlador, crea un usuario local distinto para cada integración.",
+            "badGateway": "El controlador UniFi no está disponible temporalmente. Puede estar reiniciándose o sobrecargado; normalmente se resuelve solo.",
+            "connectionRefused": "No se puede conectar con el controlador UniFi: conexión rechazada. Comprueba la IP y el puerto en los ajustes de la app, y asegúrate de que el controlador esté encendido y accesible.",
+            "aborted": "La conexión con el controlador UniFi se interrumpió inesperadamente. Suele ser temporal; comprueba tu conexión de red.",
+            "timeout": "Tiempo de espera agotado: comprueba si tu controlador UniFi es accesible.",
+            "generic": "Se ha producido un error inesperado."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Validar UniFi Cloud Key",
@@ -166,7 +179,16 @@
             "Connected": "Conectado",
             "Connecting": "Conectando...",
             "Disconnected": "Desconectado",
-            "Initialized": "Inicializando"
+            "Initialized": "Inicializando",
+            "Unauthorized": "No autorizado",
+            "Forbidden": "Acceso denegado",
+            "MethodNotAllowed": "Método no permitido",
+            "RateLimited": "Límite alcanzado",
+            "BadGateway": "Controlador no disponible",
+            "ConnectionRefused": "Conexión rechazada",
+            "Aborted": "Conexión interrumpida",
+            "Timeout": "Tiempo agotado",
+            "Error": "Error"
         }
     },
     "capabilities": {

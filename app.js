@@ -41,7 +41,7 @@ class UnifiNetwork extends Homey.App {
             this._recentEventIds.clear();
         }, 60 * 1000);
 
-        this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Initialized');
+        this._setConnectionState('Initialized');
 
         // Subscribe to credentials updates
         this.homey.settings.on('set', key => {
@@ -251,11 +251,29 @@ class UnifiNetwork extends Homey.App {
     }
 
     /**
-     * Broadcast a user-friendly error message via realtime
+     * Broadcast the current connection status (used by the settings page status field).
+     * @param {string} label e.g. 'Connected', 'Connecting', 'Unauthorized', 'RateLimited', ...
+     */
+    _setConnectionState(label) {
+        this.connectionState = label;
+        this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, label);
+    }
+
+    /**
+     * Broadcast a user-friendly error message via realtime.
+     * Throttled per error category so a sustained outage (polled every 10-15s) doesn't
+     * pop an alert on the settings page every cycle.
      * @param {Error} error
      */
     _notifyError(error) {
-        const parsed = ErrorHandler.parseError(error);
+        const parsed = ErrorHandler.parseError(error, this.homey);
+        const now = Date.now();
+        const throttleMs = 5 * 60 * 1000; // 5 minutes
+        if (this._lastNotifiedErrorLabel === parsed.statusLabel && this._lastNotifiedErrorAt && (now - this._lastNotifiedErrorAt) < throttleMs) {
+            return;
+        }
+        this._lastNotifiedErrorLabel = parsed.statusLabel;
+        this._lastNotifiedErrorAt = now;
         this.homey.api.realtime(UnifiConstants.REALTIME_ERROR, {
             message: parsed.message,
             isAuthError: parsed.isAuthError,
@@ -290,7 +308,7 @@ class UnifiNetwork extends Homey.App {
                 await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
                 this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[toggle_wlan] ${parsed.message}`);
                 this._notifyError(error);
                 if (parsed.isAuthError) {
@@ -313,7 +331,7 @@ class UnifiNetwork extends Homey.App {
                 await this.api.restartAccessPoint(ap._id, site);
                 this.debug(`access_point_restart: restarted ${args.device.getName()} (${deviceMac})`);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[access_point_restart] ${parsed.message}`);
                 this._notifyError(error);
                 if (parsed.isAuthError) {
@@ -385,7 +403,7 @@ class UnifiNetwork extends Homey.App {
             try {
                 await this.homey.app.api.unifi.blockClient(args.Device.getData().id);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[wifi_block] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -400,7 +418,7 @@ class UnifiNetwork extends Homey.App {
             try {
                 await this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[wifi_unblock] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -415,7 +433,7 @@ class UnifiNetwork extends Homey.App {
             try {
                 await this.homey.app.api.unifi.blockClient(args.Device.getData().id);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[cable_block] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -430,7 +448,7 @@ class UnifiNetwork extends Homey.App {
             try {
                 await this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[cable_unblock] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -446,7 +464,7 @@ class UnifiNetwork extends Homey.App {
                 this.debug(`Power cycling port ${args.port} on device ${args.device.getData().id}`);
                 await this.homey.app.api.powerCycleDevice(args.device.getData().id, args.port);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[power_cycle] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -461,7 +479,7 @@ class UnifiNetwork extends Homey.App {
                 this.debug(`Power off port ${args.port} on device ${args.device.getData().id}`);
                 await this.homey.app.api.powerOffDevice(args.device.getData().id, args.port);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[power_off] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -476,7 +494,7 @@ class UnifiNetwork extends Homey.App {
                 this.debug(`Power on port ${args.port} on device ${args.device.getData().id}`);
                 await this.homey.app.api.powerOnDevice(args.device.getData().id, args.port);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[power_on] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {
@@ -491,12 +509,22 @@ class UnifiNetwork extends Homey.App {
         // [{"authorized_by":"none","ap_mac":"d0:21:f9:87:4e:9d","is_returning":true,"roam_count":0,"ip":"192.168.25.213","start":1761736094,"channel":44,"mac":"4e:9e:45:cf:a7:53","radio":"na","duration":146,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1349575,"site_id":"6550cbaad28ec670541702d5","rx_bytes":330815,"end":1761764894,"_id":"6901f59ee38abd4579dd5e06","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":1018760,"expired":false},{"authorized_by":"none","ap_mac":null,"is_returning":false,"roam_count":0,"ip":"192.168.25.213","start":1761638072,"channel":0,"mac":"4e:9e:45:cf:a7:53","radio":null,"duration":522,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1072749,"site_id":"6550cbaad28ec670541702d5","rx_bytes":209774,"end":1761666872,"_id":"690076b8e38abd4579dccfde","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":862975,"expired":true}
         const areThereGuests = this.homey.flow.getConditionCard('guests_connected');
         areThereGuests.registerRunListener(async () => {
-            const devices = await this.homey.app.api.unifi.getUsers();
-            const guestClients = devices.filter(function(record){
-                return record.is_guest === true;
-            });
-            this.debug(`Guests connected: ${formatForLog(guestClients)}`);
-            return guestClients.length > 0;
+            try {
+                const devices = await this.homey.app.api.unifi.getUsers();
+                const guestClients = devices.filter(function(record){
+                    return record.is_guest === true;
+                });
+                this.debug(`Guests connected: ${formatForLog(guestClients)}`);
+                return guestClients.length > 0;
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error, this.homey);
+                this.error(`[guests_connected] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         this.debug('UnifiNetwork init Flow Triggers');
@@ -540,6 +568,7 @@ class UnifiNetwork extends Homey.App {
                 .catch(err => {
                     this.debug('Error while fetching ap list');
                     this.debug(err);
+                    this._notifyError(err);
                 });
         }
     }
@@ -604,8 +633,11 @@ class UnifiNetwork extends Homey.App {
                 // Update per-AP client counts from ALL connected UniFi clients (not just paired)
                 // and fire first/last connected flow triggers if the count changed
                 this.checkAccessPoints(clientDevices);
+                this._setConnectionState('Connected');
             }).catch((error) => {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
+                this._setConnectionState(parsed.statusLabel);
+                this._notifyError(error);
                 if (parsed.isAuthError) {
                     this.homey.error(`[checkDevicesState]: AccessDenied - attempting re-login`);
                     this._appLogin();
@@ -630,7 +662,8 @@ class UnifiNetwork extends Homey.App {
                         }
                     });
                 }).catch(err => {
-                    const parsed = ErrorHandler.parseError(err);
+                    const parsed = ErrorHandler.parseError(err, this.homey);
+                    this._notifyError(err);
                     if (parsed.isAuthError) {
                         this.homey.app.debug(`[checkDevicesState] AP poll: AuthError - attempting re-login`);
                         this._appLogin();
@@ -715,7 +748,7 @@ class UnifiNetwork extends Homey.App {
                 }
             }
 
-            this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connecting');
+            this._setConnectionState('Connecting');
             this.api.setUnifiObject(settings.host, settings.port, settings.user, settings.pass, settings.site, settings.sslverify === true);
             const v2cloud = settings.v2cloud || {};
             this.api.setApiKey(settings.apiKey || null, settings.v2host || settings.host, settings.v2port || settings.port, {
@@ -727,7 +760,7 @@ class UnifiNetwork extends Homey.App {
                 try {
                     // LOGIN
                     await this.api.unifi.login(settings.user, settings.pass);
-                    this.homey.api.realtime(UnifiConstants.REALTIME_STATUS, 'Connected');
+                    this._setConnectionState('Connected');
                     await this.setLoggedIn(true);
                     this.debug('We are logged in!');
 
@@ -753,6 +786,9 @@ class UnifiNetwork extends Homey.App {
                 } catch (error) {
                     await this.setLoggedIn(false);
                     this.error(formatForLog(error)); // we want to see the error in the log
+                    const parsed = ErrorHandler.parseError(error, this.homey);
+                    this._setConnectionState(parsed.statusLabel);
+                    this._notifyError(error);
                 }
             })();
         } finally {

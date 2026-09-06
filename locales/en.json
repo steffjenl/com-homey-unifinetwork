@@ -1,5 +1,18 @@
 {
     "title": "UniFi Network",
+    "errors": {
+        "api": {
+            "unauthorized": "Unauthorized: check your UniFi credentials in the app settings.",
+            "forbidden": "Access denied: this UniFi user does not have permission for this action. Check the user's role in the controller.",
+            "methodNotAllowed": "The UniFi controller rejected this request. This may indicate an unsupported controller version or firmware.",
+            "rateLimited": "Too many requests: the UniFi controller is rate-limiting this connection. If you use multiple integrations (e.g. Homey and Home Assistant) with the same controller user, create a separate local user in the controller for each integration.",
+            "badGateway": "The UniFi controller is temporarily unavailable. It may be restarting or overloaded — this usually resolves on its own.",
+            "connectionRefused": "Cannot connect to the UniFi controller: connection refused. Check the IP address and port in the app settings, and make sure the controller is powered on and reachable.",
+            "aborted": "The connection to the UniFi controller was unexpectedly interrupted. This is usually temporary — check your network connection.",
+            "timeout": "Connection timeout: check if your UniFi controller is reachable.",
+            "generic": "An unexpected error occurred."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Validating UniFi Cloud Key",
@@ -17,7 +30,16 @@
             "Connected": "Connected",
             "Connecting": "Connecting...",
             "Disconnected": "Disconnected",
-            "Initialized": "Initialized"
+            "Initialized": "Initialized",
+            "Unauthorized": "Unauthorized",
+            "Forbidden": "Forbidden",
+            "MethodNotAllowed": "Method not allowed",
+            "RateLimited": "Rate limited",
+            "BadGateway": "Controller unavailable",
+            "ConnectionRefused": "Connection refused",
+            "Aborted": "Connection interrupted",
+            "Timeout": "Timed out",
+            "Error": "Error"
         }
     },
     "settings": {

@@ -21,7 +21,7 @@ class WiFiDevice extends Device {
                 }
                 await this.homey.app.api.unifi.unblockClient(this.getData().id);
             } catch (error) {
-                const parsed = ErrorHandler.parseError(error);
+                const parsed = ErrorHandler.parseError(error, this.homey);
                 this.error(`[blocked] ${parsed.message}`);
                 this.homey.app._notifyError(error);
                 if (parsed.isAuthError) {

@@ -1,10 +1,14 @@
 const ApiClient = require("./library/apiclient");
+const ErrorHandler = require("./library/error-handler");
 module.exports = {
     async getSites({homey, query}) {
         const result = await homey.app.api.unifi.getSites();
         return result;
     },
     async getStatus({ homey, query }) {
+        if (homey.app.connectionState) {
+            return homey.app.connectionState;
+        }
         return (homey.app.loggedIn ? 'Connected' : 'Disconnected');
     },
     async getWebsocketStatus({ homey, query }) {
@@ -36,7 +40,7 @@ module.exports = {
             homey.app.error('testCredentials error', error.message);
             return {
                 status: 'failure',
-                error: error.message,
+                error: ErrorHandler.getUserFriendlyMessage(error, homey),
             };
         }
     },
@@ -66,7 +70,7 @@ module.exports = {
             homey.app.error('testApiKey error', error.message);
             return {
                 status: 'failure',
-                error: error.message,
+                error: ErrorHandler.getUserFriendlyMessage(error, homey),
             };
         }
     },

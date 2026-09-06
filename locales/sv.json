@@ -1,5 +1,18 @@
 {
     "title": "UniFi Nätverk",
+    "errors": {
+        "api": {
+            "unauthorized": "Ej auktoriserad: kontrollera dina UniFi-inloggningsuppgifter i appinställningarna.",
+            "forbidden": "Åtkomst nekad: den här UniFi-användaren saknar behörighet för denna åtgärd. Kontrollera användarens roll i kontrollern.",
+            "methodNotAllowed": "UniFi-kontrollern avvisade denna begäran. Det kan bero på en kontrollerversion eller firmware som inte stöds.",
+            "rateLimited": "För många förfrågningar: UniFi-kontrollern begränsar denna anslutning. Om du använder flera integrationer (t.ex. Homey och Home Assistant) med samma kontrolleranvändare, skapa en separat lokal användare för varje integration.",
+            "badGateway": "UniFi-kontrollern är tillfälligt otillgänglig. Den kanske startar om eller är överbelastad — detta löser sig oftast av sig själv.",
+            "connectionRefused": "Det går inte att ansluta till UniFi-kontrollern: anslutningen nekades. Kontrollera IP-adress och port i appinställningarna och se till att kontrollern är påslagen och nåbar.",
+            "aborted": "Anslutningen till UniFi-kontrollern avbröts oväntat. Detta är oftast tillfälligt — kontrollera din nätverksanslutning.",
+            "timeout": "Anslutningen tog för lång tid: kontrollera om din UniFi-kontroller är nåbar.",
+            "generic": "Ett oväntat fel inträffade."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Validerar UniFi Cloud Key",
@@ -17,7 +30,16 @@
             "Connected": "Ansluten",
             "Connecting": "Ansluter...",
             "Disconnected": "Frånkopplad",
-            "Initialized": "Initierad"
+            "Initialized": "Initierad",
+            "Unauthorized": "Ej auktoriserad",
+            "Forbidden": "Åtkomst nekad",
+            "MethodNotAllowed": "Metod ej tillåten",
+            "RateLimited": "Gräns nådd",
+            "BadGateway": "Kontroller otillgänglig",
+            "ConnectionRefused": "Anslutning nekad",
+            "Aborted": "Anslutning avbruten",
+            "Timeout": "Timeout",
+            "Error": "Fel"
         }
     },
     "settings": {

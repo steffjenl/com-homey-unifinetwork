@@ -1,5 +1,18 @@
 {
     "title": "UniFi Netzwerk",
+    "errors": {
+        "api": {
+            "unauthorized": "Nicht autorisiert: Überprüfe deine UniFi-Zugangsdaten in den App-Einstellungen.",
+            "forbidden": "Zugriff verweigert: Dieser UniFi-Benutzer hat keine Berechtigung für diese Aktion. Überprüfe die Rolle des Benutzers im Controller.",
+            "methodNotAllowed": "Der UniFi-Controller hat diese Anfrage abgelehnt. Dies kann auf eine nicht unterstützte Controller-Version oder Firmware hinweisen.",
+            "rateLimited": "Zu viele Anfragen: Der UniFi-Controller begrenzt diese Verbindung. Falls mehrere Integrationen (z. B. Homey und Home Assistant) denselben Controller-Benutzer verwenden, lege für jede Integration einen eigenen lokalen Benutzer im Controller an.",
+            "badGateway": "Der UniFi-Controller ist vorübergehend nicht erreichbar. Er startet möglicherweise neu oder ist überlastet — dies behebt sich meist von selbst.",
+            "connectionRefused": "Keine Verbindung zum UniFi-Controller möglich: Verbindung abgelehnt. Überprüfe IP-Adresse und Port in den App-Einstellungen und stelle sicher, dass der Controller eingeschaltet und erreichbar ist.",
+            "aborted": "Die Verbindung zum UniFi-Controller wurde unerwartet unterbrochen. Dies ist meist vorübergehend — überprüfe deine Netzwerkverbindung.",
+            "timeout": "Zeitüberschreitung: Überprüfe, ob dein UniFi-Controller erreichbar ist.",
+            "generic": "Ein unerwarteter Fehler ist aufgetreten."
+        }
+    },
     "pair": {
         "validate": {
             "title": "UniFi Cloud Key validieren",
@@ -166,7 +179,16 @@
             "Connected": "Verbunden",
             "Connecting": "Verbinden...",
             "Disconnected": "Verbindung getrennt",
-            "Initialized": "Initialisierung"
+            "Initialized": "Initialisierung",
+            "Unauthorized": "Nicht autorisiert",
+            "Forbidden": "Zugriff verweigert",
+            "MethodNotAllowed": "Methode nicht erlaubt",
+            "RateLimited": "Rate-Limit erreicht",
+            "BadGateway": "Controller nicht erreichbar",
+            "ConnectionRefused": "Verbindung abgelehnt",
+            "Aborted": "Verbindung unterbrochen",
+            "Timeout": "Zeitüberschreitung",
+            "Error": "Fehler"
         }
     },
     "capabilities": {

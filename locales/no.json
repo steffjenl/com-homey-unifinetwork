@@ -1,5 +1,18 @@
 {
     "title": "UniFi Nettverk",
+    "errors": {
+        "api": {
+            "unauthorized": "Ikke autorisert: sjekk UniFi-påloggingsinformasjonen i appinnstillingene.",
+            "forbidden": "Tilgang nektet: denne UniFi-brukeren har ikke tillatelse til denne handlingen. Sjekk brukerens rolle i kontrolleren.",
+            "methodNotAllowed": "UniFi-kontrolleren avviste denne forespørselen. Dette kan skyldes en kontrollerversjon eller fastvare som ikke støttes.",
+            "rateLimited": "For mange forespørsler: UniFi-kontrolleren begrenser denne tilkoblingen. Hvis du bruker flere integrasjoner (f.eks. Homey og Home Assistant) med samme kontrollerbruker, må du opprette en egen lokal bruker for hver integrasjon.",
+            "badGateway": "UniFi-kontrolleren er midlertidig utilgjengelig. Den kan holde på å starte på nytt eller være overbelastet — dette løser seg vanligvis av seg selv.",
+            "connectionRefused": "Kan ikke koble til UniFi-kontrolleren: tilkobling avvist. Sjekk IP-adresse og port i appinnstillingene, og sørg for at kontrolleren er på og tilgjengelig.",
+            "aborted": "Tilkoblingen til UniFi-kontrolleren ble uventet brutt. Dette er som regel midlertidig — sjekk nettverkstilkoblingen din.",
+            "timeout": "Tidsavbrudd: sjekk om UniFi-kontrolleren er tilgjengelig.",
+            "generic": "Det oppstod en uventet feil."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Validerer UniFi Cloud Key",
@@ -17,7 +30,16 @@
             "Connected": "Tilkoblet",
             "Connecting": "Kobler til...",
             "Disconnected": "Frakoblet",
-            "Initialized": "Initialisert"
+            "Initialized": "Initialisert",
+            "Unauthorized": "Ikke autorisert",
+            "Forbidden": "Tilgang nektet",
+            "MethodNotAllowed": "Metode ikke tillatt",
+            "RateLimited": "Grense nådd",
+            "BadGateway": "Kontroller utilgjengelig",
+            "ConnectionRefused": "Tilkobling avvist",
+            "Aborted": "Tilkobling brutt",
+            "Timeout": "Tidsavbrudd",
+            "Error": "Feil"
         }
     },
     "settings": {

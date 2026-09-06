@@ -1,5 +1,18 @@
 {
     "title": "UniFi Network",
+    "errors": {
+        "api": {
+            "unauthorized": "Non autorisé : vérifiez vos identifiants UniFi dans les paramètres de l'application.",
+            "forbidden": "Accès refusé : cet utilisateur UniFi n'a pas les droits pour cette action. Vérifiez son rôle dans le contrôleur.",
+            "methodNotAllowed": "Le contrôleur UniFi a rejeté cette requête. Cela peut indiquer une version de contrôleur ou un firmware non pris en charge.",
+            "rateLimited": "Trop de requêtes : le contrôleur UniFi limite cette connexion. Si plusieurs intégrations (par ex. Homey et Home Assistant) utilisent le même utilisateur du contrôleur, créez un utilisateur local distinct pour chaque intégration.",
+            "badGateway": "Le contrôleur UniFi est temporairement indisponible. Il redémarre peut-être ou est surchargé — cela se résout généralement tout seul.",
+            "connectionRefused": "Impossible de se connecter au contrôleur UniFi : connexion refusée. Vérifiez l'adresse IP et le port dans les paramètres de l'application, et assurez-vous que le contrôleur est allumé et accessible.",
+            "aborted": "La connexion au contrôleur UniFi a été interrompue de façon inattendue. C'est généralement temporaire — vérifiez votre connexion réseau.",
+            "timeout": "Délai de connexion dépassé : vérifiez que votre contrôleur UniFi est accessible.",
+            "generic": "Une erreur inattendue s'est produite."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Valider la UniFi Cloud Key",
@@ -166,7 +179,16 @@
             "Connected": "Connecté",
             "Connecting": "Connexion en cours...",
             "Disconnected": "Déconnecté",
-            "Initialized": "Initialisation"
+            "Initialized": "Initialisation",
+            "Unauthorized": "Non autorisé",
+            "Forbidden": "Accès refusé",
+            "MethodNotAllowed": "Méthode non autorisée",
+            "RateLimited": "Limite atteinte",
+            "BadGateway": "Contrôleur indisponible",
+            "ConnectionRefused": "Connexion refusée",
+            "Aborted": "Connexion interrompue",
+            "Timeout": "Délai dépassé",
+            "Error": "Erreur"
         }
     },
     "capabilities": {

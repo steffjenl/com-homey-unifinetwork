@@ -1,5 +1,18 @@
 {
     "title": "UniFi Sieć",
+    "errors": {
+        "api": {
+            "unauthorized": "Brak autoryzacji: sprawdź dane logowania UniFi w ustawieniach aplikacji.",
+            "forbidden": "Odmowa dostępu: ten użytkownik UniFi nie ma uprawnień do tej czynności. Sprawdź rolę użytkownika w kontrolerze.",
+            "methodNotAllowed": "Kontroler UniFi odrzucił to żądanie. Może to oznaczać nieobsługiwaną wersję kontrolera lub oprogramowania układowego.",
+            "rateLimited": "Zbyt wiele żądań: kontroler UniFi ogranicza to połączenie. Jeśli używasz kilku integracji (np. Homey i Home Assistant) z tym samym użytkownikiem kontrolera, utwórz osobnego lokalnego użytkownika dla każdej integracji.",
+            "badGateway": "Kontroler UniFi jest tymczasowo niedostępny. Może się restartować lub być przeciążony — zwykle rozwiązuje się to samo.",
+            "connectionRefused": "Nie można połączyć się z kontrolerem UniFi: połączenie odrzucone. Sprawdź adres IP i port w ustawieniach aplikacji oraz upewnij się, że kontroler jest włączony i dostępny.",
+            "aborted": "Połączenie z kontrolerem UniFi zostało nieoczekiwanie przerwane. Zwykle jest to tymczasowe — sprawdź swoje połączenie sieciowe.",
+            "timeout": "Przekroczono czas oczekiwania: sprawdź, czy kontroler UniFi jest dostępny.",
+            "generic": "Wystąpił nieoczekiwany błąd."
+        }
+    },
     "pair": {
         "validate": {
             "title": "Weryfikacja UniFi Cloud Key",
@@ -17,7 +30,16 @@
             "Connected": "Połączono",
             "Connecting": "Łączenie...",
             "Disconnected": "Rozłączono",
-            "Initialized": "Zainicjowano"
+            "Initialized": "Zainicjowano",
+            "Unauthorized": "Brak autoryzacji",
+            "Forbidden": "Odmowa dostępu",
+            "MethodNotAllowed": "Metoda niedozwolona",
+            "RateLimited": "Limit żądań",
+            "BadGateway": "Kontroler niedostępny",
+            "ConnectionRefused": "Połączenie odrzucone",
+            "Aborted": "Połączenie przerwane",
+            "Timeout": "Przekroczono czas",
+            "Error": "Błąd"
         }
     },
     "settings": {

@@ -1,5 +1,18 @@
 {
     "title": "UniFi Network",
+    "errors": {
+        "api": {
+            "unauthorized": "Niet geautoriseerd: controleer je UniFi-inloggegevens in de app-instellingen.",
+            "forbidden": "Toegang geweigerd: deze UniFi-gebruiker heeft geen rechten voor deze actie. Controleer de rol van de gebruiker in de controller.",
+            "methodNotAllowed": "De UniFi-controller heeft dit verzoek geweigerd. Dit kan wijzen op een niet-ondersteunde controllerversie of firmware.",
+            "rateLimited": "Te veel verzoeken: de UniFi-controller limiteert deze verbinding. Gebruik je meerdere integraties (bijv. Homey en Home Assistant) met dezelfde controller-gebruiker, maak dan voor elke integratie een aparte lokale gebruiker aan in de controller.",
+            "badGateway": "De UniFi-controller is tijdelijk niet beschikbaar. Mogelijk herstart deze of is hij overbelast — dit lost meestal vanzelf op.",
+            "connectionRefused": "Kan geen verbinding maken met de UniFi-controller: verbinding geweigerd. Controleer het IP-adres en de poort in de app-instellingen en zorg dat de controller aanstaat en bereikbaar is.",
+            "aborted": "De verbinding met de UniFi-controller werd onverwacht onderbroken. Dit is meestal tijdelijk — controleer je netwerkverbinding.",
+            "timeout": "Verbinding verlopen (timeout): controleer of je UniFi-controller bereikbaar is.",
+            "generic": "Er is een onverwachte fout opgetreden."
+        }
+    },
     "pair": {
         "validate": {
             "title": "UniFi Cloud Key valideren",
@@ -166,7 +179,16 @@
             "Connected": "Verbonden",
             "Connecting": "Bezig met verbinden...",
             "Disconnected": "Verbinding verbroken",
-            "Initialized": "Bezig met starten"
+            "Initialized": "Bezig met starten",
+            "Unauthorized": "Niet geautoriseerd",
+            "Forbidden": "Geweigerd",
+            "MethodNotAllowed": "Methode niet toegestaan",
+            "RateLimited": "Rate limit bereikt",
+            "BadGateway": "Controller niet bereikbaar",
+            "ConnectionRefused": "Verbinding geweigerd",
+            "Aborted": "Verbinding onderbroken",
+            "Timeout": "Time-out",
+            "Error": "Fout"
         }
     },
     "capabilities": {
