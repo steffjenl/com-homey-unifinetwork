@@ -145,5 +145,8 @@
   },
   "2.7.0": {
     "en": "Added new setup wizard en beter error handling on wrong IP address"
+  },
+  "2.7.1": {
+    "en": "Add better error messages"
   }
 }
