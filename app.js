@@ -344,7 +344,7 @@ class UnifiNetwork extends Homey.App {
             });
         });
         this._firstDeviceConnected.registerRunListener(async (args, state) => {
-            if (!args.accessPoint) return true;
+            if (!args.accessPoint) return false;
             return args.accessPoint.id === state.ap_mac;
         });
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
@@ -366,7 +366,7 @@ class UnifiNetwork extends Homey.App {
             });
         });
         this._lastDeviceDisconnected.registerRunListener(async (args, state) => {
-            if (!args.accessPoint) return true;
+            if (!args.accessPoint) return false;
             return args.accessPoint.id === state.ap_mac;
         });
         //this._guestDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_GUEST_DISCONNECTED);
@@ -837,13 +837,13 @@ class UnifiNetwork extends Homey.App {
                 if (tokens.last_num === 0 && tokens.curr_num > 0) {
                     that.homey.app.debug('Triggering first_device_connected with state', tokens);
                     that._firstDeviceConnected.trigger({}, {ap_mac}).catch(error => {
-                        that.homey.error(`[first_device_connected] ${error.message || error}`);
+                        this.homey.error(`[first_device_connected] ${error.message || error}`);
                     });
                 }
                 if (tokens.last_num > 0 && tokens.curr_num === 0) {
                     that.homey.app.debug('Triggering last_device_disconnected with state', tokens);
                     that._lastDeviceDisconnected.trigger({}, {ap_mac}).catch(error => {
-                        that.homey.error(`[last_device_disconnected] ${error.message || error}`);
+                        this.homey.error(`[last_device_disconnected] ${error.message || error}`);
                     });
                 }
             }

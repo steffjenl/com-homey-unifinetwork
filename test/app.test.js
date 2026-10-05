@@ -25,7 +25,14 @@ function createApp() {
         error: jest.fn(),
     };
     app.api = {
-        getDeviceName: jest.fn(payload => payload.name || payload.hostname || payload.mac || payload.user || 'unknown'),
+        getDeviceName: jest.fn(payload => {
+            let deviceName = payload.name;
+            if (typeof deviceName === 'undefined' && typeof payload.hostname !== 'undefined') deviceName = payload.hostname;
+            if (typeof deviceName === 'undefined' && typeof payload.mac !== 'undefined') deviceName = payload.mac;
+            if (typeof deviceName === 'undefined' && typeof payload.user !== 'undefined') deviceName = payload.user;
+            if (typeof deviceName === 'undefined') deviceName = 'unknown';
+            return deviceName;
+        }),
     };
     app.debug = jest.fn();
     app._clientConnected = {
@@ -77,7 +84,7 @@ describe('UnifiNetwork.onIsConnected()', () => {
 
         expect(app._clientDisconnected.trigger).toHaveBeenCalledWith({
             mac: '',
-            name: 'unknown',
+            name: '',
             essid: '',
             ipAddress: '',
         });
@@ -108,6 +115,8 @@ describe('UnifiNetwork access-point client count triggers', () => {
 
         expect(cards.get('first_device_connected').registerRunListener).toHaveBeenCalledTimes(1);
         expect(cards.get('last_device_disconnected').registerRunListener).toHaveBeenCalledTimes(1);
+        await expect(cards.get('first_device_connected').registerRunListener.mock.calls[0][0]({}, {})).resolves.toBe(false);
+        await expect(cards.get('last_device_disconnected').registerRunListener.mock.calls[0][0]({}, {})).resolves.toBe(false);
     });
 
     it('passes AP state when triggering first device connected', () => {
@@ -133,5 +142,32 @@ describe('UnifiNetwork access-point client count triggers', () => {
         app.checkAccessPoints([{ ap_mac: 'ap-mac-1' }]);
 
         expect(firstTrigger.trigger).toHaveBeenCalledWith({}, { ap_mac: 'ap-mac-1' });
+    });
+
+    it('logs rejections from first/last access-point triggers', async () => {
+        const app = createApp();
+
+        app.accessPointList = {
+            'ap-mac-1': { name: 'AP 1', mac: 'ap-mac-1', num_clients: 0 },
+            'ap-mac-2': { name: 'AP 2', mac: 'ap-mac-2', num_clients: 1 },
+        };
+        app.homey.app.debug = jest.fn();
+        app.homey.drivers = {
+            getDriver: jest.fn().mockReturnValue({
+                getDevices: jest.fn().mockReturnValue([]),
+            }),
+        };
+        app._firstDeviceConnected = {
+            trigger: jest.fn().mockRejectedValue(new Error('first trigger failed')),
+        };
+        app._lastDeviceDisconnected = {
+            trigger: jest.fn().mockRejectedValue(new Error('last trigger failed')),
+        };
+
+        app.checkAccessPoints([{ ap_mac: 'ap-mac-1' }]);
+        await Promise.resolve();
+
+        expect(app.homey.error).toHaveBeenCalledWith('[first_device_connected] first trigger failed');
+        expect(app.homey.error).toHaveBeenCalledWith('[last_device_disconnected] last trigger failed');
     });
 });
