@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "Log in"
+        },
+        "errors": {
+            "no_controller_connection": "There is currently no connection to the UniFi controller. Check your controller details in the app settings and try again."
         }
     },
     "status": {

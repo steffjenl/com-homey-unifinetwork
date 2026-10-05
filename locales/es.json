@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "Iniciar sesión"
+        },
+        "errors": {
+            "no_controller_connection": "Actualmente no hay conexión con el controlador UniFi. Revisa los datos del controlador en los ajustes de la aplicación e inténtalo de nuevo."
         }
     },
     "settings": {

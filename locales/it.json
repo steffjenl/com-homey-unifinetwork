@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "Accedi"
+        },
+        "errors": {
+            "no_controller_connection": "Al momento non c'è connessione al controller UniFi. Controlla i dati del controller nelle impostazioni dell'app e riprova."
         }
     },
     "settings": {

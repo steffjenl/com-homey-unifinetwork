@@ -2,6 +2,7 @@
 
 const {Device} = require('homey');
 const PoePowerMixin = require('../../library/poe-power-mixin');
+const ErrorHandler = require('../../library/error-handler');
 
 class CableDevice extends PoePowerMixin(Device) {
 
@@ -14,12 +15,22 @@ class CableDevice extends PoePowerMixin(Device) {
         this.getDeviceStatus();
 
         this.registerCapabilityListener("blocked", async (value) => {
-            this.homey.app.debug(`${JSON.stringify(value)}`);
-            if (value) {
-                this.homey.app.api.unifi.blockClient(this.getData().id);
-                return;
+            try {
+                this.homey.app.debug(`${JSON.stringify(value)}`);
+                if (value) {
+                    await this.homey.app.api.unifi.blockClient(this.getData().id);
+                    return;
+                }
+                await this.homey.app.api.unifi.unblockClient(this.getData().id);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[blocked] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
             }
-            this.homey.app.api.unifi.unblockClient(this.getData().id);
         });
 
         this.log('CableDevice has been initialized');

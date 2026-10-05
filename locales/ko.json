@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "로그인"
+        },
+        "errors": {
+            "no_controller_connection": "현재 UniFi 컨트롤러에 연결되어 있지 않습니다. 앱 설정에서 컨트롤러 정보를 확인한 후 다시 시도하세요."
         }
     },
     "status": {

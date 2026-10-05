@@ -9,25 +9,43 @@
  */
 const SENSITIVE_KEYS = new Set(['pass', 'password', 'token', 'apiKey', 'cookie', 'unifises']);
 
-function sanitise(obj) {
+function sanitise(obj, seen = new WeakSet()) {
     if (obj === null || typeof obj !== 'object') return obj;
 
-    if (Array.isArray(obj)) {
-        return obj.map(sanitise);
+    if (seen.has(obj)) {
+        return '[Circular]';
     }
 
-    const result = {};
-    for (const [key, value] of Object.entries(obj)) {
-        if (SENSITIVE_KEYS.has(key)) {
-            result[key] = '[REDACTED]';
-        } else if (value !== null && typeof value === 'object') {
-            result[key] = sanitise(value);
-        } else {
-            result[key] = value;
+    seen.add(obj);
+
+    try {
+        if (Array.isArray(obj)) {
+            return obj.map((item) => sanitise(item, seen));
         }
+
+        const result = {};
+        for (const [key, value] of Object.entries(obj)) {
+            if (SENSITIVE_KEYS.has(key)) {
+                result[key] = '[REDACTED]';
+            } else if (value !== null && typeof value === 'object') {
+                result[key] = sanitise(value, seen);
+            } else {
+                result[key] = value;
+            }
+        }
+        return result;
+    } finally {
+        seen.delete(obj);
     }
-    return result;
 }
 
-module.exports = { sanitise };
+function formatForLog(value) {
+    return JSON.stringify(sanitise(value), (key, currentValue) => (
+        typeof currentValue === 'bigint' ? currentValue.toString() : currentValue
+    ));
+}
+
+void formatForLog;
+
+module.exports = { sanitise, formatForLog };
 

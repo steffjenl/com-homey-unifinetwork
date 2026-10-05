@@ -7,6 +7,9 @@
         },
         "login": {
             "title": "Zaloguj się"
+        },
+        "errors": {
+            "no_controller_connection": "Obecnie brak połączenia z kontrolerem UniFi. Sprawdź dane kontrolera w ustawieniach aplikacji i spróbuj ponownie."
         }
     },
     "status": {

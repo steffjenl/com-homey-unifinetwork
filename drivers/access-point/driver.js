@@ -19,14 +19,24 @@ class AccessPoint extends Driver {
      * This should return an array with the data of devices that are available for pairing.
      */
     async onPairListDevices() {
-        return Object.values(await this.homey.app.api.getAccessPoints()).map(device => {
-            let deviceName = this.homey.app.api.getDeviceName(device);
+        const noControllerConnectionError = this.homey.__('pair.errors.no_controller_connection');
+        if (!this.homey.app.loggedIn || !this.homey.app.api || !this.homey.app.api.unifi) {
+            throw new Error(noControllerConnectionError);
+        }
 
-            return {
-                data: {id: String(device.mac)},
-                name: deviceName,
-            };
-        });
+        try {
+            return Object.values(await this.homey.app.api.getAccessPoints()).map(device => {
+                let deviceName = this.homey.app.api.getDeviceName(device);
+
+                return {
+                    data: {id: String(device.mac)},
+                    name: deviceName,
+                };
+            });
+        } catch (error) {
+            this.homey.app.error(`[access-point][pair] ${error.message || error}`);
+            throw new Error(noControllerConnectionError);
+        }
     }
 
     getUnifiDeviceById(deviceId) {

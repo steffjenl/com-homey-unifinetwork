@@ -328,6 +328,11 @@
         Homey.on('com.ubnt.unifi.websocket.status', (data) => {
             updateWebsocketStatusField(null, data);
         });
+        Homey.on('com.ubnt.unifi.error', (errorData) => {
+            // Display error notification to user
+            const message = errorData.message || 'An error occurred';
+            Homey.alert(message, 'error');
+        });
         Homey.get('com.ubnt.unifi.status', updateStatusField);
         Homey.get('com.ubnt.unifi.websocket.status', updateWebsocketStatusField);
 

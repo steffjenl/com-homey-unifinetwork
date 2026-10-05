@@ -139,5 +139,8 @@
   },
   "2.6.3": {
     "en": "Add more translations"
+  },
+  "2.6.4": {
+    "en": "Fix: Fixed a crash that could occur when an error was encountered."
   }
 }

@@ -1,27 +1,26 @@
 'use strict';
 
 const Homey = require('homey');
-const {Log} = require('homey-log');
 const ApiClient = require('./library/apiclient');
 const UnifiConstants = require('./library/constants');
-const {sanitise} = require('./library/sanitise');
+const {formatForLog} = require('./library/sanitise');
+const ErrorHandler = require('./library/error-handler');
 
 class UnifiNetwork extends Homey.App {
     /**
      * onInit is called when the app is initialized.
      */
     async onInit() {
-        this.homeyLog = new Log({homey: this.homey});
         this.api = new ApiClient({homey: this.homey});
         this.loggedIn = false;
         this._loginInProgress = false;
         this.accessPointList = {};
-        this.onlineClientList = {};
 
         this.checkDevicesStateInterval = null;
         this.updateAccessPointListInterval = null;
 
         this._recentEventIds = new Set();
+        this.onUninit = this.onUninit.bind(this);
 
         this._refreshAuthTokensnterval = 60 * 60 * 1000; // 1 hour
 
@@ -79,11 +78,11 @@ class UnifiNetwork extends Homey.App {
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
             if (payload.key === 'EVT_WU_Disconnected') {
-                that.homey.log(`EVT_WU_Disconnected : ${JSON.stringify(payload)}`);
+                that.homey.log(`EVT_WU_Disconnected : ${formatForLog(payload)}`);
                 that.onIsConnected(false, payload);
                 return;
             } else if (payload.key === 'EVT_WU_Connected') {
-                that.homey.log(`EVT_WU_Connected : ${JSON.stringify(payload)}`);
+                that.homey.log(`EVT_WU_Connected : ${formatForLog(payload)}`);
                 that.onIsConnected(true, payload);
                 return;
             }
@@ -92,17 +91,17 @@ class UnifiNetwork extends Homey.App {
         // WAN up/down events (subsystem: wan)
         if (payload.subsystem === 'wan') {
             if (payload.key === 'EVT_WAN_Up') {
-                that.homey.log(`EVT_WAN_Up: ${JSON.stringify(payload)}`);
+                that.homey.log(`EVT_WAN_Up: ${formatForLog(payload)}`);
                 that._wanUp.trigger({ wan_ip: payload.wan_ip || '' }).catch(that.homey.log);
             } else if (payload.key === 'EVT_WAN_Down') {
-                that.homey.log(`EVT_WAN_Down: ${JSON.stringify(payload)}`);
+                that.homey.log(`EVT_WAN_Down: ${formatForLog(payload)}`);
                 that._wanDown.trigger({}).catch(that.homey.log);
             }
             return;
         }
 
         // start device flow cards
-        if (payload.subsystem === 'wlan') {            that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
+        if (payload.subsystem === 'wlan') {            that.homey.log(`[websocket] [wlan]: ${formatForLog(payload)}`);
             // get wifi-client driver
             const driver = that.homey.drivers.getDriver('wifi-client');
             const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
@@ -115,13 +114,13 @@ class UnifiNetwork extends Homey.App {
                 } else if (payload.key === 'EVT_WU_Connected') {
                     device.onIsConnected(true, payload.ssid);
                 } else if (payload.key === 'EVT_WC_Blocked') {
-                    that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
+                    that.homey.log(`[websocket] [wlan]: ${formatForLog(payload)}`);
                     const tokens = {
                         blocked: true,
                     }
                     device.onBlockedChange(tokens);
                 } else if (payload.key === 'EVT_WC_Unblocked') {
-                    that.homey.log(`[websocket] [wlan]: ${JSON.stringify(payload)}`);
+                    that.homey.log(`[websocket] [wlan]: ${formatForLog(payload)}`);
                     const tokens = {
                         blocked: false,
                     }
@@ -129,7 +128,7 @@ class UnifiNetwork extends Homey.App {
                 }
             }
         } else if (payload.subsystem === 'lan') {
-            that.homey.log(`[websocket] [cable]: ${JSON.stringify(payload)}`);
+            that.homey.log(`[websocket] [cable]: ${formatForLog(payload)}`);
             // get cable-client driver
             const driver = that.homey.drivers.getDriver('cable-client');
             const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
@@ -152,7 +151,7 @@ class UnifiNetwork extends Homey.App {
                 }
             }
         } else if (payload.subsystem === 'ap') {
-            that.homey.log(`[websocket] [ap]: ${JSON.stringify(payload)}`);
+            that.homey.log(`[websocket] [ap]: ${formatForLog(payload)}`);
             const apMac = payload.ap || payload.device || payload.mac;
             if (apMac) {
                 let apDriver;
@@ -228,6 +227,7 @@ class UnifiNetwork extends Homey.App {
     /**
      * onUninit is called when the app is shutdown.
      */
+    // eslint-disable-next-line no-unused-vars
     async onUninit() {
         this.loggedIn = false;
         if (this.checkDevicesStateInterval) {
@@ -246,6 +246,20 @@ class UnifiNetwork extends Homey.App {
         }
         delete this.api;
         delete this.accessPointList;
+    }
+
+    /**
+     * Broadcast a user-friendly error message via realtime
+     * @param {Error} error
+     */
+    _notifyError(error) {
+        const parsed = ErrorHandler.parseError(error);
+        this.homey.api.realtime(UnifiConstants.REALTIME_ERROR, {
+            message: parsed.message,
+            isAuthError: parsed.isAuthError,
+            isTimeout: parsed.isTimeout,
+            timestamp: new Date().toISOString(),
+        });
     }
 
     async _initActionCards() {
@@ -268,23 +282,43 @@ class UnifiNetwork extends Homey.App {
         });
 
         toggleWlan.registerRunListener(async (args) => {
-            const site = this.settings && this.settings.site ? this.settings.site : 'default';
-            const enabled = args.enabled === 'true';
-            await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
-            this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
+            try {
+                const site = this.settings && this.settings.site ? this.settings.site : 'default';
+                const enabled = args.enabled === 'true';
+                await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
+                this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[toggle_wlan] ${parsed.message}`);
+                this._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         // Access-point restart action
         const apRestart = this.homey.flow.getActionCard(UnifiConstants.ACTION_ACCESS_POINT_RESTART);
         apRestart.registerRunListener(async (args) => {
-            const site = this.settings && this.settings.site ? this.settings.site : 'default';
-            const deviceMac = args.device.getData().id;
-            // Resolve the device _id from the MAC via the UniFi API
-            const devices = await this.api.unifi.getAccessDevices(deviceMac);
-            const ap = devices.find(d => d.mac === deviceMac);
-            if (!ap) throw new Error(`Access point ${deviceMac} not found`);
-            await this.api.restartAccessPoint(ap._id, site);
-            this.debug(`access_point_restart: restarted ${args.device.getName()} (${deviceMac})`);
+            try {
+                const site = this.settings && this.settings.site ? this.settings.site : 'default';
+                const deviceMac = args.device.getData().id;
+                // Resolve the device _id from the MAC via the UniFi API
+                const devices = await this.api.unifi.getAccessDevices(deviceMac);
+                const ap = devices.find(d => d.mac === deviceMac);
+                if (!ap) throw new Error(`Access point ${deviceMac} not found`);
+                await this.api.restartAccessPoint(ap._id, site);
+                this.debug(`access_point_restart: restarted ${args.device.getName()} (${deviceMac})`);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[access_point_restart] ${parsed.message}`);
+                this._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
     }
 
@@ -294,9 +328,9 @@ class UnifiNetwork extends Homey.App {
         this._cableClientConnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_CONNECTED);
         this._cableClientDisconnected = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_CABLE_CLIENT_DISCONNECTED);
         this._firstDeviceConnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_CONNECTED);
-        this._firstDeviceConnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
+        this._firstDeviceConnected.registerArgumentAutocompleteListener('accessPoint', async (query) => {
             let results = [];
-            Object.values(this.accessPointList).forEach((accessPoint, value, array) => {
+            Object.values(this.accessPointList).forEach((accessPoint) => {
                 results.push({
                     name: accessPoint.name,
                     description: accessPoint.mac,
@@ -316,9 +350,9 @@ class UnifiNetwork extends Homey.App {
         this._firstDeviceOnline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_FIRST_DEVICE_ONLINE);
         this._lastDeviceOffline = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_OFFLINE);
         this._lastDeviceDisconnected = this.homey.flow.getTriggerCard(UnifiConstants.EVENT_LAST_DEVICE_DISCONNECTED);
-        this._lastDeviceDisconnected.registerArgumentAutocompleteListener('accessPoint', async (query, args) => {
+        this._lastDeviceDisconnected.registerArgumentAutocompleteListener('accessPoint', async (query) => {
             let results = [];
-            Object.values(this.accessPointList).forEach((accessPoint, value, array) => {
+            Object.values(this.accessPointList).forEach((accessPoint) => {
                 results.push({
                     name: accessPoint.name,
                     description: accessPoint.mac,
@@ -353,39 +387,108 @@ class UnifiNetwork extends Homey.App {
         this._accessPointClientCountChanged = this.homey.flow.getDeviceTriggerCard(UnifiConstants.EVENT_ACCESS_POINT_CLIENT_COUNT_CHANGED);
 
         const wifiBlock = this.homey.flow.getActionCard('wifi_block');
-        wifiBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+        wifiBlock.registerRunListener(async (args) => {
+            try {
+                await this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[wifi_block] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         const wifiUnBlock = this.homey.flow.getActionCard('wifi_unblock');
-        wifiUnBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+        wifiUnBlock.registerRunListener(async (args) => {
+            try {
+                await this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[wifi_unblock] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         const cableBlock = this.homey.flow.getActionCard('cable_block');
-        cableBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+        cableBlock.registerRunListener(async (args) => {
+            try {
+                await this.homey.app.api.unifi.blockClient(args.Device.getData().id);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[cable_block] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         const cableUnBlock = this.homey.flow.getActionCard('cable_unblock');
-        cableUnBlock.registerRunListener(async (args, state) => {
-            this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+        cableUnBlock.registerRunListener(async (args) => {
+            try {
+                await this.homey.app.api.unifi.unblockClient(args.Device.getData().id);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[cable_unblock] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+                throw new Error(parsed.message);
+            }
         });
 
         const poePowerCycle = this.homey.flow.getActionCard('network_switch_power_cycle_port');
-        poePowerCycle.registerRunListener(async (args, state) => {
-            this.debug(`Power cycling port ${args.port} on device ${args.device.getData().id}`);
-            this.homey.app.api.powerCycleDevice(args.device.getData().id, args.port).catch(this.error);
+        poePowerCycle.registerRunListener(async (args) => {
+            try {
+                this.debug(`Power cycling port ${args.port} on device ${args.device.getData().id}`);
+                await this.homey.app.api.powerCycleDevice(args.device.getData().id, args.port);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[power_cycle] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+            }
         });
+
         const poePowerOff = this.homey.flow.getActionCard('network_switch_power_off_port');
-        poePowerOff.registerRunListener(async (args, state) => {
-            this.debug(`Power off port ${args.port} on device ${args.device.getData().id}`);
-            this.homey.app.api.powerOffDevice(args.device.getData().id, args.port).catch(this.error);
+        poePowerOff.registerRunListener(async (args) => {
+            try {
+                this.debug(`Power off port ${args.port} on device ${args.device.getData().id}`);
+                await this.homey.app.api.powerOffDevice(args.device.getData().id, args.port);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[power_off] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+            }
         });
+
         const poePowerOn = this.homey.flow.getActionCard('network_switch_power_on_port');
-        poePowerOn.registerRunListener(async (args, state) => {
-            this.debug(`Power on port ${args.port} on device ${args.device.getData().id}`);
-            this.homey.app.api.powerOnDevice(args.device.getData().id, args.port).catch(this.error);
+        poePowerOn.registerRunListener(async (args) => {
+            try {
+                this.debug(`Power on port ${args.port} on device ${args.device.getData().id}`);
+                await this.homey.app.api.powerOnDevice(args.device.getData().id, args.port);
+            } catch (error) {
+                const parsed = ErrorHandler.parseError(error);
+                this.error(`[power_on] ${parsed.message}`);
+                this.homey.app._notifyError(error);
+                if (parsed.isAuthError) {
+                    await this.homey.app._appLogin();
+                }
+            }
         });
 
         // [{"authorized_by":"none","ap_mac":null,"is_returning":false,"roam_count":0,"ip":"192.168.25.213","start":1761638072,"channel":0,"mac":"4e:9e:45:cf:a7:53","radio":null,"duration":522,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1072749,"site_id":"6550cbaad28ec670541702d5","rx_bytes":209774,"end":1761666872,"_id":"690076b8e38abd4579dccfde","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":862975,"expired":true}]
@@ -393,12 +496,12 @@ class UnifiNetwork extends Homey.App {
         // [{"authorized_by":"none","hostname":"iPhone","ap_mac":"0c:ea:14:cd:80:13","is_returning":true,"user_id":"6900765fe38abd4579dccfc8","site_id":"6550cbaad28ec670541702d5","start":1761736094,"end":1761764894,"_id":"6901f59ee38abd4579dd5e06","mac":"4e:9e:45:cf:a7:53","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","expired":false,"tx_bytes":26331,"rx_bytes":41517,"bytes":0},{"authorized_by":"none","ap_mac":null,"is_returning":false,"roam_count":0,"ip":"192.168.25.213","start":1761638072,"channel":0,"mac":"4e:9e:45:cf:a7:53","radio":null,"duration":522,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1072749,"site_id":"6550cbaad28ec670541702d5","rx_bytes":209774,"end":1761666872,"_id":"690076b8e38abd4579dccfde","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":862975,"expired":true}]
         // [{"authorized_by":"none","ap_mac":"d0:21:f9:87:4e:9d","is_returning":true,"roam_count":0,"ip":"192.168.25.213","start":1761736094,"channel":44,"mac":"4e:9e:45:cf:a7:53","radio":"na","duration":146,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1349575,"site_id":"6550cbaad28ec670541702d5","rx_bytes":330815,"end":1761764894,"_id":"6901f59ee38abd4579dd5e06","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":1018760,"expired":false},{"authorized_by":"none","ap_mac":null,"is_returning":false,"roam_count":0,"ip":"192.168.25.213","start":1761638072,"channel":0,"mac":"4e:9e:45:cf:a7:53","radio":null,"duration":522,"hostname":"iPhone","user_id":"6900765fe38abd4579dccfc8","bytes":1072749,"site_id":"6550cbaad28ec670541702d5","rx_bytes":209774,"end":1761666872,"_id":"690076b8e38abd4579dccfde","user_agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","tx_bytes":862975,"expired":true}
         const areThereGuests = this.homey.flow.getConditionCard('guests_connected');
-        areThereGuests.registerRunListener(async (args, state) => {
+        areThereGuests.registerRunListener(async () => {
             const devices = await this.homey.app.api.unifi.getUsers();
             const guestClients = devices.filter(function(record){
                 return record.is_guest === true;
             });
-            this.debug(`Guests connected: ${JSON.stringify(guestClients)}`);
+            this.debug(`Guests connected: ${formatForLog(guestClients)}`);
             return guestClients.length > 0;
         });
 
@@ -508,11 +611,14 @@ class UnifiNetwork extends Homey.App {
                 // and fire first/last connected flow triggers if the count changed
                 this.checkAccessPoints(clientDevices);
             }).catch((error) => {
-                if (error.response && 'status' in error.response && error.response.status === 401) {
-                    this.homey.error(`[checkDevicesState]: AccessDenied`);
+                const parsed = ErrorHandler.parseError(error);
+                if (parsed.isAuthError) {
+                    this.homey.error(`[checkDevicesState]: AccessDenied - attempting re-login`);
                     this._appLogin();
+                } else if (parsed.isTimeout) {
+                    this.homey.app.debug(`[checkDevicesState]: Connection timeout`);
                 } else {
-                    this.homey.app.debug(`[checkDevicesState]: error when retrieving getClientDevices`);
+                    this.homey.app.debug(`[checkDevicesState]: error when retrieving getClientDevices - ${parsed.message}`);
                 }
             });
 
@@ -529,7 +635,17 @@ class UnifiNetwork extends Homey.App {
                             device.onIsConnected(false);
                         }
                     });
-                }).catch(err => this.homey.app.debug(`[checkDevicesState] AP poll error: ${err}`));
+                }).catch(err => {
+                    const parsed = ErrorHandler.parseError(err);
+                    if (parsed.isAuthError) {
+                        this.homey.app.debug(`[checkDevicesState] AP poll: AuthError - attempting re-login`);
+                        this._appLogin();
+                    } else if (parsed.isTimeout) {
+                        this.homey.app.debug(`[checkDevicesState] AP poll: Connection timeout`);
+                    } else {
+                        this.homey.app.debug(`[checkDevicesState] AP poll error: ${parsed.message}`);
+                    }
+                });
             }
         }
     }
@@ -586,13 +702,13 @@ class UnifiNetwork extends Homey.App {
                             }
                         }).catch(
                             (error) => {
-                                this.debug(`WebSocket error: ${JSON.stringify(error)}`);
+                                this.debug(`WebSocket error: ${formatForLog(error)}`);
                             }
                         );
                     }
                 } catch (error) {
                     await this.setLoggedIn(false);
-                    this.error(`${JSON.stringify(sanitise(error))}`); // we want to see the error in the log
+                    this.error(formatForLog(error)); // we want to see the error in the log
                 }
             })();
         } finally {
@@ -601,7 +717,7 @@ class UnifiNetwork extends Homey.App {
     }
 
     async refreshAuthTokens() {
-        const refreshAuthTokens = this.homey.setInterval(async () => {
+        this.homey.setInterval(async () => {
             try {
                 this.debug('Refreshing auth tokens');
                 await this._appLogin();
@@ -684,7 +800,7 @@ class UnifiNetwork extends Homey.App {
                 this.homey.app._lastDeviceOffline.trigger(tokens);
             }
         } catch (error) {
-            this.homey.error(`[checkNumClientsConnectedTrigger]: ${JSON.stringify(error)}`);
+            this.homey.error(`[checkNumClientsConnectedTrigger]: ${formatForLog(error)}`);
         }
     }
 
@@ -745,8 +861,7 @@ class UnifiNetwork extends Homey.App {
      */
     toLocalTime(homeyTime) {
         const tz = this.homey.clock.getTimezone();
-        const localTime = new Date(homeyTime.toLocaleString('en-US', {timeZone: tz}));
-        return localTime;
+        return new Date(homeyTime.toLocaleString('en-US', {timeZone: tz}));
     }
 }
 
