@@ -130,6 +130,43 @@ describe('ApiClient', () => {
         });
     });
 
+    describe('resolveSiteId() / getWifiBroadcasts()', () => {
+        const UUID = '11111111-2222-3333-4444-555555555555';
+
+        it('passes a UUID through without calling the API', async () => {
+            client._callV1 = jest.fn();
+            expect(await client.resolveSiteId(UUID)).toBe(UUID);
+            expect(client._callV1).not.toHaveBeenCalled();
+        });
+
+        it('resolves a legacy site name via internalReference and caches it', async () => {
+            client._callV1 = jest.fn().mockResolvedValue({ data: [
+                { id: 'other', internalReference: 'x', name: 'X' },
+                { id: UUID, internalReference: 'default', name: 'Home' },
+            ] });
+            expect(await client.resolveSiteId('default')).toBe(UUID);
+            expect(await client.resolveSiteId('default')).toBe(UUID);
+            expect(client._callV1).toHaveBeenCalledTimes(1);
+        });
+
+        it('falls back to the only site, throws when nothing matches', async () => {
+            client._callV1 = jest.fn().mockResolvedValue({ data: [{ id: UUID, name: 'Home' }] });
+            expect(await client.resolveSiteId('foo')).toBe(UUID);
+            client._siteIdCache = new Map();
+            client._callV1 = jest.fn().mockResolvedValue({ data: [{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }] });
+            await expect(client.resolveSiteId('foo')).rejects.toThrow(/not found/);
+        });
+
+        it('lists wifi broadcasts using the resolved site UUID', async () => {
+            client._callV1 = jest.fn()
+                .mockResolvedValueOnce({ data: [{ id: UUID, internalReference: 'default', name: 'Home' }] })
+                .mockResolvedValueOnce({ data: [{ id: 'w1', name: 'Main', enabled: true }], totalCount: 1 });
+            const result = await client.getWifiBroadcasts('default');
+            expect(result).toEqual([{ id: 'w1', name: 'Main', enabled: true }]);
+            expect(client._callV1.mock.calls[1][1]).toContain(`/sites/${UUID}/wifi/broadcasts`);
+        });
+    });
+
     describe('_callV1() (Network V2 / official Integration API)', () => {
         // Regression test for a real bug: requests were sent to the wrong base path
         // (missing "/integration" segment) with the wrong auth header ("Authorization: Bearer"

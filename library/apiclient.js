@@ -50,6 +50,7 @@ class ApiClient extends BaseClass {
         this._consoleId = options.consoleId || '';
         this._v1Host = host;
         this._v1Port = port;
+        this._siteIdCache = new Map();
         this._v1BaseUrl = this._cloudEnabled
             ? `https://api.ui.com/v1/connector/consoles/${encodeURIComponent(this._consoleId)}/proxy/network/integration/v1`
             : `https://${host}:${port}/proxy/network/integration/v1`;
@@ -144,6 +145,51 @@ class ApiClient extends BaseClass {
             if (payload) req.write(payload);
             req.end();
         });
+    }
+
+    /**
+     * Resolve a legacy site reference (e.g. 'default') to the Integration API site UUID.
+     * Matches on internalReference or name (case-insensitive); a UUID is passed through,
+     * and a single-site controller falls back to its only site.
+     * @param {string} [siteRef]
+     * @returns {Promise<string>}
+     */
+    async resolveSiteId(siteRef) {
+        const ref = siteRef || 'default';
+        if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(ref)) return ref;
+        if (!this._siteIdCache) this._siteIdCache = new Map();
+        if (this._siteIdCache.has(ref)) return this._siteIdCache.get(ref);
+
+        const response = await this._callV1('GET', '/sites?limit=200');
+        const sites = Array.isArray(response && response.data) ? response.data : (Array.isArray(response) ? response : []);
+        const lower = ref.toLowerCase();
+        const match = sites.find(s => String(s.internalReference || '').toLowerCase() === lower)
+            || sites.find(s => String(s.name || '').toLowerCase() === lower)
+            || (sites.length === 1 ? sites[0] : null);
+        if (!match || !match.id) {
+            throw new Error(`Site '${ref}' not found via the UniFi Integration API`);
+        }
+        this._siteIdCache.set(ref, match.id);
+        return match.id;
+    }
+
+    /**
+     * List all WiFi broadcasts (SSIDs) for a site, following pagination.
+     * @param {string} [siteRef]
+     * @returns {Promise<object[]>}
+     */
+    async getWifiBroadcasts(siteRef) {
+        const siteId = await this.resolveSiteId(siteRef);
+        const limit = 200;
+        const all = [];
+        for (let offset = 0; offset < 10000; offset += limit) {
+            const response = await this._callV1('GET', `/sites/${siteId}/wifi/broadcasts?offset=${offset}&limit=${limit}`);
+            const page = Array.isArray(response && response.data) ? response.data : (Array.isArray(response) ? response : []);
+            all.push(...page);
+            const total = response && typeof response.totalCount === 'number' ? response.totalCount : null;
+            if (page.length < limit || (total !== null && all.length >= total)) break;
+        }
+        return all;
     }
 
     async getAccessPoints() {
@@ -265,7 +311,8 @@ class ApiClient extends BaseClass {
      * @param {string} siteId    The site name / id (e.g. 'default')
      */
     async restartAccessPoint(deviceId, siteId) {
-        return this._callV1('POST', `/sites/${siteId}/devices/${deviceId}/actions`, { action: 'restart' });
+        const resolvedSiteId = await this.resolveSiteId(siteId);
+        return this._callV1('POST', `/sites/${resolvedSiteId}/devices/${deviceId}/actions`, { action: 'restart' });
     }
 
     getDeviceName(payload) {

@@ -301,16 +301,18 @@ class UnifiNetwork extends Homey.App {
         // WLAN toggle action (v2.6) — requires API key + UniFi OS 7+
         const toggleWlan = this.homey.flow.getActionCard(UnifiConstants.ACTION_TOGGLE_WLAN);
         toggleWlan.registerArgumentAutocompleteListener('wlan_id', async (query) => {
+            if (!this.api.hasApiKey()) {
+                return [{ id: '__no_api_key__', name: 'No API key configured', description: 'Settings > Network V2' }];
+            }
             try {
                 const site = this.settings && this.settings.site ? this.settings.site : 'default';
-                const response = await this.api._callV1('GET', `/sites/${site}/wifi/broadcasts`);
-                const broadcasts = Array.isArray(response.data) ? response.data : (Array.isArray(response) ? response : []);
+                const broadcasts = await this.api.getWifiBroadcasts(site);
                 return broadcasts
-                    .filter(w => !query || w.name.toLowerCase().includes(query.toLowerCase()))
-                    .map(w => ({ id: w.id, name: w.name, description: w.enabled ? 'Enabled' : 'Disabled' }));
+                    .filter(w => !query || (w.name || '').toLowerCase().includes(query.toLowerCase()))
+                    .map(w => ({ id: w.id, name: w.name || w.id, description: w.enabled ? 'Enabled' : 'Disabled' }));
             } catch (err) {
                 this.error('toggle_wlan autocomplete error:', err.message);
-                return [];
+                return [{ id: '__error__', name: `Error: ${err.message}`, description: '' }];
             }
         });
 
@@ -318,7 +320,9 @@ class UnifiNetwork extends Homey.App {
             try {
                 const site = this.settings && this.settings.site ? this.settings.site : 'default';
                 const enabled = args.enabled === 'true';
-                await this.api._callV1('PATCH', `/sites/${site}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
+                if (String(args.wlan_id.id).startsWith('__')) throw new Error(args.wlan_id.name);
+                const siteId = await this.api.resolveSiteId(site);
+                await this.api._callV1('PATCH', `/sites/${siteId}/wifi/broadcasts/${args.wlan_id.id}`, { enabled });
                 this.debug(`toggle_wlan: set ${args.wlan_id.name} enabled=${enabled}`);
             } catch (error) {
                 const parsed = ErrorHandler.parseError(error, this.homey);
