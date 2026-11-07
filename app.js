@@ -6,6 +6,17 @@ const UnifiConstants = require('./library/constants');
 const {formatForLog} = require('./library/sanitise');
 const ErrorHandler = require('./library/error-handler');
 
+// Wireless client events. U is a wireless user, G a wireless guest, and one client can
+// join as one and leave as the other (measured: EVT_WU_Connected, then
+// EVT_WG_Disconnected), so both letters are matched. The wired L families are not.
+const WIRELESS_CONNECTED = /^EVT_W[UG]_Connected$/;
+const WIRELESS_DISCONNECTED = /^EVT_W[UG]_Disconnected$/;
+
+// Guest events may carry the MAC as `guest` instead of `user`.
+function clientMac(payload) {
+    return payload.user ?? payload.guest ?? payload.client ?? null;
+}
+
 class UnifiNetwork extends Homey.App {
     /**
      * onInit is called when the app is initialized.
@@ -81,12 +92,12 @@ class UnifiNetwork extends Homey.App {
         // start application flow cards
         // created a setting because this function has memory overload on Homey
         if (that.settings && "applicationFlows" in that.settings && that.settings.applicationFlows === "1") {
-            if (payload.key === 'EVT_WU_Disconnected') {
-                that.homey.log(`EVT_WU_Disconnected : ${formatForLog(payload)}`);
+            if (WIRELESS_DISCONNECTED.test(payload.key)) {
+                that.homey.log(`${payload.key} : ${formatForLog(payload)}`);
                 that.onIsConnected(false, payload).catch(that.homey.error);
                 return;
-            } else if (payload.key === 'EVT_WU_Connected') {
-                that.homey.log(`EVT_WU_Connected : ${formatForLog(payload)}`);
+            } else if (WIRELESS_CONNECTED.test(payload.key)) {
+                that.homey.log(`${payload.key} : ${formatForLog(payload)}`);
                 that.onIsConnected(true, payload).catch(that.homey.error);
                 return;
             }
@@ -108,14 +119,14 @@ class UnifiNetwork extends Homey.App {
         if (payload.subsystem === 'wlan') {            that.homey.log(`[websocket] [wlan]: ${formatForLog(payload)}`);
             // get wifi-client driver
             const driver = that.homey.drivers.getDriver('wifi-client');
-            const deviceMac = (payload.user === null || typeof payload.user === 'undefined') ? payload.client : payload.user;
+            const deviceMac = clientMac(payload);
             const device = driver.getUnifiDeviceById(deviceMac);
             if (device) {
                 that.checkNumClientsConnectedTrigger();
 
-                if (payload.key === 'EVT_WU_Disconnected') {
+                if (WIRELESS_DISCONNECTED.test(payload.key)) {
                     device.onIsConnected(false, null);
-                } else if (payload.key === 'EVT_WU_Connected') {
+                } else if (WIRELESS_CONNECTED.test(payload.key)) {
                     device.onIsConnected(true, payload.ssid);
                 } else if (payload.key === 'EVT_WC_Blocked') {
                     that.homey.log(`[websocket] [wlan]: ${formatForLog(payload)}`);
@@ -876,18 +887,18 @@ class UnifiNetwork extends Homey.App {
 
     async onIsConnected(isConnected, payload) {
         const deviceName = this.homey.app.api.getDeviceName(payload);
-        this.debug(`Device ${deviceName} (${payload.user}) is ${isConnected ? 'connected' : 'disconnected'}`);
+        this.debug(`Device ${deviceName} (${clientMac(payload)}) is ${isConnected ? 'connected' : 'disconnected'}`);
 
         let userRecord = null;
         try {
-            const users = await this.api.getDeviceByMac(payload.user);
+            const users = await this.api.getDeviceByMac(clientMac(payload));
             userRecord = users && users[0] ? users[0] : null;
         } catch (error) {
             this.debug(`[onIsConnected] getDeviceByMac failed: ${error.message || error}`);
         }
 
         const tokens = {
-            mac: (payload.user === null || typeof payload.user === 'undefined') ? "" : payload.user,
+            mac: clientMac(payload) || "",
             name: (deviceName === null || typeof deviceName === 'undefined') ? "" : deviceName,
             essid: (payload.ssid === null || typeof payload.ssid === 'undefined') ? "" : payload.ssid,
             ipAddress: (userRecord && userRecord.last_ip) ? userRecord.last_ip : "",
@@ -899,7 +910,9 @@ class UnifiNetwork extends Homey.App {
             this.homey.app._clientDisconnected.trigger(tokens).catch(this.homey.error);
         }
 
-        if (userRecord && userRecord.is_guest === true) {
+        // A guest event key says so itself; is_guest is not reliable on current consoles.
+        const isGuestEvent = /^EVT_WG_/.test(payload.key || '');
+        if (isGuestEvent || (userRecord && userRecord.is_guest === true)) {
             const guestTokens = {
                 mac: tokens.mac,
                 name: tokens.name,
