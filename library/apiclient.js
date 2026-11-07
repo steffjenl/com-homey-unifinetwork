@@ -106,7 +106,7 @@ class ApiClient extends BaseClass {
 
         // api.ui.com carries a valid public certificate — always verify it, regardless
         // of the local sslverify setting (which only applies to the controller itself).
-        const sslVerify = this._cloudEnabled ? true : (this.unifi ? this.unifi._sslverify !== false : false);
+        const sslVerify = this._cloudEnabled ? true : (this.unifi && this.unifi.opts ? this.unifi.opts.sslverify === true : false);
 
         return new Promise((resolve, reject) => {
             const reqUrl = new URL(url);

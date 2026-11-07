@@ -206,6 +206,20 @@ describe('ApiClient', () => {
             expect(capturedOptions.headers['Authorization']).toBeUndefined();
         });
 
+        it('does not verify the controller certificate when sslverify is off (self-signed)', async () => {
+            client.unifi = { opts: { sslverify: false } };
+            client.setApiKey('my-api-key', '192.168.1.1', 443);
+            await client._callV1('GET', '/sites');
+            expect(capturedOptions.rejectUnauthorized).toBe(false);
+        });
+
+        it('verifies the controller certificate when sslverify is on', async () => {
+            client.unifi = { opts: { sslverify: true } };
+            client.setApiKey('my-api-key', '192.168.1.1', 443);
+            await client._callV1('GET', '/sites');
+            expect(capturedOptions.rejectUnauthorized).toBe(true);
+        });
+
         it('targets the UniFi Cloud connector proxy when cloudEnabled is set', async () => {
             client.setApiKey('my-api-key', '192.168.1.1', 443, { cloudEnabled: true, consoleId: 'console-123' });
             await client._callV1('GET', '/sites');
