@@ -17,7 +17,6 @@
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-n": "^17.24.0",
-    "homey": "^3.7.12",
     "jest": "^29.0.0",
     "prettier": "^3.0.0"
   },
@@ -39,5 +38,8 @@
     "modulePathIgnorePatterns": [
       "/.homeybuild/"
     ]
+  },
+  "overrides": {
+    "axios": "^1.21.0"
   }
 }

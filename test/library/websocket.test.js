@@ -7,7 +7,7 @@ jest.mock('homey', () => {
         error() {}
     }
     return { SimpleClass };
-});
+}, { virtual: true });
 
 const WebsocketClient = require('../../library/websocket');
 

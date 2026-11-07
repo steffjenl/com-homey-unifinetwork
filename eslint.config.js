@@ -52,7 +52,7 @@ module.exports = [
 
             // node-specific: allow devDeps in test/specs
             'n/no-unpublished-require': 'off',
-            'n/no-missing-require': 'error',
+            'n/no-missing-require': ['error', { allowModules: ['homey'] }],
 
             // Allow process.exit in scripts
             'n/no-process-exit': 'off',

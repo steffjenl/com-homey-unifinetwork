@@ -246,7 +246,7 @@ class UnifiNetwork extends Homey.App {
             this.api.websocket.destroy();
         }
         if (this.api && this.api.unifi) {
-            try { await this.api.unifi.logout(); } catch (e) {}
+            try { await this.api.unifi.logout(); } catch (_e) { /* ignore logout errors */ }
         }
         delete this.api;
         delete this.accessPointList;

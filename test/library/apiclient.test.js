@@ -9,7 +9,7 @@ jest.mock('homey', () => {
         debug(...args) {}
     }
     return { SimpleClass };
-});
+}, { virtual: true });
 
 // Mock node-unifi before requiring ApiClient
 jest.mock('node-unifi', () => ({

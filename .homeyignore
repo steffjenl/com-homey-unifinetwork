@@ -1,0 +1,17 @@
+.git
+.github
+.idea
+.ai
+.prettierignore
+.prettierrc
+eslint.config.js
+.eslintrc.cjs
+tsconfig.json
+docs
+scripts
+specs
+test
+README.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+SECURITY.md

@@ -49,7 +49,7 @@ class WebsocketClient extends BaseClass {
         try {
             // Close any existing socket before opening a new one to avoid orphan connections
             if (this._ws) {
-                try { this._ws.terminate(); } catch (e) {}
+                try { this._ws.terminate(); } catch (e) { /* ignore */ }
             }
 
             const cookies = await this.homey.app.api.unifi._cookieJar.getCookieString(this._baseurl.href);
@@ -162,7 +162,7 @@ class WebsocketClient extends BaseClass {
             }
             // Fix 4: terminate and null any partially-assigned socket so it doesn't linger
             if (this._ws) {
-                try { this._ws.terminate(); } catch (e) {}
+                try { this._ws.terminate(); } catch (e) { /* ignore */ }
                 this._ws = null;
             }
             this.homey.error('Exception in listen()');
@@ -209,7 +209,7 @@ class WebsocketClient extends BaseClass {
             this._pingpong = null;
         }
         if (this._ws) {
-            try { this._ws.terminate(); } catch (e) {}
+            try { this._ws.terminate(); } catch (e) { /* ignore */ }
         }
     }
 }
