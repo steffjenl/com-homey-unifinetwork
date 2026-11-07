@@ -151,5 +151,8 @@
   },
   "2.7.2": {
     "en": "Add vlan triggers"
+  },
+  "2.7.3": {
+    "en": "Update package deps and fixing wifi action card"
   }
 }
