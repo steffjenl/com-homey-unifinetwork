@@ -154,5 +154,8 @@
   },
   "2.7.3": {
     "en": "Update package deps and fixing wifi action card"
+  },
+  "2.7.4": {
+    "en": "Fix: Self signed cert not always accepted"
   }
 }
